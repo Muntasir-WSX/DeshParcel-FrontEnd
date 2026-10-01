@@ -24,10 +24,10 @@ export default function Logo() {
 
       {/* Brand Text & Slogan */}
       <div className="flex flex-col">
-        <span className="font-heading text-[#061528] font-extrabold text-xl tracking-tight text-foreground leading-none">
+        <span className="font-heading text-[#ffffff] font-extrabold text-xl tracking-tight text-foreground leading-none">
           Desh<span style={{ color: "oklch(0.577 0.245 27.325)" }}>Parcel</span>
         </span>
-        <span className="text-[10px] font-medium tracking-widest uppercase text-muted-foreground mt-0.5">
+        <span className="text-[10px] text-white font-medium tracking-widest uppercase text-muted-foreground mt-0.5">
           logistics & co.
         </span>
       </div>
