@@ -35,15 +35,15 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Track", href: "/track" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "About", href: "/about" },
+    { name: "Track", href: "/Track" },
+    { name: "Pricing", href: "/Pricing" },
+    { name: "About", href: "/About" },
   ];
 
   const dropdownLinks = [
-    { name: "Services", href: "/services", desc: "Explore our delivery & shipping solutions" },
-    { name: "Coverage Area", href: "/coverage", desc: "Check districts and hub locations" },
-    { name: "Contact Us", href: "/contact", desc: "Get in touch with our support team" },
+    { name: "Services", href: "/Services", desc: "Explore our delivery & shipping solutions" },
+    { name: "Coverage Area", href: "/Coverage", desc: "Check districts and hub locations" },
+    { name: "Contact Us", href: "/ContactUs", desc: "Get in touch with our support team" },
   ];
 
   return (

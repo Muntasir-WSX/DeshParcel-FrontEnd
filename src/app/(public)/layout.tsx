@@ -7,7 +7,7 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
     <>
       <Navbar />
       <main className="flex-1 w-full">{children}</main>
-      <Footer />
+  
     </>
   );
 }

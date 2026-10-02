@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Send, UserCheck, Shield, Award, Search } from "lucide-react";
+import { MapPin, Phone, Mail, Search, ShieldCheck, ArrowRight, Building2, Globe2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Leadership Team Data
@@ -31,7 +31,7 @@ const leadership = [
   }
 ];
 
-// 30 Hub Managers Across Bangladesh (64 Districts Coverage Network)
+// 30 Hub Managers Across Bangladesh
 const hubManagers = [
   { district: "Dhaka Central", hub: "Motijheel Hub", manager: "Nazmul Hossain", phone: "+880 1811-000001", email: "dhaka.central@deshparcel.com" },
   { district: "Dhaka Uttara", hub: "Uttara Sector 7 Hub", manager: "Rakibul Islam", phone: "+880 1811-000002", email: "dhaka.uttara@deshparcel.com" },
@@ -181,75 +181,127 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* 3. Nationwide Hub Managers Directory (30 Hubs) */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
-        <div className="bg-card border border-border rounded-3xl p-8 md:p-12 shadow-xl">
-          
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+      {/* 3. Nationwide Hub Managers Directory with Background Image */}
+      <section className="relative max-w-7xl mx-auto px-6 md:px-12 mb-28 rounded-[2.5rem] overflow-hidden py-20 text-white shadow-2xl border border-white/10">
+        
+        {/* Background Image 1 */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Image
+            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/96c6c5e25f9319e4635cf32fdc6cdb14_sn2npv.jpg"
+            alt="Hub Network Background"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.15_0.04_255)]/95 via-[oklch(0.18_0.04_255)]/90 to-black/95 backdrop-blur-[2px]" />
+        </div>
+
+        <div className="relative z-10">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] mb-1 block">
-                Nationwide Network
-              </span>
-              <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-foreground">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white mb-3">
+                <MapPin className="h-3.5 w-3.5 text-[oklch(0.577_0.245_27.325)]" />
+                Nationwide Coverage
+              </div>
+              <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white">
                 30 Hub Managers Directory
               </h2>
-              <p className="text-xs md:text-sm text-muted-foreground mt-1">
-                Search and connect with our hub managers across Bangladesh.
+              <p className="text-sm text-gray-300 mt-2">
+                Search and connect with our hub managers across all districts of Bangladesh.
               </p>
             </div>
 
             {/* Search Box */}
             <div className="relative w-full md:w-80">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input 
                 type="text"
                 placeholder="Search district, hub or manager..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-background border border-border rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm outline-none focus:ring-2 focus:ring-[oklch(0.577_0.245_27.325)] transition-all"
+                className="w-full bg-black/50 border border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[oklch(0.577_0.245_27.325)] transition-all shadow-lg"
               />
             </div>
           </div>
 
-          {/* Hub Table / Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Hub Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filteredHubs.length > 0 ? (
               filteredHubs.map((hub, idx) => (
                 <div 
                   key={idx}
-                  className="p-5 rounded-2xl bg-muted/40 border border-border/60 hover:border-[oklch(0.577_0.245_27.325)]/50 transition-all space-y-3"
+                  className="p-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-[oklch(0.577_0.245_27.325)]/80 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full bg-[oklch(0.577_0.245_27.325)]/10 text-[oklch(0.577_0.245_27.325)] text-xs font-bold uppercase tracking-wider">
+                    <span className="px-3.5 py-1 rounded-full bg-[oklch(0.577_0.245_27.325)] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
                       {hub.district}
                     </span>
-                    <span className="text-xs text-muted-foreground font-medium">{hub.hub}</span>
+                    <span className="text-xs text-gray-300 font-medium">{hub.hub}</span>
                   </div>
 
                   <div>
-                    <p className="text-sm font-bold text-foreground font-heading">{hub.manager}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">Hub Manager</p>
+                    <p className="text-base font-bold text-white font-heading group-hover:text-[oklch(0.577_0.245_27.325)] transition-colors">{hub.manager}</p>
+                    <p className="text-xs text-gray-400 mt-0.5">Authorized Hub Manager</p>
                   </div>
 
-                  <div className="pt-2 border-t border-border/40 space-y-1 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-2">
-                      <Phone className="h-3.5 w-3.5 text-[oklch(0.577_0.245_27.325)] shrink-0" />
-                      <span>{hub.phone}</span>
+                  <div className="pt-3 border-t border-white/10 space-y-2 text-xs text-gray-300">
+                    <div className="flex items-center gap-2.5">
+                      <Phone className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
+                      <span className="font-medium">{hub.phone}</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Mail className="h-3.5 w-3.5 text-[oklch(0.577_0.245_27.325)] shrink-0" />
+                    <div className="flex items-center gap-2.5">
+                      <Mail className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
                       <span className="truncate">{hub.email}</span>
                     </div>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="col-span-full py-12 text-center text-muted-foreground">
+              <div className="col-span-full py-16 text-center text-gray-400">
                 No matching hub or manager found.
               </div>
             )}
           </div>
+        </div>
+      </section>
 
+      {/* 4. Extra Corporate Fleet & Logistics Support Section with Second Image */}
+      <section className="relative max-w-7xl mx-auto px-6 md:px-12 rounded-[2.5rem] overflow-hidden py-24 text-white shadow-2xl border border-white/10">
+        
+        {/* Background Image 2 */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Image
+            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/ccea22747d949b33e82c02293dc9404c_pi3mdk.jpg"
+            alt="Corporate Fleet Support"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/60 backdrop-blur-[2px]" />
+        </div>
+
+        <div className="relative z-10 max-w-2xl space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white shadow-sm">
+            <Building2 className="h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
+            Corporate Partnerships
+          </div>
+
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight">
+            Need Custom Fleet or <span style={{ color: "oklch(0.577 0.245 27.325)" }}>Enterprise Logistics?</span>
+          </h2>
+
+          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+            Partner with DeshParcel for enterprise-grade bulk shipping, dedicated warehousing solutions, and priority supply chain management tailored to your business scale.
+          </p>
+
+          <div className="pt-2">
+            <Button 
+              size="lg" 
+              className="rounded-full px-8 h-14 text-sm font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer"
+              style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}
+            >
+              Contact Corporate Desk
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </div>
         </div>
       </section>
 

@@ -177,47 +177,61 @@ export default function About() {
         </div>
       </section>
 
-      {/* 4. Why Choose Us Grid */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] mb-2 block">
-            Core Advantages
-          </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight mb-3">
-            Why Businesses Choose DeshParcel
-          </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
-            We combine cutting-edge technology with extensive field experience to deliver excellence.
-          </p>
+    {/* 4. Why Choose Us Grid */}
+      <section className="relative max-w-7xl mx-auto px-6 md:px-12 mb-20 rounded-[2.5rem] overflow-hidden py-24 text-white shadow-2xl border border-white/10">
+        
+        {/* Background Image & Dark Overlay */}
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Image
+            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/96c6c5e25f9319e4635cf32fdc6cdb14_sn2npv.jpg"
+            alt="Why Choose Us Background"
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.15_0.04_255)]/95 via-[oklch(0.18_0.04_255)]/90 to-black/95 backdrop-blur-[2px]" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feat, idx) => {
-            const Icon = feat.icon;
-            return (
-              <motion.div 
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-3xl bg-card border border-border shadow-sm hover:shadow-xl hover:border-[oklch(0.577_0.245_27.325)]/50 transition-all duration-300 group flex flex-col justify-between"
-              >
-                <div>
-                  <div className="w-12 h-12 rounded-2xl bg-[oklch(0.577_0.245_27.325)]/10 text-[oklch(0.577_0.245_27.325)] flex items-center justify-center mb-6 group-hover:bg-[oklch(0.577_0.245_27.325)] group-hover:text-white transition-all duration-300 shadow-sm">
-                    <Icon className="h-6 w-6" />
+        <div className="relative z-10">
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] mb-2 block">
+              Core Advantages
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight mb-3 text-white">
+              Why Businesses Choose DeshParcel
+            </h2>
+            <p className="text-gray-300 text-sm md:text-base">
+              We combine cutting-edge technology with extensive field experience to deliver excellence.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feat, idx) => {
+              const Icon = feat.icon;
+              return (
+                <motion.div 
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="p-8 rounded-3xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl hover:border-[oklch(0.577_0.245_27.325)]/80 hover:-translate-y-1 transition-all duration-300 group flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="w-12 h-12 rounded-2xl bg-[oklch(0.577_0.245_27.325)] text-white flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="font-bold text-lg mb-3 text-white font-heading group-hover:text-[oklch(0.577_0.245_27.325)] transition-colors">
+                      {feat.title}
+                    </h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      {feat.desc}
+                    </p>
                   </div>
-                  <h3 className="font-bold text-lg mb-3 text-foreground font-heading group-hover:text-[oklch(0.577_0.245_27.325)] transition-colors">
-                    {feat.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {feat.desc}
-                  </p>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
