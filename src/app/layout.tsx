@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import Navbar from "@/components/shared/navbar";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Footer from "@/components/shared/footer";
+import CustomCursor from "@/components/shared/CustomCursor";
+
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
 const inter = Inter({subsets:['latin'],variable:'--font-sans'});
@@ -26,15 +28,20 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, jetbrainsMonoHeading.variable)}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SmoothScrollProvider>
-          <Navbar />
-          <main className="flex-1 w-full">
-            {children}
-          </main>
-          <Footer></Footer>
-        </SmoothScrollProvider>
-      </body>
+      <body 
+  className="min-h-full flex flex-col bg-background text-foreground"
+  suppressHydrationWarning={true}
+>
+  <SmoothScrollProvider>
+    
+    <Navbar />
+    <main className="flex-1 w-full">
+      {children}
+    </main>
+    <Footer />
+   
+  </SmoothScrollProvider>
+</body>
     </html>
   );
 }

@@ -27,7 +27,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[oklch(0.15_0.04_255)] text-white pt-20 pb-10 overflow-hidden border-t border-white/10 mt-20">
+    <footer className=" rounded-t-[3rem] relative bg-[oklch(0.15_0.04_255)] text-white pt-20 pb-10 overflow-hidden border-t border-white/10 mt-20">
       
       {/* Background Image Banner with Dark Overlay */}
       <div className="absolute inset-0 z-0 opacity-15">
@@ -85,6 +85,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {socialLinks.map((social, idx) => (
                 <Link 
+                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                   key={idx}
                   href={social.href}
                   target="_blank"
