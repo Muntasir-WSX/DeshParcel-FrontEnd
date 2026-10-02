@@ -8,11 +8,10 @@ import { motion } from "framer-motion";
 
 export default function HeroSection() {
   return (
-    
-    <section className="relative pt-40 pb-28 md:pt-48 md:pb-40 mb-32 overflow-visible w-full max-w-[98%] mx-auto mt-2 md:mt-4">
+    <section className="relative w-full pt-36 pb-32 md:pt-44 md:pb-40 mb-32 overflow-visible">
       
-      
-      <div className="absolute inset-0 z-0 w-full h-full rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-2xl">
+      {/* Background Image spanning the entire top area */}
+      <div className="absolute inset-0 z-0 w-full h-full rounded-b-[3rem] overflow-hidden shadow-2xl">
         <Image
           src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/7533ef36f512067645af5b25bbd7fe39_xkvdym.jpg"
           alt="DeshParcel Logistics Background"
@@ -20,11 +19,11 @@ export default function HeroSection() {
           priority
           className="object-cover object-center"
         />
-        {/* Mobile-friendly gradient: Darker on mobile for better text visibility */}
+        {/* Dark Gradient Overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/40 md:from-black/90 md:via-black/60 md:to-black/20 backdrop-blur-[2px]" />
       </div>
 
-      {/* 2. Main Content Container */}
+      {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
         {/* Left Side: Content, CTA & Track Input */}
@@ -37,10 +36,10 @@ export default function HeroSection() {
           {/* Top Small Trust Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] md:text-xs font-semibold tracking-wide text-white/90 shadow-sm w-fit">
             <ShieldCheck className="h-3.5 w-3.5 md:h-4 md:w-4 text-[oklch(0.577_0.245_27.325)]" />
-            Trusted by 35,000+ Merchants
+            Your Trusted Logistics Partner
           </div>
 
-          {/* Main Heading (Responsive Text Sizes) */}
+          {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] text-white font-heading">
             <span style={{ color: "oklch(0.577 0.245 27.325)" }}>Trusted & Reliable</span> <br />
             Courier Service in <br className="hidden sm:block" />
@@ -52,9 +51,8 @@ export default function HeroSection() {
             We deliver your parcels faster and safer, making DeshParcel the most trusted delivery partner for your business.
           </p>
 
-          {/* Actions Row: Button + Track Input (Stacks on mobile, row on tablet/desktop) */}
+          {/* Actions Row: Button + Track Input */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 md:pt-4">
-            {/* Send Parcel Button */}
             <Link href="/dashboard/create-parcel" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
@@ -84,7 +82,7 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Right Side: Transparent Delivery Rider Image (Hidden on small mobile, visible on lg screens) */}
+        {/* Right Side: Delivery Rider Image */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,7 +91,7 @@ export default function HeroSection() {
         >
           <div className="relative w-full h-[550px] xl:h-[600px] flex justify-center items-end -mb-10 xl:-mb-16">
             <Image
-              src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/7533ef36f512067645af5b25bbd7fe39_xkvdym.jpg" // <-- এখানে রাইডারের transparent PNG লিঙ্কটি বসাবেন
+              src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/7533ef36f512067645af5b25bbd7fe39_xkvdym.jpg"
               alt="DeshParcel Delivery Rider"
               fill
               className="object-contain object-bottom scale-110 drop-shadow-2xl"
@@ -102,7 +100,7 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* 3. Floating Bottom Stats Card (Fully Responsive) */}
+      {/* Floating Bottom Stats Card */}
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}

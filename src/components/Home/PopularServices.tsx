@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Box, Briefcase, Zap, Globe, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -13,10 +14,20 @@ const services = [
 
 export default function PopularServices() {
   return (
-    <section className="relative py-12 md:py-16 w-full max-w-[96%] md:max-w-7xl mx-auto rounded-3xl overflow-hidden my-12 bg-[oklch(0.18_0.04_255)] text-white px-6 md:px-12 shadow-xl border border-white/10">
+    <section className="relative py-12 md:py-16 w-full max-w-[96%] md:max-w-7xl mx-auto rounded-3xl overflow-hidden my-12 text-white px-6 md:px-12 shadow-xl border border-white/10 bg-[oklch(0.18_0.04_255)]">
       
+      {/* Background Image (Without Overlay) */}
+      <div className="absolute inset-0 z-0 w-full h-full">
+        <Image
+          src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-screeny42-11053643_w8f7g8.jpg"
+          alt="DeshParcel Services Background"
+          fill
+          className="object-cover object-center"
+        />
+      </div>
+
       {/* Subtle Glow Effect */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-[oklch(0.577_0.245_27.325)]/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[oklch(0.577_0.245_27.325)]/20 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10">
         
@@ -35,7 +46,7 @@ export default function PopularServices() {
             </h2>
           </div>
           
-          <p className="text-sm text-gray-300 max-w-md md:text-right">
+          <p className="text-sm text-gray-200 max-w-md md:text-right font-medium">
             Tailored logistics solutions designed to match your personal and business demands efficiently.
           </p>
         </div>
@@ -51,7 +62,7 @@ export default function PopularServices() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group bg-card text-card-foreground rounded-2xl p-5 md:p-6 flex flex-col justify-between shadow-md hover:-translate-y-1.5 transition-transform duration-300 relative overflow-hidden border border-border/60 hover:border-[oklch(0.577_0.245_27.325)]/40"
+                className="group bg-card text-card-foreground rounded-2xl p-5 md:p-6 flex flex-col justify-between shadow-lg hover:-translate-y-1.5 transition-transform duration-300 relative overflow-hidden border border-border/60 hover:border-[oklch(0.577_0.245_27.325)]/40"
               >
                 {/* Red Top Border Accent on Hover */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-[oklch(0.577_0.245_27.325)] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
