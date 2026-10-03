@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function CoverageSection() {
   return (
-    <section className="relative py-20 md:py-28 my-16 rounded-3xl text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-500/20 bg-[#070b19]">
+    <section className="relative py-20 md:py-28 my-16 rounded-3xl text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-[#070b19]">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -23,7 +23,7 @@ export default function CoverageSection() {
       </div>
 
       {/* Decorative Glow Effects */}
-      <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-red-500/15 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
       <div className="absolute top-0 right-0 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
 
       {/* Content Container */}
@@ -36,13 +36,13 @@ export default function CoverageSection() {
           transition={{ duration: 0.6 }}
           className="max-w-xl space-y-4"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/15 border border-red-500/30 text-xs font-bold tracking-wide uppercase text-red-400 shadow-sm">
-            <MapPin className="h-4 w-4 text-red-500" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm">
+            <MapPin className="h-4 w-4 text-red-700" />
             Nationwide Network
           </div>
 
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-white">
-            Delivering to All <span className="text-red-500">64 Districts</span> Across Bangladesh
+            Delivering to All <span className="text-red-700">64 Districts</span> Across Bangladesh
           </h2>
 
           <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium">

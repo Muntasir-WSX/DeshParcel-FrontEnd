@@ -29,7 +29,7 @@ export default function DashboardLayout({
           </Link>
         </header>
 
-        <main className="flex-1 p-6 md:p-10 overflow-y-auto">
+        <main className=" bg-[#03132B] flex-1 w-full p-6 md:p-10 overflow-y-auto">
           {children}
         </main>
       </div>

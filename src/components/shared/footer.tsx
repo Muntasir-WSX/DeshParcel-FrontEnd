@@ -27,26 +27,29 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className=" rounded-t-[3rem] relative bg-[oklch(0.15_0.04_255)] text-white pt-20 pb-10 overflow-hidden border-t border-white/10 mt-20">
+    <footer className="relative bg-[#070b19] text-white overflow-hidden border-t border-red-500/20 pt-16 pb-12">
       
       {/* Background Image Banner with Dark Overlay */}
-      <div className="absolute inset-0 z-0 opacity-15">
+      <div className="absolute inset-0 z-0 opacity-10">
         <Image
           src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
           alt="DeshParcel Footer Background"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center filter brightness-90"
         />
       </div>
 
-      {/* Glow Effect */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[oklch(0.577_0.245_27.325)]/15 rounded-full blur-3xl pointer-events-none z-1" />
+      {/* Glow Effects */}
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Top Newsletter / Quick CTA Row */}
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 md:p-10 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl">
-          <div className="space-y-2 text-center lg:text-left">
+        <div className="bg-[#0b132b] backdrop-blur-md border border-red-500/25 rounded-3xl p-8 md:p-10 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-500/15 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="space-y-2 text-center lg:text-left relative z-10">
             <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
               Ready to Send Your First Parcel?
             </h3>
@@ -55,7 +58,7 @@ export default function Footer() {
             </p>
           </div>
           
-          <div className="flex items-center w-full lg:w-auto max-w-md bg-white/10 rounded-2xl p-1.5 border border-white/20 focus-within:ring-2 focus-within:ring-[oklch(0.577_0.245_27.325)]">
+          <div className="flex items-center w-full lg:w-auto max-w-md bg-[#050814] rounded-2xl p-1.5 border border-white/15 focus-within:ring-2 focus-within:ring-red-500 relative z-10">
             <input 
               type="email" 
               placeholder="Enter your email..." 
@@ -63,8 +66,7 @@ export default function Footer() {
             />
             <button 
               type="button"
-              className="px-6 h-11 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all cursor-pointer flex items-center gap-2"
-              style={{ backgroundColor: "oklch(0.577 0.245 27.325)" }}
+              className="px-6 h-11 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all cursor-pointer flex items-center gap-2 bg-red-600 hover:bg-red-700"
             >
               <span>Subscribe</span>
               <Send className="h-3.5 w-3.5" />
@@ -85,13 +87,12 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {socialLinks.map((social, idx) => (
                 <Link 
-                  // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                   key={idx}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-300 hover:bg-[oklch(0.577_0.245_27.325)] hover:text-white hover:border-[oklch(0.577_0.245_27.325)] transition-all duration-300 shadow-sm"
+                  className="w-10 h-10 rounded-xl bg-[#0b132b] border border-white/10 flex items-center justify-center text-gray-300 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300 shadow-sm"
                 >
                   {social.icon}
                 </Link>
@@ -101,7 +102,7 @@ export default function Footer() {
 
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-sm font-extrabold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] font-heading">
+            <h4 className="text-sm font-extrabold uppercase tracking-widest text-red-700 font-heading">
               Quick Links
             </h4>
             <ul className="space-y-2.5">
@@ -115,7 +116,7 @@ export default function Footer() {
 
           {/* Column 3: Services */}
           <div className="space-y-4">
-            <h4 className="text-sm font-extrabold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] font-heading">
+            <h4 className="text-sm font-extrabold uppercase tracking-widest text-red-700 font-heading">
               Services
             </h4>
             <ul className="space-y-2.5">
@@ -129,20 +130,20 @@ export default function Footer() {
 
           {/* Column 4: Contact Info */}
           <div className="space-y-4">
-            <h4 className="text-sm font-extrabold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] font-heading">
+            <h4 className="text-sm font-extrabold uppercase tracking-widest text-red-700 font-heading">
               Get in Touch
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-gray-300">
-                <MapPin className="h-5 w-5 text-[oklch(0.577_0.245_27.325)] shrink-0 mt-0.5" />
+                <MapPin className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
                 <span>Level 4, Ispahani Building, Agrabad, Chattogram, Bangladesh</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
-                <Phone className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
+                <Phone className="h-4 w-4 text-red-500 shrink-0" />
                 <span>+880 1700-000000</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
-                <Mail className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
+                <Mail className="h-4 w-4 text-red-500 shrink-0" />
                 <span>support@deshparcel.com</span>
               </li>
             </ul>

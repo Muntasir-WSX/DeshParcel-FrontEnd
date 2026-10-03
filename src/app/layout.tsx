@@ -35,7 +35,7 @@ export default function RootLayout({
   <SmoothScrollProvider>
     
   
-    <main className="flex-1 w-full">
+    <main>
       {children}
     </main>
     

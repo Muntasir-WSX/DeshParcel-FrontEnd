@@ -296,7 +296,7 @@ export default function BecomeRiderPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs shadow-lg shadow-red-600/30"
+                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs "
                 >
                   {loading ? "Submitting Application..." : "Submit Rider Application"}
                   <ArrowRight className="h-4 w-4" />

@@ -59,7 +59,7 @@ export default function TrackPage() {
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-red-600 shadow-sm"
           >
-            <Package className="h-4 w-4 text-red-500" />
+            <Package className="h-4 w-4 text-red-700" />
             Real-Time Shipment Tracking
           </motion.div>
 
@@ -85,9 +85,9 @@ export default function TrackPage() {
 
       {/* 2. Section 2: Interactive Tracking Input & Results Section */}
       <section className="max-w-4xl mx-auto px-6 mb-24">
-        <div className="bg-[#0b132b] border border-red-500/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
-          <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="text-center max-w-xl mx-auto mb-8 space-y-2 relative z-10">
@@ -107,7 +107,7 @@ export default function TrackPage() {
                 value={trackingId}
                 onChange={(e) => setTrackingId(e.target.value)}
                 placeholder="Enter Tracking ID (e.g. DP-98421)..."
-                className="w-full h-13 pl-11 pr-5 rounded-2xl bg-[#050814] border border-white/10 text-white placeholder:text-gray-500 text-sm outline-none focus:ring-2 focus:ring-red-500 shadow-inner"
+                className="w-full h-13 pl-11 pr-5 rounded-2xl bg-[#050814] border border-white/10 text-white placeholder:text-gray-500 text-sm outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
               />
             </div>
             <Button
@@ -125,17 +125,17 @@ export default function TrackPage() {
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-[#050814] border border-red-500/30 rounded-2xl p-6 md:p-8 space-y-6"
+                  className="bg-[#050814] border border-red-700/30 rounded-2xl p-6 md:p-8 space-y-6"
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10 gap-4">
                     <div>
-                      <span className="text-xs uppercase tracking-widest text-red-400 font-bold block">Shipment ID: {searchResult.id}</span>
-                      <h3 className="text-xl font-bold text-white mt-1">Status: <span className="text-red-500">{searchResult.status}</span></h3>
+                      <span className="text-xs uppercase tracking-widest text-red-700 font-bold block">Shipment ID: {searchResult.id}</span>
+                      <h3 className="text-xl font-bold text-white mt-1">Status: <span className="text-red-700">{searchResult.status}</span></h3>
                     </div>
                     <div className="text-left sm:text-right">
                       <p className="text-xs text-gray-400">Estimated Delivery</p>
                       <p className="text-sm font-bold text-white flex items-center sm:justify-end gap-1 mt-0.5">
-                        <Clock className="h-4 w-4 text-red-500" />
+                        <Clock className="h-4 w-4 text-red-700" />
                         {searchResult.estimatedDelivery}
                       </p>
                     </div>
@@ -151,7 +151,7 @@ export default function TrackPage() {
                             <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step.completed ? "bg-red-600 text-white" : "bg-white/10 text-gray-400"}`}>
                               {idx + 1}
                             </span>
-                            {step.completed && <CheckCircle2 className="h-4 w-4 text-red-500" />}
+                            {step.completed && <CheckCircle2 className="h-4 w-4 text-red-700" />}
                           </div>
                           <p className={`text-xs font-bold ${step.completed ? "text-white" : "text-gray-400"}`}>{step.title}</p>
                           <p className="text-[10px] text-gray-500">{step.date}</p>
@@ -165,12 +165,12 @@ export default function TrackPage() {
                 <motion.div 
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-[#050814] border border-red-500/20 rounded-2xl p-8 text-center space-y-3"
+                  className="bg-[#050814] border border-red-700/20 rounded-2xl p-8 text-center space-y-3"
                 >
-                  <ShieldAlert className="h-10 w-10 text-red-500 mx-auto" />
+                  <ShieldAlert className="h-10 w-10 text-red-700 mx-auto" />
                   <h4 className="text-lg font-bold text-white">No Shipment Found</h4>
                   <p className="text-xs text-gray-400 max-w-md mx-auto">
-                    We couldn&apos;t find any parcel with ID &quot;{trackingId}&quot;. Please verify your tracking number or try demo ID <span className="text-red-400 font-bold">DEMO123</span>.
+                    We couldn&apos;t find any parcel with ID &quot;{trackingId}&quot;. Please verify your tracking number or try demo ID <span className="text-red-700 font-bold">DEMO123</span>.
                   </p>
                 </motion.div>
               )}
@@ -194,7 +194,7 @@ export default function TrackPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center font-bold border border-red-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Search className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">1. Enter Tracking ID</h3>
@@ -204,7 +204,7 @@ export default function TrackPage() {
           </div>
 
           <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center font-bold border border-red-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Truck className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">2. Monitor Live Transit</h3>
@@ -214,7 +214,7 @@ export default function TrackPage() {
           </div>
 
           <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center font-bold border border-red-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">3. Successful Delivery</h3>

@@ -93,10 +93,10 @@ export default function PricingPage() {
 
       {/* 2. Interactive Calculator Section */}
       <section className="max-w-4xl mx-auto px-6 mb-24">
-        <div className="bg-[#0b132b] border border-red-500/20 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
           {/* Glowing Red & Blue Accents */}
-          <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="text-center max-w-xl mx-auto mb-10 space-y-2 relative z-10">
@@ -118,13 +118,13 @@ export default function PricingPage() {
               {/* Pickup City */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-500" />
+                  <MapPin className="h-3.5 w-3.5 text-red-700" />
                   Pickup City / Region
                 </label>
                 <select
                   value={pickupCity}
                   onChange={(e) => setPickupCity(e.target.value)}
-                  className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
+                  className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                 >
                   {citiesList.map((city, idx) => (
                     <option key={idx} value={city} className="bg-[#0b132b] text-white">{city}</option>
@@ -135,13 +135,13 @@ export default function PricingPage() {
               {/* Delivery City */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-500" />
+                  <MapPin className="h-3.5 w-3.5 text-red-700" />
                   Delivery City / Region
                 </label>
                 <select
                   value={deliveryCity}
                   onChange={(e) => setDeliveryCity(e.target.value)}
-                  className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
+                  className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                 >
                   {citiesList.map((city, idx) => (
                     <option key={idx} value={city} className="bg-[#0b132b] text-white">{city}</option>
@@ -154,7 +154,7 @@ export default function PricingPage() {
             {/* Weight Input */}
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                <Weight className="h-3.5 w-3.5 text-red-500" />
+                <Weight className="h-3.5 w-3.5 text-red-700" />
                 Package Weight (KG) — <span className="text-white font-semibold">First 3 KG standard</span>
               </label>
               <input
@@ -163,7 +163,7 @@ export default function PricingPage() {
                 step="0.5"
                 value={weight}
                 onChange={(e) => setWeight(parseFloat(e.target.value) || 1)}
-                className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700"
               />
             </div>
 
@@ -181,10 +181,10 @@ export default function PricingPage() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="mt-8 p-6 rounded-2xl bg-[#050814] border border-red-500/30 text-center space-y-2 relative z-10 shadow-inner"
+              className="mt-8 p-6 rounded-2xl bg-[#050814] border border-red-700/30 text-center space-y-2 relative z-10 shadow-inner"
             >
               <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Estimated Shipping Fee</p>
-              <h3 className="text-4xl font-extrabold font-heading text-red-500">
+              <h3 className="text-4xl font-extrabold font-heading text-red-700">
                 ৳{calculatedCost}
               </h3>
               <p className="text-xs text-gray-400">
@@ -209,8 +209,8 @@ export default function PricingPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-500/40 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-700 flex items-center justify-center font-bold border border-red-500/20">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-700/40 transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">City vs Outside Delivery</h3>
@@ -226,8 +226,8 @@ export default function PricingPage() {
             </ul>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-500/40 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-700 flex items-center justify-center font-bold border border-red-500/20">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-700/40 transition-all">
+            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Weight className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">Weight Policy</h3>

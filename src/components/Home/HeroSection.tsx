@@ -24,7 +24,7 @@ export default function HeroSection() {
       </div>
 
       {/* Glowing Accents behind hero content */}
-      <div className="absolute top-20 left-1/4 w-72 h-72 bg-red-500/10 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute top-20 left-1/4 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-0" />
       <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-0" />
 
       {/* Main Content Container */}
@@ -72,7 +72,7 @@ export default function HeroSection() {
             {/* Track Parcel Input Wrapper */}
             <div className="flex items-center w-full sm:max-w-sm bg-[#050814]/90 backdrop-blur-md rounded-xl p-1.5 shadow-xl border border-white/20 focus-within:ring-2 focus-within:ring-[oklch(0.577_0.245_27.325)] transition-all">
               <div className="pl-3 pr-2 text-gray-400">
-                <Search className="h-5 w-5 text-red-500" />
+                <Search className="h-5 w-5 text-red-700" />
               </div>
               <input 
                 type="text" 
@@ -104,22 +104,22 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Floating Bottom Stats Card */}
+     {/* Floating Bottom Stats Card (Hidden on Mobile, Visible on Small screens & up) */}
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[92%] sm:w-[85%] max-w-5xl bg-[#0b132b] border border-red-500/25 rounded-2xl md:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 py-6 md:py-8 px-4 md:px-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-white/10 text-white"
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[92%] sm:w-[85%] max-w-5xl bg-[#0b132b] border border-red-500/25 rounded-2xl md:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 py-6 md:py-8 px-4 md:px-6 hidden sm:grid grid-cols-3 gap-0 divide-x divide-white/10 text-white"
       >
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
           <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">35K+</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Merchants</p>
         </div>
-        <div className="flex flex-col items-center justify-center text-center px-2 md:px-4 pt-4 sm:pt-0">
+        <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
           <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">20M+</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Deliveries</p>
         </div>
-        <div className="flex flex-col items-center justify-center text-center px-2 md:px-4 pt-4 sm:pt-0">
+        <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
           <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">64 Dist.</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Home Delivery</p>
         </div>

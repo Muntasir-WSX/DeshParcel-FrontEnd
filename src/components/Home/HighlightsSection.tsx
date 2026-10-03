@@ -12,28 +12,28 @@ const highlights = [
     title: "Same-Day Delivery", 
     desc: "Urgent deliveries within the city in under 6 hours. Perfect for time-sensitive documents, medical supplies, and perishable goods.",
     bullets: ["Automated Dispatching", "Real-Time Rider Tracking", "Priority Handling"],
-    link: "/services"
+    link: "/Services"
   },
   { 
     id: 2,
     title: "Next-Day Nationwide", 
     desc: "Reliable and secure delivery across all 64 districts by the next business day. Built for e-commerce and corporate bulk shipments.",
     bullets: ["Inter-district line haul", "Secure Warehousing", "SMS & Web Tracking"],
-    link: "/services"
+    link: "/Services"
   },
   { 
     id: 3,
     title: "Safe & Secure Handling", 
     desc: "We ensure full insurance coverage and careful item management. Your fragile and high-value items are safe with our trained professionals.",
     bullets: ["Tamper-proof Packaging", "Value Insurance up to ৳50k", "CCTV Monitored Hubs"],
-    link: "/services"
+    link: "/Services"
   },
   { 
     id: 4,
     title: "24/7 Dedicated Support", 
     desc: "Our customer success team is always available to resolve your shipping queries, manage returns, and provide instant updates.",
     bullets: ["Instant Live Chat", "Dedicated Account Manager", "Easy Return Policies"],
-    link: "/contact"
+    link: "/ContactUs"
   },
 ];
 
@@ -49,7 +49,7 @@ export default function HighlightsSection() {
       
       {/* Section Header */}
       <div className="text-center md:text-left mb-12 md:mb-16">
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-500/15 border border-red-500/30 text-[11px] font-bold uppercase tracking-widest text-red-400 mb-3">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/30 text-[11px] font-bold uppercase tracking-widest text-red-700 mb-3">
           <ShieldCheck className="h-3.5 w-3.5" /> Why Choose Us
         </span>
         <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white">
@@ -84,10 +84,10 @@ export default function HighlightsSection() {
         </motion.div>
 
         {/* Right Side: Accordion Features */}
-        <div className="lg:col-span-6 flex flex-col justify-center bg-[#0b132b] border border-red-500/20 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+        <div className="lg:col-span-6 flex flex-col justify-center bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
           
           {/* Glowing background accents */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 divide-y divide-white/10">
@@ -102,12 +102,12 @@ export default function HighlightsSection() {
                     onClick={() => toggleAccordion(item.id)}
                     className="w-full py-2 flex justify-between items-center text-left focus:outline-none group cursor-pointer"
                   >
-                    <h3 className={`text-lg md:text-xl font-bold font-heading transition-colors duration-300 ${isOpen ? "text-red-500" : "text-white group-hover:text-red-400"}`}>
+                    <h3 className={`text-lg md:text-xl font-bold font-heading transition-colors duration-300 ${isOpen ? "text-red-700" : "text-white group-hover:text-red-700"}`}>
                       {item.title}
                     </h3>
-                    <div className="ml-4 flex-shrink-0 p-2 rounded-xl bg-[#050814] border border-white/10 group-hover:border-red-500/30 transition-all">
+                    <div className="ml-4 flex-shrink-0 p-2 rounded-xl bg-[#050814] border border-white/10 group-hover:border-red-700/30 transition-all">
                       {isOpen ? (
-                        <Minus className="h-4 w-4 text-red-500" />
+                        <Minus className="h-4 w-4 text-red-700" />
                       ) : (
                         <Plus className="h-4 w-4 text-gray-400 group-hover:text-white transition-colors" />
                       )}
@@ -133,7 +133,7 @@ export default function HighlightsSection() {
                           <ul className="space-y-2">
                             {item.bullets.map((bullet, idx) => (
                               <li key={idx} className="flex items-center gap-2.5 text-xs font-medium text-gray-200">
-                                <CheckCircle2 className="h-3.5 w-3.5 text-red-500 shrink-0" />
+                                <CheckCircle2 className="h-3.5 w-3.5 text-red-700 shrink-0" />
                                 {bullet}
                               </li>
                             ))}
@@ -145,7 +145,7 @@ export default function HighlightsSection() {
                               <span className="flex items-center justify-center w-7 h-7 rounded-xl bg-red-600 text-white group-hover:bg-red-700 transition-colors shadow-md">
                                 <ArrowUpRight className="h-3.5 w-3.5" />
                               </span>
-                              <span className="text-red-400 group-hover:text-red-300 transition-colors">
+                              <span className="text-red-700 group-hover:text-red-300 transition-colors">
                                 View Details
                               </span>
                             </Link>

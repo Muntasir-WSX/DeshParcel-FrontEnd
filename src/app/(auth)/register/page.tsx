@@ -109,7 +109,7 @@ export default function RegisterPage() {
               <CheckCircle2 className="h-9 w-9 text-red-700 mx-auto" />
               <h3 className="text-base font-bold text-white">{successData.message}</h3>
               <p className="text-xs text-gray-400">
-                Registered Email: <span className="text-red-400 font-semibold">{successData.data.email}</span> ({successData.data.role})
+                Registered Email: <span className="text-red-700 font-semibold">{successData.data.email}</span> ({successData.data.role})
               </p>
               <div className="pt-1">
                 <Button 
@@ -135,7 +135,7 @@ export default function RegisterPage() {
                   placeholder="Nurul Islam"
                   className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
                 />
-                {errors.name && <p className="text-[10px] text-red-400">{errors.name.message}</p>}
+                {errors.name && <p className="text-[10px] text-red-700">{errors.name.message}</p>}
               </div>
 
               {/* Email Address */}
@@ -150,7 +150,7 @@ export default function RegisterPage() {
                   placeholder="islam@gmail.com"
                   className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
                 />
-                {errors.email && <p className="text-[10px] text-red-400">{errors.email.message}</p>}
+                {errors.email && <p className="text-[10px] text-red-700">{errors.email.message}</p>}
               </div>
 
               {/* Phone Number */}
@@ -165,7 +165,7 @@ export default function RegisterPage() {
                   placeholder="01960554472"
                   className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2 text-xs outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
                 />
-                {errors.phone && <p className="text-[10px] text-red-400">{errors.phone.message}</p>}
+                {errors.phone && <p className="text-[10px] text-red-700">{errors.phone.message}</p>}
               </div>
 
               {/* Password */}
