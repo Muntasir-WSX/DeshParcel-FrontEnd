@@ -405,7 +405,7 @@ export default function AuthPageContent() {
         </div>
       </section>
 
-      <section>
+      <section className="max-w-7xl mx-auto px-6 md:px-12 space-y-20 bg-[#0b132b] border border-white/10 rounded-3xl p-8 md:p-12 shadow-xl">
         <HighlightsSection />
       </section>
     </div>
