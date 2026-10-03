@@ -12,28 +12,28 @@ const highlights = [
     title: "Same-Day Delivery", 
     desc: "Urgent deliveries within the city in under 6 hours. Perfect for time-sensitive documents, medical supplies, and perishable goods.",
     bullets: ["Automated Dispatching", "Real-Time Rider Tracking", "Priority Handling"],
-    link: "/services/same-day"
+    link: "/Services"
   },
   { 
     id: 2,
     title: "Next-Day Nationwide", 
     desc: "Reliable and secure delivery across all 64 districts by the next business day. Built for e-commerce and corporate bulk shipments.",
     bullets: ["Inter-district line haul", "Secure Warehousing", "SMS & Web Tracking"],
-    link: "/services/nationwide"
+    link: "/Services"
   },
   { 
     id: 3,
     title: "Safe & Secure Handling", 
     desc: "We ensure full insurance coverage and careful item management. Your fragile and high-value items are safe with our trained professionals.",
     bullets: ["Tamper-proof Packaging", "Value Insurance up to ৳50k", "CCTV Monitored Hubs"],
-    link: "/services/secure-handling"
+    link: "/Services"
   },
   { 
     id: 4,
     title: "24/7 Dedicated Support", 
     desc: "Our customer success team is always available to resolve your shipping queries, manage returns, and provide instant updates.",
     bullets: ["Instant Live Chat", "Dedicated Account Manager", "Easy Return Policies"],
-    link: "/contact"
+    link: "/ContactUs"
   },
 ];
 

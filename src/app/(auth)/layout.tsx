@@ -7,11 +7,16 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-background px-4 py-12">
-      <div className="mb-8">
+   <div className="min-h-screen flex flex-col items-center bg-[#070b19] text-white px-4 py-8">
+      {/* Top Logo Container */}
+      <div className="mb-8 w-full max-w-7xl flex justify-center sm:justify-start px-4">
         <Logo />
       </div>
-      <div className="w-full max-w-md">{children}</div>
+      
+      {/* Main Content Container */}
+      <div className="w-full max-w-7xl flex flex-col items-center">
+        {children}
+      </div>
     </div>
   );
 }

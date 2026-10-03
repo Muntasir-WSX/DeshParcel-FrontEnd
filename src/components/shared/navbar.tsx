@@ -177,7 +177,7 @@ export default function Navbar() {
           ))}
           
           <div className="pt-4 mt-2 border-t border-white/15 flex flex-col gap-2.5">
-            <Link href="/become-rider" onClick={() => setMobileMenuOpen(false)}>
+            <Link href="/becomeRider" onClick={() => setMobileMenuOpen(false)}>
               <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
                 <Bike className="mr-2 h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
                 Be a Rider
