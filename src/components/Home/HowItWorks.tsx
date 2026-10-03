@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ShieldCheck } from "lucide-react";
 
 const steps = [
   { step: "01", title: "Book Pickup", desc: "Fill out the online booking form with pickup and delivery details." },
@@ -12,7 +13,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative py-20 md:py-32 w-full max-w-7xl mx-auto px-6 md:px-16 my-16 rounded-3xl text-white shadow-2xl overflow-hidden border border-white/10">
+    <section className="relative py-20 md:py-32 w-full max-w-7xl mx-auto px-6 md:px-16 my-16 rounded-3xl text-white shadow-2xl overflow-hidden border border-red-500/20 bg-[#070b19]">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -20,14 +21,15 @@ export default function HowItWorks() {
           src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/3ac6da767bb3adc52ae07880de66c6d9_vefxzu.jpg"
           alt="DeshParcel Working Process Background"
           fill
-          className="object-cover object-center"
+          className="object-cover object-center filter brightness-90"
         />
-        {/* Deep Dark Blue & Black Gradient Overlay (Matching Coverage Section) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.15_0.04_255)]/95 via-[oklch(0.18_0.04_255)]/85 to-black/70 backdrop-blur-[1px]" />
+        {/* Dark Blue & Redish Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[1px]" />
       </div>
 
-      {/* Decorative Glow Effect */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-[oklch(0.577_0.245_27.325)]/20 rounded-full blur-3xl pointer-events-none z-1" />
+      {/* Decorative Glow Effects */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-red-500/15 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
 
       {/* Content Container */}
       <div className="relative z-10">
@@ -38,9 +40,9 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold tracking-wide uppercase text-white/90 shadow-sm mb-3"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/15 border border-red-500/30 text-xs font-bold tracking-wide uppercase text-red-400 shadow-sm mb-3"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[oklch(0.577_0.245_27.325)]" />
+            <ShieldCheck className="h-4 w-4 text-red-500" />
             Simple Process
           </motion.div>
           
@@ -51,7 +53,7 @@ export default function HowItWorks() {
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white mb-4"
           >
-            How <span style={{ color: "oklch(0.577 0.245 27.325)" }}>DeshParcel</span> Works
+            How <span className="text-red-500">DeshParcel</span> Works
           </motion.h2>
           
           <motion.p 
@@ -74,21 +76,21 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 }}
-              className="relative p-6 md:p-8 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl hover:border-[oklch(0.577_0.245_27.325)]/60 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
+              className="relative p-6 md:p-8 rounded-3xl bg-[#0b132b]/90 backdrop-blur-md border border-white/10 shadow-xl hover:border-red-500/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
             >
               {/* Top Accent Line on Hover */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-[oklch(0.577_0.245_27.325)] transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-red-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
 
               {/* Background Step Number Watermark */}
-              <span className="absolute top-4 right-5 text-4xl md:text-5xl font-black text-white/10 font-heading group-hover:text-[oklch(0.577_0.245_27.325)]/20 transition-colors">
+              <span className="absolute top-4 right-5 text-4xl md:text-5xl font-black text-white/5 font-heading group-hover:text-red-500/10 transition-colors">
                 {item.step}
               </span>
 
               <div>
-                <div className="w-11 h-11 rounded-xl bg-[oklch(0.577_0.245_27.325)] text-white font-extrabold flex items-center justify-center mb-5 text-sm shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="w-11 h-11 rounded-2xl bg-red-600 text-white font-extrabold flex items-center justify-center mb-5 text-sm shadow-md group-hover:scale-110 transition-transform duration-300">
                   {item.step}
                 </div>
-                <h3 className="font-bold text-lg mb-2 text-white font-heading group-hover:text-[oklch(0.577_0.245_27.325)] transition-colors">
+                <h3 className="font-bold text-lg mb-2 text-white font-heading group-hover:text-red-400 transition-colors">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-300 leading-relaxed">
