@@ -34,11 +34,11 @@ export default function RootLayout({
 >
   <SmoothScrollProvider>
     
-    <Navbar />
+  
     <main className="flex-1 w-full">
       {children}
     </main>
-    <Footer />
+    
    
   </SmoothScrollProvider>
 </body>

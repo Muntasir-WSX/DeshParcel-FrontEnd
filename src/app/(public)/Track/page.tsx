@@ -38,7 +38,7 @@ export default function TrackPage() {
   };
 
   return (
-    <div className="w-full pb-20 bg-[#070b19] text-white">
+    <div className="w-full pb-20  text-white">
       
       {/* 1. Section 1: Hero Banner Section */}
       <section className="relative w-full pt-48 pb-36 md:pt-60 md:pb-44 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
@@ -95,7 +95,7 @@ export default function TrackPage() {
               Enter Tracking Code
             </h2>
             <p className="text-xs text-gray-400">
-              Tip: You can try typing any code (e.g., <span className="text-red-700 font-bold">DEMO123</span>) to preview shipment status.
+              Type your tracking code (e.g., <span className="text-red-700 font-bold">DEMO123</span>) to preview shipment status.
             </p>
           </div>
 
@@ -183,11 +183,11 @@ export default function TrackPage() {
       {/* 3. Section 3: Tracking Information & Guidelines */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
         <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-red-500 block">
+          <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
             How It Works
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
-            Seamless & Transparent Tracking
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-black">
+            Seamless & Transparent <span className="text-red-700">Tracking</span>
           </h2>
         </div>
 

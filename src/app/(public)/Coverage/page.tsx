@@ -15,7 +15,7 @@ const coverageDestinations = [
 
 export default function CoveragePage() {
   return (
-    <div className="w-full pb-20 bg-background text-foreground">
+    <div className="w-full pb-20  bg-background text-foreground">
       
       {/* 1. Cover Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20">

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function ServicesPage() {
   return (
-    <div className="w-full pb-20 bg-[#070b19] text-white">
+    <div className="w-full pb-20  text-white">
       
       {/* 1. Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
@@ -58,10 +58,10 @@ export default function ServicesPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
             What We Offer
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white">
-            Tailored Solutions for Your Business
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-black ">
+            Tailored Solutions for Your <span className="text-red-700">Business</span>
           </h2>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-800">
             Choose from our specialized logistics services designed for speed, safety, and reliability.
           </p>
         </div>

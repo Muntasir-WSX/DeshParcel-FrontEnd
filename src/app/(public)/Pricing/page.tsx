@@ -45,7 +45,7 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="w-full pb-20 bg-[#070b19] text-white">
+    <div className="w-full pb-20 text-white">
       
       {/* 1. Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
@@ -199,45 +199,45 @@ export default function PricingPage() {
       {/* 3. Pricing Rule Breakdown Cards */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
         <div className="text-center max-w-xl mx-auto mb-12">
-          <span className="text-xs font-bold uppercase tracking-widest text-red-500 mb-1 block">
+          <span className="text-xs font-bold uppercase tracking-widest text-red-700 mb-1 block">
             Pricing Structure
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
-            How Our Pricing Works
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-black">
+            How Our <span className="text-red-700">Pricing</span> Works
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
           <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-500/40 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center font-bold border border-red-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-700 flex items-center justify-center font-bold border border-red-500/20">
               <MapPin className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">City vs Outside Delivery</h3>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
                 <span><strong className="text-white">City to City (Same City):</strong> Flat ৳80 (e.g., Chattogram to Chattogram).</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
                 <span><strong className="text-white">City to Outside:</strong> Flat ৳120 (e.g., Chattogram to Dhaka or Chandpur).</span>
               </li>
             </ul>
           </div>
 
           <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-500/40 transition-all">
-            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center font-bold border border-red-500/20">
+            <div className="w-12 h-12 rounded-2xl bg-red-500/10 text-red-700 flex items-center justify-center font-bold border border-red-500/20">
               <Weight className="h-6 w-6" />
             </div>
             <h3 className="text-xl font-bold font-heading text-white">Weight Policy</h3>
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
                 <span><strong className="text-white">Up to 3 KG:</strong> Covered under default base pricing (Documents or Parcels).</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
                 <span><strong className="text-white">Above 3 KG:</strong> Additional ৳10 charged for every extra KG.</span>
               </li>
             </ul>

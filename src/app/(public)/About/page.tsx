@@ -88,22 +88,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* 2. Stats Section */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 -mt-28 relative z-20 mb-24">
-        <div className="bg-card border border-border/80 rounded-3xl shadow-2xl p-8 md:p-12 grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-border/60">
-          {stats.map((stat, idx) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-<div key={idx} className="flex flex-col items-center justify-center text-center pt-4 sm:pt-0">
-              <h3 className="text-3xl md:text-5xl font-extrabold text-foreground font-heading mb-2">
-                {stat.value}
-              </h3>
-              <p className="text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-widest">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+
 
       {/* 3. Our Story / Vision Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 mb-28">
@@ -146,7 +131,7 @@ export default function About() {
             </div>
 
             <div className="pt-4">
-              <Link href="/services">
+              <Link href="/Services">
                 <Button 
                   size="lg" 
                   className="rounded-xl px-7 h-12 text-sm font-bold shadow-lg group cursor-pointer"
