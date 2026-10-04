@@ -23,7 +23,7 @@ export default function DashboardLayout({
       {/* Main Dashboard Content */}
       <div className="flex-1 flex flex-col">
         <header className="h-16 border-b border-border bg-card flex items-center justify-between px-6 md:px-8">
-          <h2 className="font-heading font-bold text-lg text-foreground">Dashboard Management</h2>
+          <h2 className="font-heading font-bold text-lg text-foreground">Dashboard Management System </h2>
           <Link href="/" className="text-xs font-bold uppercase tracking-wider text-[oklch(0.577_0.245_27.325)] hover:underline">
             Back to Home
           </Link>
