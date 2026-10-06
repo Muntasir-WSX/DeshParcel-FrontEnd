@@ -6,6 +6,7 @@ import Navbar from "@/components/shared/navbar";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import Footer from "@/components/shared/footer";
 import CustomCursor from "@/components/shared/CustomCursor";
+import { Toaster } from "sonner";
 
 
 const jetbrainsMonoHeading = JetBrains_Mono({subsets:['latin'],variable:'--font-heading'});
@@ -32,15 +33,19 @@ export default function RootLayout({
   className="min-h-full flex flex-col bg-background text-foreground"
   suppressHydrationWarning={true}
 >
+  <main>
   <SmoothScrollProvider>
     
+
   
-    <main>
+    
       {children}
-    </main>
+       <Toaster position="bottom-right" richColors theme="light" ></Toaster>
+  
     
    
   </SmoothScrollProvider>
+    </main>
 </body>
     </html>
   );
