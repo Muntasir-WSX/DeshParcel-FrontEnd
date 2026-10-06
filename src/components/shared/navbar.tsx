@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 import { 
   NavigationMenu, 
@@ -14,13 +14,29 @@ import {
   NavigationMenuLink
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Bike, ArrowRight } from "lucide-react";
+import { Menu, X, Bike, ArrowRight, User, LayoutDashboard, LogOut } from "lucide-react";
 import Logo from "../logo/logo";
+import { toast } from "sonner";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState<string | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    const role = localStorage.getItem("userRole");
+    if (token) {
+      setIsLoggedIn(true);
+      setUserRole(role);
+    } else {
+      setIsLoggedIn(false);
+      setUserRole(null);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,6 +50,15 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("userRole");
+    setIsLoggedIn(false);
+    setUserRole(null);
+    toast.success("Logged out successfully!");
+    router.push("/login");
+  };
+
   const navLinks = [
     { name: "Track", href: "/Track" },
     { name: "Pricing", href: "/Pricing" },
@@ -46,6 +71,12 @@ export default function Navbar() {
     { name: "Contact Us", href: "/ContactUs", desc: "Get in touch with our support team" },
   ];
 
+ const getDashboardRoute = () => {
+    if (userRole === "ADMIN") return "/dashboard/admin";
+    if (userRole === "MODERATOR") return "/dashboard/moderator";
+    if (userRole === "RIDER") return "/dashboard/rider"; 
+    return "/dashboard/user"; 
+  };
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500">
       <div 
@@ -55,12 +86,10 @@ export default function Navbar() {
             : "max-w-7xl bg-[#0B132B]/60 border-white/20 shadow-black/40"
         }`}
       >
-        {/* Logo */}
         <div className="flex items-center shrink-0">
           <Logo />
         </div>
 
-        {/* Desktop & Tablet Navigation Links */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1 rounded-full bg-[#0B132B]/80 border border-white/15 backdrop-blur-md">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -73,7 +102,6 @@ export default function Navbar() {
                 }`}
               >
                 {link.name}
-                {/* Underline Hover & Active Effect */}
                 <span className={`absolute bottom-0 left-3 right-3 h-0.5 bg-[oklch(0.577_0.245_27.325)] transition-all duration-300 transform ${
                   isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                 }`} />
@@ -81,7 +109,6 @@ export default function Navbar() {
             );
           })}
 
-          {/* Better Dropdown Menu (More) */}
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
@@ -115,7 +142,7 @@ export default function Navbar() {
           </NavigationMenu>
         </nav>
 
-        {/* Right Action Buttons (Optimized for Tablet & Desktop) */}
+        {/* Right Action Buttons with Fixed Hover Effects */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
           <Link href="/becomeRider">
             <Button 
@@ -128,19 +155,53 @@ export default function Navbar() {
             </Button>
           </Link>
           
-          <Link href="/login">
-            <Button 
-              size="sm"
-              className="rounded-full px-4 lg:px-5 text-[11px] lg:text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all group cursor-pointer h-9"
-              style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}
-            >
-              Sign In
-              <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-            </Button>
-          </Link>
+          {isLoggedIn ? (
+            <div className="flex items-center gap-2">
+              <Link href={getDashboardRoute()}>
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black transition-all h-9 bg-[#0B132B]/80 group cursor-pointer"
+                >
+                  <LayoutDashboard className="mr-1.5 h-3.5 w-3.5 text-blue-400 group-hover:text-black transition-colors" />
+                  Dashboard
+                </Button>
+              </Link>
+
+              <Link href="/profile">
+                <Button 
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black transition-all h-9 bg-[#0B132B]/80 group cursor-pointer"
+                >
+                  <User className="mr-1.5 h-3.5 w-3.5 text-emerald-400 group-hover:text-black transition-colors" />
+                  Profile
+                </Button>
+              </Link>
+
+              <Button 
+                size="sm"
+                onClick={handleLogout}
+                className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white h-9 cursor-pointer transition-all"
+              >
+                <LogOut className="mr-1 h-3.5 w-3.5" />
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <Link href="/login">
+              <Button 
+                size="sm"
+                className="rounded-full px-4 lg:px-5 text-[11px] lg:text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all group cursor-pointer h-9"
+                style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}
+              >
+                Sign In
+                <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          )}
         </div>
 
-        {/* Mobile Menu Trigger */}
         <div className="flex md:hidden items-center">
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -152,7 +213,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu */}
       {mobileMenuOpen && (
         <div className="absolute top-20 left-4 right-4 bg-[#0B132B]/95 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl p-6 flex flex-col gap-2.5 md:hidden z-50">
           {navLinks.map((link) => (
@@ -183,16 +243,39 @@ export default function Navbar() {
                 Be a Rider
               </Button>
             </Link>
-            <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
-              <Button className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-white hover:text-red-700 tracking-wider h-10" variant="outline" >
-                Sign In
-              </Button>
-            </Link>
+
+            {isLoggedIn ? (
+              <>
+                <Link href={getDashboardRoute()} onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
+                    <LayoutDashboard className="mr-2 h-4 w-4 text-blue-400" />
+                    Dashboard
+                  </Button>
+                </Link>
+                <Link href="/profile" onClick={() => setMobileMenuOpen(false)}>
+                  <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
+                    <User className="mr-2 h-4 w-4 text-emerald-400" />
+                    Profile Page
+                  </Button>
+                </Link>
+                <Button 
+                  onClick={() => { setMobileMenuOpen(false); handleLogout(); }} 
+                  className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-red-800 tracking-wider h-10 cursor-pointer"
+                >
+                  <LogOut className="mr-2 h-4 w-4" />
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
+                <Button className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-white hover:text-red-700 tracking-wider h-10" variant="outline">
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       )}
     </header>
   );
 }
-
-//Muntas!r25

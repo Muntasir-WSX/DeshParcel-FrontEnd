@@ -4,13 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, ArrowRight, ShieldCheck } from "lucide-react";
+import { Mail, Lock, ArrowRight, ShieldCheck, UserCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/logo/logo";
 import { toast } from "sonner";
-import { loginUserApi } from "@/app/(auth)/login/login"; 
+import { loginUserApi } from "@/app/(auth)/login/login";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,19 +24,21 @@ export default function LoginPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLoginSubmit = async (loginData: { email: string; password: string }) => {
     setLoading(true);
-
     try {
-      const result = await loginUserApi(formData);
+      const result = await loginUserApi(loginData);
 
       toast.success("Login Successful!", {
-        description: `Welcome back, ${result.data?.user?.name || "User"}!`,
+        description: `Welcome back, ${result.data?.user?.name || "User"} (${result.data?.user?.role || "USER"})!`,
       });
 
-      // এখানে টোকেন লোকালস্টোরেজ বা কুকিজে সেভ করে ড্যাশবোর্ডে রিডাইরেক্ট করতে পারেন
       console.log("Login Response Data:", result.data);
+
+      // Home page ba dashboard-e redirect kora
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
 
     } catch (error: any) {
       toast.error("Login Failed", {
@@ -43,6 +47,24 @@ export default function LoginPage() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    handleLoginSubmit(formData);
+  };
+
+  // One-Click Demo Login Handler with Exact Credentials
+  const handleDemoLogin = (roleEmail: string, rolePass: string, roleName: string) => {
+    const demoPayload = {
+      email: roleEmail,
+      password: rolePass,
+    };
+    setFormData(demoPayload);
+    toast.info(`Logging in as ${roleName}...`, {
+      description: `Email: ${roleEmail}`,
+    });
+    handleLoginSubmit(demoPayload);
   };
 
   const handleGoogleSignIn = () => {
@@ -66,6 +88,7 @@ export default function LoginPage() {
           alt="DeshParcel Delivery Cover"
           fill
           priority
+          sizes="100vw"
           className="object-cover object-center filter brightness-95"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/90 via-[#070b19]/20 to-transparent" />
@@ -91,7 +114,7 @@ export default function LoginPage() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="col-span-1 lg:col-span-5 h-full flex flex-col justify-center items-center px-6 lg:px-10 bg-[#070b19] overflow-y-auto py-6"
       >
-        <div className="w-full max-w-md bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl relative space-y-4">
+        <div className="w-full max-w-md bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-7 shadow-2xl relative space-y-3.5">
           
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
@@ -105,11 +128,47 @@ export default function LoginPage() {
               Welcome Back
             </h2>
             <p className="text-[11px] text-gray-400">
-              Sign in securely to your DeshParcel account
+              Sign in to your DeshParcel account or use one-click demo roles
             </p>
           </div>
 
-          <form onSubmit={handleLogin} className="space-y-3.5 relative z-10">
+          {/* ONE-CLICK DEMO LOGIN BUTTONS */}
+          <div className="p-3 rounded-2xl bg-[#050814] border border-white/10 relative z-10 space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 flex items-center gap-1">
+                <UserCheck className="h-3 w-3 text-red-500" />
+                One-Click Demo Login:
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => handleDemoLogin("admin@deshparcel.com", "admin123", "Admin")}
+                className="py-1.5 px-2 rounded-xl bg-red-600/20 border border-red-500/40 text-red-500 text-[11px] font-bold hover:bg-red-600 hover:text-white cursor-pointer text-center transition-all"
+              >
+                Admin
+              </button>
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => handleDemoLogin("user@deshparcel.com", "Muntas!r25", "User")}
+                className="py-1.5 px-2 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 text-[11px] font-bold hover:bg-blue-600 hover:text-white cursor-pointer text-center transition-all"
+              >
+                User
+              </button>
+              <button
+                type="button"
+                disabled={loading}
+                onClick={() => handleDemoLogin("rider@deshparcel.com", "Muntas!r25", "Rider")}
+                className="py-1.5 px-2 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 text-[11px] font-bold hover:bg-emerald-600 hover:text-white cursor-pointer text-center transition-all"
+              >
+                Rider
+              </button>
+            </div>
+          </div>
+
+          <form onSubmit={handleFormSubmit} className="space-y-3 relative z-10">
             
             {/* Email Input */}
             <div className="space-y-1">
@@ -154,7 +213,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-2 shadow-lg shadow-red-700/30"
+              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-lg shadow-red-700/30"
             >
               {loading ? "Signing In..." : "Login"}
               <ArrowRight className="h-3.5 w-3.5" />
@@ -183,7 +242,7 @@ export default function LoginPage() {
             </button>
 
             {/* Register Link */}
-            <div className="text-center pt-2">
+            <div className="text-center pt-1">
               <p className="text-xs text-gray-400">
                 Don&apos;t have an account yet?{" "}
                 <Link href="/register" className="text-red-700 font-bold hover:underline">

@@ -18,5 +18,10 @@ export async function loginUserApi(data: LoginPayload) {
     throw new Error(result.message || "Invalid credentials. Please try again.");
   }
 
+  if (typeof window !== "undefined" && result.success) {
+    localStorage.setItem("accessToken", result.data.accessToken);
+    localStorage.setItem("userRole", result.data.user.role);
+  }
+
   return result;
 }
