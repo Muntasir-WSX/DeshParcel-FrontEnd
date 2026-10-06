@@ -127,10 +127,10 @@ export default function ContactPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] mb-2 block">
             Executive Board
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight mb-3">
+          <h2 className="text-3xl text-white md:text-4xl font-extrabold font-heading tracking-tight mb-3">
             Key Leadership
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground text-white text-sm md:text-base">
             Direct contact information for our core management team.
           </p>
         </div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                   <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)]">
                     {leader.role}
                   </span>
-                  <h3 className="text-xl font-bold font-heading text-foreground mt-1">
+                  <h3 className="text-xl text-white font-bold font-heading text-foreground mt-1">
                     {leader.name}
                   </h3>
                 </div>
@@ -168,11 +168,11 @@ export default function ContactPage() {
                 <div className="space-y-2 pt-2 border-t border-border/60 text-xs md:text-sm text-muted-foreground">
                   <div className="flex items-center gap-2.5">
                     <Mail className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
-                    <span>{leader.email}</span>
+                    <span className="text-white">{leader.email}</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Phone className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
-                    <span>{leader.phone}</span>
+                    <span className="text-white">{leader.phone}</span>
                   </div>
                 </div>
               </div>

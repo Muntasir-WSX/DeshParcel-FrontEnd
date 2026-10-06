@@ -51,7 +51,7 @@ export default function Footer() {
 
           <div className="space-y-2 text-center lg:text-left relative z-10">
             <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
-              Ready to Send Your First Parcel?
+              Ready to Send Your First <span className="text-red-700">DeshParcel</span> Parcel?
             </h3>
             <p className="text-sm text-gray-300">
               Join thousands of satisfied merchants and enjoy fastest nationwide delivery.

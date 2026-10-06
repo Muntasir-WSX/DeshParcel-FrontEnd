@@ -108,15 +108,15 @@ export default function About() {
               </span>
             </div>
 
-            <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight leading-tight">
+            <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight text-white leading-tight">
               Building the Future of Fast & Secure Nationwide Logistics
             </h2>
 
-            <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+            <p className="text-muted-foreground leading-relaxed text-white text-sm md:text-base">
               Founded with a vision to revolutionize the courier industry in Bangladesh, DeshParcel started with a small team and a big dream. Today, we power tens of thousands of e-commerce businesses by streamlining their supply chain and cash-on-delivery (COD) management.
             </p>
 
-            <div className="space-y-3 pt-2">
+            <div className="space-y-3 text-white pt-2">
               {[
                 "100% Automated Parcel Tracking System",
                 "Fastest Next-Day Delivery Guarantee",

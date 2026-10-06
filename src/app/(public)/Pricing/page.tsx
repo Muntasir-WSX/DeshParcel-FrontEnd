@@ -202,7 +202,7 @@ export default function PricingPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 mb-1 block">
             Pricing Structure
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-black">
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
             How Our <span className="text-red-700">Pricing</span> Works
           </h2>
         </div>

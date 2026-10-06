@@ -6,11 +6,133 @@ import { MapPin, Building, ShieldCheck, Zap } from "lucide-react";
 
 // Comprehensive Coverage Destinations across Bangladesh
 const coverageDestinations = [
-  { division: "Dhaka Division", hubs: 12, deliveryTime: "24 Hours (Express)", districts: ["Dhaka", "Gazipur", "Narayanganj", "Tangail", "Faridpur", "Kishoreganj", "Narsingdi", "Manikganj", "Munshiganj", "Rajbari", "Shariatpur", "Madaripur"] },
-  { division: "Chattogram Division", hubs: 10, deliveryTime: "24 - 48 Hours", districts: ["Chattogram", "Cox's Bazar", "Noakhali", "Comilla", "Brahmanbaria", "Chandpur", "Feni", "Lakshmipur", "Khagrachhari", "Bandarban", "Rangamati"] },
-  { division: "Sylhet Division", hubs: 5, deliveryTime: "48 Hours", districts: ["Sylhet", "Habiganj", "Sunamganj", "Moulvibazar"] },
-  { division: "Rajshahi & Rangpur", hubs: 12, deliveryTime: "48 Hours", districts: ["Rajshahi", "Bogra", "Pabna", "Sirajganj", "Natore", "Naogaon", "Chapainawabganj", "Joypurhat", "Rangpur", "Dinajpur", "Gaibandha", "Kurigram", "Lalmonirhat", "Nilphamari", "Panchagarh", "Thakurgaon"] },
-  { division: "Khulna & Barishal", hubs: 10, deliveryTime: "48 - 72 Hours", districts: ["Khulna", "Jashore", "Satkhira", "Kushtia", "Jhenaidah", "Magura", "Narail", "Chuadanga", "Meherpur", "Bagerhat", "Barishal", "Patuakhali", "Bhola", "Pirojpur", "Jhalokati", "Barguna"] }
+  {
+    division: "Dhaka Division",
+    hubs: 12,
+    deliveryTime: "24 Hours (Express)",
+    districts: [
+      "Dhaka",
+      "Gazipur",
+      "Narayanganj",
+      "Tangail",
+      "Faridpur",
+      "Kishoreganj",
+      "Narsingdi",
+      "Manikganj",
+      "Munshiganj",
+      "Rajbari",
+      "Shariatpur",
+      "Madaripur",
+      "Gopalganj"
+    ]
+  },
+
+  {
+    division: "Chattogram Division",
+    hubs: 10,
+    deliveryTime: "24 - 48 Hours",
+    districts: [
+      "Chattogram",
+      "Cox's Bazar",
+      "Noakhali",
+      "Cumilla",
+      "Brahmanbaria",
+      "Chandpur",
+      "Feni",
+      "Lakshmipur",
+      "Khagrachhari",
+      "Bandarban",
+      "Rangamati"
+    ]
+  },
+
+  {
+    division: "Rajshahi Division",
+    hubs: 12,
+    deliveryTime: "48 Hours",
+    districts: [
+      "Rajshahi",
+      "Bogura",
+      "Pabna",
+      "Sirajganj",
+      "Natore",
+      "Naogaon",
+      "Chapainawabganj",
+      "Joypurhat"
+    ]
+  },
+
+  {
+    division: "Khulna Division",
+    hubs: 10,
+    deliveryTime: "48 - 72 Hours",
+    districts: [
+      "Khulna",
+      "Jashore",
+      "Satkhira",
+      "Kushtia",
+      "Jhenaidah",
+      "Magura",
+      "Narail",
+      "Chuadanga",
+      "Meherpur",
+      "Bagerhat"
+    ]
+  },
+
+  {
+    division: "Barishal Division",
+    hubs: 6,
+    deliveryTime: "48 - 72 Hours",
+    districts: [
+      "Barishal",
+      "Patuakhali",
+      "Bhola",
+      "Pirojpur",
+      "Jhalokati",
+      "Barguna"
+    ]
+  },
+
+  {
+    division: "Sylhet Division",
+    hubs: 5,
+    deliveryTime: "48 Hours",
+    districts: [
+      "Sylhet",
+      "Habiganj",
+      "Sunamganj",
+      "Moulvibazar"
+    ]
+  },
+
+  {
+    division: "Rangpur Division",
+    hubs: 8,
+    deliveryTime: "48 Hours",
+    districts: [
+      "Rangpur",
+      "Dinajpur",
+      "Gaibandha",
+      "Kurigram",
+      "Lalmonirhat",
+      "Nilphamari",
+      "Panchagarh",
+      "Thakurgaon"
+    ]
+  },
+
+  {
+    division: "Mymensingh Division",
+    hubs: 4,
+    deliveryTime: "48 Hours",
+    districts: [
+      "Mymensingh",
+      "Jamalpur",
+      "Netrokona",
+      "Sherpur"
+    ]
+  }
 ];
 
 export default function CoveragePage() {

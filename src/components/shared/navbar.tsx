@@ -117,7 +117,7 @@ export default function Navbar() {
 
         {/* Right Action Buttons (Optimized for Tablet & Desktop) */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
-          <Link href="/become-rider">
+          <Link href="/becomeRider">
             <Button 
               variant="outline" 
               size="sm"

@@ -58,10 +58,10 @@ export default function ServicesPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
             What We Offer
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-black ">
+          <h2 className="text-3xl text-white md:text-4xl font-extrabold font-heading ">
             Tailored Solutions for Your <span className="text-red-700">Business</span>
           </h2>
-          <p className="text-sm text-gray-800">
+          <p className="text-sm text-white/70 md:text-base leading-relaxed max-w-2xl mx-auto">
             Choose from our specialized logistics services designed for speed, safety, and reliability.
           </p>
         </div>
