@@ -9,9 +9,11 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HighlightsSection from "@/components/Home/HighlightsSection";
-
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function BecomeRiderPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,34 +33,48 @@ export default function BecomeRiderPage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    console.log("Submitting Rider Application:", formData);
+    try {
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
-    setTimeout(() => {
-      setLoading(false);
+      const res = await fetch(`${BACKEND_URL}/api/v1/auth/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.message || "Failed to submit rider application.");
+      }
+
+      toast.success("Application Submitted!", {
+        description: "Your rider application has been received successfully.",
+      });
+
       setSubmittedData({
         success: true,
-        message: "Rider application submitted successfully! Please wait for approval.",
-        data: {
-          id: "r-722b2d8f-ff64",
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          role: "RIDER",
-          vehicleType: formData.vehicleType,
-          isVerified: false,
-        },
+        message: "Rider application submitted successfully! Please wait for admin approval.",
+        data: result.data,
       });
-    }, 1000);
+
+    } catch (error: any) {
+      toast.error("Registration Failed", {
+        description: error.message || "Something went wrong during submission.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="w-full bg-[#070b19] text-white min-h-screen">
       
-      {/* 1. Banner & Hero Section (Full Width Edge-to-Edge) */}
+      {/* 1. Banner & Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-56 md:pb-44 px-6 md:px-12 overflow-hidden shadow-2xl border-b border-white/10 bg-[#070b19]">
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
@@ -66,13 +82,12 @@ export default function BecomeRiderPage() {
             alt="Become a Rider Banner"
             fill
             priority
+            sizes="100vw"
             className="object-cover object-center filter brightness-90 contrast-105"
           />
-          {/* Deep Dark Blue & Redish Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[2px]" />
         </div>
 
-        {/* Glowing Accents */}
         <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
         <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
 
@@ -106,7 +121,7 @@ export default function BecomeRiderPage() {
         </div>
       </section>
 
-      {/* Main Container for rest of the sections */}
+      {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 py-20">
 
         {/* 2. Rider Registration Form Section */}
@@ -140,12 +155,19 @@ export default function BecomeRiderPage() {
                 </span>{" "}
                 ({submittedData.data.role})
               </p>
-              <div className="pt-4">
+              <div className="pt-4 flex gap-3 justify-center">
                 <Button
-                  onClick={() => setSubmittedData(null)}
+                  onClick={() => router.push("/login")}
                   className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
                 >
-                  Register Another Rider
+                  Go to Login
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setSubmittedData(null)}
+                  className="px-6 py-3 rounded-xl border-white/20 text-white text-xs font-bold uppercase tracking-wider cursor-pointer bg-[#0b132b]"
+                >
+                  Register Another
                 </Button>
               </div>
             </motion.div>
@@ -165,7 +187,7 @@ export default function BecomeRiderPage() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="e.g. Muntasir Mahmud"
+                    placeholder="e.g. Type your full name"
                     className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
                   />
                 </div>
@@ -191,7 +213,7 @@ export default function BecomeRiderPage() {
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
                     <Phone className="h-3.5 w-3.5 text-red-700" />
-                    Phone Number
+                    Phone Number (BD)
                   </label>
                   <input
                     type="text"
@@ -296,7 +318,7 @@ export default function BecomeRiderPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs "
+                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs"
                 >
                   {loading ? "Submitting Application..." : "Submit Rider Application"}
                   <ArrowRight className="h-4 w-4" />
@@ -306,7 +328,7 @@ export default function BecomeRiderPage() {
           )}
         </section>
 
-        {/* 3. A Rider's Soul Duty Section */}
+        {/* 3. Soul Duty Section */}
         <section className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 space-y-6 shadow-xl max-w-4xl mx-auto relative overflow-hidden">
           <div className="absolute -top-20 -left-20 w-48 h-48 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
           
