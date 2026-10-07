@@ -1,10 +1,34 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const [authorized, setAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) {
+      router.push("/login"); // টোকেন না থাকলে সরাসরি লগইন পেজে পাঠাবে
+    } else {
+      setAuthorized(true);
+    }
+  }, [router]);
+
+  if (!authorized) {
+    return (
+      <div className="min-h-screen bg-[#070b19] text-white flex items-center justify-center text-xs uppercase tracking-wider">
+        Checking Authorization...
+      </div>
+    );
+  }
+
   return (
     <div className="flex min-h-screen bg-muted/20 w-full">
       {/* Sidebar */}
@@ -29,7 +53,7 @@ export default function DashboardLayout({
           </Link>
         </header>
 
-        <main className=" bg-[#03132B] flex-1 w-full p-6 md:p-10 overflow-y-auto">
+        <main className="bg-[#03132B] flex-1 w-full p-6 md:p-10 overflow-y-auto">
           {children}
         </main>
       </div>

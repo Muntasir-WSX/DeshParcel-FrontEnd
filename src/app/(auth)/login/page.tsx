@@ -27,7 +27,14 @@ export default function LoginPage() {
   const handleLoginSubmit = async (loginData: { email: string; password: string }) => {
     setLoading(true);
     try {
+      // ব্যাকএন্ডের আসল API কল এখানে করা হচ্ছে
       const result = await loginUserApi(loginData);
+
+      // ব্যাকএন্ড থেকে টোকেন সফলভাবে আসলে localStorage-এ সেভ করা
+      if (result && result.data && result.data.accessToken) {
+        localStorage.setItem("accessToken", result.data.accessToken);
+        localStorage.setItem("userRole", result.data.user?.role || "USER");
+      }
 
       toast.success("Login Successful!", {
         description: `Welcome back, ${result.data?.user?.name || "User"} (${result.data?.user?.role || "USER"})!`,
@@ -35,7 +42,7 @@ export default function LoginPage() {
 
       console.log("Login Response Data:", result.data);
 
-      // Home page ba dashboard-e redirect kora
+      // সফল লগইনের পর হোম পেজে রিডাইরেক্ট করা
       setTimeout(() => {
         router.push("/");
       }, 1000);
