@@ -71,12 +71,13 @@ export default function Navbar() {
     { name: "Contact Us", href: "/ContactUs", desc: "Get in touch with our support team" },
   ];
 
- const getDashboardRoute = () => {
+  const getDashboardRoute = () => {
     if (userRole === "ADMIN") return "/dashboard/admin";
     if (userRole === "MODERATOR") return "/dashboard/moderator";
     if (userRole === "RIDER") return "/dashboard/rider"; 
     return "/dashboard/user"; 
   };
+
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500">
       <div 
@@ -142,37 +143,40 @@ export default function Navbar() {
           </NavigationMenu>
         </nav>
 
-        {/* Right Action Buttons with Fixed Hover Effects */}
+        {/* Right Action Buttons */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
-          <Link href="/becomeRider">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="rounded-full px-3.5 lg:px-4 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black transition-all group cursor-pointer h-9 bg-[#0B132B]/80 backdrop-blur-sm"
-            >
-              <Bike className="mr-1 h-3.5 w-3.5 text-[oklch(0.577_0.245_27.325)] group-hover:text-black transition-colors" />
-              Be a Rider
-            </Button>
-          </Link>
+          {/* যদি ইউজার লগইন করা না থাকে, তবেই কেবল 'Be a Rider' বাটন দেখাবে */}
+          {!isLoggedIn && (
+            <Link href="/becomeRider">
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="rounded-full px-3.5 lg:px-4 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black transition-all group cursor-pointer h-9 bg-[#0B132B]/80 backdrop-blur-sm"
+              >
+                <Bike className="mr-1 h-3.5 w-3.5 text-[oklch(0.577_0.245_27.325)] group-hover:text-black transition-colors" />
+                Be a Rider
+              </Button>
+            </Link>
+          )}
           
           {isLoggedIn ? (
             <div className="flex items-center gap-2">
               <Link href={getDashboardRoute()}>
-                <Button 
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black transition-all h-9 bg-[#0B132B]/80 group cursor-pointer"
-                >
-                  <LayoutDashboard className="mr-1.5 h-3.5 w-3.5 text-blue-400 group-hover:text-black transition-colors" />
-                  Dashboard
-                </Button>
+               <Button 
+  variant="outline"
+  size="sm"
+  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black shadow-md hover:shadow-lg transition-all duration-500 ease-in-out group bg-[#0B132B]/80 cursor-pointer"
+>
+  <LayoutDashboard className="mr-1.5 h-3.5 w-3.5 text-blue-400 group-hover:text-black transition-colors duration-500" />
+  Dashboard
+</Button>
               </Link>
 
               <Link href="/profile">
                 <Button 
                   variant="outline"
                   size="sm"
-                  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black transition-all h-9 bg-[#0B132B]/80 group cursor-pointer"
+                  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black shadow-md hover:shadow-lg transition-all duration-500 ease-in-out group bg-[#0B132B]/80 cursor-pointer"
                 >
                   <User className="mr-1.5 h-3.5 w-3.5 text-emerald-400 group-hover:text-black transition-colors" />
                   Profile
@@ -237,12 +241,14 @@ export default function Navbar() {
           ))}
           
           <div className="pt-4 mt-2 border-t border-white/15 flex flex-col gap-2.5">
-            <Link href="/becomeRider" onClick={() => setMobileMenuOpen(false)}>
-              <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
-                <Bike className="mr-2 h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
-                Be a Rider
-              </Button>
-            </Link>
+            {!isLoggedIn && (
+              <Link href="/becomeRider" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
+                  <Bike className="mr-2 h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
+                  Be a Rider
+                </Button>
+              </Link>
+            )}
 
             {isLoggedIn ? (
               <>

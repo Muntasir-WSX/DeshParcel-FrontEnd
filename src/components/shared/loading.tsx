@@ -9,7 +9,7 @@ interface LoadingSkeletonProps {
 
 export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSkeletonProps) {
   
-  // Full Page Loading Skeleton
+ 
   if (type === "fullpage") {
     return (
       <div className="w-full h-[70vh] flex flex-col items-center justify-center space-y-4 bg-[#070b19]">
@@ -24,7 +24,7 @@ export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSke
     );
   }
 
-  // Card Grid Skeleton
+  
   if (type === "card") {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
