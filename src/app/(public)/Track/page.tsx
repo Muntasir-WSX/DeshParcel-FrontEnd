@@ -163,7 +163,7 @@ export default function TrackPage() {
                       {searchResult.trackingLogs?.map((log: any, idx: number) => (
                         <div key={idx} className="p-4 rounded-xl bg-[#0b132b] border border-white/10 flex items-center justify-between gap-4">
                           <div className="space-y-1">
-                            <span className="inline-flex px-2 py-0.5 rounded-full bg-red-700/20 text-red-400 text-[10px] font-bold uppercase border border-red-700/30">
+                            <span className="inline-flex px-2 py-0.5 rounded-full bg-red-700/20 text-red-700 text-[10px] font-bold uppercase border border-red-700/30">
                               {log.status}
                             </span>
                             <p className="text-xs text-white font-medium">{log.note}</p>

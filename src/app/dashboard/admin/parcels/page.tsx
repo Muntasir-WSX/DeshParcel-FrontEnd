@@ -194,14 +194,14 @@ export default function ManageParcelsPage() {
                   <tr key={p.id} className="hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
                       <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                      <p className="text-[10px] text-red-500 uppercase font-semibold">{p.category} • Tk {p.codAmount || 0}</p>
+                      <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • Tk {p.codAmount || 0}</p>
                     </td>
                     <td className="py-4 px-4 text-gray-300">
                       <p className="font-semibold text-white">From: {p.sender?.name || "Customer"}</p>
                       <p className="text-[10px] text-gray-400">To: {p.receiverName} ({p.receiverPhone})</p>
                     </td>
                     <td className="py-4 px-4 text-gray-300 max-w-xs truncate">
-                      <p className="flex items-center gap-1"><MapPin className="h-3 w-3 text-red-500 shrink-0" /> {p.deliveryAddress}</p>
+                      <p className="flex items-center gap-1"><MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}</p>
                     </td>
                     <td className="py-4 px-4">
                       <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${

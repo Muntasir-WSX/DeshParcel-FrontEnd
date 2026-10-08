@@ -142,7 +142,7 @@ export default function RiderOverviewPage() {
       {/* Rider Header & Wallet Banner */}
       <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-500">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <Bike className="h-3.5 w-3.5" />
             Verified Rider Partner
           </div>
@@ -192,7 +192,7 @@ export default function RiderOverviewPage() {
         <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
             <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Cancelled Today</p>
-            <h3 className="text-2xl font-extrabold text-red-500">{dailyStats?.dailyCancelled || 0} Parcels</h3>
+            <h3 className="text-2xl font-extrabold text-red-700">{dailyStats?.dailyCancelled || 0} Parcels</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-red-700/10 text-red-700 border border-red-700/20">
             <XCircle className="h-6 w-6" />
@@ -230,7 +230,7 @@ export default function RiderOverviewPage() {
                   <tr key={p.id} className="hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
                       <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                      <p className="text-[10px] text-red-500 uppercase font-semibold">{p.category} • COD: Tk{p.codAmount || 0}</p>
+                      <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • COD: Tk{p.codAmount || 0}</p>
                     </td>
                     <td className="py-4 px-4 text-gray-300">
                       <p className="font-semibold text-white">{p.sender?.name}</p>
@@ -239,7 +239,7 @@ export default function RiderOverviewPage() {
                     <td className="py-4 px-4 text-gray-300 max-w-xs">
                       <p className="font-semibold text-white">{p.receiverName} ({p.receiverPhone})</p>
                       <p className="text-[10px] text-gray-400 truncate flex items-center gap-1 mt-0.5">
-                        <MapPin className="h-3 w-3 text-red-500 shrink-0" /> {p.deliveryAddress}
+                        <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                       </p>
                     </td>
                     <td className="py-4 px-4">
@@ -367,7 +367,7 @@ export default function RiderOverviewPage() {
       <AlertDialog open={statusModal.isOpen} onOpenChange={(open) => !open && setStatusModal({ ...statusModal, isOpen: false })}>
         <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-500">
+            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
             </div>
             <AlertDialogTitle className="font-heading font-extrabold text-lg">

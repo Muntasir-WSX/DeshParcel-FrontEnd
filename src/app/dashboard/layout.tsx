@@ -198,7 +198,7 @@ export default function DashboardLayout({
 
           {/* Right Header Status Badge */}
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-500">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
               <ShieldCheck className="h-3.5 w-3.5" />
               Verified {userRole === "RIDER" ? "Rider" : "Admin"}
             </span>

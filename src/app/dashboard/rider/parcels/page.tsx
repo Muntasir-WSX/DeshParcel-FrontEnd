@@ -153,7 +153,7 @@ export default function RiderParcelsPage() {
                     <tr key={p.id} className="hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4">
                         <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                        <p className="text-[10px] text-red-500 uppercase font-semibold">{p.category} • COD: Tk{p.codAmount || 0}</p>
+                        <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • COD: Tk{p.codAmount || 0}</p>
                       </td>
                       <td className="py-4 px-4 text-gray-300">
                         <p className="font-semibold text-white">{p.sender?.name}</p>
@@ -162,7 +162,7 @@ export default function RiderParcelsPage() {
                       <td className="py-4 px-4 text-gray-300 max-w-xs">
                         <p className="font-semibold text-white">{p.receiverName} ({p.receiverPhone})</p>
                         <p className="text-[10px] text-gray-400 truncate flex items-center gap-1 mt-0.5">
-                          <MapPin className="h-3 w-3 text-red-500 shrink-0" /> {p.deliveryAddress}
+                          <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                         </p>
                       </td>
                       <td className="py-4 px-4">
@@ -174,7 +174,7 @@ export default function RiderParcelsPage() {
                           {p.status}
                         </span>
                         {isOutForDelivery && p.deliveryOtp && (
-                          <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-red-700/10 border border-red-700/30 text-red-400 font-mono text-xs font-extrabold tracking-widest">
+                          <div className="mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-red-700/10 border border-red-700/30 text-red-700 font-mono text-xs font-extrabold tracking-widest">
                             <KeyRound className="h-3.5 w-3.5 animate-pulse" />
                             OTP: {p.deliveryOtp}
                           </div>
@@ -218,7 +218,7 @@ export default function RiderParcelsPage() {
       <AlertDialog open={otpModal.isOpen} onOpenChange={(open) => !open && setOtpModal({ ...otpModal, isOpen: false })}>
         <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-500">
+            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <ShieldCheck className="h-5 w-5" />
             </div>
             <AlertDialogTitle className="font-heading font-extrabold text-lg">

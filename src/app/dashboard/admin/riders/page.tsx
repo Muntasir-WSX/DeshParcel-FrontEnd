@@ -195,7 +195,7 @@ export default function RidersApprovalPage() {
       <AlertDialog open={confirmModal.isOpen} onOpenChange={(open) => !open && setConfirmModal({ ...confirmModal, isOpen: false })}>
         <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-500">
+            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
             </div>
             <AlertDialogTitle className="font-heading font-extrabold text-lg">

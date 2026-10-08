@@ -88,7 +88,7 @@ export default function Navbar() {
     return [
       { name: "Track", href: "/Track" },
       { name: "Pricing", href: "/Pricing" },
-      { name: "Create Parcel", href: "/dashboard/user/create-parcel" },
+      { name: "Create Parcel", href: "/create-parcel" },
       { name: "Dashboard", href: "/dashboard/user" },
       { name: "Profile", href: "/profile" },
     ];
