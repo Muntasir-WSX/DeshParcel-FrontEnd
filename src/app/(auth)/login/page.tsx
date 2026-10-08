@@ -143,7 +143,7 @@ export default function LoginPage() {
           <div className="p-3 rounded-2xl bg-[#050814] border border-white/10 relative z-10 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 flex items-center gap-1">
-                <UserCheck className="h-3 w-3 text-red-500" />
+                <UserCheck className="h-3 w-3 text-red-700" />
                 One-Click Demo Login:
               </span>
             </div>
@@ -152,7 +152,7 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("admin@deshparcel.com", "admin123", "Admin")}
-                className="py-1.5 px-2 rounded-xl bg-red-600/20 border border-red-500/40 text-red-500 text-[11px] font-bold hover:bg-red-600 hover:text-white cursor-pointer text-center transition-all"
+                className="py-1.5 px-2 rounded-xl bg-red-600/20 border border-red-700/40 text-red-700 text-[11px] font-bold hover:bg-red-600 hover:text-white cursor-pointer text-center transition-all"
               >
                 Admin
               </button>

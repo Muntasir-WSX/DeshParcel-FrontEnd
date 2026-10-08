@@ -29,7 +29,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#070b19] text-white overflow-hidden border-t border-red-500/20 pt-16 pb-12">
+    <footer className="relative bg-[#070b19] text-white overflow-hidden border-t border-red-700/20 pt-16 pb-12">
       
       {/* Background Image Banner with Dark Overlay */}
       <div className="absolute inset-0 z-0 opacity-10">
@@ -42,22 +42,22 @@ export default function Footer() {
       </div>
 
       {/* Glow Effects */}
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-500/10 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
       <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         
        {/* Quick Parcel Estimate & Booking CTA */}
-        <div className="bg-[#0b132b] backdrop-blur-md border border-red-500/25 rounded-3xl p-8 md:p-10 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
-          <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-500/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="bg-[#0b132b] backdrop-blur-md border border-red-700/25 rounded-3xl p-8 md:p-10 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
+          <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-2 text-center lg:text-left relative z-10">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-red-500 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-red-700 bg-red-700/10 px-3 py-1 rounded-full border border-red-700/20">
               Instant Shipping Support
             </span>
             <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
-              Ready to Send Your First <span className="text-red-500">DeshParcel</span> Package?
+              Ready to Send Your First <span className="text-red-700">DeshParcel</span> Package?
             </h3>
             <p className="text-xs md:text-sm text-gray-300 max-w-xl">
               Calculate shipping costs instantly or book a pickup in less than 2 minutes. Fast, reliable, and transparent nationwide service.
@@ -145,15 +145,15 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-gray-300">
-                <MapPin className="h-5 w-5 text-red-500 shrink-0 mt-0.5" />
+                <MapPin className="h-5 w-5 text-red-700 shrink-0 mt-0.5" />
                 <span>Level 4, Ispahani Building, Agrabad, Chattogram, Bangladesh</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
-                <Phone className="h-4 w-4 text-red-500 shrink-0" />
+                <Phone className="h-4 w-4 text-red-700 shrink-0" />
                 <span>+880 1700-000000</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-gray-300">
-                <Mail className="h-4 w-4 text-red-500 shrink-0" />
+                <Mail className="h-4 w-4 text-red-700 shrink-0" />
                 <span>support@deshparcel.com</span>
               </li>
             </ul>

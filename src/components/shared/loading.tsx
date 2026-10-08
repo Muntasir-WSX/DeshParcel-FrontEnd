@@ -14,7 +14,7 @@ export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSke
     return (
       <div className="w-full h-[70vh] flex flex-col items-center justify-center space-y-4 bg-[#070b19]">
         <div className="relative w-16 h-16">
-          <div className="absolute inset-0 rounded-full border-4 border-red-500/20 animate-pulse" />
+          <div className="absolute inset-0 rounded-full border-4 border-red-700/20 animate-pulse" />
           <div className="absolute inset-0 rounded-full border-4 border-red-600 border-t-transparent animate-spin" />
         </div>
         <p className="text-xs font-bold uppercase tracking-widest text-gray-400 animate-pulse">
