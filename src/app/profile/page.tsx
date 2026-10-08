@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Mail, Phone, Shield, Edit2, Camera, Save, X, ArrowLeft } from "lucide-react";
-import { getLoggedInUserProfile } from "./profile"; 
+import { getLoggedInUserProfile, updateLoggedInUserProfile } from "./profile";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Loader from "@/components/shared/mainloading";
@@ -63,39 +63,16 @@ export default function ProfilePage() {
     setUpdating(true);
 
     try {
-      const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-      const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("phone", formData.phone);
-      formDataToSend.append("email", formData.email);
-      
-      if (selectedImage) {
-        formDataToSend.append("profileImage", selectedImage);
-      }
-
-      const res = await fetch(`${BACKEND_URL}/api/v1/users/me`, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formDataToSend,
-      });
-
-      const result = await res.json();
-
-      if (!res.ok) {
-        throw new Error(result.message || "Failed to update profile");
-      }
+      await updateLoggedInUserProfile(formData, selectedImage);
 
       toast.success("Profile Updated!", {
         description: "Your changes and profile picture have been saved successfully.",
       });
 
-      setProfile(result.data);
+      await fetchUserData();
       setIsEditing(false);
       setSelectedImage(null);
+      setPreviewImage(null);
     } catch (error: any) {
       toast.error("Update Failed", {
         description: error.message || "Something went wrong.",

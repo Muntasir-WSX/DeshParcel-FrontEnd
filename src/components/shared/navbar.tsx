@@ -59,11 +59,40 @@ export default function Navbar() {
     router.push("/login");
   };
 
-  const navLinks = [
-    { name: "Track", href: "/Track" },
-    { name: "Pricing", href: "/Pricing" },
-    { name: "About", href: "/About" },
-  ];
+  // রোল অনুযায়ী ডায়নামিক নেভ লিংকস নির্ধারণ
+  const getNavLinks = () => {
+    if (!isLoggedIn) {
+      return [
+        { name: "Track", href: "/Track" },
+        { name: "Pricing", href: "/Pricing" },
+        { name: "About", href: "/About" },
+      ];
+    }
+
+    if (userRole === "ADMIN") {
+      return [
+        { name: "Track", href: "/Track" },
+        { name: "Dashboard", href: "/dashboard/admin" },
+        { name: "Profile", href: "/profile" },
+      ];
+    }
+
+    if (userRole === "RIDER") {
+      return [
+        { name: "Track", href: "/Track" },
+        { name: "Dashboard", href: "/dashboard/rider" },
+        { name: "Profile", href: "/profile" },
+      ];
+    }
+
+    return [
+      { name: "Track", href: "/Track" },
+      { name: "Pricing", href: "/Pricing" },
+      { name: "Create Parcel", href: "/dashboard/user/create-parcel" },
+      { name: "Dashboard", href: "/dashboard/user" },
+      { name: "Profile", href: "/profile" },
+    ];
+  };
 
   const dropdownLinks = [
     { name: "Services", href: "/Services", desc: "Explore our delivery & shipping solutions" },
@@ -71,12 +100,7 @@ export default function Navbar() {
     { name: "Contact Us", href: "/ContactUs", desc: "Get in touch with our support team" },
   ];
 
-  const getDashboardRoute = () => {
-    if (userRole === "ADMIN") return "/dashboard/admin";
-    if (userRole === "MODERATOR") return "/dashboard/moderator";
-    if (userRole === "RIDER") return "/dashboard/rider"; 
-    return "/dashboard/user"; 
-  };
+  const currentNavLinks = getNavLinks();
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500">
@@ -91,8 +115,9 @@ export default function Navbar() {
           <Logo />
         </div>
 
+        {/* Desktop Nav Links with Active Indicator */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-2 px-3 py-1 rounded-full bg-[#0B132B]/80 border border-white/15 backdrop-blur-md">
-          {navLinks.map((link) => {
+          {currentNavLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link 
@@ -110,42 +135,43 @@ export default function Navbar() {
             );
           })}
 
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="bg-transparent hover:bg-white/15 text-white hover:text-[oklch(0.577_0.245_27.325)] text-[11px] lg:text-xs font-bold tracking-wider uppercase h-8 px-2.5 lg:px-3 cursor-pointer data-[state=open]:bg-white/15 focus:bg-transparent">
-                  More
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[240px] gap-1.5 p-3 bg-[#0B132B]/95 backdrop-blur-xl text-white rounded-2xl shadow-2xl border border-white/15">
-                    {dropdownLinks.map((item) => (
-                      <li key={item.name}>
-                        <NavigationMenuLink asChild>
-                          <Link 
-                            href={item.href} 
-                            className="block select-none space-y-1 rounded-xl p-3 transition-all hover:bg-white/10 hover:text-[oklch(0.577_0.245_27.325)] group cursor-pointer"
-                          >
-                            <div className="text-xs font-extrabold uppercase tracking-wider flex items-center justify-between">
-                              <span>{item.name}</span>
-                              <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all text-[oklch(0.577_0.245_27.325)]" />
-                            </div>
-                            <p className="text-[10px] text-gray-300 font-normal leading-normal">
-                              {item.desc}
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    ))}
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+          {!isLoggedIn && (
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="bg-transparent hover:bg-white/15 text-white hover:text-[oklch(0.577_0.245_27.325)] text-[11px] lg:text-xs font-bold tracking-wider uppercase h-8 px-2.5 lg:px-3 cursor-pointer data-[state=open]:bg-white/15 focus:bg-transparent">
+                    More
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[240px] gap-1.5 p-3 bg-[#0B132B]/95 backdrop-blur-xl text-white rounded-2xl shadow-2xl border border-white/15">
+                      {dropdownLinks.map((item) => (
+                        <li key={item.name}>
+                          <NavigationMenuLink asChild>
+                            <Link 
+                              href={item.href} 
+                              className="block select-none space-y-1 rounded-xl p-3 transition-all hover:bg-white/10 hover:text-[oklch(0.577_0.245_27.325)] group cursor-pointer"
+                            >
+                              <div className="text-xs font-extrabold uppercase tracking-wider flex items-center justify-between">
+                                <span>{item.name}</span>
+                                <ArrowRight className="h-3.5 w-3.5 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all text-[oklch(0.577_0.245_27.325)]" />
+                              </div>
+                              <p className="text-[10px] text-gray-300 font-normal leading-normal">
+                                {item.desc}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          )}
         </nav>
 
         {/* Right Action Buttons */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
-          {/* যদি ইউজার লগইন করা না থাকে, তবেই কেবল 'Be a Rider' বাটন দেখাবে */}
           {!isLoggedIn && (
             <Link href="/becomeRider">
               <Button 
@@ -161,28 +187,6 @@ export default function Navbar() {
           
           {isLoggedIn ? (
             <div className="flex items-center gap-2">
-              <Link href={getDashboardRoute()}>
-               <Button 
-  variant="outline"
-  size="sm"
-  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black shadow-md hover:shadow-lg transition-all duration-500 ease-in-out group bg-[#0B132B]/80 cursor-pointer"
->
-  <LayoutDashboard className="mr-1.5 h-3.5 w-3.5 text-blue-400 group-hover:text-black transition-colors duration-500" />
-  Dashboard
-</Button>
-              </Link>
-
-              <Link href="/profile">
-                <Button 
-                  variant="outline"
-                  size="sm"
-                  className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider border-white/30 text-white hover:bg-white hover:text-black shadow-md hover:shadow-lg transition-all duration-500 ease-in-out group bg-[#0B132B]/80 cursor-pointer"
-                >
-                  <User className="mr-1.5 h-3.5 w-3.5 text-emerald-400 group-hover:text-black transition-colors" />
-                  Profile
-                </Button>
-              </Link>
-
               <Button 
                 size="sm"
                 onClick={handleLogout}
@@ -206,6 +210,7 @@ export default function Navbar() {
           )}
         </div>
 
+        {/* Mobile Menu Trigger */}
         <div className="flex md:hidden items-center">
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -217,28 +222,44 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile Dropdown Menu with Active Indicator */}
       {mobileMenuOpen && (
         <div className="absolute top-20 left-4 right-4 bg-[#0B132B]/95 backdrop-blur-2xl border border-white/20 rounded-3xl shadow-2xl p-6 flex flex-col gap-2.5 md:hidden z-50">
-          {navLinks.map((link) => (
-            <Link 
-              key={link.name}
-              href={link.href} 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="px-4 py-2.5 rounded-xl hover:bg-white/10 text-white text-xs font-bold uppercase tracking-wider transition-colors"
-            >
-              {link.name}
-            </Link>
-          ))}
-          {dropdownLinks.map((item) => (
-            <Link 
-              key={item.name}
-              href={item.href} 
-              onClick={() => setMobileMenuOpen(false)} 
-              className="px-4 py-2.5 rounded-xl hover:bg-white/10 text-white text-xs font-bold uppercase tracking-wider transition-colors"
-            >
-              {item.name}
-            </Link>
-          ))}
+          {currentNavLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link 
+                key={link.name}
+                href={link.href} 
+                onClick={() => setMobileMenuOpen(false)} 
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors ${
+                  isActive 
+                    ? "bg-red-700/20 border border-red-700/40 text-[oklch(0.577_0.245_27.325)]" 
+                    : "hover:bg-white/10 text-white"
+                }`}
+              >
+                {link.name}
+              </Link>
+            );
+          })}
+
+          {!isLoggedIn && dropdownLinks.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link 
+                key={item.name}
+                href={item.href} 
+                onClick={() => setMobileMenuOpen(false)} 
+                className={`px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors ${
+                  isActive 
+                    ? "bg-red-700/20 border border-red-700/40 text-[oklch(0.577_0.245_27.325)]" 
+                    : "hover:bg-white/10 text-white"
+                }`}
+              >
+                {item.name}
+              </Link>
+            );
+          })}
           
           <div className="pt-4 mt-2 border-t border-white/15 flex flex-col gap-2.5">
             {!isLoggedIn && (
@@ -251,27 +272,13 @@ export default function Navbar() {
             )}
 
             {isLoggedIn ? (
-              <>
-                <Link href={getDashboardRoute()} onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
-                    <LayoutDashboard className="mr-2 h-4 w-4 text-blue-400" />
-                    Dashboard
-                  </Button>
-                </Link>
-                <Link href="/profile" onClick={() => setMobileMenuOpen(false)}>
-                  <Button variant="outline" className="w-full rounded-full justify-center text-xs font-bold uppercase tracking-wider h-10 border-white/30 text-white bg-[#0B132B]/80 hover:bg-white hover:text-black">
-                    <User className="mr-2 h-4 w-4 text-emerald-400" />
-                    Profile Page
-                  </Button>
-                </Link>
-                <Button 
-                  onClick={() => { setMobileMenuOpen(false); handleLogout(); }} 
-                  className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-red-800 tracking-wider h-10 cursor-pointer"
-                >
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Logout
-                </Button>
-              </>
+              <Button 
+                onClick={() => { setMobileMenuOpen(false); handleLogout(); }} 
+                className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-red-800 tracking-wider h-10 cursor-pointer"
+              >
+                <LogOut className="mr-2 h-4 w-4" />
+                Logout
+              </Button>
             ) : (
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
                 <Button className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-white hover:text-red-700 tracking-wider h-10" variant="outline">
