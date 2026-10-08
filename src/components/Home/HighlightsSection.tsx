@@ -25,7 +25,7 @@ const highlights = [
     id: 3,
     title: "Safe & Secure Handling", 
     desc: "We ensure full insurance coverage and careful item management. Your fragile and high-value items are safe with our trained professionals.",
-    bullets: ["Tamper-proof Packaging", "Value Insurance up to ৳50k", "CCTV Monitored Hubs"],
+    bullets: ["Tamper-proof Packaging", "Value Insurance up to  Tk50k", "CCTV Monitored Hubs"],
     link: "/Services"
   },
   { 

@@ -3,21 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  Package, 
-  Users, 
-  Bike, 
-  ShieldCheck, 
-
-  Menu, 
-  ArrowLeft,
-  DollarSign
-} from "lucide-react";
+import { LayoutDashboard,Package,Users,Bike,ShieldCheck,Menu,ArrowLeft,DollarSign} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { toast } from "sonner";
 import Logo from "@/components/logo/logo";
+
+
 
 export default function DashboardLayout({
   children,
@@ -52,7 +44,7 @@ export default function DashboardLayout({
   }
 
   const adminLinks = [
-    { name: "Overview", href: "/dashboard/admin", icon: LayoutDashboard },
+    { name: "Over all", href: "/dashboard/admin", icon: LayoutDashboard },
     { name: "Manage Parcels", href: "/dashboard/admin/parcels", icon: Package },
     { name: "All Users", href: "/dashboard/admin/users", icon: Users },
     { name: "Approve Riders", href: "/dashboard/admin/riders", icon: Bike },

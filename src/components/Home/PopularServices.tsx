@@ -6,10 +6,10 @@ import { Box, Briefcase, Zap, Globe, ArrowRight, ShieldCheck } from "lucide-reac
 import { motion } from "framer-motion";
 
 const services = [
-  { icon: Box, title: "Standard Parcel", desc: "Cost-effective door-to-door delivery for personal goods.", price: "From ৳60" },
-  { icon: Zap, title: "Express Urgent", desc: "Priority delivery within 4-6 hours for emergency items.", price: "From ৳120" },
+  { icon: Box, title: "Standard Parcel", desc: "Cost-effective door-to-door delivery for personal goods.", price: "From  Tk60" },
+  { icon: Zap, title: "Express Urgent", desc: "Priority delivery within 4-6 hours for emergency items.", price: "From  Tk120" },
   { icon: Briefcase, title: "Corporate", desc: "Customized bulk shipping and supply chain solutions.", price: "Custom" },
-  { icon: Globe, title: "Cross-Border", desc: "Seamless international courier with customs clearance.", price: "From ৳500" },
+  { icon: Globe, title: "Cross-Border", desc: "Seamless international courier with customs clearance.", price: "From  Tk500" },
 ];
 
 export default function PopularServices() {

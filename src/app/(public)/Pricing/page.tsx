@@ -108,7 +108,7 @@ export default function PricingPage() {
               Estimate Your Delivery Cost
             </h2>
             <p className="text-xs text-gray-400">
-              City to City: ৳80 | City to Outside: ৳120 (Up to 3kg standard, +৳10/kg for extra weight)
+              City to City:  Tk80 | City to Outside:  Tk120 (Up to 3kg standard, + Tk10/kg for extra weight)
             </p>
           </div>
 
@@ -185,7 +185,7 @@ export default function PricingPage() {
             >
               <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Estimated Shipping Fee</p>
               <h3 className="text-4xl font-extrabold font-heading text-red-700">
-                ৳{calculatedCost}
+                 Tk{calculatedCost}
               </h3>
               <p className="text-xs text-gray-400">
                 Route: {pickupCity} to {deliveryCity} ({weight} KG)
@@ -217,11 +217,11 @@ export default function PricingPage() {
             <ul className="space-y-3 text-sm text-gray-300">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">City to City (Same City):</strong> Flat ৳80 (e.g., Chattogram to Chattogram).</span>
+                <span><strong className="text-white">City to City (Same City):</strong> Flat  Tk80 (e.g., Chattogram to Chattogram).</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">City to Outside:</strong> Flat ৳120 (e.g., Chattogram to Dhaka or Chandpur).</span>
+                <span><strong className="text-white">City to Outside:</strong> Flat  Tk120 (e.g., Chattogram to Dhaka or Chandpur).</span>
               </li>
             </ul>
           </div>
@@ -238,7 +238,7 @@ export default function PricingPage() {
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">Above 3 KG:</strong> Additional ৳10 charged for every extra KG.</span>
+                <span><strong className="text-white">Above 3 KG:</strong> Additional  Tk10 charged for every extra KG.</span>
               </li>
             </ul>
           </div>
