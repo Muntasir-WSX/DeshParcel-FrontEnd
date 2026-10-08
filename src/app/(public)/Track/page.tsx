@@ -5,42 +5,43 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Search, Package, CheckCircle2, Clock, Truck, MapPin, ShieldAlert } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 export default function TrackPage() {
   const [trackingId, setTrackingId] = useState("");
   const [searchResult, setSearchResult] = useState<any>(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleTrack = (e: React.FormEvent) => {
+  const handleTrack = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!trackingId.trim()) return;
 
-    setHasSearched(true);
-    // Dummy demo tracking result based on input
-    if (trackingId.toLowerCase() === "demo123" || trackingId.length > 5) {
-      setSearchResult({
-        id: trackingId.toUpperCase(),
-        status: "In Transit",
-        destination: "Dhaka Central Hub",
-        sender: "A Rahim (Chattogram)",
-        receiver: "Karim Uddin (Dhaka)",
-        estimatedDelivery: "Tomorrow, 2:00 PM",
-        steps: [
-          { title: "Parcel Picked Up", date: "Oct 3, 10:00 AM", completed: true },
-          { title: "Reached Sorting Hub (CTG)", date: "Oct 3, 02:30 PM", completed: true },
-          { title: "In Transit to Dhaka", date: "Oct 3, 08:00 PM", completed: true },
-          { title: "Out for Delivery", date: "Expected Oct 4", completed: false }
-        ]
-      });
-    } else {
+    try {
+      setLoading(true);
+      setHasSearched(true);
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
+      const res = await fetch(`${BACKEND_URL}/api/v1/parcels/tracking/${trackingId.trim()}`);
+      const result = await res.json();
+
+      if (!res.ok) {
+        throw new Error(result.message || "Shipment not found.");
+      }
+
+      setSearchResult(result.data);
+    } catch (error: any) {
       setSearchResult(null);
+      toast.error("Tracking Failed", { description: error.message || "Could not retrieve parcel tracking info." });
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="w-full pb-20  text-white">
+    <div className="w-full pb-20 text-white">
       
-      {/* 1. Section 1: Hero Banner Section */}
+      {/* Hero Banner Section */}
       <section className="relative w-full pt-48 pb-36 md:pt-60 md:pb-44 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
         <div className="absolute inset-0 z-0">
           <Image
@@ -83,7 +84,7 @@ export default function TrackPage() {
         </div>
       </section>
 
-      {/* 2. Section 2: Interactive Tracking Input & Results Section */}
+      {/* Interactive Tracking Input & Results Section */}
       <section className="max-w-4xl mx-auto px-6 mb-24">
         <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
@@ -95,7 +96,7 @@ export default function TrackPage() {
               Enter Tracking Code
             </h2>
             <p className="text-xs text-gray-400">
-              Type your tracking code (e.g., <span className="text-red-700 font-bold">DEMO123</span>) to preview shipment status.
+              Type your tracking code to preview live status from database server.
             </p>
           </div>
 
@@ -106,15 +107,16 @@ export default function TrackPage() {
                 type="text"
                 value={trackingId}
                 onChange={(e) => setTrackingId(e.target.value)}
-                placeholder="Enter Tracking ID (e.g. DP-98421)..."
+                placeholder="Enter Tracking ID..."
                 className="w-full h-13 pl-11 pr-5 rounded-2xl bg-[#050814] border border-white/10 text-white placeholder:text-gray-500 text-sm outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
               />
             </div>
             <Button
               type="submit"
-              className="h-13 px-8 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white  shadow-red-600/30 cursor-pointer shrink-0"
+              disabled={loading}
+              className="h-13 px-8 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white shadow-red-600/30 cursor-pointer shrink-0"
             >
-              Track Package
+              {loading ? "Searching..." : "Track Package"}
             </Button>
           </form>
 
@@ -129,32 +131,46 @@ export default function TrackPage() {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between pb-6 border-b border-white/10 gap-4">
                     <div>
-                      <span className="text-xs uppercase tracking-widest text-red-700 font-bold block">Shipment ID: {searchResult.id}</span>
+                      <span className="text-xs uppercase tracking-widest text-red-700 font-bold block">Shipment ID: {searchResult.trackingId}</span>
                       <h3 className="text-xl font-bold text-white mt-1">Status: <span className="text-red-700">{searchResult.status}</span></h3>
                     </div>
                     <div className="text-left sm:text-right">
-                      <p className="text-xs text-gray-400">Estimated Delivery</p>
-                      <p className="text-sm font-bold text-white flex items-center sm:justify-end gap-1 mt-0.5">
-                        <Clock className="h-4 w-4 text-red-700" />
-                        {searchResult.estimatedDelivery}
+                      <p className="text-xs text-gray-400">Category & Weight</p>
+                      <p className="text-sm font-bold text-white mt-0.5">
+                        {searchResult.category} ({searchResult.weight} kg)
                       </p>
                     </div>
                   </div>
 
-                  {/* Tracking Timeline Steps */}
+                  {/* Address & Sender/Receiver Info */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div className="bg-[#0b132b] p-4 rounded-xl border border-white/10 space-y-1">
+                      <p className="text-gray-400 uppercase font-bold text-[10px]">Receiver Info</p>
+                      <p className="font-bold text-white">{searchResult.receiverName}</p>
+                      <p className="text-gray-300">{searchResult.receiverPhone}</p>
+                      <p className="text-gray-400 truncate">{searchResult.deliveryAddress}</p>
+                    </div>
+                    <div className="bg-[#0b132b] p-4 rounded-xl border border-white/10 space-y-1">
+                      <p className="text-gray-400 uppercase font-bold text-[10px]">Pickup Address</p>
+                      <p className="text-gray-300 truncate">{searchResult.pickupAddress}</p>
+                    </div>
+                  </div>
+
+                  {/* Tracking Logs / Timeline Steps */}
                   <div className="space-y-4 pt-2">
-                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Transit Milestone Timeline</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-                      {searchResult.steps.map((step: any, idx: number) => (
-                        <div key={idx} className="p-4 rounded-xl bg-[#0b132b] border border-white/10 space-y-2 relative">
-                          <div className="flex items-center justify-between">
-                            <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${step.completed ? "bg-red-600 text-white" : "bg-white/10 text-gray-400"}`}>
-                              {idx + 1}
+                    <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Transit Logs & History</p>
+                    <div className="space-y-3">
+                      {searchResult.trackingLogs?.map((log: any, idx: number) => (
+                        <div key={idx} className="p-4 rounded-xl bg-[#0b132b] border border-white/10 flex items-center justify-between gap-4">
+                          <div className="space-y-1">
+                            <span className="inline-flex px-2 py-0.5 rounded-full bg-red-700/20 text-red-400 text-[10px] font-bold uppercase border border-red-700/30">
+                              {log.status}
                             </span>
-                            {step.completed && <CheckCircle2 className="h-4 w-4 text-red-700" />}
+                            <p className="text-xs text-white font-medium">{log.note}</p>
                           </div>
-                          <p className={`text-xs font-bold ${step.completed ? "text-white" : "text-gray-400"}`}>{step.title}</p>
-                          <p className="text-[10px] text-gray-500">{step.date}</p>
+                          <p className="text-[10px] text-gray-500 shrink-0">
+                            {new Date(log.createdAt).toLocaleString()}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -170,58 +186,12 @@ export default function TrackPage() {
                   <ShieldAlert className="h-10 w-10 text-red-700 mx-auto" />
                   <h4 className="text-lg font-bold text-white">No Shipment Found</h4>
                   <p className="text-xs text-gray-400 max-w-md mx-auto">
-                    We couldn&apos;t find any parcel with ID &quot;{trackingId}&quot;. Please verify your tracking number or try demo ID <span className="text-red-700 font-bold">DEMO123</span>.
+                    We couldn&apos;t find any parcel matching this tracking number in our database. Please double check the ID.
                   </p>
                 </motion.div>
               )}
             </div>
           )}
-
-        </div>
-      </section>
-
-      {/* 3. Section 3: Tracking Information & Guidelines */}
-      <section className="max-w-7xl mx-auto px-6 md:px-12 mb-20">
-        <div className="text-center max-w-xl mx-auto mb-12 space-y-2">
-          <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
-            How It Works
-          </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white leading-[1.15]">
-            Seamless & Transparent <span className="text-red-700">Tracking</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
-              <Search className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold font-heading text-white">1. Enter Tracking ID</h3>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Find your unique tracking code on your booking receipt or SMS confirmation and paste it into the search box above.
-            </p>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
-              <Truck className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold font-heading text-white">2. Monitor Live Transit</h3>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Instantly view current milestone updates, hub transfers, and estimated delivery times directly from our servers.
-            </p>
-          </div>
-
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4">
-            <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
-              <MapPin className="h-6 w-6" />
-            </div>
-            <h3 className="text-xl font-bold font-heading text-white">3. Successful Delivery</h3>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Get notified when your parcel is out for delivery and safely handed over to the recipient with confirmation.
-            </p>
-          </div>
 
         </div>
       </section>
