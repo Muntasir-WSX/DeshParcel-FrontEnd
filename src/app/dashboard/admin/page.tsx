@@ -105,7 +105,6 @@ export default function AdminOverviewPage() {
     count: item._count.status,
   })) || [];
 
-  // চার্টের কালারগুলোতে প্রিমিয়াম রেড-৭০০ এবং ডিপ কালার ব্যবহার করা হয়েছে
   const COLORS = ["#b91c1c", "#1d4ed8", "#047857", "#6d28d9", "#b45309"];
 
   return (
