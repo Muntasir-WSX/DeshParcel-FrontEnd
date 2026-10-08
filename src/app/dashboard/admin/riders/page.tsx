@@ -1,16 +1,34 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Bike, ShieldCheck, CheckCircle2, Clock } from "lucide-react";
+import { Bike, ShieldCheck, CheckCircle2, Clock, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import Loader from "@/components/shared/mainloading";
 import LoadingSkeleton from "@/components/shared/loading";
+import { 
+  AlertDialog, 
+  AlertDialogAction, 
+  AlertDialogCancel, 
+  AlertDialogContent, 
+  AlertDialogDescription, 
+  AlertDialogFooter, 
+  AlertDialogHeader, 
+  AlertDialogTitle 
+} from "@/components/ui/alert-dialog";
 
 export default function RidersApprovalPage() {
   const [riders, setRiders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    riderId: string | null;
+    riderName: string;
+  }>({
+    isOpen: false,
+    riderId: null,
+    riderName: "",
+  });
 
   useEffect(() => {
     fetchRiders();
@@ -37,8 +55,12 @@ export default function RidersApprovalPage() {
       setLoading(false);
     }
   };
+  const executeApproveRider = async () => {
+    if (!confirmModal.riderId) return;
 
-  const handleApproveRider = async (riderId: string) => {
+    const riderId = confirmModal.riderId;
+    setConfirmModal({ isOpen: false, riderId: null, riderName: "" });
+
     try {
       setActionLoading(riderId);
       const token = localStorage.getItem("accessToken");
@@ -64,7 +86,7 @@ export default function RidersApprovalPage() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <LoadingSkeleton></LoadingSkeleton>
+        <LoadingSkeleton />
       </div>
     );
   }
@@ -141,7 +163,11 @@ export default function RidersApprovalPage() {
                           <Button
                             size="sm"
                             disabled={actionLoading === r.id}
-                            onClick={() => handleApproveRider(r.id)}
+                            onClick={() => setConfirmModal({
+                              isOpen: true,
+                              riderId: r.id,
+                              riderName: r.name,
+                            })}
                             className="h-8 px-4 text-[10px] font-bold uppercase bg-red-700 hover:bg-red-800 text-white cursor-pointer shadow-lg shadow-red-700/20 transition-all"
                           >
                             Approve Rider
@@ -164,6 +190,34 @@ export default function RidersApprovalPage() {
           </div>
         )}
       </div>
+
+      {/* SweetAlert Style Confirmation Dialog */}
+      <AlertDialog open={confirmModal.isOpen} onOpenChange={(open) => !open && setConfirmModal({ ...confirmModal, isOpen: false })}>
+        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+          <AlertDialogHeader className="space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-500">
+              <AlertTriangle className="h-5 w-5" />
+            </div>
+            <AlertDialogTitle className="font-heading font-extrabold text-lg">
+              Authorize Delivery Partner
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
+              Are you sure you want to approve <span className="text-white font-bold">{confirmModal.riderName}</span> as an active delivery rider? They will be authorized to accept and fulfill parcels.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
+            <AlertDialogCancel className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={executeApproveRider}
+              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg shadow-red-700/30"
+            >
+              Yes, Approve Rider
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

@@ -1,18 +1,40 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Users, Shield, Ban, CheckCircle, ChevronLeft, ChevronRight, UserCheck } from "lucide-react";
+import { Users, Shield, Ban, CheckCircle, ChevronLeft, ChevronRight, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
-
-
+import { 
+  AlertDialog, 
+  AlertDialogAction, 
+  AlertDialogCancel, 
+  AlertDialogContent, 
+  AlertDialogDescription, 
+  AlertDialogFooter, 
+  AlertDialogHeader, 
+  AlertDialogTitle 
+} from "@/components/ui/alert-dialog";
 
 export default function UsersControlPage() {
   const [users, setUsers] = useState<any[]>([]);
   const [meta, setMeta] = useState({ page: 1, limit: 10, total: 0 });
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState<string | null>(null);
+  const [confirmModal, setConfirmModal] = useState<{
+    isOpen: boolean;
+    title: string;
+    description: string;
+    actionType: "ROLE" | "BAN" | "UNBAN" | null;
+    userId: string | null;
+    payload?: string;
+  }>({
+    isOpen: false,
+    title: "",
+    description: "",
+    actionType: null,
+    userId: null,
+  });
 
   useEffect(() => {
     fetchUsers(meta.page);
@@ -25,9 +47,7 @@ export default function UsersControlPage() {
       const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/users?page=${pageNumber}&limit=10`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       const result = await res.json();
@@ -42,71 +62,54 @@ export default function UsersControlPage() {
     }
   };
 
-  const handleUpdateRole = async (userId: string, newRole: string) => {
+  // আসল এক্সিকিউশন ফাংশন (কনফার্ম করার পর কল হবে)
+  const executeAction = async () => {
+    if (!confirmModal.userId || !confirmModal.actionType) return;
+
+    const userId = confirmModal.userId;
+    const actionType = confirmModal.actionType;
+    const payload = confirmModal.payload;
+
+    setConfirmModal({ isOpen: false, title: "", description: "", actionType: null, userId: null });
+
     try {
       setActionLoading(userId);
       const token = localStorage.getItem("accessToken");
       const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
-      const res = await fetch(`${BACKEND_URL}/api/v1/admin/users/${userId}/role`, {
-        method: "PATCH",
+      let endpoint = "";
+      let method = "PATCH";
+      let bodyData: any = null;
+
+      if (actionType === "ROLE") {
+        endpoint = `${BACKEND_URL}/api/v1/admin/users/${userId}/role`;
+        bodyData = { role: payload };
+      } else if (actionType === "BAN") {
+        endpoint = `${BACKEND_URL}/api/v1/admin/users/${userId}/ban`;
+      } else if (actionType === "UNBAN") {
+        endpoint = `${BACKEND_URL}/api/v1/admin/users/${userId}/unban`;
+      }
+
+      const res = await fetch(endpoint, {
+        method,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ role: newRole }),
+        ...(bodyData && { body: JSON.stringify(bodyData) }),
       });
 
       const result = await res.json();
-      if (!res.ok) throw new Error(result.message || "Failed to update role");
+      if (!res.ok) throw new Error(result.message || "Action failed");
 
-      toast.success("Role Updated!", { description: `User role changed to ${newRole}` });
-      fetchUsers(meta.page);
-    } catch (error: any) {
-      toast.error("Action Failed", { description: error.message });
-    } finally {
-      setActionLoading(null);
-    }
-  };
+      if (actionType === "ROLE") {
+        toast.success("Role Updated!", { description: `User role successfully changed to ${payload}` });
+      } else if (actionType === "BAN") {
+        toast.success("User Banned", { description: "The user account has been restricted." });
+      } else if (actionType === "UNBAN") {
+        toast.success("User Unbanned", { description: "The user account has been restored." });
+      }
 
- 
-  const handleBanUser = async (userId: string) => {
-    try {
-      setActionLoading(userId);
-      const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-      const res = await fetch(`${BACKEND_URL}/api/v1/admin/users/${userId}/ban`, {
-        method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      const result = await res.json();
-      if (!res.ok) throw new Error(result.message || "Failed to ban user");
-
-      toast.success("User Banned", { description: "The user account has been restricted." });
-      fetchUsers(meta.page);
-    } catch (error: any) {
-      toast.error("Action Failed", { description: error.message });
-    } finally {
-      setActionLoading(null);
-    }
-  };
-  const handleUnbanUser = async (userId: string) => {
-    try {
-      setActionLoading(userId);
-      const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-
-      const res = await fetch(`${BACKEND_URL}/api/v1/admin/users/${userId}/unban`, {
-        method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      const result = await res.json();
-      if (!res.ok) throw new Error(result.message || "Failed to unban user");
-
-      toast.success("User Unbanned", { description: "The user account has been restored." });
       fetchUsers(meta.page);
     } catch (error: any) {
       toast.error("Action Failed", { description: error.message });
@@ -133,7 +136,7 @@ export default function UsersControlPage() {
 
       <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {loading ? (
-          <div className="py-20 flex justify-center"><LoadingSkeleton></LoadingSkeleton></div>
+          <div className="py-20 flex justify-center"><LoadingSkeleton /></div>
         ) : users.length === 0 ? (
           <div className="py-20 text-center text-gray-400 text-xs uppercase tracking-wider">No users found in the system.</div>
         ) : (
@@ -178,7 +181,14 @@ export default function UsersControlPage() {
                         <Button
                           size="sm"
                           disabled={actionLoading === u.id}
-                          onClick={() => handleUpdateRole(u.id, "MODERATOR")}
+                          onClick={() => setConfirmModal({
+                            isOpen: true,
+                            title: "Promote to Moderator",
+                            description: `Are you sure you want to promote ${u.name} to Moderator? They will gain administrative management privileges.`,
+                            actionType: "ROLE",
+                            userId: u.id,
+                            payload: "MODERATOR",
+                          })}
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white border border-blue-600/30 cursor-pointer"
                         >
                           Make Moderator
@@ -188,7 +198,14 @@ export default function UsersControlPage() {
                         <Button
                           size="sm"
                           disabled={actionLoading === u.id}
-                          onClick={() => handleUpdateRole(u.id, "CUSTOMER")}
+                          onClick={() => setConfirmModal({
+                            isOpen: true,
+                            title: "Demote to User",
+                            description: `Are you sure you want to demote ${u.name} back to a regular Customer?`,
+                            actionType: "ROLE",
+                            userId: u.id,
+                            payload: "CUSTOMER",
+                          })}
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-gray-600/20 text-gray-300 hover:bg-gray-600 hover:text-white border border-gray-600/30 cursor-pointer"
                         >
                           Make User
@@ -199,7 +216,13 @@ export default function UsersControlPage() {
                           <Button
                             size="sm"
                             disabled={actionLoading === u.id}
-                            onClick={() => handleUnbanUser(u.id)}
+                            onClick={() => setConfirmModal({
+                              isOpen: true,
+                              title: "Unban User Account",
+                              description: `Are you sure you want to restore access for ${u.name}?`,
+                              actionType: "UNBAN",
+                              userId: u.id,
+                            })}
                             className="h-7 px-3 text-[10px] font-bold uppercase bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white border border-emerald-600/30 cursor-pointer"
                           >
                             Unban
@@ -208,7 +231,13 @@ export default function UsersControlPage() {
                           <Button
                             size="sm"
                             disabled={actionLoading === u.id}
-                            onClick={() => handleBanUser(u.id)}
+                            onClick={() => setConfirmModal({
+                              isOpen: true,
+                              title: "Ban User Account",
+                              description: `Are you sure you want to ban ${u.name}? They will lose platform access immediately.`,
+                              actionType: "BAN",
+                              userId: u.id,
+                            })}
                             className="h-7 px-3 text-[10px] font-bold uppercase bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-700/30 cursor-pointer"
                           >
                             Ban
@@ -250,6 +279,33 @@ export default function UsersControlPage() {
           </div>
         </div>
       </div>
+
+      <AlertDialog open={confirmModal.isOpen} onOpenChange={(open) => !open && setConfirmModal({ ...confirmModal, isOpen: false })}>
+        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+          <AlertDialogHeader className="space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-500">
+              <AlertTriangle className="h-5 w-5" />
+            </div>
+            <AlertDialogTitle className="font-heading font-extrabold text-lg">
+              {confirmModal.title}
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
+              {confirmModal.description}
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
+            <AlertDialogCancel className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={executeAction}
+              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg shadow-red-700/30"
+            >
+              Confirm Action
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
