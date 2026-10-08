@@ -13,9 +13,11 @@ import {
   MapPin, 
   Phone, 
   Mail, 
-  Send 
+  Send, 
+  ArrowRight
 } from "lucide-react";
 import Logo from "../logo/logo";
+import { Button } from "../ui/button";
 
 const socialLinks = [
   { icon: <FaFacebookF />, href: "https://github.com/Muntasir-WSX", label: "Facebook" },
@@ -45,32 +47,40 @@ export default function Footer() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         
-        {/* Top Newsletter / Quick CTA Row */}
+       {/* Quick Parcel Estimate & Booking CTA */}
         <div className="bg-[#0b132b] backdrop-blur-md border border-red-500/25 rounded-3xl p-8 md:p-10 mb-16 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden">
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-500/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-2 text-center lg:text-left relative z-10">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-red-500 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+              Instant Shipping Support
+            </span>
             <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
-              Ready to Send Your First <span className="text-red-700">DeshParcel</span> Parcel?
+              Ready to Send Your First <span className="text-red-500">DeshParcel</span> Package?
             </h3>
-            <p className="text-sm text-gray-300">
-              Join thousands of satisfied merchants and enjoy fastest nationwide delivery.
+            <p className="text-xs md:text-sm text-gray-300 max-w-xl">
+              Calculate shipping costs instantly or book a pickup in less than 2 minutes. Fast, reliable, and transparent nationwide service.
             </p>
           </div>
           
-          <div className="flex items-center w-full lg:w-auto max-w-md bg-[#050814] rounded-2xl p-1.5 border border-white/15 focus-within:ring-2 focus-within:ring-red-500 relative z-10">
-            <input 
-              type="email" 
-              placeholder="Enter your email..." 
-              className="flex-1 bg-transparent border-none outline-none text-white text-sm px-4 placeholder:text-gray-400 h-11"
-            />
-            <button 
-              type="button"
-              className="px-6 h-11 rounded-xl text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all cursor-pointer flex items-center gap-2 bg-red-600 hover:bg-red-700"
-            >
-              <span>Subscribe</span>
-              <Send className="h-3.5 w-3.5" />
-            </button>
+          <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto relative z-10 shrink-0">
+            <Link href="/Pricing" className="w-full sm:w-auto">
+              <Button 
+                variant="outline"
+                className="w-full sm:w-auto px-6 h-12 rounded-2xl text-xs font-bold uppercase tracking-wider text-white border-white/20 hover:bg-white hover:text-black transition-all cursor-pointer bg-[#050814]"
+              >
+                Check Pricing
+              </Button>
+            </Link>
+            <Link href="/Track" className="w-full sm:w-auto">
+              <Button 
+                className="w-full sm:w-auto px-6 h-12 rounded-2xl text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all cursor-pointer bg-red-600 hover:bg-red-700 flex items-center justify-center gap-2"
+              >
+                <span>Track Parcel</span>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
 

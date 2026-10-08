@@ -112,11 +112,11 @@ export default function HeroSection() {
         className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[92%] sm:w-[85%] max-w-5xl bg-[#0b132b] border border-red-500/25 rounded-2xl md:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 py-6 md:py-8 px-4 md:px-6 hidden sm:grid grid-cols-3 gap-0 divide-x divide-white/10 text-white"
       >
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
-          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">35K+</h3>
+          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">3500</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Merchants</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
-          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">20M+</h3>
+          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">1.5M+</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Deliveries</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
