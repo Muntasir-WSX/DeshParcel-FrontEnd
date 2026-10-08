@@ -13,7 +13,9 @@ import {
   ArrowLeft, 
   DollarSign,
   Wallet,
-  ClipboardList
+  ClipboardList,
+  PlusCircle,
+  CreditCard
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -50,8 +52,6 @@ export default function DashboardLayout({
       </div>
     );
   }
-
- 
   const adminLinks = [
     { name: "Over all", href: "/dashboard/admin", icon: LayoutDashboard },
     { name: "Manage Parcels", href: "/dashboard/admin/parcels", icon: Package },
@@ -59,17 +59,29 @@ export default function DashboardLayout({
     { name: "Approve Riders", href: "/dashboard/admin/riders", icon: Bike },
     { name: "Payments & Revenue", href: "/dashboard/admin/payments", icon: DollarSign },
   ];
-
-
   const riderLinks = [
     { name: "Rider Dashboard", href: "/dashboard/rider", icon: LayoutDashboard },
     { name: "Assigned Parcels", href: "/dashboard/rider/parcels", icon: ClipboardList },
     { name: "Earnings & Cashout", href: "/dashboard/rider/earnings", icon: Wallet },
   ];
+  const userLinks = [
+    { name: "My Parcels", href: "/dashboard/user", icon: Package },
+    { name: "Payment History", href: "/dashboard/user/payments", icon: CreditCard },
+  ];
+  const getCurrentLinks = () => {
+    if (userRole === "RIDER") return riderLinks;
+    if (userRole === "ADMIN" || userRole === "MODERATOR") return adminLinks;
+    return userLinks; 
+  };
 
- 
-  const currentLinks = userRole === "RIDER" ? riderLinks : adminLinks;
-  const panelTitle = userRole === "RIDER" ? "Rider Delivery Hub" : "Admin Control Panel";
+  const getPanelTitle = () => {
+    if (userRole === "RIDER") return "Rider Delivery Hub";
+    if (userRole === "ADMIN" || userRole === "MODERATOR") return "Admin Control Panel";
+    return "Customer Portal";
+  };
+
+  const currentLinks = getCurrentLinks();
+  const panelTitle = getPanelTitle();
 
   return (
     <div className="flex min-h-screen bg-[#070b19] text-white w-full overflow-hidden">
@@ -130,8 +142,7 @@ export default function DashboardLayout({
             {/* Mobile & Tablet Drawer Trigger */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
-                {/** biome-ignore lint/a11y/useButtonType: <explanation> */}
-<button 
+                <button 
                   className="lg:hidden p-2.5 rounded-xl bg-[#050814] border border-white/10 text-white hover:bg-white/10 transition-colors cursor-pointer"
                   aria-label="Open Sidebar Menu"
                 >
@@ -186,11 +197,13 @@ export default function DashboardLayout({
 
             <div>
               <h1 className="font-heading font-extrabold text-base md:text-xl text-white tracking-wide">
-                {userRole === "RIDER" ? "Rider" : "Admin"} <span className="text-red-700">Dashboard</span>
+                {userRole === "RIDER" ? "Rider" : userRole === "CUSTOMER" ? "Customer" : "Admin"} <span className="text-red-700">Dashboard</span>
               </h1>
               <p className="text-[11px] text-gray-400 hidden sm:block">
                 {userRole === "RIDER" 
                   ? "Manage assigned deliveries, earnings, and status workflows." 
+                  : userRole === "CUSTOMER" 
+                  ? "Book new shipments, track parcels, and view payment history." 
                   : "Manage parcels, users, and logistics metrics from one centralized hub."}
               </p>
             </div>
@@ -198,9 +211,9 @@ export default function DashboardLayout({
 
           {/* Right Header Status Badge */}
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
+            <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-500">
               <ShieldCheck className="h-3.5 w-3.5" />
-              Verified {userRole === "RIDER" ? "Rider" : "Admin"}
+              Verified {userRole || "Customer"}
             </span>
           </div>
         </header>

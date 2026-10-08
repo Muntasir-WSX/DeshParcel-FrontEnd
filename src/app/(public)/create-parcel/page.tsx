@@ -1,10 +1,12 @@
 "use client";
+
 import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Package, MapPin, User, Phone, Weight, Tag, Image as ImageIcon, ArrowRight, ShieldCheck } from "lucide-react";
+import { Package, MapPin, User, Phone, Weight, Tag, Image as ImageIcon, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 export default function CreateParcelPage() {
   const router = useRouter();
@@ -106,12 +108,18 @@ export default function CreateParcelPage() {
   return (
     <div className="w-full pb-20 text-white space-y-12">
       
-      {/* 1. Enhanced Larger Hero Banner Section */}
-      <section className="relative w-full pt-44 pb-44 px-8 md:px-16 rounded-[2.5rem] overflow-hidden shadow-2xl border border-red-700/25">
+      {/* 1. Hero Banner Section (Centered Content) */}
+      <motion.section 
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="relative w-full pt-44 pb-44 px-8 md:px-16 rounded-[2.5rem] overflow-hidden shadow-2xl border border-red-700/25 flex flex-col items-center justify-center text-center"
+      >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-screeny42-11053643_w8f7g8.jpg"
-            alt="Create Parcel Banner" sizes="100vw"
+            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791012807/6b5d791c1002361cf027e2abb4036429_nx8o3m.jpg"
+            alt="Create Parcel Banner" 
+            sizes="100vw"
             fill
             priority
             className="object-cover object-center filter brightness-90 contrast-105"
@@ -119,9 +127,9 @@ export default function CreateParcelPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/60 backdrop-blur-[2px]" />
         </div>
 
-        <div className="relative z-10 max-w-4xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm">
-            <Package className="h-4 w-4 text-red-700" />
+        <div className="relative z-10 max-w-4xl space-y-6 flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-500 shadow-sm">
+            <Package className="h-4 w-4 text-red-500" />
             Fast & Secure Shipping Network
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]">
@@ -131,10 +139,15 @@ export default function CreateParcelPage() {
             Fill in the shipment details below to dispatch your packages securely across nationwide delivery hubs with real-time tracking and trusted courier service.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* 2. Create Parcel Form Card */}
-      <section className="max-w-4xl mx-auto px-4 md:px-0">
+      <motion.section 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="max-w-4xl mx-auto px-4 md:px-0"
+      >
         <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
@@ -154,7 +167,7 @@ export default function CreateParcelPage() {
               {/* Receiver Name */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <User className="h-3.5 w-3.5 text-red-700" /> Receiver Name
+                  <User className="h-3.5 w-3.5 text-red-500" /> Receiver Name
                 </label>
                 <input
                   type="text"
@@ -170,7 +183,7 @@ export default function CreateParcelPage() {
               {/* Receiver Phone */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <Phone className="h-3.5 w-3.5 text-red-700" /> Receiver Phone
+                  <Phone className="h-3.5 w-3.5 text-red-500" /> Receiver Phone
                 </label>
                 <input
                   type="text"
@@ -188,7 +201,7 @@ export default function CreateParcelPage() {
               {/* Pickup Address */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-700" /> Pickup Address
+                  <MapPin className="h-3.5 w-3.5 text-red-500" /> Pickup Address
                 </label>
                 <textarea
                   name="pickupAddress"
@@ -203,7 +216,7 @@ export default function CreateParcelPage() {
               {/* Delivery Address */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-700" /> Delivery Address
+                  <MapPin className="h-3.5 w-3.5 text-red-500" /> Delivery Address
                 </label>
                 <textarea
                   name="deliveryAddress"
@@ -220,7 +233,7 @@ export default function CreateParcelPage() {
               {/* Weight (kg) */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <Weight className="h-3.5 w-3.5 text-red-700" /> Weight (Kg)
+                  <Weight className="h-3.5 w-3.5 text-red-500" /> Weight (Kg)
                 </label>
                 <input
                   type="number"
@@ -237,7 +250,7 @@ export default function CreateParcelPage() {
               {/* Category */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <Tag className="h-3.5 w-3.5 text-red-700" /> Parcel Category
+                  <Tag className="h-3.5 w-3.5 text-red-500" /> Parcel Category
                 </label>
                 <input
                   type="text"
@@ -254,13 +267,13 @@ export default function CreateParcelPage() {
             {/* Optional Parcel Image Upload */}
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                <ImageIcon className="h-3.5 w-3.5 text-red-700" /> Parcel Image (Optional)
+                <ImageIcon className="h-3.5 w-3.5 text-red-500" /> Parcel Image (Optional)
               </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full bg-[#050814] border border-white/15 text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:bg-red-700/20 file:text-red-700 hover:file:bg-red-700 hover:file:text-white rounded-xl text-xs cursor-pointer"
+                className="w-full bg-[#050814] border border-white/15 text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:bg-red-700/20 file:text-red-500 hover:file:bg-red-700 hover:file:text-white rounded-xl text-xs cursor-pointer"
               />
             </div>
 
@@ -268,7 +281,7 @@ export default function CreateParcelPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer  shadow-red-700/30 transition-all flex items-center gap-2"
+                className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer shadow-lg shadow-red-700/30 transition-all flex items-center gap-2"
               >
                 {loading ? "Booking Parcel..." : "Confirm & Book Shipment"} <ArrowRight className="h-4 w-4" />
               </Button>
@@ -277,7 +290,7 @@ export default function CreateParcelPage() {
           </form>
 
         </div>
-      </section>
+      </motion.section>
 
     </div>
   );
