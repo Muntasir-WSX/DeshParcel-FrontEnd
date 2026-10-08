@@ -220,7 +220,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-lg shadow-red-700/30"
+              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1  shadow-red-700/30"
             >
               {loading ? "Signing In..." : "Login"}
               <ArrowRight className="h-3.5 w-3.5" />

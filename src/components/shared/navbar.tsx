@@ -200,7 +200,7 @@ export default function Navbar() {
             <Link href="/login">
               <Button 
                 size="sm"
-                className="rounded-full px-4 lg:px-5 text-[11px] lg:text-xs font-bold uppercase tracking-wider shadow-md hover:shadow-lg transition-all group cursor-pointer h-9"
+                className="rounded-full px-4 lg:px-5 text-[11px] lg:text-xs font-bold uppercase tracking-wider shadow-md hover: transition-all group cursor-pointer h-9"
                 style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}
               >
                 Sign In

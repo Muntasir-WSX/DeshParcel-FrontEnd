@@ -98,7 +98,7 @@ export default function PaymentsRevenuePage() {
         <div className="flex items-center gap-3">
           <div className="px-4 py-2.5 bg-[#050814] border border-emerald-500/30 rounded-2xl text-xs font-bold text-emerald-400 flex items-center gap-2">
             <DollarSign className="h-4 w-4" />
-            Total Payouts Done: ৳ {totalApprovedAmount.toLocaleString()}
+            Total Payouts Done: Tk {totalApprovedAmount.toLocaleString()}
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function PaymentsRevenuePage() {
         <div className="bg-[#0b132b] border border-amber-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
             <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Pending Cashout Requests</p>
-            <h3 className="text-2xl font-extrabold text-amber-400">৳ {totalPendingAmount.toLocaleString()}</h3>
+            <h3 className="text-2xl font-extrabold text-amber-400">Tk {totalPendingAmount.toLocaleString()}</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
             <Clock className="h-6 w-6" />
@@ -159,7 +159,7 @@ export default function PaymentsRevenuePage() {
                       <p className="text-[10px] text-gray-400">{w.rider?.email} • {w.rider?.phone || "No phone"}</p>
                     </td>
                     <td className="py-4 px-4 font-extrabold text-emerald-400 text-sm">
-                      ৳ {w.amount.toLocaleString()}
+                      Tk {w.amount.toLocaleString()}
                     </td>
                     <td className="py-4 px-4 text-gray-300 uppercase font-semibold">
                       {w.method || "Bank / Mobile Banking"}

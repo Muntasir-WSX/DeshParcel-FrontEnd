@@ -168,7 +168,7 @@ export default function RidersApprovalPage() {
                               riderId: r.id,
                               riderName: r.name,
                             })}
-                            className="h-8 px-4 text-[10px] font-bold uppercase bg-red-700 hover:bg-red-800 text-white cursor-pointer shadow-lg shadow-red-700/20 transition-all"
+                            className="h-8 px-4 text-[10px] font-bold uppercase bg-red-700 hover:bg-red-800 text-white cursor-pointer  shadow-red-700/20 transition-all"
                           >
                             Approve Rider
                           </Button>
@@ -211,7 +211,7 @@ export default function RidersApprovalPage() {
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={executeApproveRider}
-              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg shadow-red-700/30"
+              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-red-700/30"
             >
               Yes, Approve Rider
             </AlertDialogAction>

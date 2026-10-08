@@ -194,7 +194,7 @@ export default function ManageParcelsPage() {
                   <tr key={p.id} className="hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
                       <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                      <p className="text-[10px] text-red-500 uppercase font-semibold">{p.category} • ৳ {p.codAmount || 0}</p>
+                      <p className="text-[10px] text-red-500 uppercase font-semibold">{p.category} • Tk {p.codAmount || 0}</p>
                     </td>
                     <td className="py-4 px-4 text-gray-300">
                       <p className="font-semibold text-white">From: {p.sender?.name || "Customer"}</p>

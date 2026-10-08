@@ -299,7 +299,7 @@ export default function UsersControlPage() {
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={executeAction}
-              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg shadow-red-700/30"
+              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-red-700/30"
             >
               Confirm Action
             </AlertDialogAction>

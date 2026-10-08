@@ -134,7 +134,7 @@ export default function About() {
               <Link href="/Services">
                 <Button 
                   size="lg" 
-                  className="rounded-xl px-7 h-12 text-sm font-bold shadow-lg group cursor-pointer"
+                  className="rounded-xl px-7 h-12 text-sm font-bold  group cursor-pointer"
                   style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}
                 >
                   Explore Our Services

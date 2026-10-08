@@ -186,14 +186,14 @@ export default function TrackPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
             How It Works
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-black">
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white leading-[1.15]">
             Seamless & Transparent <span className="text-red-700">Tracking</span>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Search className="h-6 w-6" />
             </div>
@@ -203,7 +203,7 @@ export default function TrackPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Truck className="h-6 w-6" />
             </div>
@@ -213,7 +213,7 @@ export default function TrackPage() {
             </p>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>

@@ -170,7 +170,7 @@ export default function PricingPage() {
             {/* Calculate Button */}
             <Button
               type="submit"
-              className="w-full py-4 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white  shadow-lg  cursor-pointer"
+              className="w-full py-4 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white    cursor-pointer"
             >
               Calculate Shipping Cost
             </Button>
@@ -209,7 +209,7 @@ export default function PricingPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-700/40 transition-all">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4 hover:border-red-700/40 transition-all">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
@@ -226,7 +226,7 @@ export default function PricingPage() {
             </ul>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10 shadow-lg space-y-4 hover:border-red-700/40 transition-all">
+          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4 hover:border-red-700/40 transition-all">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Weight className="h-6 w-6" />
             </div>

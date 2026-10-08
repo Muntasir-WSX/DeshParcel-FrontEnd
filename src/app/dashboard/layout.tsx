@@ -3,13 +3,22 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { LayoutDashboard,Package,Users,Bike,ShieldCheck,Menu,ArrowLeft,DollarSign} from "lucide-react";
+import { 
+  LayoutDashboard, 
+  Package, 
+  Users, 
+  Bike, 
+  ShieldCheck, 
+  Menu, 
+  ArrowLeft, 
+  DollarSign,
+  Wallet,
+  ClipboardList
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { toast } from "sonner";
 import Logo from "@/components/logo/logo";
-
-
 
 export default function DashboardLayout({
   children,
@@ -34,7 +43,6 @@ export default function DashboardLayout({
     }
   }, [router]);
 
-
   if (!authorized) {
     return (
       <div className="min-h-screen bg-[#070b19] text-white flex items-center justify-center text-xs uppercase tracking-wider">
@@ -43,6 +51,7 @@ export default function DashboardLayout({
     );
   }
 
+ 
   const adminLinks = [
     { name: "Over all", href: "/dashboard/admin", icon: LayoutDashboard },
     { name: "Manage Parcels", href: "/dashboard/admin/parcels", icon: Package },
@@ -51,8 +60,21 @@ export default function DashboardLayout({
     { name: "Payments & Revenue", href: "/dashboard/admin/payments", icon: DollarSign },
   ];
 
+
+  const riderLinks = [
+    { name: "Rider Dashboard", href: "/dashboard/rider", icon: LayoutDashboard },
+    { name: "Assigned Parcels", href: "/dashboard/rider/parcels", icon: ClipboardList },
+    { name: "Earnings & Cashout", href: "/dashboard/rider/earnings", icon: Wallet },
+  ];
+
+ 
+  const currentLinks = userRole === "RIDER" ? riderLinks : adminLinks;
+  const panelTitle = userRole === "RIDER" ? "Rider Delivery Hub" : "Admin Control Panel";
+
   return (
     <div className="flex min-h-screen bg-[#070b19] text-white w-full overflow-hidden">
+      
+      {/* Desktop Sidebar */}
       <aside className="w-64 bg-[#0b132b] border-r border-red-700/20 hidden lg:flex flex-col p-6 space-y-8 shadow-2xl relative z-20">
         <div className="flex items-center justify-between">
           <Logo />
@@ -60,10 +82,10 @@ export default function DashboardLayout({
 
         <div className="space-y-1">
           <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 px-3 pb-2">
-            Admin Control Panel
+            {panelTitle}
           </p>
           <nav className="flex flex-col space-y-1.5">
-            {adminLinks.map((link) => {
+            {currentLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
               return (
@@ -72,7 +94,7 @@ export default function DashboardLayout({
                   href={link.href}
                   className={`flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all ${
                     isActive
-                      ? "bg-red-700 text-white  shadow-red-700"
+                      ? "bg-red-700 text-white  shadow-red-700/30"
                       : "text-gray-300 hover:bg-white/5 hover:text-white"
                   }`}
                 >
@@ -98,7 +120,7 @@ export default function DashboardLayout({
         </div>
       </aside>
 
-      {/* 2. Main Content Area */}
+      {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         
         {/* Top Navbar Header */}
@@ -108,7 +130,8 @@ export default function DashboardLayout({
             {/* Mobile & Tablet Drawer Trigger */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
-                <button 
+                {/** biome-ignore lint/a11y/useButtonType: <explanation> */}
+<button 
                   className="lg:hidden p-2.5 rounded-xl bg-[#050814] border border-white/10 text-white hover:bg-white/10 transition-colors cursor-pointer"
                   aria-label="Open Sidebar Menu"
                 >
@@ -122,10 +145,10 @@ export default function DashboardLayout({
 
                 <div className="space-y-1">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400 px-3 pb-2">
-                    Admin Control Panel
+                    {panelTitle}
                   </p>
                   <nav className="flex flex-col space-y-1.5">
-                    {adminLinks.map((link) => {
+                    {currentLinks.map((link) => {
                       const Icon = link.icon;
                       const isActive = pathname === link.href;
                       return (
@@ -163,19 +186,21 @@ export default function DashboardLayout({
 
             <div>
               <h1 className="font-heading font-extrabold text-base md:text-xl text-white tracking-wide">
-                Admin <span className="text-red-700">Dashboard</span>
+                {userRole === "RIDER" ? "Rider" : "Admin"} <span className="text-red-700">Dashboard</span>
               </h1>
               <p className="text-[11px] text-gray-400 hidden sm:block">
-                Manage parcels, users, and logistics metrics from one centralized hub.
+                {userRole === "RIDER" 
+                  ? "Manage assigned deliveries, earnings, and status workflows." 
+                  : "Manage parcels, users, and logistics metrics from one centralized hub."}
               </p>
             </div>
           </div>
 
-          {/* Right Header Status / Profile Badge */}
+          {/* Right Header Status Badge */}
           <div className="flex items-center gap-3">
             <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-500">
               <ShieldCheck className="h-3.5 w-3.5" />
-              Verified Admin
+              Verified {userRole === "RIDER" ? "Rider" : "Admin"}
             </span>
           </div>
         </header>

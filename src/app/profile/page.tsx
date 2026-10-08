@@ -138,7 +138,7 @@ export default function ProfilePage() {
 
             {/* Image Upload Icon if Editing */}
             {isEditing && (
-              <label className="absolute bottom-0 right-0 bg-red-700 hover:bg-red-800 p-1.5 rounded-full cursor-pointer shadow-lg transition-all">
+              <label className="absolute bottom-0 right-0 bg-red-700 hover:bg-red-800 p-1.5 rounded-full cursor-pointer  transition-all">
                 <Camera className="h-3.5 w-3.5 text-white" />
                 <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
               </label>

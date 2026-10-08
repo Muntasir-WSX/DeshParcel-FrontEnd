@@ -77,7 +77,7 @@ export default function HighlightsSection() {
           <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/90 via-[#070b19]/30 to-transparent" />
           
           {/* Floating Badge on Image */}
-          <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-[#0b132b]/80 backdrop-blur-md border border-white/10 space-y-1 shadow-lg">
+          <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-[#0b132b]/80 backdrop-blur-md border border-white/10 space-y-1 ">
             <h4 className="text-sm font-bold text-white">Nationwide Coverage</h4>
             <p className="text-xs text-gray-300">Empowering 35K+ merchants across all 64 districts with rapid door-to-door delivery.</p>
           </div>

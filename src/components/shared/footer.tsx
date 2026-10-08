@@ -75,7 +75,7 @@ export default function Footer() {
             </Link>
             <Link href="/Track" className="w-full sm:w-auto">
               <Button 
-                className="w-full sm:w-auto px-6 h-12 rounded-2xl text-xs font-bold uppercase tracking-wider text-white shadow-lg transition-all cursor-pointer bg-red-600 hover:bg-red-700 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 h-12 rounded-2xl text-xs font-bold uppercase tracking-wider text-white  transition-all cursor-pointer bg-red-600 hover:bg-red-700 flex items-center justify-center gap-2"
               >
                 <span>Track Parcel</span>
                 <ArrowRight className="h-4 w-4" />

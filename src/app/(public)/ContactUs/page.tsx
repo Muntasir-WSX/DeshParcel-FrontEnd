@@ -218,7 +218,7 @@ export default function ContactPage() {
                 placeholder="Search district, hub or manager..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-black/50 border border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[oklch(0.577_0.245_27.325)] transition-all shadow-lg"
+                className="w-full bg-black/50 border border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[oklch(0.577_0.245_27.325)] transition-all "
               />
             </div>
           </div>
