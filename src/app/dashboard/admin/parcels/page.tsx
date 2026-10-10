@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Package, CheckCircle2, Trash2, UserPlus, Truck, AlertCircle, MapPin } from "lucide-react";
+import {
+  Package,
+  CheckCircle2,
+  Trash2,
+  UserPlus,
+  Truck,
+  AlertCircle,
+  MapPin,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Loader from "@/components/shared/mainloading";
@@ -27,50 +35,65 @@ export default function ManageParcelsPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       // 1. Fetch All Parcels
       const parcelRes = await fetch(`${BACKEND_URL}/api/v1/admin/parcels`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const parcelResult = await parcelRes.json();
-      if (!parcelRes.ok) throw new Error(parcelResult.message || "Failed to fetch parcels");
-      const userRes = await fetch(`${BACKEND_URL}/api/v1/admin/users?limit=100`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      if (!parcelRes.ok)
+        throw new Error(parcelResult.message || "Failed to fetch parcels");
+      const userRes = await fetch(
+        `${BACKEND_URL}/api/v1/admin/users?limit=100`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const userResult = await userRes.json();
 
       setParcels(parcelResult.data);
-      
+
       if (userRes.ok) {
         const approvedRiders = userResult.data.result.filter(
-          (u: any) => u.role === "RIDER" && u.riderProfile?.isApproved
+          (u: any) => u.role === "RIDER" && u.riderProfile?.isApproved,
         );
         setRiders(approvedRiders);
       }
     } catch (error: any) {
-      toast.error("Error", { description: error.message || "Could not fetch parcel data." });
+      toast.error("Error", {
+        description: error.message || "Could not fetch parcel data.",
+      });
     } finally {
       setLoading(false);
     }
   };
 
- 
   const handleApproveParcel = async (parcelId: string) => {
     try {
       setActionLoading(parcelId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
-      const res = await fetch(`${BACKEND_URL}/api/v1/admin/parcels/${parcelId}/approve`, {
-        method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `${BACKEND_URL}/api/v1/admin/parcels/${parcelId}/approve`,
+        {
+          method: "PATCH",
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
 
       const result = await res.json();
-      if (!res.ok) throw new Error(result.message || "Failed to approve parcel");
+      if (!res.ok)
+        throw new Error(result.message || "Failed to approve parcel");
 
-      toast.success("Parcel Approved!", { description: "The parcel has been approved for dispatch." });
+      toast.success("Parcel Approved!", {
+        description: "The parcel has been approved for dispatch.",
+      });
       fetchParcelsAndRiders();
     } catch (error: any) {
       toast.error("Action Failed", { description: error.message });
@@ -86,7 +109,9 @@ export default function ManageParcelsPage() {
     try {
       setActionLoading(selectedParcel.id);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/parcels/assign`, {
         method: "POST",
@@ -103,7 +128,9 @@ export default function ManageParcelsPage() {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Failed to assign rider");
 
-      toast.success("Rider Assigned!", { description: "The parcel has been successfully assigned to the rider." });
+      toast.success("Rider Assigned!", {
+        description: "The parcel has been successfully assigned to the rider.",
+      });
       setIsAssignModalOpen(false);
       setSelectedParcel(null);
       setSelectedRiderId("");
@@ -122,21 +149,28 @@ export default function ManageParcelsPage() {
     try {
       setActionLoading(selectedParcel.id);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
-      const res = await fetch(`${BACKEND_URL}/api/v1/admin/parcels/${selectedParcel.id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const res = await fetch(
+        `${BACKEND_URL}/api/v1/admin/parcels/${selectedParcel.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ reason: rejectReason }),
         },
-        body: JSON.stringify({ reason: rejectReason }),
-      });
+      );
 
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Failed to reject parcel");
 
-      toast.success("Parcel Rejected", { description: "The parcel has been cancelled and removed." });
+      toast.success("Parcel Rejected", {
+        description: "The parcel has been cancelled and removed.",
+      });
       setIsRejectModalOpen(false);
       setSelectedParcel(null);
       setRejectReason("");
@@ -151,7 +185,7 @@ export default function ManageParcelsPage() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-       <LoadingSkeleton></LoadingSkeleton>
+        <LoadingSkeleton></LoadingSkeleton>
       </div>
     );
   }
@@ -164,7 +198,8 @@ export default function ManageParcelsPage() {
             Parcel <span className="text-red-700">Management Hub</span>
           </h2>
           <p className="text-xs text-gray-400">
-            Monitor system-wide shipments, approve orders, assign delivery riders, and manage fulfillment workflows.
+            Monitor system-wide shipments, approve orders, assign delivery
+            riders, and manage fulfillment workflows.
           </p>
         </div>
         <div className="px-4 py-2 bg-[#050814] border border-white/10 rounded-2xl text-xs font-bold text-gray-300">
@@ -193,28 +228,70 @@ export default function ManageParcelsPage() {
                 {parcels.map((p) => (
                   <tr key={p.id} className="hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
-                      <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                      <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • Tk {p.codAmount || 0}</p>
+                      <p className="font-mono font-bold text-white">
+                        {p.trackingId}
+                      </p>
+                      <p className="text-[10px] text-red-700 uppercase font-semibold">
+                        {p.category} • Tk{" "}
+                        {p.payment?.amount || p.codAmount || 0}
+                        <span
+                          className={`ml-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold ${
+                            p.payment?.status === "SUCCESS"
+                              ? "bg-emerald-500/20 text-emerald-400"
+                              : "bg-amber-500/20 text-amber-400"
+                          }`}
+                        >
+                          {p.payment?.status || "UNPAID"}
+                        </span>
+                        {p.status === "PENDING" && (
+  <Button
+    size="sm"
+    disabled={actionLoading === p.id || p.payment?.status !== 'SUCCESS'}
+    onClick={() => handleApproveParcel(p.id)}
+    className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-white cursor-pointer disabled:opacity-50"
+  >
+    {p.payment?.status === 'SUCCESS' ? 'Approve' : 'Payment Pending'}
+  </Button>
+)}
+                      </p>
                     </td>
                     <td className="py-4 px-4 text-gray-300">
-                      <p className="font-semibold text-white">From: {p.sender?.name || "Customer"}</p>
-                      <p className="text-[10px] text-gray-400">To: {p.receiverName} ({p.receiverPhone})</p>
+                      <p className="font-semibold text-white">
+                        From: {p.sender?.name || "Customer"}
+                      </p>
+                      <p className="text-[10px] text-gray-400">
+                        To: {p.receiverName} ({p.receiverPhone})
+                      </p>
                     </td>
                     <td className="py-4 px-4 text-gray-300 max-w-xs truncate">
-                      <p className="flex items-center gap-1"><MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}</p>
+                      <p className="flex items-center gap-1">
+                        <MapPin className="h-3 w-3 text-red-700 shrink-0" />{" "}
+                        {p.deliveryAddress}
+                      </p>
                     </td>
                     <td className="py-4 px-4">
-                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
-                        p.status === "DELIVERED" ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" :
-                        p.status === "APPROVED" ? "bg-blue-500/20 text-blue-400 border-blue-500/30" :
-                        p.status === "ASSIGNED" ? "bg-purple-500/20 text-purple-400 border-purple-500/30" :
-                        p.status === "CANCELLED" ? "bg-red-700/20 text-red-700 border-red-700/30" :
-                        "bg-amber-500/20 text-amber-400 border-amber-500/30"
-                      }`}>
+                      <span
+                        className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
+                          p.status === "DELIVERED"
+                            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                            : p.status === "APPROVED"
+                              ? "bg-blue-500/20 text-blue-400 border-blue-500/30"
+                              : p.status === "ASSIGNED"
+                                ? "bg-purple-500/20 text-purple-400 border-purple-500/30"
+                                : p.status === "CANCELLED"
+                                  ? "bg-red-700/20 text-red-700 border-red-700/30"
+                                  : "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                        }`}
+                      >
                         {p.status}
                       </span>
                       {p.rider && (
-                        <p className="text-[10px] text-gray-400 mt-1">Rider: <span className="text-white font-bold">{p.rider.name}</span></p>
+                        <p className="text-[10px] text-gray-400 mt-1">
+                          Rider:{" "}
+                          <span className="text-white font-bold">
+                            {p.rider.name}
+                          </span>
+                        </p>
                       )}
                     </td>
                     <td className="py-4 px-4 text-right space-x-2">
@@ -232,7 +309,10 @@ export default function ManageParcelsPage() {
                       {p.status === "APPROVED" && (
                         <Button
                           size="sm"
-                          onClick={() => { setSelectedParcel(p); setIsAssignModalOpen(true); }}
+                          onClick={() => {
+                            setSelectedParcel(p);
+                            setIsAssignModalOpen(true);
+                          }}
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-purple-600 hover:bg-purple-700 text-white cursor-pointer"
                         >
                           Assign Rider
@@ -242,7 +322,10 @@ export default function ManageParcelsPage() {
                       {p.status !== "DELIVERED" && p.status !== "CANCELLED" && (
                         <Button
                           size="sm"
-                          onClick={() => { setSelectedParcel(p); setIsRejectModalOpen(true); }}
+                          onClick={() => {
+                            setSelectedParcel(p);
+                            setIsRejectModalOpen(true);
+                          }}
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-700/30 cursor-pointer"
                         >
                           Reject
@@ -262,12 +345,15 @@ export default function ManageParcelsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
           <div className="bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
             <h3 className="text-base font-extrabold font-heading text-white">
-              Assign Rider for <span className="text-red-700">{selectedParcel.trackingId}</span>
+              Assign Rider for{" "}
+              <span className="text-red-700">{selectedParcel.trackingId}</span>
             </h3>
-            
+
             <form onSubmit={handleAssignSubmit} className="space-y-4">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-gray-400">Select Approved Rider</label>
+                <label className="text-[10px] font-bold uppercase text-gray-400">
+                  Select Approved Rider
+                </label>
                 <select
                   value={selectedRiderId}
                   onChange={(e) => setSelectedRiderId(e.target.value)}
@@ -309,12 +395,15 @@ export default function ManageParcelsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
           <div className="bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
             <h3 className="text-base font-extrabold font-heading text-white">
-              Reject Parcel <span className="text-red-700">{selectedParcel.trackingId}</span>
+              Reject Parcel{" "}
+              <span className="text-red-700">{selectedParcel.trackingId}</span>
             </h3>
-            
+
             <form onSubmit={handleRejectSubmit} className="space-y-4">
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-gray-400">Reason for Rejection</label>
+                <label className="text-[10px] font-bold uppercase text-gray-400">
+                  Reason for Rejection
+                </label>
                 <textarea
                   value={rejectReason}
                   onChange={(e) => setRejectReason(e.target.value)}
@@ -344,7 +433,6 @@ export default function ManageParcelsPage() {
           </div>
         </div>
       )}
-
     </div>
   );
 }

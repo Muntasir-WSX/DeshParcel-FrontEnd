@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import Logo from "@/components/logo/logo";
 import { toast } from "sonner";
 import { loginUserApi } from "@/app/(auth)/login/login";
+import { handleGoogleAuthentication } from "@/app/(auth)/login/googleAuth"; 
+import { GoogleLogin } from "@react-oauth/google";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
@@ -27,10 +29,8 @@ export default function LoginPage() {
   const handleLoginSubmit = async (loginData: { email: string; password: string }) => {
     setLoading(true);
     try {
-      // ব্যাকএন্ডের আসল API কল এখানে করা হচ্ছে
       const result = await loginUserApi(loginData);
 
-      // ব্যাকএন্ড থেকে টোকেন সফলভাবে আসলে localStorage-এ সেভ করা
       if (result && result.data && result.data.accessToken) {
         localStorage.setItem("accessToken", result.data.accessToken);
         localStorage.setItem("userRole", result.data.user?.role || "USER");
@@ -40,9 +40,6 @@ export default function LoginPage() {
         description: `Welcome back, ${result.data?.user?.name || "User"} (${result.data?.user?.role || "USER"})!`,
       });
 
-      console.log("Login Response Data:", result.data);
-
-      // সফল লগইনের পর হোম পেজে রিডাইরেক্ট করা
       setTimeout(() => {
         router.push("/");
       }, 1000);
@@ -61,7 +58,6 @@ export default function LoginPage() {
     handleLoginSubmit(formData);
   };
 
-  // One-Click Demo Login Handler with Exact Credentials
   const handleDemoLogin = (roleEmail: string, rolePass: string, roleName: string) => {
     const demoPayload = {
       email: roleEmail,
@@ -74,16 +70,9 @@ export default function LoginPage() {
     handleLoginSubmit(demoPayload);
   };
 
-  const handleGoogleSignIn = () => {
-    toast.info("Google Sign In", {
-      description: "Redirecting to Google Authentication...",
-    });
-  };
-
   return (
     <div className="w-full h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#070b19] text-white overflow-hidden">
-      
-      {/* Left Side: Full Cover Image */}
+    
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
@@ -220,7 +209,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1  shadow-red-700/30"
+              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-red-700/30"
             >
               {loading ? "Signing In..." : "Login"}
               <ArrowRight className="h-3.5 w-3.5" />
@@ -233,20 +222,25 @@ export default function LoginPage() {
               <div className="flex-grow border-t border-white/10"></div>
             </div>
 
-            {/* Google Sign In Button */}
-            <button
-              type="button"
-              onClick={handleGoogleSignIn}
-              className="w-full py-2.5 px-4 rounded-xl bg-[#050814] hover:bg-white/10 border border-white/15 text-white text-xs font-bold flex items-center justify-center gap-2.5 cursor-pointer shadow-sm"
-            >
-              <svg className="h-4 w-4" viewBox="0 0 24 24">
-                <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.9C6.2 7.1 8.9 5 12 5z" />
-                <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z" />
-                <path fill="#FBBC05" d="M5.3 14.7c-.2-.7-.4-1.5-.4-2.7s.2-2 .4-2.7L1.6 6.4C.6 8.4 0 10.6 0 13s.6 4.6 1.6 6.6l3.7-2.9z" />
-                <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.1 0-5.8-2.1-6.7-5.3L1.6 15.9C3.5 19.7 7.4 23 12 23z" />
-              </svg>
-              Sign in with Google
-            </button>
+            {/* Functional Google Sign In Component */}
+            <div className="flex justify-center w-full overflow-hidden rounded-xl">
+              <GoogleLogin
+                onSuccess={async (credentialResponse) => {
+                  if (credentialResponse.credential) {
+                    toast.loading("Authenticating with Google...", { id: "google-auth" });
+                    await handleGoogleAuthentication(credentialResponse.credential, "01712345678", router);
+                    toast.dismiss("google-auth");
+                  }
+                }}
+                onError={() => {
+                  toast.error("Google Sign-In Failed");
+                }}
+                useOneTap={false}
+                theme="filled_black"
+                shape="rectangular"
+                width="380"
+              />
+            </div>
 
             {/* Register Link */}
             <div className="text-center pt-1">
