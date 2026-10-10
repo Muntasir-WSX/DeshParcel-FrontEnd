@@ -44,7 +44,7 @@ export default function UsersControlPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/users?page=${pageNumber}&limit=10`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -75,7 +75,7 @@ export default function UsersControlPage() {
     try {
       setActionLoading(userId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       let endpoint = "";
       let method = "PATCH";

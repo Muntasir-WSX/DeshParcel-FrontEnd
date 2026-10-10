@@ -38,7 +38,7 @@ export default function BecomeRiderPage() {
     setLoading(true);
 
     try {
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/auth/register`, {
         method: "POST",

@@ -38,7 +38,7 @@ export default function RidersApprovalPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/users?limit=100`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -64,7 +64,7 @@ export default function RidersApprovalPage() {
     try {
       setActionLoading(riderId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/riders/${riderId}/approve`, {
         method: "PATCH",

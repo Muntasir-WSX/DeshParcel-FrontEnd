@@ -1,5 +1,5 @@
 export async function getLoggedInUserProfile() {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
   const token = localStorage.getItem("accessToken");
 
   if (!token) {
@@ -28,7 +28,7 @@ export async function updateLoggedInUserProfile(
   fields: { name: string; phone: string; email: string },
   profileImage: File | null,
 ) {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
   const token = localStorage.getItem("accessToken");
 
   if (!token) {

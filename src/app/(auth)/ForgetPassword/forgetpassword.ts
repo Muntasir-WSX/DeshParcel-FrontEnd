@@ -10,7 +10,7 @@ export interface ResetPasswordPayload {
 
 // 1. Send OTP for Forgot Password
 export async function forgotPasswordApi(data: ForgotPasswordPayload) {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
   const res = await fetch(`${BACKEND_URL}/api/v1/users/forgot-password`, {
     method: "POST",
@@ -29,7 +29,7 @@ export async function forgotPasswordApi(data: ForgotPasswordPayload) {
 
 // 2. Reset Password with OTP
 export async function resetPasswordApi(data: ResetPasswordPayload) {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
   const res = await fetch(`${BACKEND_URL}/api/v1/users/reset-password`, {
     method: "POST",

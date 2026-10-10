@@ -40,7 +40,7 @@ export default function CreateParcelPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       if (!token) {
         throw new Error("Your session has expired. Please log in again.");
@@ -69,7 +69,7 @@ export default function CreateParcelPage() {
 
       const contentType = res.headers.get("content-type") || "";
       const responseText = await res.text();
-      let result: { message?: string; error?: string; data?: { trackingId?: string } } | null = null;
+      let result: { message?: string; error?: string; data?: { id?: string; trackingId?: string } } | null = null;
 
       if (responseText && contentType.includes("application/json")) {
         try {
@@ -93,10 +93,17 @@ export default function CreateParcelPage() {
       }
 
       toast.success("Parcel Booked Successfully!", {
-        description: `Tracking ID: ${result.data?.trackingId || "Generated"}`,
+        description: `Redirecting to payment gateway...`,
       });
 
-      router.push("/dashboard/user");
+      // পার্সেল আইডি সংগ্রহ করে সরাসরি পেমেন্ট পেজে রিডাইরেক্ট
+      const parcelId = result.data?.id;
+      if (parcelId) {
+        router.push(`/payment/${parcelId}`);
+      } else {
+        router.push("/dashboard/user");
+      }
+
     } catch (error) {
       const message = error instanceof Error ? error.message : "Something went wrong.";
       toast.error("Booking Failed", { description: message });
@@ -281,7 +288,7 @@ export default function CreateParcelPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer shadow-lg shadow-red-700/30 transition-all flex items-center gap-2"
+                className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer shadow-red-700/30 transition-all flex items-center gap-2"
               >
                 {loading ? "Booking Parcel..." : "Confirm & Book Shipment"} <ArrowRight className="h-4 w-4" />
               </Button>

@@ -27,7 +27,7 @@ export default function ManageParcelsPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       // 1. Fetch All Parcels
       const parcelRes = await fetch(`${BACKEND_URL}/api/v1/admin/parcels`, {
@@ -60,7 +60,7 @@ export default function ManageParcelsPage() {
     try {
       setActionLoading(parcelId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/parcels/${parcelId}/approve`, {
         method: "PATCH",
@@ -86,7 +86,7 @@ export default function ManageParcelsPage() {
     try {
       setActionLoading(selectedParcel.id);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/parcels/assign`, {
         method: "POST",
@@ -122,7 +122,7 @@ export default function ManageParcelsPage() {
     try {
       setActionLoading(selectedParcel.id);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/parcels/${selectedParcel.id}`, {
         method: "DELETE",
