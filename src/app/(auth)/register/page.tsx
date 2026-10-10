@@ -37,7 +37,7 @@ export default function RegisterPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormInputs>({
+  } = useForm<z.input<typeof registerSchema>, undefined, RegisterFormInputs>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       role: "CUSTOMER",

@@ -92,6 +92,40 @@ export default function RiderOverviewPage() {
     }
   };
 
+  const handleCashoutSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      setActionLoading("cashout");
+      const token = localStorage.getItem("accessToken");
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+
+      const res = await fetch(`${BACKEND_URL}/api/v1/rider/cashout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ amount: Number(cashoutAmount), bkashNo }),
+      });
+
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.message || "Cashout failed");
+
+      toast.success("Cashout Requested Successfully!", {
+        description: `Your withdrawal ticket for Tk${cashoutAmount} has been submitted to admin.`,
+      });
+      setCashoutAmount("");
+      setBkashNo("");
+      setIsCashoutOpen(false);
+      await fetchRiderData();
+    } catch (error: any) {
+      toast.error("Cashout Failed", { description: error.message });
+    } finally {
+      setActionLoading(null);
+    }
+  };
+
 
   const executeStatusUpdate = async () => {
     if (!statusModal.parcelId || !statusModal.nextStatus) return;
