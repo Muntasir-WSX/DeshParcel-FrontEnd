@@ -22,11 +22,18 @@
   --border: oklch(0.923 0.003 48.717);
   --input: oklch(0.923 0.003 48.717);
   --ring: oklch(0.709 0.01 56.259);
+  
+  
   --chart-1: oklch(0.808 0.114 19.571);
+  
+  
   --chart-2: oklch(0.637 0.237 25.331);
+  
   --chart-3: oklch(0.577 0.245 27.325);
+  
   --chart-4: oklch(0.505 0.213 27.518);
   --chart-5: oklch(0.444 0.177 26.899);
+
   --radius: 0.45rem;
   --sidebar: oklch(0.985 0.001 106.423);
   --sidebar-foreground: oklch(0.147 0.004 49.25);
