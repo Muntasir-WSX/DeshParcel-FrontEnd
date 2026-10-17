@@ -151,7 +151,7 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("user@deshparcel.com", "Muntas!r25", "User")}
-                className="py-1.5 px-2 rounded-xl bg-red-700/15 border border-red-700/30 text-red-300 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
+                className="py-1.5 px-2 rounded-xl bg-red-700/15 border border-red-700/30 text-red-700 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
               >
                 User
               </button>

@@ -61,7 +61,7 @@ export default function DownloadApps() {
 
         <div className="max-w-3xl mx-auto text-center space-y-6 relative z-10">
           
-          <div className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-400 shadow-sm mx-auto">
+          <div className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm mx-auto">
             <Smartphone className="h-3.5 w-3.5 text-red-700" />
             DeshParcel Mobile App
           </div>

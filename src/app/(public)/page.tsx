@@ -5,8 +5,8 @@ import HeroSection from "@/components/Home/HeroSection";
 import HighlightsSection from "@/components/Home/HighlightsSection";
 import HowItWorks from "@/components/Home/HowItWorks";
 import PopularServices from "@/components/Home/PopularServices";
-import Testimonilas from "@/components/Home/Testimonilas/Testimonilas";
 import DownloadApps from "@/components/Home/DownloadApps";
+import Testimonials from "@/components/Home/Testimonials/page";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
       <HeroSection />
       <HighlightsSection />
       <PopularServices />
-      <Testimonilas />
+     <Testimonials />
       <HowItWorks />
       <CoverageSection />
       <Achievments></Achievments>
