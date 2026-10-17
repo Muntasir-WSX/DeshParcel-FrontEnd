@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Package, PlusCircle, MapPin, Trash2, Clock, CheckCircle2, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Package, PlusCircle, MapPin, Trash2, Clock, CheckCircle2, AlertTriangle, ShieldCheck, Star, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
@@ -33,6 +33,21 @@ export default function UserParcelsPage() {
     trackingId: "",
   });
 
+  // Review Modal State
+  const [reviewModal, setReviewModal] = useState<{
+    isOpen: boolean;
+    parcelId: string | null;
+    trackingId: string;
+  }>({
+    isOpen: false,
+    parcelId: null,
+    trackingId: "",
+  });
+
+  const [rating, setRating] = useState(5);
+  const [comment, setComment] = useState("");
+  const [submittingReview, setSubmittingReview] = useState(false);
+
   useEffect(() => {
     fetchMyParcels();
   }, []);
@@ -41,7 +56,7 @@ export default function UserParcelsPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/users/my-parcels`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -67,7 +82,7 @@ export default function UserParcelsPage() {
     try {
       setActionLoading(parcelId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/parcels/${parcelId}`, {
         method: "DELETE",
@@ -83,6 +98,43 @@ export default function UserParcelsPage() {
       toast.error("Action Failed", { description: error.message });
     } finally {
       setActionLoading(null);
+    }
+  };
+
+  const handleReviewSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!reviewModal.parcelId) return;
+
+    try {
+      setSubmittingReview(true);
+      const token = localStorage.getItem("accessToken");
+      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+
+      const res = await fetch(`${BACKEND_URL}/api/v1/users/my-reviews`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          parcelId: reviewModal.parcelId,
+          rating,
+          comment,
+        }),
+      });
+
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.message || "Failed to submit review");
+
+      toast.success("Review Submitted", { description: "Thank you for your valuable feedback!" });
+      setReviewModal({ isOpen: false, parcelId: null, trackingId: "" });
+      setRating(5);
+      setComment("");
+      fetchMyParcels();
+    } catch (error: any) {
+      toast.error("Review Failed", { description: error.message });
+    } finally {
+      setSubmittingReview(false);
     }
   };
 
@@ -112,7 +164,7 @@ export default function UserParcelsPage() {
             Total Parcels: <span className="text-red-700">{parcels.length}</span>
           </div>
           <Link href="/create-parcel">
-            <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-700 hover:bg-red-700 text-white rounded-2xl cursor-pointer  shadow-red-700/30">
+            <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-700 hover:bg-red-700 text-white rounded-2xl cursor-pointer shadow-red-700/30">
               <PlusCircle className="h-4 w-4 mr-1.5" /> Book New
             </Button>
           </Link>
@@ -146,12 +198,13 @@ export default function UserParcelsPage() {
                 {parcels.map((p) => {
                   const isPending = p.status === "PENDING";
                   const isDelivered = p.status === "DELIVERED";
+                  const hasReviewed = !!p.review;
 
                   return (
                     <tr key={p.id} className="hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4">
                         <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                        <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • {p.weight} kg</p>
+                        <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} - {p.weight} kg</p>
                       </td>
                       <td className="py-4 px-4 text-gray-300">
                         <p className="font-semibold text-white">{p.receiverName}</p>
@@ -180,6 +233,24 @@ export default function UserParcelsPage() {
                             Track
                           </Button>
                         </Link>
+
+                        {/* Give Review Button for Delivered Parcels */}
+                        {isDelivered && !hasReviewed && (
+                          <Button
+                            size="sm"
+                            onClick={() => setReviewModal({ isOpen: true, parcelId: p.id, trackingId: p.trackingId })}
+                            className="h-7 px-3 text-[10px] font-bold uppercase bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-black border border-amber-500/30 cursor-pointer"
+                          >
+                            <Star className="h-3 w-3 mr-1" /> Give Review
+                          </Button>
+                        )}
+
+                        {hasReviewed && (
+                          <span className="text-[10px] text-emerald-400 font-semibold inline-block px-2">
+                            Reviewed ✓
+                          </span>
+                        )}
+
                         {isPending && (
                           <Button
                             size="sm"
@@ -220,11 +291,81 @@ export default function UserParcelsPage() {
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={executeDeleteParcel}
-              className="bg-red-700 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-red-700/30"
+              className="bg-red-700 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
             >
               Yes, Cancel Parcel
             </AlertDialogAction>
           </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      {/* Shadcn AlertDialog for Review Submission */}
+      <AlertDialog open={reviewModal.isOpen} onOpenChange={(open) => !open && setReviewModal({ ...reviewModal, isOpen: false })}>
+        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+          <AlertDialogHeader className="space-y-3">
+            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
+              <Star className="h-5 w-5 fill-amber-400" />
+            </div>
+            <AlertDialogTitle className="font-heading font-extrabold text-lg">
+              Rate Your Experience
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
+              Leave a review and rating for tracking ID <span className="text-white font-bold">{reviewModal.trackingId}</span>. Your feedback helps us improve.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+
+          <form onSubmit={handleReviewSubmit} className="space-y-4 py-2">
+            {/* Star Rating Picker */}
+            <div className="space-y-1.5">
+              <label className="text-[10px] uppercase font-bold text-gray-400">Rating (1 to 5 Stars)</label>
+              <div className="flex items-center gap-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    type="button"
+                    key={star}
+                    onClick={() => setRating(star)}
+                    className="focus:outline-none transition-transform hover:scale-110 cursor-pointer"
+                  >
+                    <Star
+                      className={`h-6 w-6 ${
+                        star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-600"
+                      }`}
+                    />
+                  </button>
+                ))}
+                <span className="ml-2 text-xs font-bold text-amber-400">{rating} / 5 Stars</span>
+              </div>
+            </div>
+
+            {/* Comment Box */}
+            <div className="space-y-1.5">
+              <label className="text-[10px] uppercase font-bold text-gray-400">Your Feedback / Comment</label>
+              <textarea
+                required
+                rows={3}
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+                placeholder="Write your review here (min 2 characters)..."
+                className="w-full bg-[#050814] border border-white/10 rounded-xl p-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition-colors resize-none"
+              />
+            </div>
+
+            <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
+              <AlertDialogCancel 
+                type="button"
+                className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer"
+              >
+                Cancel
+              </AlertDialogCancel>
+              <Button
+                type="submit"
+                disabled={submittingReview}
+                className="bg-red-700 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
+              >
+                {submittingReview ? "Submitting..." : "Submit Review"}
+              </Button>
+            </AlertDialogFooter>
+          </form>
         </AlertDialogContent>
       </AlertDialog>
 

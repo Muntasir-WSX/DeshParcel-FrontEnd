@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, ArrowRight, ShieldCheck, UserCheck } from "lucide-react";
+import { Mail, Lock, ArrowRight, ShieldCheck, UserCheck, ShieldAlert, User, Bike } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/logo/logo";
 import { toast } from "sonner";
@@ -92,8 +92,8 @@ export default function LoginPage() {
         
         {/* Floating Content Card at Bottom */}
         <div className="absolute bottom-10 left-10 right-10 z-10 p-6 rounded-3xl bg-[#0b132b]/85 backdrop-blur-md border border-red-700/25 shadow-2xl space-y-2">
-          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-700">
-            <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
+          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-500">
+            <ShieldCheck className="h-3.5 w-3.5 text-red-500" />
             Secure Nationwide Logistics
           </div>
           <h2 className="text-2xl lg:text-3xl font-extrabold font-heading text-white">
@@ -130,37 +130,45 @@ export default function LoginPage() {
             </p>
           </div>
 
-          {/* ONE-CLICK DEMO LOGIN BUTTONS */}
+          {/* ONE-CLICK DEMO LOGIN BUTTONS (Distinct Role Colors) */}
           <div className="p-3 rounded-2xl bg-[#050814] border border-white/10 relative z-10 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 flex items-center gap-1">
-                <UserCheck className="h-3 w-3 text-red-700" />
+                <UserCheck className="h-3 w-3 text-red-500" />
                 One-Click Demo Login:
               </span>
             </div>
             <div className="grid grid-cols-3 gap-2">
+              {/* Admin Button: Deep Crimson / Red Tint */}
               <button
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("admin@deshparcel.com", "admin123", "Admin")}
-                className="py-1.5 px-2 rounded-xl bg-red-700/20 border border-red-700/40 text-red-700 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
+                className="py-2 px-2 rounded-xl bg-red-950/50 border border-red-700/60 text-red-400 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
+                <ShieldAlert className="h-3 w-3 text-red-500 group-hover:text-white" />
                 Admin
               </button>
+
+              {/* User Button: Emerald / Green Tint */}
               <button
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("user@deshparcel.com", "Muntas!r25", "User")}
-                className="py-1.5 px-2 rounded-xl bg-red-700/15 border border-red-700/30 text-red-700 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
+                className="py-2 px-2 rounded-xl bg-emerald-950/40 border border-emerald-600/40 text-emerald-400 text-[11px] font-bold hover:bg-emerald-600 hover:text-white cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
+                <User className="h-3 w-3 text-emerald-500" />
                 User
               </button>
+
+              {/* Rider Button: Amber / Orange Tint */}
               <button
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("rider@deshparcel.com", "Muntas!r25", "Rider")}
-                className="py-1.5 px-2 rounded-xl bg-red-700/10 border border-red-700/25 text-red-200 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
+                className="py-2 px-2 rounded-xl bg-amber-950/40 border border-amber-600/40 text-amber-400 text-[11px] font-bold hover:bg-amber-600 hover:text-white cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
+                <Bike className="h-3 w-3 text-amber-500" />
                 Rider
               </button>
             </div>
@@ -171,7 +179,7 @@ export default function LoginPage() {
             {/* Email Input */}
             <div className="space-y-1">
               <label className="text-[11px] font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                <Mail className="h-3 w-3 text-red-700" />
+                <Mail className="h-3 w-3 text-red-500" />
                 Email Address
               </label>
               <input
@@ -181,7 +189,7 @@ export default function LoginPage() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@example.com"
-                className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
+                className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-600 shadow-inner"
               />
             </div>
 
@@ -189,10 +197,10 @@ export default function LoginPage() {
             <div className="space-y-1">
               <div className="flex items-center justify-between">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                  <Lock className="h-3 w-3 text-red-700" />
+                  <Lock className="h-3 w-3 text-red-500" />
                   Password
                 </label>
-                <Link href="/ForgetPassword" className="text-[10px] text-red-700 font-semibold hover:underline">
+                <Link href="/ForgetPassword" className="text-[10px] text-red-500 font-semibold hover:underline">
                   Forgot Password?
                 </Link>
               </div>
@@ -203,7 +211,7 @@ export default function LoginPage() {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="••••••••"
-                className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700 shadow-inner"
+                className="w-full bg-[#050814] border border-white/10 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-600 shadow-inner"
               />
             </div>
 
@@ -211,7 +219,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-red-700/30"
+              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-lg shadow-red-600/20 transition-all"
             >
               {loading ? "Signing In..." : "Login"}
               <ArrowRight className="h-3.5 w-3.5" />
@@ -224,31 +232,44 @@ export default function LoginPage() {
               <div className="flex-grow border-t border-white/10"></div>
             </div>
 
-            {/* Functional Google Sign In Component */}
-            <div className="flex justify-center w-full overflow-hidden rounded-xl">
-              <GoogleLogin
-                onSuccess={async (credentialResponse) => {
-                  if (credentialResponse.credential) {
-                    toast.loading("Authenticating with Google...", { id: "google-auth" });
-                    await handleGoogleAuthentication(credentialResponse.credential, "01712345678", router);
-                    toast.dismiss("google-auth");
-                  }
-                }}
-                onError={() => {
-                  toast.error("Google Sign-In Failed");
-                }}
-                useOneTap={false}
-                theme="filled_black"
-                shape="rectangular"
-                width="380"
-              />
+            {/* Redesigned Custom Google Sign-In Trigger Button */}
+            <div className="flex justify-center w-full">
+              <div className="w-full relative overflow-hidden rounded-xl border border-white/15 bg-[#050814] hover:bg-white/5 transition-all duration-300 shadow-md group">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 gap-2.5 text-xs font-semibold text-gray-200">
+                  <svg className="h-4 w-4" viewBox="0 0 24 24">
+                    <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"/>
+                    <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.19v3.15C3.17 21.32 7.23 24 12 24z"/>
+                    <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.19C.43 8.12 0 9.87 0 12s.43 3.88 1.19 5.42l4.09-3.15z"/>
+                    <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.23 0 3.17 2.68 1.19 6.58l4.09 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+                  </svg>
+                  <span>Continue with Google</span>
+                </div>
+                <div className="opacity-0 cursor-pointer w-full flex justify-center scale-125 py-0.5">
+                  <GoogleLogin
+                    onSuccess={async (credentialResponse) => {
+                      if (credentialResponse.credential) {
+                        toast.loading("Authenticating with Google...", { id: "google-auth" });
+                        await handleGoogleAuthentication(credentialResponse.credential, "01712345678", router);
+                        toast.dismiss("google-auth");
+                      }
+                    }}
+                    onError={() => {
+                      toast.error("Google Sign-In Failed");
+                    }}
+                    useOneTap={false}
+                    theme="filled_black"
+                    shape="rectangular"
+                    width="400"
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Register Link */}
             <div className="text-center pt-1">
               <p className="text-xs text-gray-400">
                 Don&apos;t have an account yet?{" "}
-                <Link href="/register" className="text-red-700 font-bold hover:underline">
+                <Link href="/register" className="text-red-500 font-bold hover:underline">
                   Register Now
                 </Link>
               </p>

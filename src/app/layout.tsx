@@ -3,7 +3,6 @@ import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import PinnedSlogan from "@/components/shared/pinned-slogan";
 import { cn } from "@/lib/utils";
 
 const jetbrainsMonoHeading = JetBrains_Mono({
@@ -45,7 +44,6 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <SmoothScrollProvider>
-          <PinnedSlogan />
           <main className="flex-1">{children}</main>
           <Toaster position="bottom-right" richColors theme="light" />
         </SmoothScrollProvider>
