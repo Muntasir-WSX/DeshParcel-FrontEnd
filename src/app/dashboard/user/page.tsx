@@ -111,7 +111,7 @@ export default function UserParcelsPage() {
           <div className="px-4 py-2 bg-[#050814] border border-white/10 rounded-2xl text-xs font-bold text-gray-300">
             Total Parcels: <span className="text-red-700">{parcels.length}</span>
           </div>
-          <Link href="/dashboard/user/create-parcel">
+          <Link href="/create-parcel">
             <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-700 hover:bg-red-800 text-white rounded-2xl cursor-pointer  shadow-red-700/30">
               <PlusCircle className="h-4 w-4 mr-1.5" /> Book New
             </Button>

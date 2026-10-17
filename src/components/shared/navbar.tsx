@@ -36,7 +36,7 @@ export default function Navbar() {
       setIsLoggedIn(false);
       setUserRole(null);
     }
-  }, [pathname]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
