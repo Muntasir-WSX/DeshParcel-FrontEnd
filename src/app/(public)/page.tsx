@@ -7,6 +7,7 @@ import HowItWorks from "@/components/Home/HowItWorks";
 import PopularServices from "@/components/Home/PopularServices";
 import DownloadApps from "@/components/Home/DownloadApps";
 import Testimonials from "@/components/Home/Testimonials/page";
+import NewsletterCTA from "@/components/Home/newsletter";
 
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Achievments></Achievments>
       <Faq></Faq>
       <DownloadApps></DownloadApps>
+      <NewsletterCTA></NewsletterCTA>
     </div>
   );
 }
