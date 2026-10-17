@@ -147,7 +147,7 @@ export default function ForgotPasswordPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs  shadow-red-700/30"
+                className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs  shadow-red-700/30"
               >
                 {loading ? "Sending OTP..." : "Send Reset OTP"}
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -196,7 +196,7 @@ export default function ForgotPasswordPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-2  shadow-red-700/30"
+                className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-2  shadow-red-700/30"
               >
                 {loading ? "Resetting Password..." : "Update Password & Login"}
                 <CheckCircle2 className="h-4 w-4" />

@@ -42,7 +42,7 @@ export default function PaymentFailedPage() {
 
         <div className="pt-4 space-y-3">
           <Link href="/dashboard/user" className="block w-full">
-            <Button className="w-full h-12 rounded-xl bg-red-700 hover:bg-red-800 text-white text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg shadow-red-700/30 transition-all flex items-center justify-center gap-2">
+            <Button className="w-full h-12 rounded-xl bg-red-700 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer shadow-lg shadow-red-700/30 transition-all flex items-center justify-center gap-2">
               <LayoutDashboard className="h-4 w-4" /> Go to Dashboard Now
             </Button>
           </Link>

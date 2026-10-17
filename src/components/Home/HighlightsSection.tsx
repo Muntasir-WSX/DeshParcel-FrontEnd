@@ -25,7 +25,7 @@ const highlights = [
     id: 3,
     title: "Safe & Secure Handling", 
     desc: "We ensure full insurance coverage and careful item management. Your fragile and high-value items are safe with our trained professionals.",
-    bullets: ["Tamper-proof Packaging", "Value Insurance up to  Tk50k", "CCTV Monitored Hubs"],
+    bullets: ["Tamper-proof Packaging", "Value Insurance up to Tk50k", "CCTV Monitored Hubs"],
     link: "/Services"
   },
   { 
@@ -50,7 +50,7 @@ export default function HighlightsSection() {
       {/* Section Header */}
       <div className="text-center md:text-left mb-12 md:mb-16">
         <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/30 text-[11px] font-bold uppercase tracking-widest text-red-700 mb-3">
-          <ShieldCheck className="h-3.5 w-3.5" /> Why Choose Us
+          <ShieldCheck className="h-3.5 w-3.5 text-red-700" /> Why Choose Us
         </span>
         <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white">
           Premium Logistics <br className="hidden md:block" /> Experience
@@ -71,14 +71,14 @@ export default function HighlightsSection() {
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/a5c3c668a455ec9036065379018c6514_bvc4hu.jpg"
             alt="DeshParcel Logistics Operations"
             fill
-            className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 filter brightness-95"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 filter brightness-90 contrast-105"
           />
-          {/* Dark Blue & Redish Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/90 via-[#070b19]/30 to-transparent" />
+          {/* Theme-matching Dark Navy & Reddish Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/95 via-[#070b19]/40 to-transparent" />
           
           {/* Floating Badge on Image */}
-          <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-[#0b132b]/80 backdrop-blur-md border border-white/10 space-y-1 ">
-            <h4 className="text-sm font-bold text-white">Nationwide Coverage</h4>
+          <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-[#0b132b]/90 backdrop-blur-md border border-white/15 shadow-2xl space-y-1">
+            <h4 className="text-sm font-bold text-white font-heading">Nationwide Coverage</h4>
             <p className="text-xs text-gray-300">Empowering 35K+ merchants across all 64 districts with rapid door-to-door delivery.</p>
           </div>
         </motion.div>
@@ -142,7 +142,7 @@ export default function HighlightsSection() {
                           {/* View Details Link */}
                           <div className="pt-2">
                             <Link href={item.link} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider group w-fit">
-                              <span className="flex items-center justify-center w-7 h-7 rounded-xl bg-red-600 text-white group-hover:bg-red-700 transition-colors shadow-md">
+                              <span className="flex items-center justify-center w-7 h-7 rounded-xl bg-red-700 text-white group-hover:bg-red-700 transition-colors shadow-md">
                                 <ArrowUpRight className="h-3.5 w-3.5" />
                               </span>
                               <span className="text-red-700 group-hover:text-red-300 transition-colors">

@@ -42,7 +42,8 @@ export default function TrackPage() {
     <div className="w-full pb-20 text-white">
       
       {/* Hero Banner Section */}
-      <section className="relative w-full pt-48 pb-36 md:pt-60 md:pb-44 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
+ {/* Hero Banner Section */}
+      <section className="relative w-full pt-48 pb-36 md:pt-60 md:pb-44 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791013954/fa2ace3be2ddbd52671264bb3e7b7736_b23nfm.jpg"
@@ -51,14 +52,19 @@ export default function TrackPage() {
             priority
             className="object-cover object-center filter brightness-90 contrast-105"
           />
+          {/* Deep Dark Blue & Redish Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/75 backdrop-blur-[3px]" />
         </div>
+
+        {/* Glow Effects */}
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-red-600 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
           >
             <Package className="h-4 w-4 text-red-700" />
             Real-Time Shipment Tracking
@@ -114,7 +120,7 @@ export default function TrackPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="h-13 px-8 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white shadow-red-600/30 cursor-pointer shrink-0"
+              className="h-13 px-8 rounded-2xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white shadow-red-600/30 cursor-pointer shrink-0"
             >
               {loading ? "Searching..." : "Track Package"}
             </Button>

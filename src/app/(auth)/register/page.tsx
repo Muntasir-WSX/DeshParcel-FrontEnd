@@ -148,7 +148,7 @@ export default function RegisterPage() {
               {/* Sign In Redirect Button */}
               <div className="pt-2">
                 <Link href="/login">
-                  <Button className="w-full py-3 rounded-xl bg-red-700 hover:bg-red-800 text-white text-xs font-bold uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2">
+                  <Button className="w-full py-3 rounded-xl bg-red-700 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2">
                     <span>Sign In Now</span>
                     <LogIn className="h-4 w-4" />
                   </Button>
@@ -238,7 +238,7 @@ export default function RegisterPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-2"
+                className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-2"
               >
                 {loading ? "Registering Account..." : "Create Account"}
                 <ArrowRight className="h-3.5 w-3.5" />

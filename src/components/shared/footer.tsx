@@ -74,7 +74,7 @@ export default function Footer() {
             </Link>
             <Link href="/Track" className="w-full sm:w-auto">
               <Button 
-                className="w-full sm:w-auto px-6 h-11 rounded-2xl text-xs font-bold uppercase tracking-wider text-white transition-all cursor-pointer bg-red-600 hover:bg-red-700 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 h-11 rounded-2xl text-xs font-bold uppercase tracking-wider text-white transition-all cursor-pointer bg-red-700 hover:bg-red-700 flex items-center justify-center gap-2"
               >
                 <span>Track Parcel</span>
                 <ArrowRight className="h-4 w-4" />
@@ -101,7 +101,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-xl bg-[#0b132b] border border-white/10 flex items-center justify-center text-gray-300 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all shadow-sm"
+                  className="w-9 h-9 rounded-xl bg-[#0b132b] border border-white/10 flex items-center justify-center text-gray-300 hover:bg-red-700 hover:text-white hover:border-red-600 transition-all shadow-sm"
                 >
                   {social.icon}
                 </Link>

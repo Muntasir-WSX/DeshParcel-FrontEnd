@@ -79,7 +79,7 @@ export default function HowItWorks() {
               className="relative p-6 md:p-8 rounded-3xl bg-[#0b132b]/90 backdrop-blur-md border border-white/10 shadow-xl hover:border-red-700/50 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
             >
               {/* Top Accent Line on Hover */}
-              <div className="absolute top-0 left-0 w-full h-1 bg-red-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+              <div className="absolute top-0 left-0 w-full h-1 bg-red-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
 
               {/* Background Step Number Watermark */}
               <span className="absolute top-4 right-5 text-4xl md:text-5xl font-black text-white/5 font-heading group-hover:text-red-700/10 transition-colors">
@@ -87,7 +87,7 @@ export default function HowItWorks() {
               </span>
 
               <div>
-                <div className="w-11 h-11 rounded-2xl bg-red-600 text-white font-extrabold flex items-center justify-center mb-5 text-sm shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="w-11 h-11 rounded-2xl bg-red-700 text-white font-extrabold flex items-center justify-center mb-5 text-sm shadow-md group-hover:scale-110 transition-transform duration-300">
                   {item.step}
                 </div>
                 <h3 className="font-bold text-lg mb-2 text-white font-heading group-hover:text-red-700 transition-colors">

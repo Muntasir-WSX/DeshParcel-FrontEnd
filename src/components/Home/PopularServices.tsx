@@ -66,10 +66,10 @@ export default function PopularServices() {
                 className="group bg-[#0b132b]/90 backdrop-blur-md text-white rounded-3xl p-6 flex flex-col justify-between shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden border border-white/10 hover:border-red-700/50"
               >
                 {/* Red Top Border Accent on Hover */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-red-600 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                <div className="absolute top-0 left-0 w-full h-1 bg-red-700 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
 
                 <div>
-                  <div className="w-12 h-12 rounded-2xl bg-red-600/15 border border-red-700/30 flex items-center justify-center mb-5 text-red-700 group-hover:scale-110 group-hover:bg-red-600 group-hover:text-white transition-all duration-300 shadow-md">
+                  <div className="w-12 h-12 rounded-2xl bg-red-700/15 border border-red-700/30 flex items-center justify-center mb-5 text-red-700 group-hover:scale-110 group-hover:bg-red-700 group-hover:text-white transition-all duration-300 shadow-md">
                     <Icon className="h-5 w-5" />
                   </div>
                   <h3 className="font-bold text-lg mb-2 text-white font-heading leading-tight group-hover:text-red-700 transition-colors">{srv.title}</h3>
@@ -81,7 +81,7 @@ export default function PopularServices() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400">Starting at</span>
                     <span className="font-extrabold text-sm text-red-700">{srv.price}</span>
                   </div>
-                  <Link href="/Services" className="w-9 h-9 rounded-2xl bg-[#050814] border border-white/10 flex items-center justify-center group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300 shadow-sm">
+                  <Link href="/Services" className="w-9 h-9 rounded-2xl bg-[#050814] border border-white/10 flex items-center justify-center group-hover:bg-red-700 group-hover:border-red-600 transition-all duration-300 shadow-sm">
                     <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-white transition-colors duration-300" />
                   </Link>
                 </div>

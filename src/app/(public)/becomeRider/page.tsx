@@ -76,50 +76,52 @@ export default function BecomeRiderPage() {
       
       {/* 1. Banner & Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-56 md:pb-44 px-6 md:px-12 overflow-hidden shadow-2xl border-b border-white/10 bg-[#070b19]">
-        <div className="absolute inset-0 z-0 w-full h-full">
-          <Image
-            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791037739/643ed1c149e6fc7ca94c353f3bb0514d_en1cdw.jpg"
-            alt="Become a Rider Banner"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center filter brightness-90 contrast-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[2px]" />
-        </div>
+  <div className="absolute inset-0 z-0 w-full h-full">
+    <Image
+      src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791037739/643ed1c149e6fc7ca94c353f3bb0514d_en1cdw.jpg"
+      alt="Become a Rider Banner"
+      fill
+      priority
+      sizes="100vw"
+      className="object-cover object-center filter brightness-90 contrast-105"
+    />
+    {/* Deep Dark Blue & Redish Gradient Overlay */}
+    <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[2px]" />
+  </div>
 
-        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
-        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
+  {/* Pure Red Glow Accents (No Blue) */}
+  <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
+  <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
-          >
-            <Bike className="h-4 w-4 text-red-700" />
-            Join Our Delivery Fleet
-          </motion.div>
+  <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
+    >
+      <Bike className="h-4 w-4 text-red-700" />
+      Join Our Delivery Fleet
+    </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
-          >
-            Become a <span className="text-red-700">DeshParcel Rider</span>
-          </motion.h1>
+    <motion.h1
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}
+      className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
+    >
+      Become a <span className="text-red-700">DeshParcel Rider</span>
+    </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium"
-          >
-            Earn on your own schedule, deliver packages securely across your city, and grow with our nationwide logistics network.
-          </motion.p>
-        </div>
-      </section>
+    <motion.p
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2 }}
+      className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium"
+    >
+      Earn on your own schedule, deliver packages securely across your city, and grow with our nationwide logistics network.
+    </motion.p>
+  </div>
+</section>
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 py-20">
@@ -158,7 +160,7 @@ export default function BecomeRiderPage() {
               <div className="pt-4 flex gap-3 justify-center">
                 <Button
                   onClick={() => router.push("/login")}
-                  className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-red-700 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
                 >
                   Go to Login
                 </Button>
@@ -318,7 +320,7 @@ export default function BecomeRiderPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs"
+                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs"
                 >
                   {loading ? "Submitting Application..." : "Submit Rider Application"}
                   <ArrowRight className="h-4 w-4" />

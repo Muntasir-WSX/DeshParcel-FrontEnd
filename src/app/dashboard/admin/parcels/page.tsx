@@ -380,7 +380,7 @@ export default function ManageParcelsPage() {
                 </Button>
                 <Button
                   type="submit"
-                  className="rounded-xl text-xs bg-red-700 hover:bg-red-800 text-white cursor-pointer"
+                  className="rounded-xl text-xs bg-red-700 hover:bg-red-700 text-white cursor-pointer"
                 >
                   Confirm Assignment
                 </Button>
@@ -424,7 +424,7 @@ export default function ManageParcelsPage() {
                 </Button>
                 <Button
                   type="submit"
-                  className="rounded-xl text-xs bg-red-700 hover:bg-red-800 text-white cursor-pointer"
+                  className="rounded-xl text-xs bg-red-700 hover:bg-red-700 text-white cursor-pointer"
                 >
                   Confirm Rejection
                 </Button>

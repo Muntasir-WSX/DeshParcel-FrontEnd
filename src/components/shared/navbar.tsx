@@ -190,7 +190,7 @@ export default function Navbar() {
               <Button 
                 size="sm"
                 onClick={handleLogout}
-                className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white h-9 cursor-pointer transition-all"
+                className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white h-9 cursor-pointer transition-all"
               >
                 <LogOut className="mr-1 h-3.5 w-3.5" />
                 Logout
@@ -274,7 +274,7 @@ export default function Navbar() {
             {isLoggedIn ? (
               <Button 
                 onClick={() => { setMobileMenuOpen(false); handleLogout(); }} 
-                className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-red-800 tracking-wider h-10 cursor-pointer"
+                className="w-full rounded-full justify-center text-xs font-bold uppercase bg-red-700 text-white hover:bg-red-700 tracking-wider h-10 cursor-pointer"
               >
                 <LogOut className="mr-2 h-4 w-4" />
                 Logout

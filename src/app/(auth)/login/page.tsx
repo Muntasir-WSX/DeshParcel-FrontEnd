@@ -73,11 +73,11 @@ export default function LoginPage() {
   return (
     <div className="w-full h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#070b19] text-white overflow-hidden">
     
-      <motion.div 
+     <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="hidden lg:block lg:col-span-7 relative h-full w-full overflow-hidden"
+        className="hidden lg:block lg:col-span-7 relative h-full w-full overflow-hidden bg-[#070b19]"
       >
         <Image
           src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791045600/26f88bef5ac4b46e3d4fccde85cda8c2_krkqgb.jpg"
@@ -85,11 +85,13 @@ export default function LoginPage() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center filter brightness-95"
+          className="object-cover object-center filter brightness-90 contrast-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/90 via-[#070b19]/20 to-transparent" />
+        {/* Deep Dark Blue & Redish Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/95 via-[#070b19]/40 to-transparent" />
         
-        <div className="absolute bottom-10 left-10 right-10 z-10 space-y-2">
+        {/* Floating Content Card at Bottom */}
+        <div className="absolute bottom-10 left-10 right-10 z-10 p-6 rounded-3xl bg-[#0b132b]/85 backdrop-blur-md border border-red-700/25 shadow-2xl space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
             Secure Nationwide Logistics
@@ -141,7 +143,7 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("admin@deshparcel.com", "admin123", "Admin")}
-                className="py-1.5 px-2 rounded-xl bg-red-600/20 border border-red-700/40 text-red-700 text-[11px] font-bold hover:bg-red-600 hover:text-white cursor-pointer text-center transition-all"
+                className="py-1.5 px-2 rounded-xl bg-red-700/20 border border-red-700/40 text-red-700 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
               >
                 Admin
               </button>
@@ -209,7 +211,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-800 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-red-700/30"
+              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-red-700/30"
             >
               {loading ? "Signing In..." : "Login"}
               <ArrowRight className="h-3.5 w-3.5" />

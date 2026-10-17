@@ -79,25 +79,31 @@ export default function ContactPage() {
     <div className="w-full pb-20">
       
       {/* 1. Cover Hero Section */}
-      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20">
+      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
+        
+        {/* Background Image & Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/0baf4b9ee1a28ce305fb45c49d925e42_ru5dbc.jpg"
             alt="DeshParcel Contact Cover"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-center filter brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[oklch(0.15_0.04_255)]/95 via-[oklch(0.18_0.04_255)]/85 to-black/70 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[1px]" />
         </div>
+
+        {/* Glow Effects */}
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
           >
-            <MapPin className="h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
+            <MapPin className="h-4 w-4 text-red-700" />
             Get in Touch With Us
           </motion.div>
 
@@ -107,14 +113,14 @@ export default function ContactPage() {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
           >
-            We Are Here to Help Your <span style={{ color: "oklch(0.577 0.245 27.325)" }}>Business Grow</span>
+            We Are Here to Help Your <span className="text-red-700">Business Grow</span>
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-200 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Reach out to our executive leadership or connect directly with our nationwide hub managers across Bangladesh.
           </motion.p>
@@ -182,24 +188,24 @@ export default function ContactPage() {
       </section>
 
       {/* 3. Nationwide Hub Managers Directory with Background Image */}
-      <section className="relative max-w-7xl mx-auto px-6 md:px-12 mb-28 rounded-[2.5rem] overflow-hidden py-20 text-white shadow-2xl border border-white/10">
+  <section className="relative max-w-7xl mx-auto px-6 md:px-12 mb-28 rounded-[2.5rem] overflow-hidden py-20 text-white shadow-2xl border border-red-700/25 bg-[#0b132b]">
         
         {/* Background Image 1 */}
-        <div className="absolute inset-0 z-0 w-full h-full">
+        <div className="absolute inset-0 z-0 w-full h-full opacity-15">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/96c6c5e25f9319e4635cf32fdc6cdb14_sn2npv.jpg"
             alt="Hub Network Background"
             fill
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[oklch(0.15_0.04_255)]/95 via-[oklch(0.18_0.04_255)]/90 to-black/95 backdrop-blur-[2px]" />
         </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#070b19]/95 via-[#070b19]/90 to-black/95 backdrop-blur-[2px]" />
 
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white mb-3">
-                <MapPin className="h-3.5 w-3.5 text-[oklch(0.577_0.245_27.325)]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 mb-3 shadow-sm">
+                <MapPin className="h-3.5 w-3.5 text-red-700" />
                 Nationwide Coverage
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white">
@@ -218,7 +224,7 @@ export default function ContactPage() {
                 placeholder="Search district, hub or manager..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-black/50 border border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[oklch(0.577_0.245_27.325)] transition-all "
+                className="w-full bg-[#070b19]/90 border border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-red-700 transition-all shadow-md"
               />
             </div>
           </div>
@@ -229,27 +235,27 @@ export default function ContactPage() {
               filteredHubs.map((hub, idx) => (
                 <div 
                   key={idx}
-                  className="p-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 hover:border-[oklch(0.577_0.245_27.325)]/80 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group"
+                  className="p-6 rounded-2xl bg-[#070b19]/80 backdrop-blur-md border border-white/10 hover:border-red-700/60 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="px-3.5 py-1 rounded-full bg-[oklch(0.577_0.245_27.325)] text-white text-xs font-bold uppercase tracking-wider shadow-sm">
+                    <span className="px-3 py-1 rounded-full bg-red-700/15 border border-red-700/30 text-red-700 text-xs font-bold uppercase tracking-wider shadow-sm">
                       {hub.district}
                     </span>
                     <span className="text-xs text-gray-300 font-medium">{hub.hub}</span>
                   </div>
 
                   <div>
-                    <p className="text-base font-bold text-white font-heading group-hover:text-[oklch(0.577_0.245_27.325)] transition-colors">{hub.manager}</p>
+                    <p className="text-base font-bold text-white font-heading group-hover:text-red-500 transition-colors">{hub.manager}</p>
                     <p className="text-xs text-gray-400 mt-0.5">Authorized Hub Manager</p>
                   </div>
 
                   <div className="pt-3 border-t border-white/10 space-y-2 text-xs text-gray-300">
                     <div className="flex items-center gap-2.5">
-                      <Phone className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
+                      <Phone className="h-4 w-4 text-red-700 shrink-0" />
                       <span className="font-medium">{hub.phone}</span>
                     </div>
                     <div className="flex items-center gap-2.5">
-                      <Mail className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
+                      <Mail className="h-4 w-4 text-red-700 shrink-0" />
                       <span className="truncate">{hub.email}</span>
                     </div>
                   </div>

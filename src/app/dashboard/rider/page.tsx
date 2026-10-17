@@ -387,7 +387,7 @@ export default function RiderOverviewPage() {
                 <Button
                   type="submit"
                   disabled={actionLoading === "cashout"}
-                  className="rounded-xl text-xs bg-red-700 hover:bg-red-800 text-white cursor-pointer"
+                  className="rounded-xl text-xs bg-red-700 hover:bg-red-700 text-white cursor-pointer"
                 >
                   Submit Request
                 </Button>
@@ -417,7 +417,7 @@ export default function RiderOverviewPage() {
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={executeStatusUpdate}
-              className="bg-red-700 hover:bg-red-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-red-700/30"
+              className="bg-red-700 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-red-700/30"
             >
               Confirm Update
             </AlertDialogAction>

@@ -5,8 +5,20 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, User, Search, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function HeroSection() {
+  const [trackingId, setTrackingId] = useState("");
+  const router = useRouter();
+
+  const handleTrackSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (trackingId.trim()) {
+      router.push(`/Track?trackingId=${encodeURIComponent(trackingId.trim())}`);
+    }
+  };
+
   return (
     <section className="relative w-full pt-36 pb-32 md:pt-44 md:pb-40 mb-32 overflow-visible bg-[#070b19]">
       
@@ -39,13 +51,13 @@ export default function HeroSection() {
         >
           {/* Top Small Trust Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] md:text-xs font-semibold tracking-wide text-white/90 shadow-sm w-fit">
-            <ShieldCheck className="h-3.5 w-3.5 md:h-4 md:w-4 text-[oklch(0.577_0.245_27.325)]" />
+            <ShieldCheck className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-700" />
             Your Trusted Logistics Partner
           </div>
 
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight leading-[1.15] text-white font-heading">
-            <span style={{ color: "oklch(0.577 0.245 27.325)" }}>Trusted & Reliable</span> <br />
+            <span className="text-red-700">Trusted & Reliable</span> <br />
             Courier Service in <br className="hidden sm:block" />
             Bangladesh
           </h1>
@@ -57,11 +69,10 @@ export default function HeroSection() {
 
           {/* Actions Row: Button + Track Input */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2 md:pt-4">
-            <Link href="/dashboard/create-parcel" className="w-full sm:w-auto">
+            <Link href="/create-parcel" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto rounded-xl px-6 md:px-8 h-14 text-sm font-bold shadow-xl hover:shadow-2xl transition-all group cursor-pointer"
-                style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}
+                className="w-full sm:w-auto rounded-xl px-6 md:px-8 h-14 text-sm font-bold shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-700 hover:bg-red-700 text-white"
               >
                 <User className="mr-2 h-5 w-5" />
                 Send a Parcel
@@ -69,20 +80,22 @@ export default function HeroSection() {
               </Button>
             </Link>
             
-            {/* Track Parcel Input Wrapper */}
-            <div className="flex items-center w-full sm:max-w-sm bg-[#050814]/90 backdrop-blur-md rounded-xl p-1.5 shadow-xl border border-white/20 focus-within:ring-2 focus-within:ring-[oklch(0.577_0.245_27.325)] transition-all">
+            {/* Track Parcel Form Wrapper */}
+            <form onSubmit={handleTrackSubmit} className="flex items-center w-full sm:max-w-sm bg-[#050814]/90 backdrop-blur-md rounded-xl p-1.5 shadow-xl border border-white/20 focus-within:ring-2 focus-within:ring-red-700 transition-all">
               <div className="pl-3 pr-2 text-gray-400">
                 <Search className="h-5 w-5 text-red-700" />
               </div>
               <input 
                 type="text" 
+                value={trackingId}
+                onChange={(e) => setTrackingId(e.target.value)}
                 placeholder="Track Parcel..." 
                 className="flex-1 bg-transparent border-none outline-none text-white text-sm font-medium px-2 placeholder:text-gray-400 h-11"
               />
-              <Button size="icon" className="h-11 w-11 rounded-lg shrink-0 cursor-pointer" style={{ backgroundColor: "oklch(0.577 0.245 27.325)", color: "#fff" }}>
+              <Button type="submit" size="icon" className="h-11 w-11 rounded-lg shrink-0 cursor-pointer bg-red-700 hover:bg-red-700 text-white">
                 <ArrowRight className="h-4 w-4" />
               </Button>
-            </div>
+            </form>
           </div>
         </motion.div>
 

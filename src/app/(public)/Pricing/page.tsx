@@ -48,24 +48,29 @@ export default function PricingPage() {
     <div className="w-full pb-20 text-white">
       
       {/* 1. Hero Section */}
-      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
+  <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
             alt="DeshParcel Pricing Banner"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-center filter brightness-90"
           />
+          {/* Deep Dark Blue & Redish Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/80 backdrop-blur-[3px]" />
         </div>
+
+        {/* Glow Effects */}
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white-500/15 backdrop-blur-md border border-white text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
           >
             <Zap className="h-4 w-4 text-red-700" />
             Transparent & Affordable Rates
@@ -170,7 +175,7 @@ export default function PricingPage() {
             {/* Calculate Button */}
             <Button
               type="submit"
-              className="w-full py-4 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white    cursor-pointer"
+              className="w-full py-4 rounded-2xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white    cursor-pointer"
             >
               Calculate Shipping Cost
             </Button>

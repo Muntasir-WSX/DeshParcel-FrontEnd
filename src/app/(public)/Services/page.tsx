@@ -10,23 +10,28 @@ export default function ServicesPage() {
     <div className="w-full pb-20  text-white">
       
       {/* 1. Hero Section */}
-      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-white/10">
+    <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
             alt="DeshParcel Services Banner"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-center filter brightness-90"
           />
+          {/* Deep Dark Blue & Redish Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/80 backdrop-blur-[3px]" />
         </div>
+
+        {/* Glow Effects */}
+        <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-red-600 shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
           >
             <Truck className="h-4 w-4 text-red-700" />
             Reliable Logistics Solutions
@@ -71,7 +76,7 @@ export default function ServicesPage() {
           {/* Service Card 1 */}
           <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-600 group-hover:text-white transition-all">
+              <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-700 group-hover:text-white transition-all">
                 <Truck className="h-7 w-7" />
               </div>
               <h3 className="text-2xl font-bold font-heading text-white">Express Parcel Delivery</h3>
@@ -88,7 +93,7 @@ export default function ServicesPage() {
           {/* Service Card 2 */}
           <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-600 group-hover:text-white transition-all">
+              <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-700 group-hover:text-white transition-all">
                 <PackageCheck className="h-7 w-7" />
               </div>
               <h3 className="text-2xl font-bold font-heading text-white">E-commerce Fulfillment</h3>
@@ -105,7 +110,7 @@ export default function ServicesPage() {
           {/* Service Card 3 */}
           <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
             <div className="space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-600 group-hover:text-white transition-all">
+              <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-700 group-hover:text-white transition-all">
                 <Building2 className="h-7 w-7" />
               </div>
               <h3 className="text-2xl font-bold font-heading text-white">Corporate B2B Logistics</h3>
@@ -177,7 +182,7 @@ export default function ServicesPage() {
       <section className="max-w-5xl mx-auto px-6">
         <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-10 md:p-16 text-center space-y-6 shadow-2xl relative overflow-hidden">
           
-          <div className="absolute inset-0 bg-red-600/5 pointer-events-none" />
+          <div className="absolute inset-0 bg-red-700/5 pointer-events-none" />
 
           <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white relative z-10">
             Ready to Streamline Your Deliveries?
@@ -187,7 +192,7 @@ export default function ServicesPage() {
           </p>
 
           <div className="pt-2 relative z-10">
-            <Button className="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider  shadow-red-600/30 cursor-pointer">
+            <Button className="px-8 py-4 rounded-full bg-red-700 hover:bg-red-700 text-white font-bold uppercase tracking-wider  shadow-red-600/30 cursor-pointer">
               Get Started Today
             </Button>
           </div>
