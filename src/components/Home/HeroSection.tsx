@@ -37,7 +37,7 @@ export default function HeroSection() {
 
       {/* Glowing Accents behind hero content */}
       <div className="absolute top-20 left-1/4 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-0" />
-      <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-0" />
+      <div className="absolute bottom-10 right-1/4 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-0" />
 
       {/* Main Content Container */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -50,7 +50,7 @@ export default function HeroSection() {
           className="lg:col-span-7 space-y-6 md:space-y-8"
         >
           {/* Top Small Trust Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] md:text-xs font-semibold tracking-wide text-white/90 shadow-sm w-fit">
+          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] md:text-xs font-semibold tracking-wide text-white/90 shadow-sm w-fit">
             <ShieldCheck className="h-3.5 w-3.5 md:h-4 md:w-4 text-red-700" />
             Your Trusted Logistics Partner
           </div>
@@ -125,11 +125,11 @@ export default function HeroSection() {
         className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[92%] sm:w-[85%] max-w-5xl bg-[#0b132b] border border-red-700/25 rounded-2xl md:rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] z-20 py-6 md:py-8 px-4 md:px-6 hidden sm:grid grid-cols-3 gap-0 divide-x divide-white/10 text-white"
       >
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
-          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">3500</h3>
+          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">12+</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Merchants</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">
-          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">1.5M+</h3>
+          <h3 className="text-3xl md:text-4xl font-extrabold text-white font-heading mb-1">More than 1000+</h3>
           <p className="text-[10px] md:text-xs font-bold text-gray-400 uppercase tracking-widest">Deliveries</p>
         </div>
         <div className="flex flex-col items-center justify-center text-center px-2 md:px-4">

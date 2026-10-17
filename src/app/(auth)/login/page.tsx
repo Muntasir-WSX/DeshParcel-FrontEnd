@@ -92,7 +92,7 @@ export default function LoginPage() {
         
         {/* Floating Content Card at Bottom */}
         <div className="absolute bottom-10 left-10 right-10 z-10 p-6 rounded-3xl bg-[#0b132b]/85 backdrop-blur-md border border-red-700/25 shadow-2xl space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-700">
+          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
             Secure Nationwide Logistics
           </div>
@@ -115,7 +115,7 @@ export default function LoginPage() {
         <div className="w-full max-w-md bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-7 shadow-2xl relative space-y-3.5">
           
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="flex flex-col items-center justify-center relative z-10 pb-2 border-b border-white/10">
             <Logo />
@@ -151,7 +151,7 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("user@deshparcel.com", "Muntas!r25", "User")}
-                className="py-1.5 px-2 rounded-xl bg-blue-600/20 border border-blue-500/40 text-blue-400 text-[11px] font-bold hover:bg-blue-600 hover:text-white cursor-pointer text-center transition-all"
+                className="py-1.5 px-2 rounded-xl bg-red-700/15 border border-red-700/30 text-red-300 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
               >
                 User
               </button>
@@ -159,7 +159,7 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("rider@deshparcel.com", "Muntas!r25", "Rider")}
-                className="py-1.5 px-2 rounded-xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 text-[11px] font-bold hover:bg-emerald-600 hover:text-white cursor-pointer text-center transition-all"
+                className="py-1.5 px-2 rounded-xl bg-red-700/10 border border-red-700/25 text-red-200 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all"
               >
                 Rider
               </button>

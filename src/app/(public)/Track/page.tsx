@@ -64,7 +64,7 @@ export default function TrackPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
+            className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
           >
             <Package className="h-4 w-4 text-red-700" />
             Real-Time Shipment Tracking
@@ -95,7 +95,7 @@ export default function TrackPage() {
         <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="text-center max-w-xl mx-auto mb-8 space-y-2 relative z-10">
             <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">

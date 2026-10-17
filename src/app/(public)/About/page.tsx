@@ -59,7 +59,7 @@ export default function About() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
+      className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
     >
       <ShieldCheck className="h-4 w-4 text-red-700" />
       About DeshParcel Logistics
@@ -96,7 +96,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-6 space-y-6"
           >
-            <div className="inline-flex items-center gap-2">
+            <div className="trust-badge inline-flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-red-700" />
               <span className="text-xs font-bold uppercase tracking-widest text-red-700">
                 Our Journey

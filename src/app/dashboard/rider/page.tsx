@@ -176,7 +176,7 @@ export default function RiderOverviewPage() {
       {/* Rider Header & Wallet Banner */}
       <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
+          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <Bike className="h-3.5 w-3.5" />
             Verified Rider Partner
           </div>

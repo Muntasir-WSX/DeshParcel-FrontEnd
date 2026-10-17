@@ -49,7 +49,7 @@ export default function HighlightsSection() {
       
       {/* Section Header */}
       <div className="text-center md:text-left mb-12 md:mb-16">
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/30 text-[11px] font-bold uppercase tracking-widest text-red-700 mb-3">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/30 text-[11px] font-bold uppercase tracking-widest text-white/90 mb-3">
           <ShieldCheck className="h-3.5 w-3.5 text-red-700" /> Why Choose Us
         </span>
         <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white">
@@ -88,7 +88,7 @@ export default function HighlightsSection() {
           
           {/* Glowing background accents */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 divide-y divide-white/10">
             {highlights.map((item) => {

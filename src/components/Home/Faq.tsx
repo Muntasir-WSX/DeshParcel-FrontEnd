@@ -29,7 +29,7 @@ export default function Faq() {
   return (
     <section className="max-w-5xl mx-auto px-6 md:px-12 my-28 text-white">
       <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-        <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm">
+        <span className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm">
           <HelpCircle className="h-3.5 w-3.5 text-red-700" />
           Got Questions?
         </span>

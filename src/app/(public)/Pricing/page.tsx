@@ -70,7 +70,7 @@ export default function PricingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
+            className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm"
           >
             <Zap className="h-4 w-4 text-red-700" />
             Transparent & Affordable Rates
@@ -102,10 +102,10 @@ export default function PricingPage() {
           
           {/* Glowing Red & Blue Accents */}
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="text-center max-w-xl mx-auto mb-10 space-y-2 relative z-10">
-            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-700">
+            <div className="trust-badge inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-700">
               <Calculator className="h-4 w-4 text-red-700" />
               Smart Rate Calculator
             </div>

@@ -42,14 +42,14 @@ export default function Footer() {
 
       {/* Glow Effects */}
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         
        {/* Quick Parcel Estimate & Booking CTA */}
         <div className="bg-[#0b132b] backdrop-blur-md border border-red-700/25 rounded-3xl p-6 md:p-10 mb-14 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-2 text-center lg:text-left relative z-10">
             <span className="text-[10px] font-bold uppercase tracking-widest text-red-700 bg-red-700/10 px-3 py-1 rounded-full border border-red-700/20">

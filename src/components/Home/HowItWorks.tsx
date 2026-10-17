@@ -29,7 +29,7 @@ export default function HowItWorks() {
 
       {/* Decorative Glow Effects */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
 
       {/* Content Container */}
       <div className="relative z-10">
@@ -40,7 +40,7 @@ export default function HowItWorks() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border  border-red-700/30 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm mb-3"
+            className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border  border-red-700/30 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm mb-3"
           >
             <ShieldCheck className="h-4 w-4 text-red-700" />
             Simple Process

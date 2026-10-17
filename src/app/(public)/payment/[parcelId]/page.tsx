@@ -127,7 +127,7 @@ export default function PaymentPage({ params }: { params: Promise<{ parcelId: st
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="text-center space-y-2 border-b border-white/10 pb-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
+          <div className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5" /> Secure Checkout
           </div>
           <h1 className="text-2xl font-extrabold font-heading text-white">Complete Your Payment</h1>

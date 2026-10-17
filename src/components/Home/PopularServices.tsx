@@ -30,14 +30,14 @@ export default function PopularServices() {
 
       {/* Decorative Glow Effects */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10">
         
         {/* Compact Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-widest text-red-700 mb-3">
+            <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-red-700/30 text-xs font-bold uppercase tracking-widest text-white/90  mb-3">
               <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
               Our Offerings
             </div>

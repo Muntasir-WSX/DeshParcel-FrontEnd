@@ -161,7 +161,7 @@ export default function CoveragePage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
+            className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
           >
             <MapPin className="h-4 w-4 text-red-700" />
             Nationwide Logistics Network

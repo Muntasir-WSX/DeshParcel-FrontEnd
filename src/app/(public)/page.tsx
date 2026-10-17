@@ -6,7 +6,7 @@ import HighlightsSection from "@/components/Home/HighlightsSection";
 import HowItWorks from "@/components/Home/HowItWorks";
 import PopularServices from "@/components/Home/PopularServices";
 import Testimonilas from "@/components/Home/Testimonilas/Testimonilas";
-
+import DownloadApps from "@/components/Home/DownloadApps";
 
 
 export default function Home() {
@@ -20,6 +20,7 @@ export default function Home() {
       <CoverageSection />
       <Achievments></Achievments>
       <Faq></Faq>
+      <DownloadApps></DownloadApps>
     </div>
   );
 }

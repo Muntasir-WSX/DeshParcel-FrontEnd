@@ -97,7 +97,7 @@ export default function BecomeRiderPage() {
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
+      className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
     >
       <Bike className="h-4 w-4 text-red-700" />
       Join Our Delivery Fleet
@@ -129,7 +129,7 @@ export default function BecomeRiderPage() {
         {/* 2. Rider Registration Form Section */}
         <section className="max-w-4xl mx-auto w-full bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="text-center max-w-xl mx-auto mb-10 space-y-2 relative z-10">
             <h2 className="text-2xl md:text-3xl font-bold font-heading text-white">
@@ -368,7 +368,7 @@ export default function BecomeRiderPage() {
 
         {/* 4. Rider Benefits Section */}
         <section className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 space-y-6 shadow-xl max-w-4xl mx-auto relative overflow-hidden">
-          <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-20 -right-20 w-48 h-48 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="text-center space-y-2 relative z-10">
             <span className="text-xs font-bold uppercase tracking-widest text-red-700">

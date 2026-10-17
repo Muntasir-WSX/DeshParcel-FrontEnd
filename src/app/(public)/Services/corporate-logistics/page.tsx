@@ -28,7 +28,7 @@ export default function CorporateLogisticsPage() {
 
         {/* Decorative Glow Effects */}
         <div className="absolute -bottom-10 -left-10 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
-        <div className="absolute top-0 right-0 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute top-0 right-0 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
 
         {/* Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
@@ -40,7 +40,7 @@ export default function CorporateLogisticsPage() {
             transition={{ duration: 0.6 }}
             className="max-w-xl space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm backdrop-blur-md">
+            <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm backdrop-blur-md">
               <Building2 className="h-4 w-4 text-red-700" />
               B2B Enterprise Solutions
             </div>

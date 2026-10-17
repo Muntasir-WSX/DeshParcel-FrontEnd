@@ -135,7 +135,7 @@ export default function CreateParcelPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl space-y-6 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm">
+          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm">
             <Package className="h-4 w-4 text-red-700" />
             Fast & Secure Shipping Network
           </div>

@@ -115,7 +115,7 @@ export default function AdminOverviewPage() {
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="space-y-2 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
+          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5" />
             System Control Center
           </div>

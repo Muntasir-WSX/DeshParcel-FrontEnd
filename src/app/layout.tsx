@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import Navbar from "@/components/shared/navbar";
-import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import Footer from "@/components/shared/footer";
 import { Toaster } from "sonner";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import PinnedSlogan from "@/components/shared/pinned-slogan";
+import { cn } from "@/lib/utils";
 
 const jetbrainsMonoHeading = JetBrains_Mono({
   subsets: ["latin"],
@@ -46,12 +45,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <SmoothScrollProvider>
-         
-          <main className="flex-1">
-            {children}
-          </main>
+          <PinnedSlogan />
+          <main className="flex-1">{children}</main>
           <Toaster position="bottom-right" richColors theme="light" />
-         
         </SmoothScrollProvider>
       </body>
     </html>

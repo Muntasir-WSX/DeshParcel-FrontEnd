@@ -25,7 +25,7 @@ export default function loader() {
       </div>
 
       <div className="text-center space-y-1.5">
-        <div className="inline-flex items-center gap-2 text-sm font-extrabold tracking-widest uppercase text-white font-heading">
+        <div className="trust-badge inline-flex items-center gap-2 text-sm font-extrabold tracking-widest uppercase text-white font-heading">
           <PackageCheck className="h-4 w-4 text-red-700 animate-bounce" />
           DeshParcel Logistics
         </div>

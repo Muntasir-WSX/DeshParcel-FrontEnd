@@ -101,7 +101,7 @@ export default function ContactPage() {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
+            className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm"
           >
             <MapPin className="h-4 w-4 text-red-700" />
             Get in Touch With Us
@@ -204,7 +204,7 @@ export default function ContactPage() {
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 mb-3 shadow-sm">
+              <div className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 mb-3 shadow-sm">
                 <MapPin className="h-3.5 w-3.5 text-red-700" />
                 Nationwide Coverage
               </div>
@@ -285,7 +285,7 @@ export default function ContactPage() {
         </div>
 
         <div className="relative z-10 max-w-2xl space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white shadow-sm">
+          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white shadow-sm">
             <Building2 className="h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
             Corporate Partnerships
           </div>
