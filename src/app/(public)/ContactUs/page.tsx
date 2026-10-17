@@ -245,7 +245,7 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <p className="text-base font-bold text-white font-heading group-hover:text-red-500 transition-colors">{hub.manager}</p>
+                    <p className="text-base font-bold text-white font-heading group-hover:text-red-700 transition-colors">{hub.manager}</p>
                     <p className="text-xs text-gray-400 mt-0.5">Authorized Hub Manager</p>
                   </div>
 

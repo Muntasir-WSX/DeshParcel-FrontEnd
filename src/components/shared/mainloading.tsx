@@ -15,7 +15,7 @@ export default function loader() {
             duration: 2,
             ease: "easeInOut",
           }}
-          className="absolute flex items-center gap-2 text-red-600"
+          className="absolute flex items-center gap-2 text-red-700"
         >
           <Truck className="h-8 w-8 filter drop-shadow-[0_0_8px_rgba(220,38,38,0.5)]" />
           <div className="w-3 h-3 bg-blue-500 rounded-sm animate-pulse" />
@@ -26,7 +26,7 @@ export default function loader() {
 
       <div className="text-center space-y-1.5">
         <div className="inline-flex items-center gap-2 text-sm font-extrabold tracking-widest uppercase text-white font-heading">
-          <PackageCheck className="h-4 w-4 text-red-600 animate-bounce" />
+          <PackageCheck className="h-4 w-4 text-red-700 animate-bounce" />
           DeshParcel Logistics
         </div>
         <p className="text-[11px] text-gray-400 uppercase tracking-wider animate-pulse">

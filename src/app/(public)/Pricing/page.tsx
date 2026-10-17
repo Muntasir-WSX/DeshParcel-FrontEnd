@@ -106,7 +106,7 @@ export default function PricingPage() {
 
           <div className="text-center max-w-xl mx-auto mb-10 space-y-2 relative z-10">
             <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-red-700">
-              <Calculator className="h-4 w-4 text-red-800" />
+              <Calculator className="h-4 w-4 text-red-700" />
               Smart Rate Calculator
             </div>
             <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">

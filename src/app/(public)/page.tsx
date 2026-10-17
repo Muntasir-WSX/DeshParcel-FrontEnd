@@ -1,8 +1,11 @@
+import Achievments from "@/components/Home/Achievments";
 import CoverageSection from "@/components/Home/CoverageSection";
+import Faq from "@/components/Home/Faq";
 import HeroSection from "@/components/Home/HeroSection";
 import HighlightsSection from "@/components/Home/HighlightsSection";
 import HowItWorks from "@/components/Home/HowItWorks";
 import PopularServices from "@/components/Home/PopularServices";
+import Testimonilas from "@/components/Home/Testimonilas/Testimonilas";
 
 
 
@@ -12,8 +15,11 @@ export default function Home() {
       <HeroSection />
       <HighlightsSection />
       <PopularServices />
+      <Testimonilas />
       <HowItWorks />
       <CoverageSection />
+      <Achievments></Achievments>
+      <Faq></Faq>
     </div>
   );
 }

@@ -169,7 +169,7 @@ export default function CorporateLogisticsPage() {
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Discount Tiers:</span>
-                <span className="font-bold text-red-500">Available for High Volume</span>
+                <span className="font-bold text-red-700">Available for High Volume</span>
               </div>
               <div className="flex justify-between items-center py-2">
                 <span>Dedicated Support:</span>

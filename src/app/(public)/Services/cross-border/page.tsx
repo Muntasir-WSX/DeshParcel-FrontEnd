@@ -169,7 +169,7 @@ export default function CrossBorderPage() {
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Freight Type:</span>
-                <span className="font-bold text-red-500">Air & Land Freight</span>
+                <span className="font-bold text-red-700">Air & Land Freight</span>
               </div>
               <div className="flex justify-between items-center py-2">
                 <span>Support:</span>

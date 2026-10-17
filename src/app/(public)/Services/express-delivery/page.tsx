@@ -169,7 +169,7 @@ export default function ExpressDeliveryPage() {
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Delivery SLA:</span>
-                <span className="font-bold text-red-500">Within 24 Hours</span>
+                <span className="font-bold text-red-700">Within 24 Hours</span>
               </div>
               <div className="flex justify-between items-center py-2">
                 <span>Weight Limit:</span>

@@ -117,7 +117,7 @@ export default function UserPaymentsPage() {
                         <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
                           isSuccess ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" :
                           isPending ? "bg-amber-500/20 text-amber-400 border-amber-500/30" :
-                          "bg-red-700/20 text-red-500 border-red-700/30"
+                          "bg-red-700/20 text-red-700 border-red-700/30"
                         }`}>
                           {isSuccess && <CheckCircle2 className="h-3 w-3" />}
                           {isPending && <Clock className="h-3 w-3" />}

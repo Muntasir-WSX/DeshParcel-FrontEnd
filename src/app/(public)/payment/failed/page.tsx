@@ -30,7 +30,7 @@ export default function PaymentFailedPage() {
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="w-20 h-20 bg-red-700/20 rounded-full flex items-center justify-center mx-auto border border-red-700/40 shadow-inner">
-          <XCircle className="h-10 w-10 text-red-500" />
+          <XCircle className="h-10 w-10 text-red-700" />
         </div>
 
         <div className="space-y-2">

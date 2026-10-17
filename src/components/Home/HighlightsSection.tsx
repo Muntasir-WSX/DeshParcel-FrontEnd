@@ -65,7 +65,7 @@ export default function HighlightsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="lg:col-span-6 relative w-full h-[400px] sm:h-[500px] lg:h-[620px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
+          className="lg:col-span-6 relative w-full h-100 sm:h-125  py-20 md:py-32  max-w-7xl mx-auto px-6 md:px-16 my-16 rounded-3xl text-white shadow-2xl overflow-hidden border border-red-700/20 bg-[#070b19]"
         >
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/a5c3c668a455ec9036065379018c6514_bvc4hu.jpg"
@@ -145,7 +145,7 @@ export default function HighlightsSection() {
                               <span className="flex items-center justify-center w-7 h-7 rounded-xl bg-red-700 text-white group-hover:bg-red-700 transition-colors shadow-md">
                                 <ArrowUpRight className="h-3.5 w-3.5" />
                               </span>
-                              <span className="text-red-700 group-hover:text-red-300 transition-colors">
+                              <span className="text-red-700 group-hover:text-red-700 transition-colors">
                                 View Details
                               </span>
                             </Link>

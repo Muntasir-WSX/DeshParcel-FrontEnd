@@ -135,8 +135,8 @@ export default function CreateParcelPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl space-y-6 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-500 shadow-sm">
-            <Package className="h-4 w-4 text-red-500" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm">
+            <Package className="h-4 w-4 text-red-700" />
             Fast & Secure Shipping Network
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]">
@@ -174,7 +174,7 @@ export default function CreateParcelPage() {
               {/* Receiver Name */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <User className="h-3.5 w-3.5 text-red-500" /> Receiver Name
+                  <User className="h-3.5 w-3.5 text-red-700" /> Receiver Name
                 </label>
                 <input
                   type="text"
@@ -190,7 +190,7 @@ export default function CreateParcelPage() {
               {/* Receiver Phone */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <Phone className="h-3.5 w-3.5 text-red-500" /> Receiver Phone
+                  <Phone className="h-3.5 w-3.5 text-red-700" /> Receiver Phone
                 </label>
                 <input
                   type="text"
@@ -208,7 +208,7 @@ export default function CreateParcelPage() {
               {/* Pickup Address */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-500" /> Pickup Address
+                  <MapPin className="h-3.5 w-3.5 text-red-700" /> Pickup Address
                 </label>
                 <textarea
                   name="pickupAddress"
@@ -223,7 +223,7 @@ export default function CreateParcelPage() {
               {/* Delivery Address */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-500" /> Delivery Address
+                  <MapPin className="h-3.5 w-3.5 text-red-700" /> Delivery Address
                 </label>
                 <textarea
                   name="deliveryAddress"
@@ -240,7 +240,7 @@ export default function CreateParcelPage() {
               {/* Weight (kg) */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <Weight className="h-3.5 w-3.5 text-red-500" /> Weight (Kg)
+                  <Weight className="h-3.5 w-3.5 text-red-700" /> Weight (Kg)
                 </label>
                 <input
                   type="number"
@@ -257,7 +257,7 @@ export default function CreateParcelPage() {
               {/* Category */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                  <Tag className="h-3.5 w-3.5 text-red-500" /> Parcel Category
+                  <Tag className="h-3.5 w-3.5 text-red-700" /> Parcel Category
                 </label>
                 <input
                   type="text"
@@ -274,13 +274,13 @@ export default function CreateParcelPage() {
             {/* Optional Parcel Image Upload */}
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
-                <ImageIcon className="h-3.5 w-3.5 text-red-500" /> Parcel Image (Optional)
+                <ImageIcon className="h-3.5 w-3.5 text-red-700" /> Parcel Image (Optional)
               </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full bg-[#050814] border border-white/15 text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:bg-red-700/20 file:text-red-500 hover:file:bg-red-700 hover:file:text-white rounded-xl text-xs cursor-pointer"
+                className="w-full bg-[#050814] border border-white/15 text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:bg-red-700/20 file:text-red-700 hover:file:bg-red-700 hover:file:text-white rounded-xl text-xs cursor-pointer"
               />
             </div>
 

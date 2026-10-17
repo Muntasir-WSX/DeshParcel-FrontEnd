@@ -140,7 +140,7 @@ export default function ProfilePage() {
           {/* Header Avatar */}
           <div className="text-center pb-2 relative space-y-3">
             <div className="relative w-24 h-24 mx-auto">
-              <div className="w-24 h-24 bg-red-700/20 text-red-500 rounded-full flex items-center justify-center text-3xl font-bold border-2 border-red-700/40 shadow-xl overflow-hidden">
+              <div className="w-24 h-24 bg-red-700/20 text-red-700 rounded-full flex items-center justify-center text-3xl font-bold border-2 border-red-700/40 shadow-xl overflow-hidden">
                 {previewImage ? (
                   <img src={previewImage} alt="Profile Preview" className="w-full h-full object-cover" />
                 ) : profile?.profileImage ? (
@@ -161,7 +161,7 @@ export default function ProfilePage() {
 
             <div>
               <h1 className="text-2xl font-extrabold font-heading text-white">{profile?.name}</h1>
-              <span className="inline-block mt-1 px-3.5 py-1 rounded-full bg-red-700/20 text-red-500 text-[10px] font-bold uppercase tracking-wider border border-red-700/30">
+              <span className="inline-block mt-1 px-3.5 py-1 rounded-full bg-red-700/20 text-red-700 text-[10px] font-bold uppercase tracking-wider border border-red-700/30">
                 {profile?.role}
               </span>
             </div>
@@ -171,7 +171,7 @@ export default function ProfilePage() {
           {!isEditing ? (
             <div className="space-y-3.5 text-xs">
               <div className="flex items-center gap-4 bg-[#050814] p-4 rounded-2xl border border-white/10">
-                <Mail className="h-4 w-4 text-red-500 shrink-0" />
+                <Mail className="h-4 w-4 text-red-700 shrink-0" />
                 <div>
                   <p className="text-[9px] text-gray-400 uppercase tracking-wider font-bold">Email Address</p>
                   <p className="font-semibold text-white text-sm">{profile?.email}</p>
@@ -179,7 +179,7 @@ export default function ProfilePage() {
               </div>
 
               <div className="flex items-center gap-4 bg-[#050814] p-4 rounded-2xl border border-white/10">
-                <Phone className="h-4 w-4 text-red-500 shrink-0" />
+                <Phone className="h-4 w-4 text-red-700 shrink-0" />
                 <div>
                   <p className="text-[9px] text-gray-400 uppercase tracking-wider font-bold">Phone Number</p>
                   <p className="font-semibold text-white text-sm">{profile?.phone || "Not Provided"}</p>
@@ -187,7 +187,7 @@ export default function ProfilePage() {
               </div>
 
               <div className="flex items-center gap-4 bg-[#050814] p-4 rounded-2xl border border-white/10">
-                <Shield className="h-4 w-4 text-red-500 shrink-0" />
+                <Shield className="h-4 w-4 text-red-700 shrink-0" />
                 <div>
                   <p className="text-[9px] text-gray-400 uppercase tracking-wider font-bold">Account Verification</p>
                   <p className="font-semibold text-emerald-400 text-sm">

@@ -151,7 +151,7 @@ export default function UserParcelsPage() {
                     <tr key={p.id} className="hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4">
                         <p className="font-mono font-bold text-white">{p.trackingId}</p>
-                        <p className="text-[10px] text-red-500 uppercase font-semibold">{p.category} • {p.weight} kg</p>
+                        <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • {p.weight} kg</p>
                       </td>
                       <td className="py-4 px-4 text-gray-300">
                         <p className="font-semibold text-white">{p.receiverName}</p>
@@ -159,7 +159,7 @@ export default function UserParcelsPage() {
                       </td>
                       <td className="py-4 px-4 text-gray-300 max-w-xs truncate">
                         <p className="flex items-center gap-1 text-[11px]">
-                          <MapPin className="h-3 w-3 text-red-500 shrink-0" /> {p.deliveryAddress}
+                          <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                         </p>
                       </td>
                       <td className="py-4 px-4 space-y-1">
@@ -185,7 +185,7 @@ export default function UserParcelsPage() {
                             size="sm"
                             disabled={actionLoading === p.id}
                             onClick={() => setDeleteModal({ isOpen: true, parcelId: p.id, trackingId: p.trackingId })}
-                            className="h-7 px-3 text-[10px] font-bold uppercase bg-red-700/20 text-red-500 hover:bg-red-700 hover:text-white border border-red-700/30 cursor-pointer"
+                            className="h-7 px-3 text-[10px] font-bold uppercase bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-700/30 cursor-pointer"
                           >
                             Cancel
                           </Button>
@@ -204,7 +204,7 @@ export default function UserParcelsPage() {
       <AlertDialog open={deleteModal.isOpen} onOpenChange={(open) => !open && setDeleteModal({ ...deleteModal, isOpen: false })}>
         <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-500">
+            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
             </div>
             <AlertDialogTitle className="font-heading font-extrabold text-lg">
