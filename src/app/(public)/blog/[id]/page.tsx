@@ -53,7 +53,7 @@ export default function BlogDetailsPage() {
         <h2 className="text-2xl font-bold font-heading">Blog Article Not Found</h2>
         <p className="text-gray-400 text-xs">The article you are looking for does not exist or has been removed.</p>
         <Link href="/">
-          <Button className="bg-red-700 hover:bg-red-700 text-white text-xs font-bold uppercase cursor-pointer">
+          <Button className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase cursor-pointer">
             Back To Home
           </Button>
         </Link>
@@ -66,14 +66,14 @@ export default function BlogDetailsPage() {
       
       {/* Back Button */}
       <div>
-        <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold text-red-500 hover:text-red-400 transition-colors">
+        <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold text-red-700 hover:text-red-700 transition-colors">
           <ArrowLeft className="h-4 w-4" /> Back to Home
         </Link>
       </div>
 
       {/* Blog Header */}
       <div className="space-y-4">
-        <div className="inline-flex px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-500">
+        <div className="inline-flex px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
           {blog.category || "General"}
         </div>
 
@@ -82,9 +82,9 @@ export default function BlogDetailsPage() {
         </h1>
 
         <div className="flex flex-wrap items-center gap-6 text-xs text-gray-400 pt-2 border-t border-white/10">
-          <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5 text-red-500" /> {blog.author || "Admin"}</span>
-          <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-red-500" /> {new Date(blog.createdAt).toLocaleDateString()}</span>
-          <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-red-500" /> {blog.readTime || "3 min read"}</span>
+          <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5 text-red-700" /> {blog.author || "Admin"}</span>
+          <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-red-700" /> {new Date(blog.createdAt).toLocaleDateString()}</span>
+          <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-red-700" /> {blog.readTime || "3 min read"}</span>
         </div>
       </div>
 

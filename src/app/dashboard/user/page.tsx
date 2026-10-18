@@ -164,7 +164,7 @@ export default function UserParcelsPage() {
             Total Parcels: <span className="text-red-700">{parcels.length}</span>
           </div>
           <Link href="/create-parcel">
-            <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-700 hover:bg-red-700 text-white rounded-2xl cursor-pointer shadow-red-700/30">
+            <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-600 hover:bg-red-700 text-white rounded-2xl cursor-pointer shadow-red-700/30">
               <PlusCircle className="h-4 w-4 mr-1.5" /> Book New
             </Button>
           </Link>
@@ -177,7 +177,7 @@ export default function UserParcelsPage() {
           <div className="py-20 text-center space-y-4">
             <p className="text-gray-400 text-xs uppercase tracking-wider">No parcels booked by you yet.</p>
             <Link href="/dashboard/user/create-parcel">
-              <Button size="sm" className="bg-red-700 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer">
+              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer">
                 Book Your First Parcel
               </Button>
             </Link>
@@ -291,7 +291,7 @@ export default function UserParcelsPage() {
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={executeDeleteParcel}
-              className="bg-red-700 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
+              className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
             >
               Yes, Cancel Parcel
             </AlertDialogAction>
@@ -360,7 +360,7 @@ export default function UserParcelsPage() {
               <Button
                 type="submit"
                 disabled={submittingReview}
-                className="bg-red-700 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
+                className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
               >
                 {submittingReview ? "Submitting..." : "Submit Review"}
               </Button>

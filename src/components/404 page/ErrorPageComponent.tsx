@@ -44,7 +44,7 @@ export default function ErrorPageComponent() {
           <div className="flex flex-col sm:flex-row gap-3 pt-2 relative z-10">
             <Link href="/" className="flex-1">
               <Button 
-                className="w-full py-3 rounded-xl bg-red-700 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-red-700/20"
+                className="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer flex items-center justify-center gap-2 shadow-lg shadow-red-700/20"
               >
                 <Home className="h-4 w-4" />
                 <span>Go Home</span>

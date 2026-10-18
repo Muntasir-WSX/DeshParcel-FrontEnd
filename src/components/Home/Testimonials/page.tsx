@@ -59,7 +59,7 @@ export default function TestimonialsPage() {
         </div>
 
         <h2 className="text-3xl md:text-5xl font-extrabold font-heading tracking-tight">
-          What Our <span className="text-red-500">Merchants Say</span>
+          What Our <span className="text-red-700">Merchants Say</span>
         </h2>
 
         <p className="text-gray-300 text-sm md:text-base">
@@ -126,7 +126,7 @@ export default function TestimonialsPage() {
                           className="w-full h-full object-cover"
                         />
                       ) : (
-                        <User className="h-5 w-5 text-red-400" />
+                        <User className="h-5 w-5 text-red-700" />
                       )}
                     </div>
                     <div>
@@ -134,7 +134,7 @@ export default function TestimonialsPage() {
                         {reviews[currentIndex].user?.name ||
                           "Anonymous Merchant"}
                       </h4>
-                      <p className="text-[10px] text-red-400 uppercase tracking-wider font-semibold">
+                      <p className="text-[10px] text-red-700 uppercase tracking-wider font-semibold">
                         Verified Customer
                       </p>
                     </div>

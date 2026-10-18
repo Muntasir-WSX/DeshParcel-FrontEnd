@@ -74,7 +74,7 @@ export default function Footer() {
             </Link>
             <Link href="/Track" className="w-full sm:w-auto">
               <Button 
-                className="w-full sm:w-auto px-6 h-11 rounded-2xl text-xs font-bold uppercase tracking-wider text-white transition-all cursor-pointer bg-red-700 hover:bg-red-700 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 h-11 rounded-2xl text-xs font-bold uppercase tracking-wider text-white transition-all cursor-pointer bg-red-600 hover:bg-red-700 flex items-center justify-center gap-2"
               >
                 <span>Track Parcel</span>
                 <ArrowRight className="h-4 w-4" />
@@ -161,7 +161,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 pt-1 text-gray-200">
                 <Phone className="h-3.5 w-3.5 text-red-700 shrink-0" />
-                <span>+880 1700-000000</span>
+                <span>+880 1849-643758</span>
               </li>
               <li className="flex items-center gap-2 text-gray-200">
                 <Mail className="h-3.5 w-3.5 text-red-700 shrink-0" />

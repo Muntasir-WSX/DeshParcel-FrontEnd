@@ -120,7 +120,7 @@ export default function TrackPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="h-13 px-8 rounded-2xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white shadow-red-600/30 cursor-pointer shrink-0"
+              className="h-13 px-8 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white shadow-red-600/30 cursor-pointer shrink-0"
             >
               {loading ? "Searching..." : "Track Package"}
             </Button>

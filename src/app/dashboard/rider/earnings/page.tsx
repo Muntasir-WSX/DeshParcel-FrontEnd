@@ -189,7 +189,7 @@ export default function RiderEarningsPage() {
           <Button
             type="submit"
             disabled={submitting}
-            className="w-full h-11 text-xs font-bold uppercase bg-red-700 hover:bg-red-700 text-white rounded-xl cursor-pointer  shadow-red-700/30 transition-all"
+            className="w-full h-11 text-xs font-bold uppercase bg-red-600 hover:bg-red-700 text-white rounded-xl cursor-pointer  shadow-red-700/30 transition-all"
           >
             {submitting ? "Submitting Request..." : "Submit Cashout Ticket"}
           </Button>

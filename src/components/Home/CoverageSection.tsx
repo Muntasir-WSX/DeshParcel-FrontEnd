@@ -59,7 +59,7 @@ export default function CoverageSection() {
           <Link href="/coverage">
             <Button 
               size="lg" 
-              className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-700 hover:bg-red-700 text-white flex items-center gap-2"
+              className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
             >
               Check Coverage Area
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

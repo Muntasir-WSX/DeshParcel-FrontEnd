@@ -64,7 +64,7 @@ export default function PrivacyPolicyPage() {
             <Link href="/">
               <Button 
                 size="lg" 
-                className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-700 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
+                className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
               >
                 Back to Home
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
           <div className="pt-6 border-t border-white/10 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <span className="text-xs text-gray-400">Have questions about your data privacy?</span>
             <Link href="/ContactUs">
-              <Button className="px-6 py-3 rounded-xl bg-red-700 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs cursor-pointer">
+              <Button className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs cursor-pointer">
                 Contact Privacy Desk
               </Button>
             </Link>

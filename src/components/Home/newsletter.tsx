@@ -53,12 +53,12 @@ export default function NewsletterCTA() {
           {/* Left Text Content */}
           <div className="lg:col-span-7 space-y-4">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] md:text-xs font-semibold uppercase tracking-wider text-white shadow-sm">
-              <PackageCheck className="h-4 w-4 text-red-500" />
+              <PackageCheck className="h-4 w-4 text-red-700" />
               Stay Connected With Us
             </div>
 
             <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight leading-tight">
-              Ready to Scale Your <span className="text-red-500">Deliveries?</span>
+              Ready to Scale Your <span className="text-red-700">Deliveries?</span>
             </h2>
 
             <p className="text-gray-300 text-xs md:text-sm max-w-xl leading-relaxed">
@@ -88,7 +88,7 @@ export default function NewsletterCTA() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full h-11 rounded-xl bg-red-700 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-md shadow-red-600/20 cursor-pointer"
+                className="w-full h-11 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-md shadow-red-600/20 cursor-pointer"
               >
                 {loading ? "Subscribing..." : "Subscribe Now"}
                 <Send className="h-3.5 w-3.5" />

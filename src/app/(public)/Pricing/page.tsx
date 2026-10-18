@@ -175,7 +175,7 @@ export default function PricingPage() {
             {/* Calculate Button */}
             <Button
               type="submit"
-              className="w-full py-4 rounded-2xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white    cursor-pointer"
+              className="w-full py-4 rounded-2xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white    cursor-pointer"
             >
               Calculate Shipping Cost
             </Button>

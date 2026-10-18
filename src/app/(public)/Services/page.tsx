@@ -192,7 +192,7 @@ export default function ServicesPage() {
           </p>
 
           <div className="pt-2 relative z-10">
-            <Button className="px-8 py-4 rounded-full bg-red-700 hover:bg-red-700 text-white font-bold uppercase tracking-wider  shadow-red-600/30 cursor-pointer">
+            <Button className="px-8 py-4 rounded-full bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider  shadow-red-600/30 cursor-pointer">
               Get Started Today
             </Button>
           </div>

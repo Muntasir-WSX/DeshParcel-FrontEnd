@@ -288,7 +288,7 @@ export default function CreateParcelPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer shadow-red-700/30 transition-all flex items-center gap-2"
+                className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white cursor-pointer shadow-red-700/30 transition-all flex items-center gap-2"
               >
                 {loading ? "Booking Parcel..." : "Confirm & Book Shipment"} <ArrowRight className="h-4 w-4" />
               </Button>

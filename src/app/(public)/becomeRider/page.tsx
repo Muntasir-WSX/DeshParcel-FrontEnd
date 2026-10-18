@@ -160,7 +160,7 @@ export default function BecomeRiderPage() {
               <div className="pt-4 flex gap-3 justify-center">
                 <Button
                   onClick={() => router.push("/login")}
-                  className="px-6 py-3 rounded-xl bg-red-700 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
+                  className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider cursor-pointer"
                 >
                   Go to Login
                 </Button>
@@ -320,7 +320,7 @@ export default function BecomeRiderPage() {
                 <Button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs"
+                  className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs"
                 >
                   {loading ? "Submitting Application..." : "Submit Rider Application"}
                   <ArrowRight className="h-4 w-4" />

@@ -190,7 +190,7 @@ export default function Navbar() {
               <Button 
                 size="sm"
                 onClick={handleLogout}
-                className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white h-9 cursor-pointer transition-all"
+                className="rounded-full px-3.5 text-[11px] lg:text-xs font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white h-9 cursor-pointer transition-all"
               >
                 <LogOut className="mr-1 h-3.5 w-3.5" />
                 Logout

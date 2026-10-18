@@ -92,8 +92,8 @@ export default function LoginPage() {
         
         {/* Floating Content Card at Bottom */}
         <div className="absolute bottom-10 left-10 right-10 z-10 p-6 rounded-3xl bg-[#0b132b]/85 backdrop-blur-md border border-red-700/25 shadow-2xl space-y-2">
-          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-500">
-            <ShieldCheck className="h-3.5 w-3.5 text-red-500" />
+          <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-700">
+            <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
             Secure Nationwide Logistics
           </div>
           <h2 className="text-2xl lg:text-3xl font-extrabold font-heading text-white">
@@ -134,7 +134,7 @@ export default function LoginPage() {
           <div className="p-3 rounded-2xl bg-[#050814] border border-white/10 relative z-10 space-y-2">
             <div className="flex items-center justify-between">
               <span className="text-[10px] font-bold uppercase tracking-widest text-gray-400 flex items-center gap-1">
-                <UserCheck className="h-3 w-3 text-red-500" />
+                <UserCheck className="h-3 w-3 text-red-700" />
                 One-Click Demo Login:
               </span>
             </div>
@@ -144,9 +144,9 @@ export default function LoginPage() {
                 type="button"
                 disabled={loading}
                 onClick={() => handleDemoLogin("admin@deshparcel.com", "admin123", "Admin")}
-                className="py-2 px-2 rounded-xl bg-red-950/50 border border-red-700/60 text-red-400 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
+                className="py-2 px-2 rounded-xl bg-red-950/50 border border-red-700/60 text-red-700 text-[11px] font-bold hover:bg-red-700 hover:text-white cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 shadow-sm"
               >
-                <ShieldAlert className="h-3 w-3 text-red-500 group-hover:text-white" />
+                <ShieldAlert className="h-3 w-3 text-red-700 group-hover:text-white" />
                 Admin
               </button>
 
@@ -180,7 +180,7 @@ export default function LoginPage() {
             <div className="space-y-1">
               {/** biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
 <label className="text-[11px] font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                <Mail className="h-3 w-3 text-red-500" />
+                <Mail className="h-3 w-3 text-red-700" />
                 Email Address
               </label>
               <input
@@ -199,10 +199,10 @@ export default function LoginPage() {
               <div className="flex items-center justify-between">
                 {/** biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
 <label className="text-[11px] font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
-                  <Lock className="h-3 w-3 text-red-500" />
+                  <Lock className="h-3 w-3 text-red-700" />
                   Password
                 </label>
-                <Link href="/ForgetPassword" className="text-[10px] text-red-500 font-semibold hover:underline">
+                <Link href="/ForgetPassword" className="text-[10px] text-red-700 font-semibold hover:underline">
                   Forgot Password?
                 </Link>
               </div>
@@ -221,7 +221,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1 shadow-lg shadow-red-600/20 transition-all"
+              className="w-full py-3 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-1  shadow-red-600/20 transition-all"
             >
               {loading ? "Signing In..." : "Login"}
               <ArrowRight className="h-3.5 w-3.5" />
@@ -272,7 +272,7 @@ export default function LoginPage() {
             <div className="text-center pt-1">
               <p className="text-xs text-gray-400">
                 Don&apos;t have an account yet?{" "}
-                <Link href="/register" className="text-red-500 font-bold hover:underline">
+                <Link href="/register" className="text-red-700 font-bold hover:underline">
                   Register Now
                 </Link>
               </p>

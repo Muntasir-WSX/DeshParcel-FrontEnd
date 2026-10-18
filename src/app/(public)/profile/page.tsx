@@ -152,7 +152,7 @@ export default function ProfilePage() {
 
               {/* Image Upload Icon if Editing */}
               {isEditing && (
-                <label className="absolute bottom-0 right-0 bg-red-700 hover:bg-red-700 p-2 rounded-full cursor-pointer shadow-lg transition-all">
+                <label className="absolute bottom-0 right-0 bg-red-600 hover:bg-red-700 p-2 rounded-full cursor-pointer shadow-lg transition-all">
                   <Camera className="h-4 w-4 text-white" />
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                 </label>
@@ -236,7 +236,7 @@ export default function ProfilePage() {
               <Button
                 type="submit"
                 disabled={updating}
-                className="w-full py-3.5 rounded-xl font-bold uppercase tracking-wider bg-red-700 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-4 shadow-lg shadow-red-700/30"
+                className="w-full py-3.5 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white cursor-pointer flex items-center justify-center gap-2 text-xs mt-4 shadow-lg shadow-red-700/30"
               >
                 <Save className="h-4 w-4" />
                 {updating ? "Saving Changes..." : "Save Changes"}

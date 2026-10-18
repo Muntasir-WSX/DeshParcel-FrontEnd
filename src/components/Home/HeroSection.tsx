@@ -72,7 +72,7 @@ export default function HeroSection() {
             <Link href="/create-parcel" className="w-full sm:w-auto">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto rounded-xl px-6 md:px-8 h-14 text-sm font-bold shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-700 hover:bg-red-700 text-white"
+                className="w-full sm:w-auto rounded-xl px-6 md:px-8 h-14 text-sm font-bold shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white"
               >
                 <User className="mr-2 h-5 w-5" />
                 Send a Parcel
@@ -92,7 +92,7 @@ export default function HeroSection() {
                 placeholder="Track Parcel..." 
                 className="flex-1 bg-transparent border-none outline-none text-white text-sm font-medium px-2 placeholder:text-gray-400 h-11"
               />
-              <Button type="submit" size="icon" className="h-11 w-11 rounded-lg shrink-0 cursor-pointer bg-red-700 hover:bg-red-700 text-white">
+              <Button type="submit" size="icon" className="h-11 w-11 rounded-lg shrink-0 cursor-pointer bg-red-600 hover:bg-red-700 text-white">
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </form>

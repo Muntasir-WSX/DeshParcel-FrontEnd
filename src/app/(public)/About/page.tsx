@@ -128,7 +128,7 @@ export default function About() {
               <Link href="/Services">
                 <Button 
                   size="lg" 
-                  className="rounded-xl px-7 h-12 text-sm font-bold bg-red-700 hover:bg-red-700 text-white cursor-pointer transition-all"
+                  className="rounded-xl px-7 h-12 text-sm font-bold bg-red-600 hover:bg-red-700 text-white cursor-pointer transition-all"
                 >
                   Explore Our Services
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
