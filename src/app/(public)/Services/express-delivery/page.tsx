@@ -1,18 +1,22 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { PackageCheck, ArrowRight, ShieldCheck, Zap, MapPin, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle2,
+  MapPin,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function ExpressDeliveryPage() {
   return (
     <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pt-28 pb-20 overflow-hidden">
-      
       {/* 1. Hero Banner with Background Image */}
       <section className="relative py-20 md:py-32 my-8 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-        
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
@@ -32,8 +36,7 @@ export default function ExpressDeliveryPage() {
 
         {/* Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -46,15 +49,18 @@ export default function ExpressDeliveryPage() {
             </div>
 
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-slate-900 dark:text-white">
-              Lightning Fast <span className="text-red-700">Express Delivery</span> Solutions
+              Lightning Fast{" "}
+              <span className="text-red-700">Express Delivery</span> Solutions
             </h1>
 
             <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
-              When time is critical, our express delivery service ensures your priority parcels and urgent documents are rushed directly to their destination with top priority.
+              When time is critical, our express delivery service ensures your
+              priority parcels and urgent documents are rushed directly to their
+              destination with top priority.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -62,8 +68,8 @@ export default function ExpressDeliveryPage() {
             className="flex flex-col sm:flex-row gap-3 w-full md:w-auto"
           >
             <Link href="/create-parcel">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
               >
                 Send Express Parcel
@@ -71,7 +77,6 @@ export default function ExpressDeliveryPage() {
               </Button>
             </Link>
           </motion.div>
-
         </div>
       </section>
 
@@ -90,14 +95,16 @@ export default function ExpressDeliveryPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
           <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Zap className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">24-Hour Delivery</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              24-Hour Delivery
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Guaranteed next-day delivery across major metropolitan cities and hubs in Bangladesh.
+              Guaranteed next-day delivery across major metropolitan cities and
+              hubs in Bangladesh.
             </p>
           </div>
 
@@ -105,9 +112,12 @@ export default function ExpressDeliveryPage() {
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <ShieldCheck className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Priority Handling</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              Priority Handling
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Express packages skip regular queues and receive dedicated top-tier security monitoring.
+              Express packages skip regular queues and receive dedicated
+              top-tier security monitoring.
             </p>
           </div>
 
@@ -115,19 +125,20 @@ export default function ExpressDeliveryPage() {
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Live GPS Tracking</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              Live GPS Tracking
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Monitor your express shipment in real-time with direct live rider location updates.
+              Monitor your express shipment in real-time with direct live rider
+              location updates.
             </p>
           </div>
-
         </div>
       </section>
 
       {/* 3. Detailed Information & Checklist Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 my-20">
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          
           <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-6 relative z-10">
@@ -135,7 +146,8 @@ export default function ExpressDeliveryPage() {
               Express Service Highlights
             </h3>
             <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-              Tailored specifically for corporate papers, high-value gadgets, and urgent customer orders.
+              Tailored specifically for corporate papers, high-value gadgets,
+              and urgent customer orders.
             </p>
 
             <ul className="space-y-3">
@@ -144,9 +156,12 @@ export default function ExpressDeliveryPage() {
                 "Dedicated rapid-response delivery riders",
                 "100% money-back transit time guarantee",
                 "Instant delivery confirmation notification via SMS",
-                "Secure tamper-proof packaging options"
+                "Secure tamper-proof packaging options",
               ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-xs md:text-sm text-slate-700 dark:text-gray-200 font-medium">
+                <li
+                  key={idx}
+                  className="flex items-center gap-3 text-xs md:text-sm text-slate-700 dark:text-gray-200 font-medium"
+                >
                   <CheckCircle2 className="h-5 w-5 text-red-700 shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -161,11 +176,15 @@ export default function ExpressDeliveryPage() {
             <div className="space-y-4 text-xs text-slate-600 dark:text-gray-300">
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Base Weight (Up to 1 KG):</span>
-                <span className="font-bold text-slate-900 dark:text-white">৳150 - ৳220</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  ৳150 - ৳220
+                </span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Extra Weight Charge (Per KG):</span>
-                <span className="font-bold text-slate-900 dark:text-white">৳35</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  ৳35
+                </span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Delivery SLA:</span>
@@ -173,7 +192,9 @@ export default function ExpressDeliveryPage() {
               </div>
               <div className="flex justify-between items-center py-2">
                 <span>Weight Limit:</span>
-                <span className="font-bold text-slate-900 dark:text-white">10 KG Max</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  10 KG Max
+                </span>
               </div>
             </div>
 
@@ -183,10 +204,8 @@ export default function ExpressDeliveryPage() {
               </Button>
             </Link>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }

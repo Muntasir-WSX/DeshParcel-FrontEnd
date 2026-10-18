@@ -9,7 +9,9 @@ export default function PublicLayout({
   return (
     <>
       <Navbar />
-      <main className="flex-1 w-full bg-slate-50 dark:bg-[#070b19]">{children}</main>
+      <main className="flex-1 w-full bg-slate-50 dark:bg-[#070b19]">
+        {children}
+      </main>
       <Footer />
     </>
   );

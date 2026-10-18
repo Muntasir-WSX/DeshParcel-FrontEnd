@@ -1,18 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pt-28 pb-20 overflow-hidden">
-      
       {/* 1. Hero Banner with Background Image */}
       <section className="relative py-20 md:py-32 my-8 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-        
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
@@ -32,8 +30,7 @@ export default function PrivacyPolicyPage() {
 
         {/* Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -50,11 +47,13 @@ export default function PrivacyPolicyPage() {
             </h1>
 
             <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
-              We value your trust and are committed to safeguarding your personal information. Read how we collect, use, and protect your data.
+              We value your trust and are committed to safeguarding your
+              personal information. Read how we collect, use, and protect your
+              data.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -62,8 +61,8 @@ export default function PrivacyPolicyPage() {
             className="flex flex-col sm:flex-row gap-3 w-full md:w-auto"
           >
             <Link href="/">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
               >
                 Back to Home
@@ -71,14 +70,12 @@ export default function PrivacyPolicyPage() {
               </Button>
             </Link>
           </motion.div>
-
         </div>
       </section>
 
       {/* 2. Detailed Privacy Content Section */}
       <section className="max-w-5xl mx-auto px-6 md:px-12 my-20">
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden space-y-8">
-          
           <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-4 relative z-10 border-b border-slate-200 dark:border-white/10 pb-6">
@@ -97,7 +94,10 @@ export default function PrivacyPolicyPage() {
                 1. Information We Collect
               </h3>
               <p>
-                At DeshParcel, we collect personal details that you provide directly, including your name, email address, phone number, and pickup or delivery addresses when creating an account or booking a shipment.
+                At DeshParcel, we collect personal details that you provide
+                directly, including your name, email address, phone number, and
+                pickup or delivery addresses when creating an account or booking
+                a shipment.
               </p>
             </div>
 
@@ -107,7 +107,10 @@ export default function PrivacyPolicyPage() {
                 2. How We Use Your Information
               </h3>
               <p>
-                We use collected information to process parcel deliveries, send real-time tracking updates, manage merchant payouts, handle customer support queries, and improve overall service reliability.
+                We use collected information to process parcel deliveries, send
+                real-time tracking updates, manage merchant payouts, handle
+                customer support queries, and improve overall service
+                reliability.
               </p>
             </div>
 
@@ -117,7 +120,9 @@ export default function PrivacyPolicyPage() {
                 3. Data Security & Storage
               </h3>
               <p>
-                We implement robust security protocols, data encryption, and restricted database access to ensure your private information remains completely safe from unauthorized disclosure.
+                We implement robust security protocols, data encryption, and
+                restricted database access to ensure your private information
+                remains completely safe from unauthorized disclosure.
               </p>
             </div>
 
@@ -127,23 +132,26 @@ export default function PrivacyPolicyPage() {
                 4. Third-Party Disclosures
               </h3>
               <p>
-                We do not sell, trade, or transfer your personally identifiable information to outside parties, except trusted partners who assist us in operating our logistics network and website infrastructure.
+                We do not sell, trade, or transfer your personally identifiable
+                information to outside parties, except trusted partners who
+                assist us in operating our logistics network and website
+                infrastructure.
               </p>
             </div>
           </div>
 
           <div className="pt-6 border-t border-slate-200 dark:border-white/10 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs text-slate-600 dark:text-gray-300">Have questions about your data privacy?</span>
+            <span className="text-xs text-slate-600 dark:text-gray-300">
+              Have questions about your data privacy?
+            </span>
             <Link href="/ContactUs">
               <Button className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs cursor-pointer">
                 Contact Privacy Desk
               </Button>
             </Link>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }

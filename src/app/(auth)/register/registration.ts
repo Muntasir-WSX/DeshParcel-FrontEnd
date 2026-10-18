@@ -7,7 +7,8 @@ export interface RegisterPayload {
 }
 
 export async function registerUserApi(data: RegisterPayload) {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
 
   const response = await fetch(`${BACKEND_URL}/api/v1/auth/register`, {
     method: "POST",
@@ -20,7 +21,9 @@ export async function registerUserApi(data: RegisterPayload) {
   const result = await response.json();
 
   if (!response.ok) {
-    throw new Error(result.message || "Something went wrong during registration.");
+    throw new Error(
+      result.message || "Something went wrong during registration.",
+    );
   }
 
   return result;

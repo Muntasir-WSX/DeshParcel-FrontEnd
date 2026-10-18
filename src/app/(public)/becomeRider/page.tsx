@@ -1,16 +1,27 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Bike, User, Mail, Phone, Lock, FileText, Shield, 
-  ArrowRight, CheckCircle2, Clock, DollarSign, Zap, Award 
+import {
+  ArrowRight,
+  Award,
+  Bike,
+  CheckCircle2,
+  Clock,
+  DollarSign,
+  FileText,
+  Lock,
+  Mail,
+  Phone,
+  Shield,
+  User,
+  Zap,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import HighlightsSection from "@/components/Home/HighlightsSection";
-import { toast } from "sonner";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import HighlightsSection from "@/components/Home/HighlightsSection";
+import { Button } from "@/components/ui/button";
 
 export default function BecomeRiderPage() {
   const router = useRouter();
@@ -29,7 +40,9 @@ export default function BecomeRiderPage() {
   const [loading, setLoading] = useState(false);
   const [submittedData, setSubmittedData] = useState<any>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -38,7 +51,9 @@ export default function BecomeRiderPage() {
     setLoading(true);
 
     try {
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/auth/register`, {
         method: "POST",
@@ -49,7 +64,9 @@ export default function BecomeRiderPage() {
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result.message || "Failed to submit rider application.");
+        throw new Error(
+          result.message || "Failed to submit rider application.",
+        );
       }
 
       toast.success("Application Submitted!", {
@@ -58,10 +75,10 @@ export default function BecomeRiderPage() {
 
       setSubmittedData({
         success: true,
-        message: "Rider application submitted successfully! Please wait for admin approval.",
+        message:
+          "Rider application submitted successfully! Please wait for admin approval.",
         data: result.data,
       });
-
     } catch (error: any) {
       toast.error("Registration Failed", {
         description: error.message || "Something went wrong during submission.",
@@ -73,59 +90,58 @@ export default function BecomeRiderPage() {
 
   return (
     <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white min-h-screen">
-      
       {/* 1. Banner & Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-56 md:pb-44 px-6 md:px-12 overflow-hidden shadow-2xl border-b border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-[#070b19]">
-  <div className="absolute inset-0 z-0 w-full h-full">
-    <Image
-      src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791037739/643ed1c149e6fc7ca94c353f3bb0514d_en1cdw.jpg"
-      alt="Become a Rider Banner"
-      fill
-      priority
-      sizes="100vw"
-      className="object-cover object-center filter brightness-90 contrast-105"
-    />
-    {/* Deep Dark Blue & Redish Gradient Overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/70 dark:from-[#070b19]/95 dark:via-[#070b19]/85 dark:to-[#070b19]/70 backdrop-blur-[2px]" />
-  </div>
+        <div className="absolute inset-0 z-0 w-full h-full">
+          <Image
+            src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791037739/643ed1c149e6fc7ca94c353f3bb0514d_en1cdw.jpg"
+            alt="Become a Rider Banner"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center filter brightness-90 contrast-105"
+          />
+          {/* Deep Dark Blue & Redish Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/70 dark:from-[#070b19]/95 dark:via-[#070b19]/85 dark:to-[#070b19]/70 backdrop-blur-[2px]" />
+        </div>
 
-  {/* Pure Red Glow Accents (No Blue) */}
-  <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
-  <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
+        {/* Pure Red Glow Accents (No Blue) */}
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
+        <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
-  <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
-    >
-      <Bike className="h-4 w-4 text-red-700" />
-      Join Our Delivery Fleet
-    </motion.div>
+        <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
+          >
+            <Bike className="h-4 w-4 text-red-700" />
+            Join Our Delivery Fleet
+          </motion.div>
 
-    <motion.h1
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 }}
-      className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
-    >
-      Become a <span className="text-red-700">DeshParcel Rider</span>
-    </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
+          >
+            Become a <span className="text-red-700">DeshParcel Rider</span>
+          </motion.h1>
 
-    <motion.p
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 }}
-      className="text-slate-600 dark:text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium"
-    >
-      Earn on your own schedule, deliver packages securely across your city, and grow with our nationwide logistics network.
-    </motion.p>
-  </div>
-</section>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-slate-600 dark:text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed font-medium"
+          >
+            Earn on your own schedule, deliver packages securely across your
+            city, and grow with our nationwide logistics network.
+          </motion.p>
+        </div>
+      </section>
 
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 py-20">
-
         {/* 2. Rider Registration Form Section */}
         <section className="max-w-4xl mx-auto w-full bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
@@ -136,7 +152,8 @@ export default function BecomeRiderPage() {
               Rider Registration Form
             </h2>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              Fill out your personal and vehicle details to register as an approved rider.
+              Fill out your personal and vehicle details to register as an
+              approved rider.
             </p>
           </div>
 
@@ -176,7 +193,6 @@ export default function BecomeRiderPage() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                
                 {/* Full Name */}
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
@@ -257,9 +273,21 @@ export default function BecomeRiderPage() {
                     onChange={handleChange}
                     className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                   >
-                    <option value="Bike" className="bg-white dark:bg-[#0b132b]">Bike</option>
-                    <option value="Cycle" className="bg-white dark:bg-[#0b132b]">Cycle</option>
-                    <option value="Scooter" className="bg-white dark:bg-[#0b132b]">Scooter</option>
+                    <option value="Bike" className="bg-white dark:bg-[#0b132b]">
+                      Bike
+                    </option>
+                    <option
+                      value="Cycle"
+                      className="bg-white dark:bg-[#0b132b]"
+                    >
+                      Cycle
+                    </option>
+                    <option
+                      value="Scooter"
+                      className="bg-white dark:bg-[#0b132b]"
+                    >
+                      Scooter
+                    </option>
                   </select>
                 </div>
 
@@ -322,7 +350,9 @@ export default function BecomeRiderPage() {
                   disabled={loading}
                   className="w-full py-4 rounded-xl font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white transition-all cursor-pointer flex items-center justify-center gap-2 text-xs"
                 >
-                  {loading ? "Submitting Application..." : "Submit Rider Application"}
+                  {loading
+                    ? "Submitting Application..."
+                    : "Submit Rider Application"}
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -333,7 +363,7 @@ export default function BecomeRiderPage() {
         {/* 3. Soul Duty Section */}
         <section className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 space-y-6 shadow-xl max-w-4xl mx-auto relative overflow-hidden">
           <div className="absolute -top-20 -left-20 w-48 h-48 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
-          
+
           <div className="text-center space-y-2 relative z-10">
             <span className="text-xs font-bold uppercase tracking-widest text-red-700">
               Core Responsibility
@@ -353,14 +383,18 @@ export default function BecomeRiderPage() {
                 Safe & Secure Handling
               </h4>
               <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                Treating every parcel with utmost care to ensure zero damage during transit.
+                Treating every parcel with utmost care to ensure zero damage
+                during transit.
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 space-y-2 shadow-md">
               <Clock className="h-6 w-6 text-red-700" />
-              <h4 className="text-sm font-bold text-slate-900 dark:text-white">Punctuality First</h4>
+              <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                Punctuality First
+              </h4>
               <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-                Delivering packages on time, maintaining trust between merchants and customers.
+                Delivering packages on time, maintaining trust between merchants
+                and customers.
               </p>
             </div>
           </div>
@@ -378,30 +412,40 @@ export default function BecomeRiderPage() {
               Why Ride With Us
             </h2>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              Enjoy flexible earnings and amazing perks as part of our elite fleet.
+              Enjoy flexible earnings and amazing perks as part of our elite
+              fleet.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 relative z-10">
             <div className="p-6 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 space-y-3 text-center shadow-md">
               <DollarSign className="h-7 w-7 text-red-700 mx-auto" />
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white">Weekly Payouts</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                Weekly Payouts
+              </h4>
               <p className="text-[11px] text-slate-600 dark:text-gray-300 leading-relaxed">
-                Get your hard-earned money transferred directly every week without delay.
+                Get your hard-earned money transferred directly every week
+                without delay.
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 space-y-3 text-center shadow-md">
               <Zap className="h-7 w-7 text-red-700 mx-auto" />
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white">Flexible Hours</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                Flexible Hours
+              </h4>
               <p className="text-[11px] text-slate-600 dark:text-gray-300 leading-relaxed">
-                Choose when you want to work and maintain complete freedom over your schedule.
+                Choose when you want to work and maintain complete freedom over
+                your schedule.
               </p>
             </div>
             <div className="p-6 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 space-y-3 text-center shadow-md">
               <Award className="h-7 w-7 text-red-700 mx-auto" />
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white">Bonus & Incentives</h4>
+              <h4 className="text-xs font-bold text-slate-900 dark:text-white">
+                Bonus & Incentives
+              </h4>
               <p className="text-[11px] text-slate-600 dark:text-gray-300 leading-relaxed">
-                Earn extra bonuses upon completing milestone targets and high-rating deliveries.
+                Earn extra bonuses upon completing milestone targets and
+                high-rating deliveries.
               </p>
             </div>
           </div>
@@ -411,7 +455,6 @@ export default function BecomeRiderPage() {
         <section className="max-w-7xl mx-auto space-y-20 bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 shadow-xl">
           <HighlightsSection />
         </section>
-
       </div>
     </div>
   );

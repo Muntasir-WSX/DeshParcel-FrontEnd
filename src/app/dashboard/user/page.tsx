@@ -1,21 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { AlertTriangle, MapPin, PlusCircle, Star } from "lucide-react";
 import Link from "next/link";
-import { Package, PlusCircle, MapPin, Trash2, Clock, CheckCircle2, AlertTriangle, ShieldCheck, Star, MessageSquare } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
-import { 
-  AlertDialog, 
-  AlertDialogAction, 
-  AlertDialogCancel, 
-  AlertDialogContent, 
-  AlertDialogDescription, 
-  AlertDialogFooter, 
-  AlertDialogHeader, 
-  AlertDialogTitle 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
 export default function UserParcelsPage() {
   const [parcels, setParcels] = useState<any[]>([]);
@@ -50,13 +50,14 @@ export default function UserParcelsPage() {
 
   useEffect(() => {
     fetchMyParcels();
-  }, []);
+  }, [fetchMyParcels]);
 
   const fetchMyParcels = async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/users/my-parcels`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -67,7 +68,9 @@ export default function UserParcelsPage() {
 
       setParcels(result.data);
     } catch (error: any) {
-      toast.error("Error", { description: error.message || "Could not fetch your parcels." });
+      toast.error("Error", {
+        description: error.message || "Could not fetch your parcels.",
+      });
     } finally {
       setLoading(false);
     }
@@ -82,7 +85,8 @@ export default function UserParcelsPage() {
     try {
       setActionLoading(parcelId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/parcels/${parcelId}`, {
         method: "DELETE",
@@ -92,7 +96,10 @@ export default function UserParcelsPage() {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Failed to delete parcel");
 
-      toast.success("Parcel Deleted", { description: "The shipment has been successfully cancelled and removed." });
+      toast.success("Parcel Deleted", {
+        description:
+          "The shipment has been successfully cancelled and removed.",
+      });
       fetchMyParcels();
     } catch (error: any) {
       toast.error("Action Failed", { description: error.message });
@@ -108,7 +115,8 @@ export default function UserParcelsPage() {
     try {
       setSubmittingReview(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/users/my-reviews`, {
         method: "POST",
@@ -126,7 +134,9 @@ export default function UserParcelsPage() {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Failed to submit review");
 
-      toast.success("Review Submitted", { description: "Thank you for your valuable feedback!" });
+      toast.success("Review Submitted", {
+        description: "Thank you for your valuable feedback!",
+      });
       setReviewModal({ isOpen: false, parcelId: null, trackingId: "" });
       setRating(5);
       setComment("");
@@ -148,7 +158,6 @@ export default function UserParcelsPage() {
 
   return (
     <div className="space-y-6">
-      
       {/* Header Banner */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -156,12 +165,14 @@ export default function UserParcelsPage() {
             My Booked <span className="text-red-700">Parcels</span>
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
-            View all your shipments, monitor current transit milestones, and manage bookings.
+            View all your shipments, monitor current transit milestones, and
+            manage bookings.
           </p>
         </div>
         <div className="flex items-center gap-3">
           <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-700 dark:text-gray-300">
-            Total Parcels: <span className="text-red-700">{parcels.length}</span>
+            Total Parcels:{" "}
+            <span className="text-red-700">{parcels.length}</span>
           </div>
           <Link href="/create-parcel">
             <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-600 hover:bg-red-700 text-white rounded-2xl cursor-pointer shadow-sm">
@@ -175,9 +186,14 @@ export default function UserParcelsPage() {
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {parcels.length === 0 ? (
           <div className="py-20 text-center space-y-4">
-            <p className="text-slate-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">No parcels booked by you yet.</p>
+            <p className="text-slate-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">
+              No parcels booked by you yet.
+            </p>
             <Link href="/dashboard/user/create-parcel">
-              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer shadow-sm">
+              <Button
+                size="sm"
+                className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer shadow-sm"
+              >
                 Book Your First Parcel
               </Button>
             </Link>
@@ -201,37 +217,56 @@ export default function UserParcelsPage() {
                   const hasReviewed = !!p.review;
 
                   return (
-                    <tr key={p.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                    <tr
+                      key={p.id}
+                      className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                    >
                       <td className="py-4 px-4">
-                        <p className="font-mono font-bold text-slate-900 dark:text-white">{p.trackingId}</p>
+                        <p className="font-mono font-bold text-slate-900 dark:text-white">
+                          {p.trackingId}
+                        </p>
                         <p className="text-[10px] text-red-700 uppercase font-semibold mt-0.5">
                           {p.category} • {p.weight} kg
                         </p>
                       </td>
                       <td className="py-4 px-4 text-slate-700 dark:text-gray-300">
-                        <p className="font-semibold text-slate-900 dark:text-white">{p.receiverName}</p>
-                        <p className="text-[10px] text-slate-500 dark:text-gray-400">{p.receiverPhone}</p>
+                        <p className="font-semibold text-slate-900 dark:text-white">
+                          {p.receiverName}
+                        </p>
+                        <p className="text-[10px] text-slate-500 dark:text-gray-400">
+                          {p.receiverPhone}
+                        </p>
                       </td>
                       <td className="py-4 px-4 text-slate-700 dark:text-gray-300 max-w-xs truncate">
                         <p className="flex items-center gap-1 text-[11px]">
-                          <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
+                          <MapPin className="h-3 w-3 text-red-700 shrink-0" />{" "}
+                          {p.deliveryAddress}
                         </p>
                       </td>
                       <td className="py-4 px-4 space-y-1">
-                        <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase border ${
-                          isDelivered ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30" :
-                          isPending ? "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30" :
-                          "bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-500/30"
-                        }`}>
+                        <span
+                          className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase border ${
+                            isDelivered
+                              ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30"
+                              : isPending
+                                ? "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30"
+                                : "bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-500/30"
+                          }`}
+                        >
                           {p.status}
                         </span>
                         <p className="text-[10px] text-slate-500 dark:text-gray-400">
-                          Fee: ৳{p.payment?.amount || 0} ({p.payment?.status || "PENDING"})
+                          Fee: ৳{p.payment?.amount || 0} (
+                          {p.payment?.status || "PENDING"})
                         </p>
                       </td>
                       <td className="py-4 px-4 text-right space-x-2">
                         <Link href={`/Track`} target="_blank">
-                          <Button size="sm" variant="outline" className="h-7 px-3 text-[10px] font-bold uppercase bg-slate-100 dark:bg-[#050814] border-slate-300 dark:border-white/20 text-slate-800 dark:text-white hover:bg-slate-200 dark:hover:bg-white/10 cursor-pointer">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="h-7 px-3 text-[10px] font-bold uppercase bg-slate-100 dark:bg-[#050814] border-slate-300 dark:border-white/20 text-slate-800 dark:text-white hover:bg-slate-200 dark:hover:bg-white/10 cursor-pointer"
+                          >
                             Track
                           </Button>
                         </Link>
@@ -240,7 +275,13 @@ export default function UserParcelsPage() {
                         {isDelivered && !hasReviewed && (
                           <Button
                             size="sm"
-                            onClick={() => setReviewModal({ isOpen: true, parcelId: p.id, trackingId: p.trackingId })}
+                            onClick={() =>
+                              setReviewModal({
+                                isOpen: true,
+                                parcelId: p.id,
+                                trackingId: p.trackingId,
+                              })
+                            }
                             className="h-7 px-3 text-[10px] font-bold uppercase bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 hover:bg-amber-500 hover:text-white border border-amber-300 dark:border-amber-500/30 cursor-pointer transition-all"
                           >
                             <Star className="h-3 w-3 mr-1" /> Give Review
@@ -257,7 +298,13 @@ export default function UserParcelsPage() {
                           <Button
                             size="sm"
                             disabled={actionLoading === p.id}
-                            onClick={() => setDeleteModal({ isOpen: true, parcelId: p.id, trackingId: p.trackingId })}
+                            onClick={() =>
+                              setDeleteModal({
+                                isOpen: true,
+                                parcelId: p.id,
+                                trackingId: p.trackingId,
+                              })
+                            }
                             className="h-7 px-3 text-[10px] font-bold uppercase bg-red-100 dark:bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-300 dark:border-red-700/30 cursor-pointer transition-all"
                           >
                             Cancel
@@ -274,7 +321,12 @@ export default function UserParcelsPage() {
       </div>
 
       {/* Shadcn AlertDialog for Cancellation */}
-      <AlertDialog open={deleteModal.isOpen} onOpenChange={(open) => !open && setDeleteModal({ ...deleteModal, isOpen: false })}>
+      <AlertDialog
+        open={deleteModal.isOpen}
+        onOpenChange={(open) =>
+          !open && setDeleteModal({ ...deleteModal, isOpen: false })
+        }
+      >
         <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-red-100 dark:bg-red-700/20 border border-red-200 dark:border-red-700/30 flex items-center justify-center text-red-700">
@@ -284,14 +336,18 @@ export default function UserParcelsPage() {
               Cancel & Delete Parcel
             </AlertDialogTitle>
             <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Are you sure you want to cancel booking for tracking ID <span className="text-slate-900 dark:text-white font-bold">{deleteModal.trackingId}</span>? This action cannot be undone.
+              Are you sure you want to cancel booking for tracking ID{" "}
+              <span className="text-slate-900 dark:text-white font-bold">
+                {deleteModal.trackingId}
+              </span>
+              ? This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
             <AlertDialogCancel className="bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white rounded-xl text-xs cursor-pointer">
               Keep Booking
             </AlertDialogCancel>
-            <AlertDialogAction 
+            <AlertDialogAction
               onClick={executeDeleteParcel}
               className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
             >
@@ -302,7 +358,12 @@ export default function UserParcelsPage() {
       </AlertDialog>
 
       {/* Shadcn AlertDialog for Review Submission */}
-      <AlertDialog open={reviewModal.isOpen} onOpenChange={(open) => !open && setReviewModal({ ...reviewModal, isOpen: false })}>
+      <AlertDialog
+        open={reviewModal.isOpen}
+        onOpenChange={(open) =>
+          !open && setReviewModal({ ...reviewModal, isOpen: false })
+        }
+      >
         <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-500/20 border border-amber-200 dark:border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400">
@@ -312,14 +373,20 @@ export default function UserParcelsPage() {
               Rate Your Experience
             </AlertDialogTitle>
             <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Leave a review and rating for tracking ID <span className="text-slate-900 dark:text-white font-bold">{reviewModal.trackingId}</span>. Your feedback helps us improve.
+              Leave a review and rating for tracking ID{" "}
+              <span className="text-slate-900 dark:text-white font-bold">
+                {reviewModal.trackingId}
+              </span>
+              . Your feedback helps us improve.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
           <form onSubmit={handleReviewSubmit} className="space-y-4 py-2">
             {/* Star Rating Picker */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Rating (1 to 5 Stars)</label>
+              <label className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">
+                Rating (1 to 5 Stars)
+              </label>
               <div className="flex items-center gap-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -330,18 +397,24 @@ export default function UserParcelsPage() {
                   >
                     <Star
                       className={`h-6 w-6 ${
-                        star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-300 dark:text-gray-600"
+                        star <= rating
+                          ? "fill-amber-400 text-amber-400"
+                          : "text-gray-300 dark:text-gray-600"
                       }`}
                     />
                   </button>
                 ))}
-                <span className="ml-2 text-xs font-bold text-amber-700 dark:text-amber-400">{rating} / 5 Stars</span>
+                <span className="ml-2 text-xs font-bold text-amber-700 dark:text-amber-400">
+                  {rating} / 5 Stars
+                </span>
               </div>
             </div>
 
             {/* Comment Box */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Your Feedback / Comment</label>
+              <label className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">
+                Your Feedback / Comment
+              </label>
               <textarea
                 required
                 rows={3}
@@ -353,7 +426,7 @@ export default function UserParcelsPage() {
             </div>
 
             <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
-              <AlertDialogCancel 
+              <AlertDialogCancel
                 type="button"
                 className="bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white rounded-xl text-xs cursor-pointer"
               >
@@ -370,7 +443,6 @@ export default function UserParcelsPage() {
           </form>
         </AlertDialogContent>
       </AlertDialog>
-
     </div>
   );
 }

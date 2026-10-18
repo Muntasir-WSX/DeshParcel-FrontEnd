@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { MapPin, Building, ShieldCheck, Zap } from "lucide-react";
+import { Building, MapPin, ShieldCheck, Zap } from "lucide-react";
+import Image from "next/image";
 
 // Comprehensive Coverage Destinations across Bangladesh
 const coverageDestinations = [
@@ -23,8 +23,8 @@ const coverageDestinations = [
       "Rajbari",
       "Shariatpur",
       "Madaripur",
-      "Gopalganj"
-    ]
+      "Gopalganj",
+    ],
   },
 
   {
@@ -42,8 +42,8 @@ const coverageDestinations = [
       "Lakshmipur",
       "Khagrachhari",
       "Bandarban",
-      "Rangamati"
-    ]
+      "Rangamati",
+    ],
   },
 
   {
@@ -58,8 +58,8 @@ const coverageDestinations = [
       "Natore",
       "Naogaon",
       "Chapainawabganj",
-      "Joypurhat"
-    ]
+      "Joypurhat",
+    ],
   },
 
   {
@@ -76,8 +76,8 @@ const coverageDestinations = [
       "Narail",
       "Chuadanga",
       "Meherpur",
-      "Bagerhat"
-    ]
+      "Bagerhat",
+    ],
   },
 
   {
@@ -90,20 +90,15 @@ const coverageDestinations = [
       "Bhola",
       "Pirojpur",
       "Jhalokati",
-      "Barguna"
-    ]
+      "Barguna",
+    ],
   },
 
   {
     division: "Sylhet Division",
     hubs: 5,
     deliveryTime: "48 Hours",
-    districts: [
-      "Sylhet",
-      "Habiganj",
-      "Sunamganj",
-      "Moulvibazar"
-    ]
+    districts: ["Sylhet", "Habiganj", "Sunamganj", "Moulvibazar"],
   },
 
   {
@@ -118,27 +113,21 @@ const coverageDestinations = [
       "Lalmonirhat",
       "Nilphamari",
       "Panchagarh",
-      "Thakurgaon"
-    ]
+      "Thakurgaon",
+    ],
   },
 
   {
     division: "Mymensingh Division",
     hubs: 4,
     deliveryTime: "48 Hours",
-    districts: [
-      "Mymensingh",
-      "Jamalpur",
-      "Netrokona",
-      "Sherpur"
-    ]
-  }
+    districts: ["Mymensingh", "Jamalpur", "Netrokona", "Sherpur"],
+  },
 ];
 
 export default function CoveragePage() {
   return (
     <div className="w-full pb-20 bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white overflow-x-hidden">
-      
       {/* 1. Cover Hero Section */}
       <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 bg-slate-50 dark:bg-[#070b19]">
         <div className="absolute inset-0 z-0">
@@ -158,7 +147,7 @@ export default function CoveragePage() {
         <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-700/15 border border-red-700/30 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm backdrop-blur-md"
@@ -167,22 +156,24 @@ export default function CoveragePage() {
             Nationwide Logistics Network
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
           >
-            Delivering to All <span className="text-red-700">64 Districts</span> in Bangladesh
+            Delivering to All <span className="text-red-700">64 Districts</span>{" "}
+            in Bangladesh
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-slate-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            Explore our complete nationwide coverage network, delivery hubs, and express timelines across every corner of Bangladesh.
+            Explore our complete nationwide coverage network, delivery hubs, and
+            express timelines across every corner of Bangladesh.
           </motion.p>
         </div>
       </section>
@@ -197,7 +188,8 @@ export default function CoveragePage() {
             Regional Hubs & Coverage Destinations
           </h2>
           <p className="text-slate-600 dark:text-gray-300 text-sm">
-            We deliver almost all over Bangladesh with secure tracking and reliable express transit times.
+            We deliver almost all over Bangladesh with secure tracking and
+            reliable express transit times.
           </p>
         </div>
       </section>
@@ -245,15 +237,20 @@ export default function CoveragePage() {
 
                 <p className="text-xs font-semibold text-slate-600 dark:text-gray-300 flex items-center gap-1.5 bg-white dark:bg-[#0b132b]/60 px-3 py-2 rounded-xl backdrop-blur-md border border-slate-200 dark:border-white/10 w-fit">
                   <Zap className="h-3.5 w-3.5 text-red-700" />
-                  Delivery Timeline: <span className="text-slate-900 dark:text-white font-bold">{item.deliveryTime}</span>
+                  Delivery Timeline:{" "}
+                  <span className="text-slate-900 dark:text-white font-bold">
+                    {item.deliveryTime}
+                  </span>
                 </p>
 
                 <div className="space-y-2 pt-2">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Covered Districts:</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
+                    Covered Districts:
+                  </p>
                   <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
                     {item.districts.map((dist, dIdx) => (
-                      <span 
-                        key={dIdx} 
+                      <span
+                        key={dIdx}
                         className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-100 dark:bg-[#050814]/80 text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-white/15 backdrop-blur-sm shadow-sm"
                       >
                         {dist}
@@ -274,7 +271,6 @@ export default function CoveragePage() {
           ))}
         </div>
       </section>
-
     </div>
   );
 }

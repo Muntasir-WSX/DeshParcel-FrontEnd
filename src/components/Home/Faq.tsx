@@ -1,26 +1,26 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { HelpCircle, Minus, Plus } from "lucide-react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, HelpCircle } from "lucide-react";
 
 const faqs = [
   {
     q: "How can I book a parcel delivery with DeshParcel?",
-    a: "You can easily book a pickup by clicking 'Send a Parcel' from your dashboard or homepage, entering your pickup and drop-off details, and confirming your order in less than 2 minutes."
+    a: "You can easily book a pickup by clicking 'Send a Parcel' from your dashboard or homepage, entering your pickup and drop-off details, and confirming your order in less than 2 minutes.",
   },
   {
     q: "What are your delivery timelines across Bangladesh?",
-    a: "We offer Same-Day delivery within major metropolitan areas (under 6 hours) and Next-Day nationwide delivery across all 64 districts."
+    a: "We offer Same-Day delivery within major metropolitan areas (under 6 hours) and Next-Day nationwide delivery across all 64 districts.",
   },
   {
     q: "How does Cash on Delivery (COD) payment work?",
-    a: "We collect the full product price from your customer upon successful delivery and process secure merchant payouts the very next business day with 0% hidden charges."
+    a: "We collect the full product price from your customer upon successful delivery and process secure merchant payouts the very next business day with 0% hidden charges.",
   },
   {
     q: "How can I track my live shipment?",
-    a: "Simply enter your unique Tracking ID into the tracking bar on our homepage or Tracking page to view real-time status updates and rider location."
-  }
+    a: "Simply enter your unique Tracking ID into the tracking bar on our homepage or Tracking page to view real-time status updates and rider location.",
+  },
 ];
 
 export default function Faq() {
@@ -37,7 +37,8 @@ export default function Faq() {
           Frequently Asked <span className="text-red-700">Questions</span>
         </h2>
         <p className="text-slate-600 dark:text-gray-300 text-sm">
-          Find quick answers about our shipping rates, delivery zones, and merchant policies.
+          Find quick answers about our shipping rates, delivery zones, and
+          merchant policies.
         </p>
       </div>
 
@@ -45,7 +46,7 @@ export default function Faq() {
         {faqs.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (
-            <div 
+            <div
               key={idx}
               className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl transition-all"
             >
@@ -53,11 +54,17 @@ export default function Faq() {
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
                 className="w-full flex justify-between items-center text-left cursor-pointer group"
               >
-                <h3 className={`text-base md:text-lg font-bold font-heading transition-colors ${isOpen ? "text-red-700" : "text-slate-900 dark:text-white group-hover:text-red-700"}`}>
+                <h3
+                  className={`text-base md:text-lg font-bold font-heading transition-colors ${isOpen ? "text-red-700" : "text-slate-900 dark:text-white group-hover:text-red-700"}`}
+                >
                   {faq.q}
                 </h3>
                 <div className="p-2 rounded-xl bg-slate-50 dark:bg-[#070b19] border border-slate-200 dark:border-white/10 shrink-0 ml-4">
-                  {isOpen ? <Minus className="h-4 w-4 text-red-700" /> : <Plus className="h-4 w-4 text-slate-600 dark:text-gray-300" />}
+                  {isOpen ? (
+                    <Minus className="h-4 w-4 text-red-700" />
+                  ) : (
+                    <Plus className="h-4 w-4 text-slate-600 dark:text-gray-300" />
+                  )}
                 </div>
               </button>
 

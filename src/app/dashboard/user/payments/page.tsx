@@ -1,8 +1,7 @@
 "use client";
 
+import { CheckCircle2, Clock, DollarSign, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
-import { CreditCard, DollarSign, CheckCircle2, Clock, XCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
 
@@ -12,24 +11,29 @@ export default function UserPaymentsPage() {
 
   useEffect(() => {
     fetchPayments();
-  }, []);
+  }, [fetchPayments]);
 
   const fetchPayments = async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/users/my-payments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       const result = await res.json();
-      if (!res.ok) throw new Error(result.message || "Failed to fetch payment history");
+      if (!res.ok)
+        throw new Error(result.message || "Failed to fetch payment history");
 
       setPayments(result.data);
     } catch (error: any) {
-      toast.error("Error", { description: error.message || "Could not fetch payment records." });
+      toast.error("Error", {
+        description: error.message || "Could not fetch payment records.",
+      });
     } finally {
       setLoading(false);
     }
@@ -50,7 +54,6 @@ export default function UserPaymentsPage() {
 
   return (
     <div className="space-y-6">
-      
       {/* Header Banner */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -58,7 +61,8 @@ export default function UserPaymentsPage() {
             Payment & Transaction <span className="text-red-700">History</span>
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
-            Review delivery fee payments, transaction gateways, and billing status logs.
+            Review delivery fee payments, transaction gateways, and billing
+            status logs.
           </p>
         </div>
         <div className="px-5 py-3 bg-slate-100 dark:bg-[#050814] border border-emerald-300 dark:border-emerald-500/30 rounded-2xl flex items-center gap-3 shadow-inner">
@@ -66,8 +70,12 @@ export default function UserPaymentsPage() {
             <DollarSign className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Total Paid Amount</p>
-            <p className="text-lg font-extrabold text-emerald-700 dark:text-emerald-400">৳ {totalSpent.toLocaleString()}</p>
+            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">
+              Total Paid Amount
+            </p>
+            <p className="text-lg font-extrabold text-emerald-700 dark:text-emerald-400">
+              ৳ {totalSpent.toLocaleString()}
+            </p>
           </div>
         </div>
       </div>
@@ -97,13 +105,20 @@ export default function UserPaymentsPage() {
                   const isPending = p.status === "PENDING";
 
                   return (
-                    <tr key={p.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                    <tr
+                      key={p.id}
+                      className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                    >
                       <td className="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">
                         {p.transactionId || "N/A"}
                       </td>
                       <td className="py-4 px-4 text-slate-700 dark:text-gray-300">
-                        <p className="font-bold text-slate-900 dark:text-white">{p.parcel?.category || "Shipment"}</p>
-                        <p className="text-[10px] text-slate-500 dark:text-gray-400 truncate max-w-xs">{p.parcel?.deliveryAddress}</p>
+                        <p className="font-bold text-slate-900 dark:text-white">
+                          {p.parcel?.category || "Shipment"}
+                        </p>
+                        <p className="text-[10px] text-slate-500 dark:text-gray-400 truncate max-w-xs">
+                          {p.parcel?.deliveryAddress}
+                        </p>
                       </td>
                       <td className="py-4 px-4">
                         <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300 font-mono text-[10px] uppercase font-bold">
@@ -114,14 +129,20 @@ export default function UserPaymentsPage() {
                         ৳ {p.amount}
                       </td>
                       <td className="py-4 px-4">
-                        <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
-                          isSuccess ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30" :
-                          isPending ? "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30" :
-                          "bg-red-100 dark:bg-red-700/20 text-red-700 border-red-300 dark:border-red-700/30"
-                        }`}>
+                        <span
+                          className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
+                            isSuccess
+                              ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30"
+                              : isPending
+                                ? "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30"
+                                : "bg-red-100 dark:bg-red-700/20 text-red-700 border-red-300 dark:border-red-700/30"
+                          }`}
+                        >
                           {isSuccess && <CheckCircle2 className="h-3 w-3" />}
                           {isPending && <Clock className="h-3 w-3" />}
-                          {!isSuccess && !isPending && <XCircle className="h-3 w-3" />}
+                          {!isSuccess && !isPending && (
+                            <XCircle className="h-3 w-3" />
+                          )}
                           {p.status}
                         </span>
                       </td>
@@ -136,7 +157,6 @@ export default function UserPaymentsPage() {
           </div>
         )}
       </div>
-
     </div>
   );
 }

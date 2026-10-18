@@ -1,7 +1,7 @@
 "use client";
 
-import { Truck, PackageCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { PackageCheck, Truck } from "lucide-react";
 
 export default function loader() {
   return (

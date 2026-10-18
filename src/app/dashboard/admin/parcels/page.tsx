@@ -1,18 +1,10 @@
 "use client";
 
+import { MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
-import {
-  Package,
-  CheckCircle2,
-  Trash2,
-  UserPlus,
-  Truck,
-  AlertCircle,
-  MapPin,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
+import { Button } from "@/components/ui/button";
 
 export default function ManageParcelsPage() {
   const [parcels, setParcels] = useState<any[]>([]);
@@ -28,7 +20,7 @@ export default function ManageParcelsPage() {
 
   useEffect(() => {
     fetchParcelsAndRiders();
-  }, []);
+  }, [fetchParcelsAndRiders]);
 
   const fetchParcelsAndRiders = async () => {
     try {
@@ -45,12 +37,12 @@ export default function ManageParcelsPage() {
       const parcelResult = await parcelRes.json();
       if (!parcelRes.ok)
         throw new Error(parcelResult.message || "Failed to fetch parcels");
-      
+
       const userRes = await fetch(
         `${BACKEND_URL}/api/v1/admin/users?limit=100`,
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
       const userResult = await userRes.json();
 
@@ -58,7 +50,7 @@ export default function ManageParcelsPage() {
 
       if (userRes.ok) {
         const approvedRiders = userResult.data.result.filter(
-          (u: any) => u.role === "RIDER" && u.riderProfile?.isApproved
+          (u: any) => u.role === "RIDER" && u.riderProfile?.isApproved,
         );
         setRiders(approvedRiders);
       }
@@ -84,7 +76,7 @@ export default function ManageParcelsPage() {
         {
           method: "PATCH",
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
 
       const result = await res.json();
@@ -162,7 +154,7 @@ export default function ManageParcelsPage() {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ reason: rejectReason }),
-        }
+        },
       );
 
       const result = await res.json();
@@ -228,14 +220,19 @@ export default function ManageParcelsPage() {
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-xs">
                 {parcels.map((p) => (
-                  <tr key={p.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr
+                    key={p.id}
+                    className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                  >
                     <td className="py-4 px-4">
                       <p className="font-mono font-bold text-slate-900 dark:text-white">
                         {p.trackingId}
                       </p>
                       <div className="text-[10px] text-red-700 uppercase font-semibold flex items-center gap-1 mt-0.5">
                         <span>{p.category}</span>
-                        <span>• {p.payment?.amount || p.codAmount || 0} Tk</span>
+                        <span>
+                          • {p.payment?.amount || p.codAmount || 0} Tk
+                        </span>
                         <span
                           className={`px-1.5 py-0.5 rounded text-[8px] font-bold border ${
                             p.payment?.status === "SUCCESS"
@@ -290,11 +287,16 @@ export default function ManageParcelsPage() {
                       {p.status === "PENDING" && (
                         <Button
                           size="sm"
-                          disabled={actionLoading === p.id || p.payment?.status !== 'SUCCESS'}
+                          disabled={
+                            actionLoading === p.id ||
+                            p.payment?.status !== "SUCCESS"
+                          }
                           onClick={() => handleApproveParcel(p.id)}
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-white cursor-pointer disabled:opacity-50 transition-all shadow-sm"
                         >
-                          {p.payment?.status === 'SUCCESS' ? 'Approve' : 'Payment Pending'}
+                          {p.payment?.status === "SUCCESS"
+                            ? "Approve"
+                            : "Payment Pending"}
                         </Button>
                       )}
 
@@ -352,9 +354,15 @@ export default function ManageParcelsPage() {
                   className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 >
-                  <option value="" className="bg-white dark:bg-[#0b132b]">-- Choose Rider Partner --</option>
+                  <option value="" className="bg-white dark:bg-[#0b132b]">
+                    -- Choose Rider Partner --
+                  </option>
                   {riders.map((r) => (
-                    <option key={r.id} value={r.id} className="bg-white dark:bg-[#0b132b]">
+                    <option
+                      key={r.id}
+                      value={r.id}
+                      className="bg-white dark:bg-[#0b132b]"
+                    >
                       {r.name} ({r.phone || r.email})
                     </option>
                   ))}

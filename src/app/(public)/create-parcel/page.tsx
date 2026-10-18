@@ -1,12 +1,21 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Package, MapPin, User, Phone, Weight, Tag, Image as ImageIcon, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Image as ImageIcon,
+  MapPin,
+  Package,
+  Phone,
+  Tag,
+  User,
+  Weight,
+} from "lucide-react";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
 
 export default function CreateParcelPage() {
   const router = useRouter();
@@ -23,7 +32,11 @@ export default function CreateParcelPage() {
   });
   const [parcelImage, setParcelImage] = useState<File | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -40,7 +53,9 @@ export default function CreateParcelPage() {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       if (!token) {
         throw new Error("Your session has expired. Please log in again.");
@@ -69,13 +84,19 @@ export default function CreateParcelPage() {
 
       const contentType = res.headers.get("content-type") || "";
       const responseText = await res.text();
-      let result: { message?: string; error?: string; data?: { id?: string; trackingId?: string } } | null = null;
+      let result: {
+        message?: string;
+        error?: string;
+        data?: { id?: string; trackingId?: string };
+      } | null = null;
 
       if (responseText && contentType.includes("application/json")) {
         try {
           result = JSON.parse(responseText);
         } catch {
-          throw new Error("The backend returned malformed JSON while creating the parcel.");
+          throw new Error(
+            "The backend returned malformed JSON while creating the parcel.",
+          );
         }
       }
 
@@ -83,13 +104,18 @@ export default function CreateParcelPage() {
         throw new Error(
           result?.message ||
             result?.error ||
-            responseText.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim() ||
+            responseText
+              .replace(/<[^>]*>/g, " ")
+              .replace(/\s+/g, " ")
+              .trim() ||
             `Parcel request failed (${res.status}).`,
         );
       }
 
       if (!result) {
-        throw new Error("The backend returned an invalid response while creating the parcel.");
+        throw new Error(
+          "The backend returned an invalid response while creating the parcel.",
+        );
       }
 
       toast.success("Parcel Booked Successfully!", {
@@ -103,9 +129,9 @@ export default function CreateParcelPage() {
       } else {
         router.push("/dashboard/user");
       }
-
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Something went wrong.";
+      const message =
+        error instanceof Error ? error.message : "Something went wrong.";
       toast.error("Booking Failed", { description: message });
     } finally {
       setLoading(false);
@@ -114,9 +140,8 @@ export default function CreateParcelPage() {
 
   return (
     <div className="w-full pb-20 text-slate-900 dark:text-white space-y-12">
-      
       {/* 1. Hero Banner Section (Centered Content) */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -125,7 +150,7 @@ export default function CreateParcelPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1791012807/6b5d791c1002361cf027e2abb4036429_nx8o3m.jpg"
-            alt="Create Parcel Banner" 
+            alt="Create Parcel Banner"
             sizes="100vw"
             fill
             priority
@@ -143,20 +168,21 @@ export default function CreateParcelPage() {
             Book a <span className="text-red-700">Parcel Shipment</span>
           </h1>
           <p className="text-slate-700 dark:text-gray-200 text-sm md:text-base max-w-2xl leading-relaxed font-normal">
-            Fill in the shipment details below to dispatch your packages securely across nationwide delivery hubs with real-time tracking and trusted courier service.
+            Fill in the shipment details below to dispatch your packages
+            securely across nationwide delivery hubs with real-time tracking and
+            trusted courier service.
           </p>
         </div>
       </motion.section>
 
       {/* 2. Create Parcel Form Card */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-4xl mx-auto px-4 md:px-0"
       >
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-          
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="mb-8 border-b border-slate-200 dark:border-white/10 pb-4">
@@ -164,12 +190,12 @@ export default function CreateParcelPage() {
               Shipment Information Form
             </h2>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              Provide accurate receiver and package specifications for smooth delivery handling.
+              Provide accurate receiver and package specifications for smooth
+              delivery handling.
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
-            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Receiver Name */}
               <div className="space-y-1.5">
@@ -223,7 +249,8 @@ export default function CreateParcelPage() {
               {/* Delivery Address */}
               <div className="space-y-1.5">
                 <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
-                  <MapPin className="h-3.5 w-3.5 text-red-700" /> Delivery Address
+                  <MapPin className="h-3.5 w-3.5 text-red-700" /> Delivery
+                  Address
                 </label>
                 <textarea
                   name="deliveryAddress"
@@ -274,7 +301,8 @@ export default function CreateParcelPage() {
             {/* Optional Parcel Image Upload */}
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
-                <ImageIcon className="h-3.5 w-3.5 text-red-700" /> Parcel Image (Optional)
+                <ImageIcon className="h-3.5 w-3.5 text-red-700" /> Parcel Image
+                (Optional)
               </label>
               <input
                 type="file"
@@ -290,15 +318,13 @@ export default function CreateParcelPage() {
                 disabled={loading}
                 className="h-12 px-8 rounded-2xl text-xs font-bold uppercase tracking-wider bg-red-600 hover:bg-red-700 text-white cursor-pointer shadow-red-700/30 transition-all flex items-center gap-2"
               >
-                {loading ? "Booking Parcel..." : "Confirm & Book Shipment"} <ArrowRight className="h-4 w-4" />
+                {loading ? "Booking Parcel..." : "Confirm & Book Shipment"}{" "}
+                <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
-
           </form>
-
         </div>
       </motion.section>
-
     </div>
   );
 }

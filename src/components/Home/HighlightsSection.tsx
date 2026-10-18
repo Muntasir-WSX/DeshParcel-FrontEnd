@@ -1,39 +1,61 @@
 "use client";
 
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Minus,
+  Plus,
+  ShieldCheck,
+} from "lucide-react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, ArrowUpRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 const highlights = [
-  { 
+  {
     id: 1,
-    title: "Same-Day Delivery", 
+    title: "Same-Day Delivery",
     desc: "Urgent deliveries within the city in under 6 hours. Perfect for time-sensitive documents, medical supplies, and perishable goods.",
-    bullets: ["Automated Dispatching", "Real-Time Rider Tracking", "Priority Handling"],
-    link: "/Services"
+    bullets: [
+      "Automated Dispatching",
+      "Real-Time Rider Tracking",
+      "Priority Handling",
+    ],
+    link: "/Services",
   },
-  { 
+  {
     id: 2,
-    title: "Next-Day Nationwide", 
+    title: "Next-Day Nationwide",
     desc: "Reliable and secure delivery across all 64 districts by the next business day. Built for e-commerce and corporate bulk shipments.",
-    bullets: ["Inter-district line haul", "Secure Warehousing", "SMS & Web Tracking"],
-    link: "/Services"
+    bullets: [
+      "Inter-district line haul",
+      "Secure Warehousing",
+      "SMS & Web Tracking",
+    ],
+    link: "/Services",
   },
-  { 
+  {
     id: 3,
-    title: "Safe & Secure Handling", 
+    title: "Safe & Secure Handling",
     desc: "We ensure full insurance coverage and careful item management. Your fragile and high-value items are safe with our trained professionals.",
-    bullets: ["Tamper-proof Packaging", "Value Insurance up to Tk50k", "CCTV Monitored Hubs"],
-    link: "/Services"
+    bullets: [
+      "Tamper-proof Packaging",
+      "Value Insurance up to Tk50k",
+      "CCTV Monitored Hubs",
+    ],
+    link: "/Services",
   },
-  { 
+  {
     id: 4,
-    title: "24/7 Dedicated Support", 
+    title: "24/7 Dedicated Support",
     desc: "Our customer success team is always available to resolve your shipping queries, manage returns, and provide instant updates.",
-    bullets: ["Instant Live Chat", "Dedicated Account Manager", "Easy Return Policies"],
-    link: "/ContactUs"
+    bullets: [
+      "Instant Live Chat",
+      "Dedicated Account Manager",
+      "Easy Return Policies",
+    ],
+    link: "/ContactUs",
   },
 ];
 
@@ -46,7 +68,6 @@ export default function HighlightsSection() {
 
   return (
     <section className="py-20 md:py-32 w-full max-w-7xl mx-auto px-5 md:px-12 bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white rounded-3xl my-16">
-      
       {/* Section Header */}
       <div className="text-center md:text-left mb-12 md:mb-16">
         <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-900/5 dark:bg-white/10 border border-slate-900/15 dark:border-white/30 text-[11px] font-bold uppercase tracking-widest text-slate-800 dark:text-white/90 mb-3">
@@ -58,9 +79,8 @@ export default function HighlightsSection() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
         {/* Left Side: Large Rounded Image with Glowing & Gradient Overlay */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
@@ -75,17 +95,21 @@ export default function HighlightsSection() {
           />
           {/* Theme-matching Dark Navy & Reddish Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/35 to-transparent dark:from-[#070b19]/95 dark:via-[#070b19]/40 dark:to-transparent" />
-          
+
           {/* Floating Badge on Image */}
           <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-white dark:bg-[#0b132b]/90 backdrop-blur-md border border-slate-200 dark:border-white/15 shadow-2xl space-y-1">
-            <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">Nationwide Coverage</h4>
-            <p className="text-xs text-slate-600 dark:text-gray-300">Empowering 35K+ merchants across all 64 districts with rapid door-to-door delivery.</p>
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">
+              Nationwide Coverage
+            </h4>
+            <p className="text-xs text-slate-600 dark:text-gray-300">
+              Empowering 35K+ merchants across all 64 districts with rapid
+              door-to-door delivery.
+            </p>
           </div>
         </motion.div>
 
         {/* Right Side: Accordion Features */}
         <div className="lg:col-span-6 flex flex-col justify-center bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-          
           {/* Glowing background accents */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
@@ -102,7 +126,9 @@ export default function HighlightsSection() {
                     onClick={() => toggleAccordion(item.id)}
                     className="w-full py-2 flex justify-between items-center text-left focus:outline-none group cursor-pointer"
                   >
-                    <h3 className={`text-lg md:text-xl font-bold font-heading transition-colors duration-300 ${isOpen ? "text-red-700" : "text-slate-900 dark:text-white group-hover:text-red-700"}`}>
+                    <h3
+                      className={`text-lg md:text-xl font-bold font-heading transition-colors duration-300 ${isOpen ? "text-red-700" : "text-slate-900 dark:text-white group-hover:text-red-700"}`}
+                    >
                       {item.title}
                     </h3>
                     <div className="ml-4 flex-shrink-0 p-2 rounded-xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 group-hover:border-red-700/30 transition-all">
@@ -128,11 +154,14 @@ export default function HighlightsSection() {
                           <p className="text-slate-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">
                             {item.desc}
                           </p>
-                          
+
                           {/* Bullet Points */}
                           <ul className="space-y-2">
                             {item.bullets.map((bullet, idx) => (
-                              <li key={idx} className="flex items-center gap-2.5 text-xs font-medium text-slate-700 dark:text-gray-200">
+                              <li
+                                key={idx}
+                                className="flex items-center gap-2.5 text-xs font-medium text-slate-700 dark:text-gray-200"
+                              >
                                 <CheckCircle2 className="h-3.5 w-3.5 text-red-700 shrink-0" />
                                 {bullet}
                               </li>
@@ -141,7 +170,10 @@ export default function HighlightsSection() {
 
                           {/* View Details Link */}
                           <div className="pt-2">
-                            <Link href={item.link} className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider group w-fit">
+                            <Link
+                              href={item.link}
+                              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider group w-fit"
+                            >
                               <span className="flex items-center justify-center w-7 h-7 rounded-xl bg-red-700 text-white group-hover:bg-red-700 transition-colors shadow-md">
                                 <ArrowUpRight className="h-3.5 w-3.5" />
                               </span>
@@ -158,9 +190,7 @@ export default function HighlightsSection() {
               );
             })}
           </div>
-
         </div>
-
       </div>
     </section>
   );

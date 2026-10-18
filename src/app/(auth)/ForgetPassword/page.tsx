@@ -1,26 +1,38 @@
 "use client";
 
+import { motion } from "framer-motion";
+import {
+  ArrowLeft,
+  ArrowRight,
+  CheckCircle2,
+  KeyRound,
+  Lock,
+  Mail,
+  ShieldCheck,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, KeyRound, Lock, ArrowRight, ShieldCheck, CheckCircle2, ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Logo from "@/components/logo/logo";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { forgotPasswordApi, resetPasswordApi } from "@/app/(auth)/ForgetPassword/forgetpassword";
+import { useState } from "react";
+import { toast } from "sonner";
+import {
+  forgotPasswordApi,
+  resetPasswordApi,
+} from "@/app/(auth)/ForgetPassword/forgetpassword";
+import Logo from "@/components/logo/logo";
+import { Button } from "@/components/ui/button";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
-  const [step, setStep] = useState<"REQUEST_OTP" | "RESET_PASSWORD">("REQUEST_OTP");
+  const [step, setStep] = useState<"REQUEST_OTP" | "RESET_PASSWORD">(
+    "REQUEST_OTP",
+  );
   const [loading, setLoading] = useState(false);
 
   // Form States
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
-
 
   const handleRequestOtp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +41,8 @@ export default function ForgotPasswordPage() {
     try {
       const result = await forgotPasswordApi({ email });
       toast.success("OTP Sent Successfully!", {
-        description: result.message || "Please check your email inbox or spam folder.",
+        description:
+          result.message || "Please check your email inbox or spam folder.",
       });
       setStep("RESET_PASSWORD"); // Switch to OTP & New Password Step
     } catch (error: any) {
@@ -41,7 +54,6 @@ export default function ForgotPasswordPage() {
     }
   };
 
-
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -49,10 +61,10 @@ export default function ForgotPasswordPage() {
     try {
       const result = await resetPasswordApi({ email, otp, newPassword });
       toast.success("Password Reset Successful!", {
-        description: result.message || "You can now login with your new password.",
+        description:
+          result.message || "You can now login with your new password.",
       });
 
-      
       setTimeout(() => {
         router.push("/login");
       }, 1500);
@@ -67,9 +79,8 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="w-full h-screen grid grid-cols-1 lg:grid-cols-12 bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white overflow-hidden">
-      
       {/* Left Side: Cover Image */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -83,7 +94,7 @@ export default function ForgotPasswordPage() {
           className="object-cover object-center filter brightness-95"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent dark:from-[#070b19]/90 dark:via-[#070b19]/20 dark:to-transparent" />
-        
+
         <div className="absolute bottom-10 left-10 right-10 z-10 space-y-2">
           <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-[11px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
@@ -93,20 +104,20 @@ export default function ForgotPasswordPage() {
             Recover Access to Your Account
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-300 max-w-md leading-relaxed">
-            Verify your identity securely with a one-time passcode (OTP) sent directly to your registered email.
+            Verify your identity securely with a one-time passcode (OTP) sent
+            directly to your registered email.
           </p>
         </div>
       </motion.div>
 
       {/* Right Side: Form Container */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, x: 30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="col-span-1 lg:col-span-5 h-full flex flex-col justify-center items-center px-6 lg:px-10 bg-slate-50 dark:bg-[#070b19] overflow-y-auto py-6"
       >
         <div className="w-full max-w-md bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl relative space-y-4">
-          
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -120,15 +131,18 @@ export default function ForgotPasswordPage() {
               {step === "REQUEST_OTP" ? "Forgot Password?" : "Reset Password"}
             </h2>
             <p className="text-[11px] text-slate-600 dark:text-gray-300">
-              {step === "REQUEST_OTP" 
-                ? "Enter your email address to receive a verification OTP" 
+              {step === "REQUEST_OTP"
+                ? "Enter your email address to receive a verification OTP"
                 : `Enter the OTP sent to ${email} and set your new password`}
             </p>
           </div>
 
           {step === "REQUEST_OTP" ? (
             /* Step 1 Form: Request OTP */
-            <form onSubmit={handleRequestOtp} className="space-y-4 relative z-10">
+            <form
+              onSubmit={handleRequestOtp}
+              className="space-y-4 relative z-10"
+            >
               <div className="space-y-1">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <Mail className="h-3 w-3 text-red-700" />
@@ -154,14 +168,20 @@ export default function ForgotPasswordPage() {
               </Button>
 
               <div className="text-center pt-2">
-                <Link href="/login" className="text-xs text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center gap-1.5">
+                <Link
+                  href="/login"
+                  className="text-xs text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white flex items-center justify-center gap-1.5"
+                >
                   <ArrowLeft className="h-3 w-3 text-red-700" /> Back to Login
                 </Link>
               </div>
             </form>
           ) : (
             /* Step 2 Form: Enter OTP & New Password */
-            <form onSubmit={handleResetPassword} className="space-y-3.5 relative z-10">
+            <form
+              onSubmit={handleResetPassword}
+              className="space-y-3.5 relative z-10"
+            >
               <div className="space-y-1">
                 <label className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <KeyRound className="h-3 w-3 text-red-700" />
@@ -213,10 +233,8 @@ export default function ForgotPasswordPage() {
               </div>
             </form>
           )}
-
         </div>
       </motion.div>
-
     </div>
   );
 }

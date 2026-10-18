@@ -1,18 +1,18 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { CheckCircle2, Package, ArrowRight, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Package } from "lucide-react";
+import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 function PaymentSuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const parcelId = searchParams.get("parcelId");
+  const _parcelId = searchParams.get("parcelId");
 
-  const [verifying, setVerifying] = useState(false);
+  const [_verifying, _setVerifying] = useState(false);
 
   useEffect(() => {
     // ৩ সেকেন্ড পর অটোমেটিক ড্যাশবোর্ডে রিডাইরেক্ট করবে
@@ -25,7 +25,7 @@ function PaymentSuccessContent() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white flex items-center justify-center p-6">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -38,9 +38,12 @@ function PaymentSuccessContent() {
         </div>
 
         <div className="space-y-2">
-          <h1 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white">Payment Successful!</h1>
+          <h1 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
+            Payment Successful!
+          </h1>
           <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-            Your transaction has been verified successfully. Taking you to your dashboard...
+            Your transaction has been verified successfully. Taking you to your
+            dashboard...
           </p>
         </div>
 
@@ -52,12 +55,14 @@ function PaymentSuccessContent() {
           </Link>
 
           <Link href="/" className="block w-full">
-            <Button variant="outline" className="w-full h-12 rounded-xl border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black text-xs font-bold uppercase tracking-wider cursor-pointer bg-slate-100 dark:bg-[#050814] transition-all flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              className="w-full h-12 rounded-xl border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black text-xs font-bold uppercase tracking-wider cursor-pointer bg-slate-100 dark:bg-[#050814] transition-all flex items-center justify-center gap-2"
+            >
               Back to Home <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>
         </div>
-
       </motion.div>
     </div>
   );

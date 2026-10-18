@@ -1,20 +1,35 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
-  { step: "01", title: "Book Pickup", desc: "Fill out the online booking form with pickup and delivery details." },
-  { step: "02", title: "Parcel Collection", desc: "Our rider collects your parcel directly from your doorstep." },
-  { step: "03", title: "Safe Transit", desc: "Your item is processed and dispatched via secure transit hubs." },
-  { step: "04", title: "Successful Delivery", desc: "Delivered safely to the recipient with live delivery confirmation." },
+  {
+    step: "01",
+    title: "Book Pickup",
+    desc: "Fill out the online booking form with pickup and delivery details.",
+  },
+  {
+    step: "02",
+    title: "Parcel Collection",
+    desc: "Our rider collects your parcel directly from your doorstep.",
+  },
+  {
+    step: "03",
+    title: "Safe Transit",
+    desc: "Your item is processed and dispatched via secure transit hubs.",
+  },
+  {
+    step: "04",
+    title: "Successful Delivery",
+    desc: "Delivered safely to the recipient with live delivery confirmation.",
+  },
 ];
 
 export default function HowItWorks() {
   return (
     <section className="relative py-20 md:py-32 w-full max-w-7xl mx-auto px-6 md:px-16 my-16 rounded-3xl text-slate-900 dark:text-white shadow-2xl overflow-hidden border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-      
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
@@ -33,10 +48,9 @@ export default function HowItWorks() {
 
       {/* Content Container */}
       <div className="relative z-10">
-        
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -45,8 +59,8 @@ export default function HowItWorks() {
             <ShieldCheck className="h-4 w-4 text-red-700" />
             Simple Process
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,8 +69,8 @@ export default function HowItWorks() {
           >
             How <span className="text-red-700">DeshParcel</span> Works
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -70,7 +84,7 @@ export default function HowItWorks() {
         {/* Step Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +114,6 @@ export default function HowItWorks() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );

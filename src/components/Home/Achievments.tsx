@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { Trophy, TrendingUp, Users, PackageCheck } from "lucide-react";
+import { PackageCheck, TrendingUp, Trophy, Users } from "lucide-react";
+import Image from "next/image";
 
 const stats = [
   {
@@ -19,7 +19,7 @@ const stats = [
   },
   {
     icon: Users,
-    value: ' 12 Partners',
+    value: " 12 Partners",
     label: "Active E-commerce Partners",
     desc: "Empowering online merchants with next-day payouts and COD.",
   },
@@ -34,7 +34,6 @@ const stats = [
 export default function Achievments() {
   return (
     <section className="relative max-w-7xl mx-auto px-6 md:px-12 my-28 rounded-[2.5rem] overflow-hidden py-24 text-slate-900 dark:text-white shadow-2xl border border-red-700/25 bg-white dark:bg-[#0b132b]">
-      
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full opacity-15">
         <Image
@@ -51,7 +50,6 @@ export default function Achievments() {
       <div className="absolute bottom-10 left-10 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <span className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm">
@@ -62,7 +60,8 @@ export default function Achievments() {
             Our Proven <span className="text-red-700">Track Record</span>
           </h2>
           <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base">
-            Numbers that define our dedication, reliability, and nationwide growth.
+            Numbers that define our dedication, reliability, and nationwide
+            growth.
           </p>
         </div>
 
@@ -97,7 +96,6 @@ export default function Achievments() {
             );
           })}
         </div>
-
       </div>
     </section>
   );

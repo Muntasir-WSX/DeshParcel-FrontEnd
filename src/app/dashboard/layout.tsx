@@ -1,27 +1,26 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
-import { 
-  LayoutDashboard, 
-  Package, 
-  Users, 
-  Bike, 
-  ShieldCheck, 
-  Menu, 
-  ArrowLeft, 
-  DollarSign,
-  Wallet,
+import {
+  ArrowLeft,
+  Bike,
   ClipboardList,
-  PlusCircle,
   CreditCard,
-  Mail
+  DollarSign,
+  LayoutDashboard,
+  Mail,
+  Menu,
+  Package,
+  PlusCircle,
+  ShieldCheck,
+  Users,
+  Wallet,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import Logo from "@/components/logo/logo";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { toast } from "sonner";
-import Logo from "@/components/logo/logo";
 
 export default function DashboardLayout({
   children,
@@ -37,7 +36,7 @@ export default function DashboardLayout({
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     const role = localStorage.getItem("userRole");
-    
+
     if (!token) {
       router.push("/login");
     } else {
@@ -58,28 +57,53 @@ export default function DashboardLayout({
     { name: "Manage Parcels", href: "/dashboard/admin/parcels", icon: Package },
     { name: "All Users", href: "/dashboard/admin/users", icon: Users },
     { name: "Approve Riders", href: "/dashboard/admin/riders", icon: Bike },
-    { name: "Payments & Revenue", href: "/dashboard/admin/payments", icon: DollarSign },
+    {
+      name: "Payments & Revenue",
+      href: "/dashboard/admin/payments",
+      icon: DollarSign,
+    },
     { name: "Manage Blogs", href: "/dashboard/admin/blogs", icon: PlusCircle },
-    { name: "Newsletter Subscribers", href: "/dashboard/admin/newsletter", icon: Mail },
+    {
+      name: "Newsletter Subscribers",
+      href: "/dashboard/admin/newsletter",
+      icon: Mail,
+    },
   ];
   const riderLinks = [
-    { name: "Rider Dashboard", href: "/dashboard/rider", icon: LayoutDashboard },
-    { name: "Assigned Parcels", href: "/dashboard/rider/parcels", icon: ClipboardList },
-    { name: "Earnings & Cashout", href: "/dashboard/rider/earnings", icon: Wallet },
+    {
+      name: "Rider Dashboard",
+      href: "/dashboard/rider",
+      icon: LayoutDashboard,
+    },
+    {
+      name: "Assigned Parcels",
+      href: "/dashboard/rider/parcels",
+      icon: ClipboardList,
+    },
+    {
+      name: "Earnings & Cashout",
+      href: "/dashboard/rider/earnings",
+      icon: Wallet,
+    },
   ];
   const userLinks = [
     { name: "My Parcels", href: "/dashboard/user", icon: Package },
-    { name: "Payment History", href: "/dashboard/user/payments", icon: CreditCard },
+    {
+      name: "Payment History",
+      href: "/dashboard/user/payments",
+      icon: CreditCard,
+    },
   ];
   const getCurrentLinks = () => {
     if (userRole === "RIDER") return riderLinks;
     if (userRole === "ADMIN" || userRole === "MODERATOR") return adminLinks;
-    return userLinks; 
+    return userLinks;
   };
 
   const getPanelTitle = () => {
     if (userRole === "RIDER") return "Rider Delivery Hub";
-    if (userRole === "ADMIN" || userRole === "MODERATOR") return "Admin Control Panel";
+    if (userRole === "ADMIN" || userRole === "MODERATOR")
+      return "Admin Control Panel";
     return "Customer Portal";
   };
 
@@ -88,7 +112,6 @@ export default function DashboardLayout({
 
   return (
     <div className="flex min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white w-full overflow-hidden">
-      
       {/* Desktop Sidebar */}
       <aside className="w-64 bg-white dark:bg-[#0b132b] border-r border-red-700/20 hidden lg:flex flex-col p-6 space-y-8 shadow-2xl relative z-20">
         <div className="flex items-center justify-between">
@@ -137,22 +160,23 @@ export default function DashboardLayout({
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
-        
         {/* Top Navbar Header */}
         <header className="h-20 border-b border-red-700/20 bg-white dark:bg-[#0b132b]/80 backdrop-blur-xl flex items-center justify-between px-6 lg:px-10 sticky top-0 z-30 shadow-md">
           <div className="flex items-center gap-4">
-            
             {/* Mobile & Tablet Drawer Trigger */}
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
-                <button 
+                <button
                   className="lg:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-white/10 transition-colors cursor-pointer"
                   aria-label="Open Sidebar Menu"
                 >
                   <Menu className="h-5 w-5" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-72 bg-white dark:bg-[#0b132b] border-r border-red-700/30 text-slate-900 dark:text-white p-6 flex flex-col space-y-8">
+              <SheetContent
+                side="left"
+                className="w-72 bg-white dark:bg-[#0b132b] border-r border-red-700/30 text-slate-900 dark:text-white p-6 flex flex-col space-y-8"
+              >
                 <div className="flex items-center justify-between">
                   <Logo />
                 </div>
@@ -200,14 +224,19 @@ export default function DashboardLayout({
 
             <div>
               <h1 className="font-heading font-extrabold text-base md:text-xl text-slate-900 dark:text-white tracking-wide">
-                {userRole === "RIDER" ? "Rider" : userRole === "CUSTOMER" ? "Customer" : "Admin"} <span className="text-red-700">Dashboard</span>
+                {userRole === "RIDER"
+                  ? "Rider"
+                  : userRole === "CUSTOMER"
+                    ? "Customer"
+                    : "Admin"}{" "}
+                <span className="text-red-700">Dashboard</span>
               </h1>
               <p className="text-[11px] text-slate-600 dark:text-gray-300 hidden sm:block">
-                {userRole === "RIDER" 
-                  ? "Manage assigned deliveries, earnings, and status workflows." 
-                  : userRole === "CUSTOMER" 
-                  ? "Book new shipments, track parcels, and view payment history." 
-                  : "Manage parcels, users, and logistics metrics from one centralized hub."}
+                {userRole === "RIDER"
+                  ? "Manage assigned deliveries, earnings, and status workflows."
+                  : userRole === "CUSTOMER"
+                    ? "Book new shipments, track parcels, and view payment history."
+                    : "Manage parcels, users, and logistics metrics from one centralized hub."}
               </p>
             </div>
           </div>
@@ -223,9 +252,7 @@ export default function DashboardLayout({
 
         {/* Dashboard Dynamic Page Content */}
         <main className="flex-1 w-full p-6 md:p-10 overflow-y-auto bg-slate-50 dark:bg-[#070b19]">
-          <div className="max-w-7xl mx-auto">
-            {children}
-          </div>
+          <div className="max-w-7xl mx-auto">{children}</div>
         </main>
       </div>
     </div>

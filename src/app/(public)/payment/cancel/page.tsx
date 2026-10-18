@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { AlertCircle, ArrowLeft, LayoutDashboard } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import { AlertCircle, ArrowLeft, LayoutDashboard } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function PaymentCancelPage() {
   const router = useRouter();
@@ -20,7 +20,7 @@ export default function PaymentCancelPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white flex items-center justify-center p-6">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -33,9 +33,12 @@ export default function PaymentCancelPage() {
         </div>
 
         <div className="space-y-2">
-          <h1 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white">Payment Cancelled</h1>
+          <h1 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
+            Payment Cancelled
+          </h1>
           <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-            You cancelled the payment process. Redirecting you to your dashboard...
+            You cancelled the payment process. Redirecting you to your
+            dashboard...
           </p>
         </div>
 
@@ -47,7 +50,10 @@ export default function PaymentCancelPage() {
           </Link>
 
           <Link href="/" className="block w-full">
-            <Button variant="outline" className="w-full h-12 rounded-xl border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black text-xs font-bold uppercase tracking-wider cursor-pointer bg-slate-100 dark:bg-[#050814] transition-all flex items-center justify-center gap-2">
+            <Button
+              variant="outline"
+              className="w-full h-12 rounded-xl border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black text-xs font-bold uppercase tracking-wider cursor-pointer bg-slate-100 dark:bg-[#050814] transition-all flex items-center justify-center gap-2"
+            >
               <ArrowLeft className="h-4 w-4" /> Back to Home
             </Button>
           </Link>

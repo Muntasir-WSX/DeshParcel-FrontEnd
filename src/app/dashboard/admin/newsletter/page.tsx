@@ -1,10 +1,10 @@
 "use client";
 
+import { Calendar, Mail, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Mail, Calendar, Trash2, RefreshCw } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import Loader from "@/components/shared/mainloading";
+import { Button } from "@/components/ui/button";
 
 export default function AdminNewslettersPage() {
   const [subscribers, setSubscribers] = useState<any[]>([]);
@@ -12,13 +12,14 @@ export default function AdminNewslettersPage() {
 
   useEffect(() => {
     fetchSubscribers();
-  }, []);
+  }, [fetchSubscribers]);
 
   const fetchSubscribers = async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/newsletters`, {
         headers: {
@@ -49,7 +50,6 @@ export default function AdminNewslettersPage() {
 
   return (
     <div className="space-y-6">
-      
       {/* Header Banner */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
@@ -57,7 +57,8 @@ export default function AdminNewslettersPage() {
             Newsletter <span className="text-red-700">Subscribers</span>
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-400 mt-1">
-            View and manage users subscribed to DeshParcel promotional emails & updates.
+            View and manage users subscribed to DeshParcel promotional emails &
+            updates.
           </p>
         </div>
 
@@ -72,10 +73,10 @@ export default function AdminNewslettersPage() {
 
       {/* Subscribers Table Container */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-6 shadow-xl space-y-4">
-        
         <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-2">
-            <Mail className="h-4 w-4 text-red-700" /> Total Subscribers ({subscribers.length})
+            <Mail className="h-4 w-4 text-red-700" /> Total Subscribers (
+            {subscribers.length})
           </span>
         </div>
 
@@ -95,7 +96,10 @@ export default function AdminNewslettersPage() {
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/5">
                 {subscribers.map((item, index) => (
-                  <tr key={item.id || index} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr
+                    key={item.id || index}
+                    className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                  >
                     <td className="py-3.5 px-4 font-semibold text-slate-400 dark:text-gray-500">
                       {index + 1}
                     </td>
@@ -114,9 +118,7 @@ export default function AdminNewslettersPage() {
             </table>
           </div>
         )}
-
       </div>
-
     </div>
   );
 }

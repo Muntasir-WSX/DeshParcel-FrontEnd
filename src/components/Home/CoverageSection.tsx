@@ -1,15 +1,14 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { MapPin, ArrowRight, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight, MapPin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function CoverageSection() {
   return (
     <section className="relative py-20 md:py-28 my-16 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-      
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
@@ -28,8 +27,7 @@ export default function CoverageSection() {
 
       {/* Content Container */}
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-        
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -42,23 +40,25 @@ export default function CoverageSection() {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-slate-900 dark:text-white">
-            Delivering to All <span className="text-red-700">64 Districts</span> Across Bangladesh
+            Delivering to All <span className="text-red-700">64 Districts</span>{" "}
+            Across Bangladesh
           </h2>
 
           <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
-            From metropolitan cities to remote upazilas, our extensive coverage ensures your parcel reaches its destination securely and on time.
+            From metropolitan cities to remote upazilas, our extensive coverage
+            ensures your parcel reaches its destination securely and on time.
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <Link href="/coverage">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
             >
               Check Coverage Area
@@ -66,7 +66,6 @@ export default function CoverageSection() {
             </Button>
           </Link>
         </motion.div>
-
       </div>
     </section>
   );

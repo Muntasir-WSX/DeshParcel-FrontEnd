@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { cn } from "@/lib/utils";
 
 const jetbrainsMonoHeading = JetBrains_Mono({
   subsets: ["latin"],
@@ -38,7 +38,7 @@ export default function RootLayout({
         geistMono.variable,
         "font-sans",
         inter.variable,
-        jetbrainsMonoHeading.variable
+        jetbrainsMonoHeading.variable,
       )}
     >
       <body

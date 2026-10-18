@@ -1,18 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { FileText, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, FileText } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function TermsOfServicePage() {
   return (
     <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pt-28 pb-20 overflow-hidden">
-      
       {/* 1. Hero Banner with Background Image */}
       <section className="relative py-20 md:py-32 my-8 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-        
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
@@ -32,8 +30,7 @@ export default function TermsOfServicePage() {
 
         {/* Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -50,11 +47,13 @@ export default function TermsOfServicePage() {
             </h1>
 
             <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
-              Please read these terms and conditions carefully before using DeshParcel logistics platform, booking shipments, or registering for an account.
+              Please read these terms and conditions carefully before using
+              DeshParcel logistics platform, booking shipments, or registering
+              for an account.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -62,8 +61,8 @@ export default function TermsOfServicePage() {
             className="flex flex-col sm:flex-row gap-3 w-full md:w-auto"
           >
             <Link href="/">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
               >
                 Back to Home
@@ -71,14 +70,12 @@ export default function TermsOfServicePage() {
               </Button>
             </Link>
           </motion.div>
-
         </div>
       </section>
 
       {/* 2. Detailed Terms Content Section */}
       <section className="max-w-5xl mx-auto px-6 md:px-12 my-20">
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden space-y-8">
-          
           <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-4 relative z-10 border-b border-slate-200 dark:border-white/10 pb-6">
@@ -97,7 +94,11 @@ export default function TermsOfServicePage() {
                 1. Acceptance of Terms
               </h3>
               <p>
-                By accessing or using the DeshParcel website, mobile applications, or courier services, you agree to be bound by these Terms of Service. If you do not agree to all the terms and conditions, you may not access our platform or use our logistics services.
+                By accessing or using the DeshParcel website, mobile
+                applications, or courier services, you agree to be bound by
+                these Terms of Service. If you do not agree to all the terms and
+                conditions, you may not access our platform or use our logistics
+                services.
               </p>
             </div>
 
@@ -107,7 +108,10 @@ export default function TermsOfServicePage() {
                 2. User Accounts & Security
               </h3>
               <p>
-                To use certain features of the platform (such as creating parcels or tracking shipments), you must register for an account. You are responsible for safeguarding your password and for all activities that occur under your account.
+                To use certain features of the platform (such as creating
+                parcels or tracking shipments), you must register for an
+                account. You are responsible for safeguarding your password and
+                for all activities that occur under your account.
               </p>
             </div>
 
@@ -117,7 +121,10 @@ export default function TermsOfServicePage() {
                 3. Prohibited Items & Restrictions
               </h3>
               <p>
-                Users are strictly prohibited from shipping illegal substances, explosives, firearms, perishable goods without prior approval, or hazardous materials. DeshParcel reserves the right to inspect any package for safety compliance.
+                Users are strictly prohibited from shipping illegal substances,
+                explosives, firearms, perishable goods without prior approval,
+                or hazardous materials. DeshParcel reserves the right to inspect
+                any package for safety compliance.
               </p>
             </div>
 
@@ -127,7 +134,10 @@ export default function TermsOfServicePage() {
                 4. Payment & COD Policies
               </h3>
               <p>
-                All delivery fees must be paid in accordance with current pricing schedules. Cash on Delivery (COD) amounts collected by riders are processed and remitted to merchants according to our standard next-day payout cycle.
+                All delivery fees must be paid in accordance with current
+                pricing schedules. Cash on Delivery (COD) amounts collected by
+                riders are processed and remitted to merchants according to our
+                standard next-day payout cycle.
               </p>
             </div>
 
@@ -137,23 +147,26 @@ export default function TermsOfServicePage() {
                 5. Limitation of Liability
               </h3>
               <p>
-                DeshParcel shall not be liable for any indirect, incidental, special, or consequential damages resulting from service interruptions, delays beyond our control, or incorrect address information provided by the user.
+                DeshParcel shall not be liable for any indirect, incidental,
+                special, or consequential damages resulting from service
+                interruptions, delays beyond our control, or incorrect address
+                information provided by the user.
               </p>
             </div>
           </div>
 
           <div className="pt-6 border-t border-slate-200 dark:border-white/10 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs text-slate-600 dark:text-gray-300">Have questions regarding our terms?</span>
+            <span className="text-xs text-slate-600 dark:text-gray-300">
+              Have questions regarding our terms?
+            </span>
             <Link href="/ContactUs">
               <Button className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs cursor-pointer">
                 Contact Legal Support
               </Button>
             </Link>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }

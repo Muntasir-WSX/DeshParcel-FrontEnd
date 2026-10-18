@@ -1,18 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Truck, ArrowRight, ShieldCheck, Clock, MapPin, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Clock,
+  MapPin,
+  ShieldCheck,
+  Truck,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function StandardParcelPage() {
   return (
     <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pt-28 pb-20 overflow-hidden">
-      
       {/* Coverage Section Style Hero Banner with Background Image */}
       <section className="relative py-20 md:py-32 my-8 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-        
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
@@ -32,8 +37,7 @@ export default function StandardParcelPage() {
 
         {/* Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -46,15 +50,18 @@ export default function StandardParcelPage() {
             </div>
 
             <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-slate-900 dark:text-white">
-              Reliable & Affordable <span className="text-red-700">Standard Parcel</span> Delivery
+              Reliable & Affordable{" "}
+              <span className="text-red-700">Standard Parcel</span> Delivery
             </h1>
 
             <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
-              Designed for regular e-commerce shipments and personal packages. We guarantee safe handling and timely drop-offs across all 64 districts.
+              Designed for regular e-commerce shipments and personal packages.
+              We guarantee safe handling and timely drop-offs across all 64
+              districts.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -62,8 +69,8 @@ export default function StandardParcelPage() {
             className="flex flex-col sm:flex-row gap-3 w-full md:w-auto"
           >
             <Link href="/create-parcel">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
               >
                 Send a Parcel
@@ -71,7 +78,6 @@ export default function StandardParcelPage() {
               </Button>
             </Link>
           </motion.div>
-
         </div>
       </section>
 
@@ -82,22 +88,26 @@ export default function StandardParcelPage() {
             Why Choose Standard Delivery
           </span>
           <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-slate-900 dark:text-white">
-            Built for Everyday <span className="text-red-700">Logistics Needs</span>
+            Built for Everyday{" "}
+            <span className="text-red-700">Logistics Needs</span>
           </h2>
           <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300">
-            Enjoy seamless booking, transparent tracking, and secure transit at the most competitive market rates.
+            Enjoy seamless booking, transparent tracking, and secure transit at
+            the most competitive market rates.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
           <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Clock className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">48–72 Hours Transit</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              48–72 Hours Transit
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Optimized routing ensures your regular parcels arrive safely within 2 to 3 business days across major hubs.
+              Optimized routing ensures your regular parcels arrive safely
+              within 2 to 3 business days across major hubs.
             </p>
           </div>
 
@@ -105,9 +115,12 @@ export default function StandardParcelPage() {
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <ShieldCheck className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Safe & Secure Handling</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              Safe & Secure Handling
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              Every package is sorted and transported under strict safety protocols to prevent damage or loss.
+              Every package is sorted and transported under strict safety
+              protocols to prevent damage or loss.
             </p>
           </div>
 
@@ -115,19 +128,20 @@ export default function StandardParcelPage() {
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Nationwide Coverage</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              Nationwide Coverage
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
-              We deliver not just to major cities, but down to remote upazilas and thanas across all 64 districts.
+              We deliver not just to major cities, but down to remote upazilas
+              and thanas across all 64 districts.
             </p>
           </div>
-
         </div>
       </section>
 
       {/* 3. Detailed Information & Checklist Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 my-20">
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          
           <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-6 relative z-10">
@@ -135,7 +149,8 @@ export default function StandardParcelPage() {
               What Is Included in Standard Parcel?
             </h3>
             <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
-              Our standard package covers everything a regular merchant or individual needs for hassle-free shipping within Bangladesh.
+              Our standard package covers everything a regular merchant or
+              individual needs for hassle-free shipping within Bangladesh.
             </p>
 
             <ul className="space-y-3">
@@ -144,10 +159,13 @@ export default function StandardParcelPage() {
                 "Real-time SMS and dashboard tracking updates",
                 "Cash on Delivery (COD) collection facilities",
                 "Next-day merchant payout processing",
-                "Dedicated customer support assistance"
+                "Dedicated customer support assistance",
               ].map((item, idx) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-<li key={idx} className="flex items-center gap-3 text-xs md:text-sm text-slate-700 dark:text-gray-200 font-medium">
+                <li
+                  key={idx}
+                  className="flex items-center gap-3 text-xs md:text-sm text-slate-700 dark:text-gray-200 font-medium"
+                >
                   <CheckCircle2 className="h-5 w-5 text-red-700 shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -162,11 +180,15 @@ export default function StandardParcelPage() {
             <div className="space-y-4 text-xs text-slate-600 dark:text-gray-300">
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Base Weight (Up to 1 KG):</span>
-                <span className="font-bold text-slate-900 dark:text-white">৳60 - ৳110</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  ৳60 - ৳110
+                </span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Extra Weight Charge (Per KG):</span>
-                <span className="font-bold text-slate-900 dark:text-white">৳20</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  ৳20
+                </span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>COD Charge:</span>
@@ -174,7 +196,9 @@ export default function StandardParcelPage() {
               </div>
               <div className="flex justify-between items-center py-2">
                 <span>Maximum Weight Limit:</span>
-                <span className="font-bold text-slate-900 dark:text-white">20 KG</span>
+                <span className="font-bold text-slate-900 dark:text-white">
+                  20 KG
+                </span>
               </div>
             </div>
 
@@ -184,10 +208,8 @@ export default function StandardParcelPage() {
               </Button>
             </Link>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }

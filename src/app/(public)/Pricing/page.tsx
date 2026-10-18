@@ -1,9 +1,9 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { Calculator, MapPin, Weight, Zap } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Calculator, MapPin, Weight, ShieldCheck, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const citiesList = [
@@ -18,7 +18,7 @@ const citiesList = [
   "Cox's Bazar",
   "Gazipur",
   "Narayanganj",
-  "Chandpur"
+  "Chandpur",
 ];
 
 export default function PricingPage() {
@@ -29,9 +29,10 @@ export default function PricingPage() {
 
   const handleCalculate = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // City to City = 80 BDT, City to Outside = 120 BDT
-    let basePrice = pickupCity.toLowerCase() === deliveryCity.toLowerCase() ? 80 : 120;
+    const basePrice =
+      pickupCity.toLowerCase() === deliveryCity.toLowerCase() ? 80 : 120;
 
     // Weight logic: up to 3 kg default, above 3 kg -> 10 BDT extra per kg
     let extraWeightCost = 0;
@@ -46,9 +47,8 @@ export default function PricingPage() {
 
   return (
     <div className="w-full pb-20 text-slate-900 dark:text-white">
-      
       {/* 1. Hero Section */}
-  <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
+      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
@@ -66,7 +66,7 @@ export default function PricingPage() {
         <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none z-1" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center space-y-6">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -76,7 +76,7 @@ export default function PricingPage() {
             Transparent & Affordable Rates
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -85,13 +85,14 @@ export default function PricingPage() {
             Simple Pricing, <span className="text-red-700">No Hidden Fees</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-slate-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
-            Calculate your shipping cost instantly based on destination and package weight with our smart pricing calculator.
+            Calculate your shipping cost instantly based on destination and
+            package weight with our smart pricing calculator.
           </motion.p>
         </div>
       </section>
@@ -99,7 +100,6 @@ export default function PricingPage() {
       {/* 2. Interactive Calculator Section */}
       <section className="max-w-4xl mx-auto px-6 mb-24">
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-          
           {/* Glowing Red & Blue Accents */}
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
@@ -113,13 +113,13 @@ export default function PricingPage() {
               Estimate Your Delivery Cost
             </h2>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              City to City:  Tk80 | City to Outside:  Tk120 (Up to 3kg standard, + Tk10/kg for extra weight)
+              City to City: Tk80 | City to Outside: Tk120 (Up to 3kg standard, +
+              Tk10/kg for extra weight)
             </p>
           </div>
 
           <form onSubmit={handleCalculate} className="space-y-6 relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              
               {/* Pickup City */}
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
@@ -132,7 +132,13 @@ export default function PricingPage() {
                   className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                 >
                   {citiesList.map((city, idx) => (
-                    <option key={idx} value={city} className="bg-white dark:bg-[#0b132b] text-slate-900 dark:text-white">{city}</option>
+                    <option
+                      key={idx}
+                      value={city}
+                      className="bg-white dark:bg-[#0b132b] text-slate-900 dark:text-white"
+                    >
+                      {city}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -149,18 +155,26 @@ export default function PricingPage() {
                   className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                 >
                   {citiesList.map((city, idx) => (
-                    <option key={idx} value={city} className="bg-white dark:bg-[#0b132b] text-slate-900 dark:text-white">{city}</option>
+                    <option
+                      key={idx}
+                      value={city}
+                      className="bg-white dark:bg-[#0b132b] text-slate-900 dark:text-white"
+                    >
+                      {city}
+                    </option>
                   ))}
                 </select>
               </div>
-
             </div>
 
             {/* Weight Input */}
             <div className="space-y-2">
               <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                 <Weight className="h-3.5 w-3.5 text-red-700" />
-                Package Weight (KG) — <span className="text-slate-900 dark:text-white font-semibold">First 3 KG standard</span>
+                Package Weight (KG) —{" "}
+                <span className="text-slate-900 dark:text-white font-semibold">
+                  First 3 KG standard
+                </span>
               </label>
               <input
                 type="number"
@@ -183,21 +197,22 @@ export default function PricingPage() {
 
           {/* Result Display Box */}
           {calculatedCost !== null && (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               className="mt-8 p-6 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-red-700/30 text-center space-y-2 relative z-10 shadow-inner"
             >
-              <p className="text-xs uppercase tracking-widest text-slate-600 dark:text-gray-300 font-bold">Estimated Shipping Fee</p>
+              <p className="text-xs uppercase tracking-widest text-slate-600 dark:text-gray-300 font-bold">
+                Estimated Shipping Fee
+              </p>
               <h3 className="text-4xl font-extrabold font-heading text-red-700">
-                 Tk{calculatedCost}
+                Tk{calculatedCost}
               </h3>
               <p className="text-xs text-slate-600 dark:text-gray-300">
                 Route: {pickupCity} to {deliveryCity} ({weight} KG)
               </p>
             </motion.div>
           )}
-
         </div>
       </section>
 
@@ -213,20 +228,31 @@ export default function PricingPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
           <div className="p-8 rounded-3xl bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10  space-y-4 hover:border-red-700/40 transition-all">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">City vs Outside Delivery</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              City vs Outside Delivery
+            </h3>
             <ul className="space-y-3 text-sm text-slate-600 dark:text-gray-300">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-slate-900 dark:text-white">City to City (Same City):</strong> Flat  Tk80 (e.g., Chattogram to Chattogram).</span>
+                <span>
+                  <strong className="text-slate-900 dark:text-white">
+                    City to City (Same City):
+                  </strong>{" "}
+                  Flat Tk80 (e.g., Chattogram to Chattogram).
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-slate-900 dark:text-white">City to Outside:</strong> Flat  Tk120 (e.g., Chattogram to Dhaka or Chandpur).</span>
+                <span>
+                  <strong className="text-slate-900 dark:text-white">
+                    City to Outside:
+                  </strong>{" "}
+                  Flat Tk120 (e.g., Chattogram to Dhaka or Chandpur).
+                </span>
               </li>
             </ul>
           </div>
@@ -235,22 +261,32 @@ export default function PricingPage() {
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Weight className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Weight Policy</h3>
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+              Weight Policy
+            </h3>
             <ul className="space-y-3 text-sm text-slate-600 dark:text-gray-300">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-slate-900 dark:text-white">Up to 3 KG:</strong> Covered under default base pricing (Documents or Parcels).</span>
+                <span>
+                  <strong className="text-slate-900 dark:text-white">
+                    Up to 3 KG:
+                  </strong>{" "}
+                  Covered under default base pricing (Documents or Parcels).
+                </span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-slate-900 dark:text-white">Above 3 KG:</strong> Additional  Tk10 charged for every extra KG.</span>
+                <span>
+                  <strong className="text-slate-900 dark:text-white">
+                    Above 3 KG:
+                  </strong>{" "}
+                  Additional Tk10 charged for every extra KG.
+                </span>
               </li>
             </ul>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }

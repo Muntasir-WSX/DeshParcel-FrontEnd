@@ -1,14 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  Star,
-  MessageSquareQuote,
-  User,
   ChevronLeft,
   ChevronRight,
+  MessageSquareQuote,
+  Star,
+  User,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function TestimonialsPage() {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -167,7 +167,9 @@ export default function TestimonialsPage() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
-                    currentIndex === idx ? "w-6 bg-red-700" : "w-2 bg-slate-300 dark:bg-white/20"
+                    currentIndex === idx
+                      ? "w-6 bg-red-700"
+                      : "w-2 bg-slate-300 dark:bg-white/20"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />

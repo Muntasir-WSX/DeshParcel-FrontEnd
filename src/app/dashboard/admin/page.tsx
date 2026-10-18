@@ -1,26 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { 
-  Users, 
-  Package, 
-  Bike, 
-  DollarSign, 
-  TrendingUp, 
-  ShieldCheck, 
-  BarChart3 
+import {
+  BarChart3,
+  Bike,
+  DollarSign,
+  Package,
+  ShieldCheck,
+  TrendingUp,
+  Users,
 } from "lucide-react";
+import { useEffect, useState } from "react";
+import {
+  Bar,
+  BarChart,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 import { toast } from "sonner";
 import Loader from "@/components/shared/mainloading";
-import { 
-  BarChart, 
-  Bar, 
-  XAxis, 
-  YAxis, 
-  Tooltip, 
-  ResponsiveContainer, 
-  Cell 
-} from "recharts";
 
 export default function AdminOverviewPage() {
   const [stats, setStats] = useState<any>(null);
@@ -28,12 +28,14 @@ export default function AdminOverviewPage() {
 
   useEffect(() => {
     fetchDashboardStats();
-  }, []);
+  }, [fetchDashboardStats]);
 
   const fetchDashboardStats = async () => {
     try {
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/admin/dashboard-stats`, {
         headers: {
@@ -44,13 +46,16 @@ export default function AdminOverviewPage() {
       const result = await res.json();
 
       if (!res.ok) {
-        throw new Error(result.message || "Failed to fetch dashboard statistics");
+        throw new Error(
+          result.message || "Failed to fetch dashboard statistics",
+        );
       }
 
       setStats(result.data);
     } catch (error: any) {
       toast.error("Error", {
-        description: error.message || "Something went wrong while fetching stats.",
+        description:
+          error.message || "Something went wrong while fetching stats.",
       });
     } finally {
       setLoading(false);
@@ -100,20 +105,20 @@ export default function AdminOverviewPage() {
     },
   ];
 
-  const chartData = stats?.parcelStatusCounts?.map((item: any) => ({
-    status: item.status,
-    count: item._count.status,
-  })) || [];
+  const chartData =
+    stats?.parcelStatusCounts?.map((item: any) => ({
+      status: item.status,
+      count: item._count.status,
+    })) || [];
 
   const COLORS = ["#b91c1c", "#1d4ed8", "#047857", "#6d28d9", "#b45309"];
 
   return (
     <div className="space-y-8">
-      
       {/* Welcome Banner */}
       <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
-        
+
         <div className="space-y-2 relative z-10">
           <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5" />
@@ -123,7 +128,9 @@ export default function AdminOverviewPage() {
             Welcome back, <span className="text-red-700">Admin</span>
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-300 max-w-xl">
-            Monitor real-time system metrics, track parcel statuses, evaluate platform revenue, and oversee logistics performance across the network.
+            Monitor real-time system metrics, track parcel statuses, evaluate
+            platform revenue, and oversee logistics performance across the
+            network.
           </p>
         </div>
 
@@ -132,7 +139,9 @@ export default function AdminOverviewPage() {
             <TrendingUp className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Platform Status</p>
+            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">
+              Platform Status
+            </p>
             <p className="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Fully Operational
@@ -146,7 +155,7 @@ export default function AdminOverviewPage() {
         {statCards.map((card, index) => {
           const Icon = card.icon;
           return (
-            <div 
+            <div
               key={index}
               className={`bg-white dark:bg-[#0b132b] border ${card.border} rounded-3xl p-6 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-4 hover:border-red-700/40 transition-all`}
             >
@@ -171,7 +180,6 @@ export default function AdminOverviewPage() {
 
       {/* Recharts Analytics Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
         {/* Bar Chart: Parcel Status Distribution */}
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6">
           <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
@@ -189,26 +197,35 @@ export default function AdminOverviewPage() {
           <div className="h-72 w-full pt-4">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData}>
-                <XAxis 
-                  dataKey="status" 
-                  stroke="#9ca3af" 
-                  fontSize={10} 
-                  tickLine={false} 
-                  axisLine={false} 
+                <XAxis
+                  dataKey="status"
+                  stroke="#9ca3af"
+                  fontSize={10}
+                  tickLine={false}
+                  axisLine={false}
                 />
-                <YAxis 
-                  stroke="#9ca3af" 
-                  fontSize={10} 
-                  tickLine={false} 
-                  axisLine={false} 
+                <YAxis
+                  stroke="#9ca3af"
+                  fontSize={10}
+                  tickLine={false}
+                  axisLine={false}
                 />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: "#050814", borderColor: "rgba(255,255,255,0.1)", borderRadius: "12px", fontSize: "12px", color: "#fff" }}
+                <Tooltip
+                  contentStyle={{
+                    backgroundColor: "#050814",
+                    borderColor: "rgba(255,255,255,0.1)",
+                    borderRadius: "12px",
+                    fontSize: "12px",
+                    color: "#fff",
+                  }}
                   cursor={{ fill: "rgba(255, 255, 255, 0.05)" }}
                 />
                 <Bar dataKey="count" radius={[8, 8, 0, 0]}>
-                  {chartData.map((entry: any, index: number) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  {chartData.map((_entry: any, index: number) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
                   ))}
                 </Bar>
               </BarChart>
@@ -231,7 +248,10 @@ export default function AdminOverviewPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-auto">
             {stats?.parcelStatusCounts?.map((item: any, idx: number) => (
-              <div key={idx} className="bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl p-4 flex items-center justify-between">
+              <div
+                key={idx}
+                className="bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl p-4 flex items-center justify-between"
+              >
                 <div className="space-y-1">
                   <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                     {item.status}
@@ -247,9 +267,7 @@ export default function AdminOverviewPage() {
             ))}
           </div>
         </div>
-
       </div>
-
     </div>
   );
 }

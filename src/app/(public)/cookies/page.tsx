@@ -1,18 +1,16 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Cookie, ArrowRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2, Cookie } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function CookiePolicyPage() {
   return (
     <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pt-28 pb-20 overflow-hidden">
-      
       {/* 1. Hero Banner with Background Image */}
       <section className="relative py-20 md:py-32 my-8 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-        
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
           <Image
@@ -32,8 +30,7 @@ export default function CookiePolicyPage() {
 
         {/* Content Container */}
         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-          
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -50,11 +47,13 @@ export default function CookiePolicyPage() {
             </h1>
 
             <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
-              Learn how DeshParcel uses cookies and similar tracking technologies to enhance your browsing experience and platform functionality.
+              Learn how DeshParcel uses cookies and similar tracking
+              technologies to enhance your browsing experience and platform
+              functionality.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -62,8 +61,8 @@ export default function CookiePolicyPage() {
             className="flex flex-col sm:flex-row gap-3 w-full md:w-auto"
           >
             <Link href="/">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="rounded-2xl px-8 h-14 text-xs font-bold uppercase tracking-wider shadow-xl hover:shadow-2xl transition-all group cursor-pointer bg-red-600 hover:bg-red-700 text-white flex items-center justify-center gap-2 w-full"
               >
                 Back to Home
@@ -71,14 +70,12 @@ export default function CookiePolicyPage() {
               </Button>
             </Link>
           </motion.div>
-
         </div>
       </section>
 
       {/* 2. Detailed Cookie Content Section */}
       <section className="max-w-5xl mx-auto px-6 md:px-12 my-20">
         <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden space-y-8">
-          
           <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-4 relative z-10 border-b border-slate-200 dark:border-white/10 pb-6">
@@ -97,7 +94,10 @@ export default function CookiePolicyPage() {
                 1. What Are Cookies?
               </h3>
               <p>
-                Cookies are small text files stored on your device when you visit our website. They help us recognize your browser, remember your preferences, and keep you securely logged into your dashboard.
+                Cookies are small text files stored on your device when you
+                visit our website. They help us recognize your browser, remember
+                your preferences, and keep you securely logged into your
+                dashboard.
               </p>
             </div>
 
@@ -107,7 +107,9 @@ export default function CookiePolicyPage() {
                 2. How We Use Cookies
               </h3>
               <p>
-                We use cookies to maintain session states (authentication tokens), analyze platform traffic, remember dark/light mode preferences, and provide seamless parcel tracking interactions.
+                We use cookies to maintain session states (authentication
+                tokens), analyze platform traffic, remember dark/light mode
+                preferences, and provide seamless parcel tracking interactions.
               </p>
             </div>
 
@@ -117,9 +119,17 @@ export default function CookiePolicyPage() {
                 3. Types of Cookies We Deploy
               </h3>
               <p>
-               <span className="font-bold"># Essential Cookies</span>: Required for basic site navigation, security, and user login functionality. <br />
-               <span className="font-bold"># Performance & Analytics Cookies</span>: Help us understand how visitors interact with our pages to improve speed and layout.<br />
-                <span className="font-bold"># Functional Cookies</span>: Remember your custom region and dashboard display settings.
+                <span className="font-bold"># Essential Cookies</span>: Required
+                for basic site navigation, security, and user login
+                functionality. <br />
+                <span className="font-bold">
+                  # Performance & Analytics Cookies
+                </span>
+                : Help us understand how visitors interact with our pages to
+                improve speed and layout.
+                <br />
+                <span className="font-bold"># Functional Cookies</span>:
+                Remember your custom region and dashboard display settings.
               </p>
             </div>
 
@@ -129,23 +139,26 @@ export default function CookiePolicyPage() {
                 4. Managing Cookie Preferences
               </h3>
               <p>
-                You can choose to disable or block cookies through your browser settings. However, please note that disabling essential cookies may prevent you from logging into your user, rider, or admin dashboard.
+                You can choose to disable or block cookies through your browser
+                settings. However, please note that disabling essential cookies
+                may prevent you from logging into your user, rider, or admin
+                dashboard.
               </p>
             </div>
           </div>
 
           <div className="pt-6 border-t border-slate-200 dark:border-white/10 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="text-xs text-slate-600 dark:text-gray-300">Have questions regarding cookie tracking?</span>
+            <span className="text-xs text-slate-600 dark:text-gray-300">
+              Have questions regarding cookie tracking?
+            </span>
             <Link href="/ContactUs">
               <Button className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold uppercase tracking-wider text-xs cursor-pointer">
                 Contact Support
               </Button>
             </Link>
           </div>
-
         </div>
       </section>
-
     </div>
   );
 }

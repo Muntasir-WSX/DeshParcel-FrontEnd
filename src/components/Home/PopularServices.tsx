@@ -1,21 +1,47 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Box, Briefcase, Zap, Globe, ArrowRight, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Box,
+  Briefcase,
+  Globe,
+  ShieldCheck,
+  Zap,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const services = [
-  { icon: Box, title: "Standard Parcel", desc: "Cost-effective door-to-door delivery for personal goods.", price: "From  Tk60" },
-  { icon: Zap, title: "Express Urgent", desc: "Priority delivery within 4-6 hours for emergency items.", price: "From  Tk120" },
-  { icon: Briefcase, title: "Corporate", desc: "Customized bulk shipping and supply chain solutions.", price: "Custom" },
-  { icon: Globe, title: "Cross-Border", desc: "Seamless international courier with customs clearance.", price: "From  Tk500" },
+  {
+    icon: Box,
+    title: "Standard Parcel",
+    desc: "Cost-effective door-to-door delivery for personal goods.",
+    price: "From  Tk60",
+  },
+  {
+    icon: Zap,
+    title: "Express Urgent",
+    desc: "Priority delivery within 4-6 hours for emergency items.",
+    price: "From  Tk120",
+  },
+  {
+    icon: Briefcase,
+    title: "Corporate",
+    desc: "Customized bulk shipping and supply chain solutions.",
+    price: "Custom",
+  },
+  {
+    icon: Globe,
+    title: "Cross-Border",
+    desc: "Seamless international courier with customs clearance.",
+    price: "From  Tk500",
+  },
 ];
 
 export default function PopularServices() {
   return (
     <section className="relative py-16 md:py-24 w-full max-w-[92%] md:max-w-7xl mx-auto rounded-3xl overflow-hidden my-16 text-slate-900 dark:text-white px-6 md:px-12 shadow-2xl border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
-      
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full">
         <Image
@@ -33,7 +59,6 @@ export default function PopularServices() {
       <div className="absolute bottom-0 left-0 w-80 h-80 bg-red-700/15 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="relative z-10">
-        
         {/* Compact Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
@@ -41,14 +66,15 @@ export default function PopularServices() {
               <ShieldCheck className="h-3.5 w-3.5 text-red-700" />
               Our Offerings
             </div>
-            
+
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white">
               Popular Delivery Services
             </h2>
           </div>
-          
+
           <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 max-w-md md:text-right font-medium leading-relaxed">
-            Tailored logistics solutions designed to match your personal and business demands efficiently.
+            Tailored logistics solutions designed to match your personal and
+            business demands efficiently.
           </p>
         </div>
 
@@ -57,7 +83,7 @@ export default function PopularServices() {
           {services.map((srv, idx) => {
             const Icon = srv.icon;
             return (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -72,16 +98,27 @@ export default function PopularServices() {
                   <div className="w-12 h-12 rounded-2xl bg-red-700/15 border border-red-700/30 flex items-center justify-center mb-5 text-red-700 group-hover:scale-110 group-hover:bg-red-700 group-hover:text-white transition-all duration-300 shadow-md">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="font-bold text-lg mb-2 text-slate-900 dark:text-white font-heading leading-tight group-hover:text-red-700 transition-colors">{srv.title}</h3>
-                  <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">{srv.desc}</p>
+                  <h3 className="font-bold text-lg mb-2 text-slate-900 dark:text-white font-heading leading-tight group-hover:text-red-700 transition-colors">
+                    {srv.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 mb-6 leading-relaxed">
+                    {srv.desc}
+                  </p>
                 </div>
-                
+
                 <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between mt-auto">
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Starting at</span>
-                    <span className="font-extrabold text-sm text-red-700">{srv.price}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
+                      Starting at
+                    </span>
+                    <span className="font-extrabold text-sm text-red-700">
+                      {srv.price}
+                    </span>
                   </div>
-                  <Link href="/Services" className="w-9 h-9 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 flex items-center justify-center group-hover:bg-red-700 group-hover:border-red-600 transition-all duration-300 shadow-sm">
+                  <Link
+                    href="/Services"
+                    className="w-9 h-9 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 flex items-center justify-center group-hover:bg-red-700 group-hover:border-red-600 transition-all duration-300 shadow-sm"
+                  >
                     <ArrowRight className="h-4 w-4 text-slate-600 dark:text-gray-300 group-hover:text-slate-900 dark:hover:text-white transition-colors duration-300" />
                   </Link>
                 </div>
@@ -89,7 +126,6 @@ export default function PopularServices() {
             );
           })}
         </div>
-        
       </div>
     </section>
   );

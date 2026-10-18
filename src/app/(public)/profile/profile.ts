@@ -1,5 +1,6 @@
 export async function getLoggedInUserProfile() {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
   const token = localStorage.getItem("accessToken");
 
   if (!token) {
@@ -11,7 +12,7 @@ export async function getLoggedInUserProfile() {
     cache: "no-store",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`, 
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -21,14 +22,15 @@ export async function getLoggedInUserProfile() {
     throw new Error(result.message || "Failed to fetch profile");
   }
 
-  return result.data; 
+  return result.data;
 }
 
 export async function updateLoggedInUserProfile(
   fields: { name: string; phone: string; email: string },
   profileImage: File | null,
 ) {
-  const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+  const BACKEND_URL =
+    process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
   const token = localStorage.getItem("accessToken");
 
   if (!token) {

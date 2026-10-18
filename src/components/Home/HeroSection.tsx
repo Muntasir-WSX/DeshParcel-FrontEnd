@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, User, Search, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { ArrowRight, Search, ShieldCheck, User } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
   const [trackingId, setTrackingId] = useState("");

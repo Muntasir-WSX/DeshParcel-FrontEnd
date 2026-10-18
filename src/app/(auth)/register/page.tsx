@@ -1,25 +1,24 @@
 "use client";
 
-
+import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Lock,
+  LogIn,
+  Mail,
+  Phone,
+  ShieldCheck,
+  User,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import {
-  User,
-  Mail,
-  Phone,
-  Lock,
-  ArrowRight,
-  ShieldCheck,
-  CheckCircle2,
-  LogIn,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Logo from "@/components/logo/logo";
+import { Button } from "@/components/ui/button";
 
 const bdPhoneRegex = /^(?:\+88|88)?(01[3-9]\d{8})$/;
 const strongPasswordRegex =
@@ -94,7 +93,7 @@ export default function RegisterPage() {
     }
   };
 
-  const handleGoogleSignIn = () => {
+  const _handleGoogleSignIn = () => {
     console.log("Initiating Google Sign In...");
   };
 

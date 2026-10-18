@@ -1,20 +1,20 @@
 "use client";
 
+import { AlertTriangle, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Users, Shield, Ban, CheckCircle, ChevronLeft, ChevronRight, AlertTriangle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
-import { 
-  AlertDialog, 
-  AlertDialogAction, 
-  AlertDialogCancel, 
-  AlertDialogContent, 
-  AlertDialogDescription, 
-  AlertDialogFooter, 
-  AlertDialogHeader, 
-  AlertDialogTitle 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 
 export default function UsersControlPage() {
   const [users, setUsers] = useState<any[]>([]);
@@ -38,17 +38,22 @@ export default function UsersControlPage() {
 
   useEffect(() => {
     fetchUsers(meta.page);
-  }, [meta.page]);
+  }, [meta.page, fetchUsers]);
 
   const fetchUsers = async (pageNumber: number) => {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
-      const res = await fetch(`${BACKEND_URL}/api/v1/admin/users?page=${pageNumber}&limit=10`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(
+        `${BACKEND_URL}/api/v1/admin/users?page=${pageNumber}&limit=10`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
 
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Failed to fetch users");
@@ -56,7 +61,9 @@ export default function UsersControlPage() {
       setUsers(result.data.result);
       setMeta(result.data.meta);
     } catch (error: any) {
-      toast.error("Error", { description: error.message || "Could not fetch users." });
+      toast.error("Error", {
+        description: error.message || "Could not fetch users.",
+      });
     } finally {
       setLoading(false);
     }
@@ -69,15 +76,23 @@ export default function UsersControlPage() {
     const actionType = confirmModal.actionType;
     const payload = confirmModal.payload;
 
-    setConfirmModal({ isOpen: false, title: "", description: "", actionType: null, userId: null });
+    setConfirmModal({
+      isOpen: false,
+      title: "",
+      description: "",
+      actionType: null,
+      userId: null,
+    });
 
     try {
       setActionLoading(userId);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       let endpoint = "";
-      let method = "PATCH";
+      const method = "PATCH";
       let bodyData: any = null;
 
       if (actionType === "ROLE") {
@@ -102,11 +117,17 @@ export default function UsersControlPage() {
       if (!res.ok) throw new Error(result.message || "Action failed");
 
       if (actionType === "ROLE") {
-        toast.success("Role Updated!", { description: `User role successfully changed to ${payload}` });
+        toast.success("Role Updated!", {
+          description: `User role successfully changed to ${payload}`,
+        });
       } else if (actionType === "BAN") {
-        toast.success("User Banned", { description: "The user account has been restricted." });
+        toast.success("User Banned", {
+          description: "The user account has been restricted.",
+        });
       } else if (actionType === "UNBAN") {
-        toast.success("User Unbanned", { description: "The user account has been restored." });
+        toast.success("User Unbanned", {
+          description: "The user account has been restored.",
+        });
       }
 
       fetchUsers(meta.page);
@@ -126,7 +147,8 @@ export default function UsersControlPage() {
             User <span className="text-red-700">Management</span>
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
-            Oversee all registered platform users, manage permissions, and enforce security policies.
+            Oversee all registered platform users, manage permissions, and
+            enforce security policies.
           </p>
         </div>
         <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-700 dark:text-gray-300">
@@ -137,7 +159,9 @@ export default function UsersControlPage() {
       {/* Main Table Container */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {loading ? (
-          <div className="py-20 flex justify-center"><LoadingSkeleton type="table" count={5} /></div>
+          <div className="py-20 flex justify-center">
+            <LoadingSkeleton type="table" count={5} />
+          </div>
         ) : users.length === 0 ? (
           <div className="py-20 text-center text-slate-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">
             No users found in the system.
@@ -156,21 +180,32 @@ export default function UsersControlPage() {
               </thead>
               <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-xs">
                 {users.map((u) => (
-                  <tr key={u.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
+                  <tr
+                    key={u.id}
+                    className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
+                  >
                     <td className="py-4 px-4 font-bold text-slate-900 dark:text-white flex items-center gap-2">
                       <div className="w-8 h-8 rounded-full bg-red-100 dark:bg-red-700/20 text-red-700 flex items-center justify-center font-extrabold text-xs border border-red-200 dark:border-red-700/30">
                         {u.name?.charAt(0) || "U"}
                       </div>
                       {u.name}
                     </td>
-                    <td className="py-4 px-4 text-slate-700 dark:text-gray-300 font-medium">{u.email}</td>
-                    <td className="py-4 px-4 text-slate-600 dark:text-gray-400">{u.phone || "N/A"}</td>
+                    <td className="py-4 px-4 text-slate-700 dark:text-gray-300 font-medium">
+                      {u.email}
+                    </td>
+                    <td className="py-4 px-4 text-slate-600 dark:text-gray-400">
+                      {u.phone || "N/A"}
+                    </td>
                     <td className="py-4 px-4 space-x-2">
-                      <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
-                        u.role === "ADMIN" ? "bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-400 border-purple-300 dark:border-purple-500/30" :
-                        u.role === "MODERATOR" ? "bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-500/30" :
-                        "bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-gray-300 border-slate-300 dark:border-white/20"
-                      }`}>
+                      <span
+                        className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
+                          u.role === "ADMIN"
+                            ? "bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-400 border-purple-300 dark:border-purple-500/30"
+                            : u.role === "MODERATOR"
+                              ? "bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-500/30"
+                              : "bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-gray-300 border-slate-300 dark:border-white/20"
+                        }`}
+                      >
                         {u.role}
                       </span>
                       {u.isBanned && (
@@ -184,14 +219,16 @@ export default function UsersControlPage() {
                         <Button
                           size="sm"
                           disabled={actionLoading === u.id}
-                          onClick={() => setConfirmModal({
-                            isOpen: true,
-                            title: "Promote to Moderator",
-                            description: `Are you sure you want to promote ${u.name} to Moderator? They will gain administrative management privileges.`,
-                            actionType: "ROLE",
-                            userId: u.id,
-                            payload: "MODERATOR",
-                          })}
+                          onClick={() =>
+                            setConfirmModal({
+                              isOpen: true,
+                              title: "Promote to Moderator",
+                              description: `Are you sure you want to promote ${u.name} to Moderator? They will gain administrative management privileges.`,
+                              actionType: "ROLE",
+                              userId: u.id,
+                              payload: "MODERATOR",
+                            })
+                          }
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-100 dark:bg-blue-600/20 text-blue-700 dark:text-blue-400 hover:bg-blue-600 hover:text-white border border-blue-300 dark:border-blue-600/30 cursor-pointer transition-all"
                         >
                           Make Moderator
@@ -201,31 +238,35 @@ export default function UsersControlPage() {
                         <Button
                           size="sm"
                           disabled={actionLoading === u.id}
-                          onClick={() => setConfirmModal({
-                            isOpen: true,
-                            title: "Demote to User",
-                            description: `Are you sure you want to demote ${u.name} back to a regular Customer?`,
-                            actionType: "ROLE",
-                            userId: u.id,
-                            payload: "CUSTOMER",
-                          })}
+                          onClick={() =>
+                            setConfirmModal({
+                              isOpen: true,
+                              title: "Demote to User",
+                              description: `Are you sure you want to demote ${u.name} back to a regular Customer?`,
+                              actionType: "ROLE",
+                              userId: u.id,
+                              payload: "CUSTOMER",
+                            })
+                          }
                           className="h-7 px-3 text-[10px] font-bold uppercase bg-slate-200 dark:bg-gray-600/20 text-slate-700 dark:text-gray-300 hover:bg-slate-700 hover:text-white border border-slate-300 dark:border-gray-600/30 cursor-pointer transition-all"
                         >
                           Make User
                         </Button>
                       )}
-                      {u.role !== "ADMIN" && (
-                        u.isBanned ? (
+                      {u.role !== "ADMIN" &&
+                        (u.isBanned ? (
                           <Button
                             size="sm"
                             disabled={actionLoading === u.id}
-                            onClick={() => setConfirmModal({
-                              isOpen: true,
-                              title: "Unban User Account",
-                              description: `Are you sure you want to restore access for ${u.name}?`,
-                              actionType: "UNBAN",
-                              userId: u.id,
-                            })}
+                            onClick={() =>
+                              setConfirmModal({
+                                isOpen: true,
+                                title: "Unban User Account",
+                                description: `Are you sure you want to restore access for ${u.name}?`,
+                                actionType: "UNBAN",
+                                userId: u.id,
+                              })
+                            }
                             className="h-7 px-3 text-[10px] font-bold uppercase bg-emerald-100 dark:bg-emerald-600/20 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-600 hover:text-white border border-emerald-300 dark:border-emerald-600/30 cursor-pointer transition-all"
                           >
                             Unban
@@ -234,19 +275,20 @@ export default function UsersControlPage() {
                           <Button
                             size="sm"
                             disabled={actionLoading === u.id}
-                            onClick={() => setConfirmModal({
-                              isOpen: true,
-                              title: "Ban User Account",
-                              description: `Are you sure you want to ban ${u.name}? They will lose platform access immediately.`,
-                              actionType: "BAN",
-                              userId: u.id,
-                            })}
+                            onClick={() =>
+                              setConfirmModal({
+                                isOpen: true,
+                                title: "Ban User Account",
+                                description: `Are you sure you want to ban ${u.name}? They will lose platform access immediately.`,
+                                actionType: "BAN",
+                                userId: u.id,
+                              })
+                            }
                             className="h-7 px-3 text-[10px] font-bold uppercase bg-red-100 dark:bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-300 dark:border-red-700/30 cursor-pointer transition-all"
                           >
                             Ban
                           </Button>
-                        )
-                      )}
+                        ))}
                     </td>
                   </tr>
                 ))}
@@ -258,7 +300,11 @@ export default function UsersControlPage() {
         {/* Pagination */}
         <div className="flex items-center justify-between pt-6 border-t border-slate-200 dark:border-white/10 mt-6">
           <p className="text-xs text-slate-600 dark:text-gray-300">
-            Page <span className="text-slate-900 dark:text-white font-bold">{meta.page}</span> of {Math.ceil(meta.total / meta.limit) || 1}
+            Page{" "}
+            <span className="text-slate-900 dark:text-white font-bold">
+              {meta.page}
+            </span>{" "}
+            of {Math.ceil(meta.total / meta.limit) || 1}
           </p>
           <div className="flex items-center gap-2">
             <Button
@@ -284,7 +330,12 @@ export default function UsersControlPage() {
       </div>
 
       {/* Confirmation Modal */}
-      <AlertDialog open={confirmModal.isOpen} onOpenChange={(open) => !open && setConfirmModal({ ...confirmModal, isOpen: false })}>
+      <AlertDialog
+        open={confirmModal.isOpen}
+        onOpenChange={(open) =>
+          !open && setConfirmModal({ ...confirmModal, isOpen: false })
+        }
+      >
         <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-red-100 dark:bg-red-700/20 border border-red-200 dark:border-red-700/30 flex items-center justify-center text-red-700">
@@ -301,7 +352,7 @@ export default function UsersControlPage() {
             <AlertDialogCancel className="bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white rounded-xl text-xs cursor-pointer">
               Cancel
             </AlertDialogCancel>
-            <AlertDialogAction 
+            <AlertDialogAction
               onClick={executeAction}
               className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
             >

@@ -1,10 +1,10 @@
 "use client";
 
+import { Wallet } from "lucide-react";
 import { useEffect, useState } from "react";
-import { DollarSign, Wallet, ArrowUpRight, Clock, CheckCircle2, AlertTriangle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import LoadingSkeleton from "@/components/shared/loading";
+import { Button } from "@/components/ui/button";
 
 export default function RiderEarningsPage() {
   const [profileData, setProfileData] = useState<any>(null);
@@ -18,28 +18,38 @@ export default function RiderEarningsPage() {
 
   useEffect(() => {
     fetchEarningsData();
-  }, []);
+  }, [fetchEarningsData]);
 
   const fetchEarningsData = async () => {
     try {
       setLoading(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
-      const profileRes = await fetch(`${BACKEND_URL}/api/v1/rider/profile-earnings`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const profileRes = await fetch(
+        `${BACKEND_URL}/api/v1/rider/profile-earnings`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const profileResult = await profileRes.json();
 
-      const reportRes = await fetch(`${BACKEND_URL}/api/v1/rider/earnings-report`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const reportRes = await fetch(
+        `${BACKEND_URL}/api/v1/rider/earnings-report`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const reportResult = await reportRes.json();
 
       if (profileRes.ok) setProfileData(profileResult.data);
       if (reportRes.ok) setReport(reportResult.data);
     } catch (error: any) {
-      toast.error("Error", { description: error.message || "Failed to fetch earnings report." });
+      toast.error("Error", {
+        description: error.message || "Failed to fetch earnings report.",
+      });
     } finally {
       setLoading(false);
     }
@@ -50,7 +60,9 @@ export default function RiderEarningsPage() {
     try {
       setSubmitting(true);
       const token = localStorage.getItem("accessToken");
-      const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "https://desh-parcel-backend.vercel.app";
+      const BACKEND_URL =
+        process.env.NEXT_PUBLIC_API_URL ||
+        "https://desh-parcel-backend.vercel.app";
 
       const res = await fetch(`${BACKEND_URL}/api/v1/rider/cashout`, {
         method: "POST",
@@ -89,7 +101,6 @@ export default function RiderEarningsPage() {
 
   return (
     <div className="space-y-8">
-      
       {/* Header Banner */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
@@ -97,7 +108,8 @@ export default function RiderEarningsPage() {
             Earnings & <span className="text-red-700">Cashout Hub</span>
           </h2>
           <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
-            Track your daily, weekly, and monthly delivery commissions, and request instant bKash cashouts.
+            Track your daily, weekly, and monthly delivery commissions, and
+            request instant bKash cashouts.
           </p>
         </div>
         <div className="bg-slate-100 dark:bg-[#050814] border border-emerald-300 dark:border-emerald-500/30 px-6 py-4 rounded-2xl flex items-center gap-4 shadow-inner">
@@ -105,27 +117,37 @@ export default function RiderEarningsPage() {
             <Wallet className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Total Wallet Balance</p>
-            <p className="text-xl font-extrabold text-emerald-700 dark:text-emerald-400">{riderDetails?.balance?.toLocaleString() || 0} Tk</p>
+            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">
+              Total Wallet Balance
+            </p>
+            <p className="text-xl font-extrabold text-emerald-700 dark:text-emerald-400">
+              {riderDetails?.balance?.toLocaleString() || 0} Tk
+            </p>
           </div>
         </div>
       </div>
 
       {/* Earnings Report Breakdown Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
         {/* Daily Report */}
         <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">Today's Performance</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
+              Today's Performance
+            </p>
             <span className="px-2.5 py-1 rounded-full bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 text-[10px] font-bold uppercase border border-blue-300 dark:border-blue-500/30">
               Daily
             </span>
           </div>
           <div className="space-y-1">
-            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white">{report?.daily?.income || 0} Tk</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+              {report?.daily?.income || 0} Tk
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              Delivered: <span className="text-emerald-700 dark:text-emerald-400 font-bold">{report?.daily?.deliveredCount || 0} parcels</span>
+              Delivered:{" "}
+              <span className="text-emerald-700 dark:text-emerald-400 font-bold">
+                {report?.daily?.deliveredCount || 0} parcels
+              </span>
             </p>
           </div>
         </div>
@@ -133,15 +155,22 @@ export default function RiderEarningsPage() {
         {/* Weekly Report */}
         <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">This Week's Earnings</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
+              This Week's Earnings
+            </p>
             <span className="px-2.5 py-1 rounded-full bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-400 text-[10px] font-bold uppercase border border-purple-300 dark:border-purple-500/30">
               Weekly
             </span>
           </div>
           <div className="space-y-1">
-            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white">{report?.weekly?.income || 0} Tk</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+              {report?.weekly?.income || 0} Tk
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              Delivered: <span className="text-emerald-700 dark:text-emerald-400 font-bold">{report?.weekly?.deliveredCount || 0} parcels</span>
+              Delivered:{" "}
+              <span className="text-emerald-700 dark:text-emerald-400 font-bold">
+                {report?.weekly?.deliveredCount || 0} parcels
+              </span>
             </p>
           </div>
         </div>
@@ -149,31 +178,47 @@ export default function RiderEarningsPage() {
         {/* Monthly Report */}
         <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl space-y-4">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">This Month's Earnings</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
+              This Month's Earnings
+            </p>
             <span className="px-2.5 py-1 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 text-[10px] font-bold uppercase border border-emerald-300 dark:border-emerald-500/30">
               Monthly
             </span>
           </div>
           <div className="space-y-1">
-            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white">{report?.monthly?.income || 0} Tk</h3>
+            <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white">
+              {report?.monthly?.income || 0} Tk
+            </h3>
             <p className="text-xs text-slate-600 dark:text-gray-300">
-              Delivered: <span className="text-emerald-700 dark:text-emerald-400 font-bold">{report?.monthly?.deliveredCount || 0} parcels</span>
+              Delivered:{" "}
+              <span className="text-emerald-700 dark:text-emerald-400 font-bold">
+                {report?.monthly?.deliveredCount || 0} parcels
+              </span>
             </p>
           </div>
         </div>
-
       </div>
 
       {/* Cashout Request Form Section */}
       <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl max-w-xl space-y-6">
         <div>
-          <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white">Request bKash Cashout</h3>
-          <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">Minimum cashout amount is 100 BDT. Funds will be transferred after admin approval.</p>
+          <h3 className="text-lg font-bold font-heading text-slate-900 dark:text-white">
+            Request bKash Cashout
+          </h3>
+          <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
+            Minimum cashout amount is 100 BDT. Funds will be transferred after
+            admin approval.
+          </p>
         </div>
 
         <form onSubmit={handleCashoutSubmit} className="space-y-4">
           <div className="space-y-1.5">
-            <label htmlFor="cashout-amount" className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">Withdrawal Amount (BDT)</label>
+            <label
+              htmlFor="cashout-amount"
+              className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300"
+            >
+              Withdrawal Amount (BDT)
+            </label>
             <input
               id="cashout-amount"
               type="number"
@@ -186,7 +231,12 @@ export default function RiderEarningsPage() {
           </div>
 
           <div className="space-y-1.5">
-            <label htmlFor="bkash-no" className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">bKash Account Number</label>
+            <label
+              htmlFor="bkash-no"
+              className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300"
+            >
+              bKash Account Number
+            </label>
             <input
               id="bkash-no"
               type="text"
@@ -207,7 +257,6 @@ export default function RiderEarningsPage() {
           </Button>
         </form>
       </div>
-
     </div>
   );
 }
