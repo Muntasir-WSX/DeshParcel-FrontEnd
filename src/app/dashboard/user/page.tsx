@@ -50,7 +50,7 @@ export default function UserParcelsPage() {
 
   useEffect(() => {
     fetchMyParcels();
-  }, [fetchMyParcels]);
+  }, []);
 
   const fetchMyParcels = async () => {
     try {

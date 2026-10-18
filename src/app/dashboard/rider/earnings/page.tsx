@@ -18,7 +18,7 @@ export default function RiderEarningsPage() {
 
   useEffect(() => {
     fetchEarningsData();
-  }, [fetchEarningsData]);
+  }, []);
 
   const fetchEarningsData = async () => {
     try {

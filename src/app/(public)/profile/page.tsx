@@ -26,7 +26,7 @@ export default function ProfilePage() {
 
   useEffect(() => {
     fetchUserData();
-  }, [fetchUserData]);
+  }, []);
 
   const fetchUserData = async () => {
     try {

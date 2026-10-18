@@ -260,7 +260,11 @@ export default function LoginPage() {
             <div className="flex justify-center w-full">
               <div className="w-full relative overflow-hidden rounded-xl border border-slate-200 dark:border-white/15 bg-slate-100 dark:bg-[#050814] hover:bg-white/5 transition-all duration-300 shadow-md group">
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 gap-2.5 text-xs font-semibold text-slate-700 dark:text-gray-200">
-                  <svg className="h-4 w-4" viewBox="0 0 24 24">
+                  <svg
+                    className="h-4 w-4"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
                     <path
                       fill="#4285F4"
                       d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"

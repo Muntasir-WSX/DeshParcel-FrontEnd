@@ -32,7 +32,7 @@ export default function RidersApprovalPage() {
 
   useEffect(() => {
     fetchRiders();
-  }, [fetchRiders]);
+  }, []);
 
   const fetchRiders = async () => {
     try {

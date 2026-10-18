@@ -160,6 +160,7 @@ export default function BlogHome() {
           {/* Navigation Controls */}
           <div className="flex justify-center items-center gap-4 mt-6">
             <button
+              type="button"
               onClick={handlePrev}
               className="p-2.5 rounded-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-red-700 hover:text-white transition-colors cursor-pointer shadow-md"
               aria-label="Previous Blog"
@@ -170,6 +171,7 @@ export default function BlogHome() {
             <div className="flex gap-1.5">
               {blogs.map((_, idx) => (
                 <button
+                  type="button"
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
@@ -182,6 +184,7 @@ export default function BlogHome() {
 
             {/** biome-ignore lint/a11y/useButtonType: <explanation> */}
             <button
+              type="button"
               onClick={handleNext}
               className="p-2.5 rounded-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-red-700 hover:text-white transition-colors cursor-pointer shadow-md"
               aria-label="Next Blog"

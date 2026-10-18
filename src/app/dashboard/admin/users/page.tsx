@@ -38,7 +38,7 @@ export default function UsersControlPage() {
 
   useEffect(() => {
     fetchUsers(meta.page);
-  }, [meta.page, fetchUsers]);
+  }, [meta.page]);
 
   const fetchUsers = async (pageNumber: number) => {
     try {

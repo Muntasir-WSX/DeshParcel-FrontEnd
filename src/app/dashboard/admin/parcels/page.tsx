@@ -20,7 +20,7 @@ export default function ManageParcelsPage() {
 
   useEffect(() => {
     fetchParcelsAndRiders();
-  }, [fetchParcelsAndRiders]);
+  }, []);
 
   const fetchParcelsAndRiders = async () => {
     try {

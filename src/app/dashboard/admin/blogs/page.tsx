@@ -22,7 +22,7 @@ export default function AdminBlogsPage() {
 
   useEffect(() => {
     fetchBlogs();
-  }, [fetchBlogs]);
+  }, []);
 
   const fetchBlogs = async () => {
     try {
@@ -212,6 +212,7 @@ export default function AdminBlogsPage() {
                 {editingBlogId ? "Update Blog Post" : "Publish New Blog Post"}
               </h3>
               <button
+                type="button"
                 onClick={() => setIsModalOpen(false)}
                 className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white cursor-pointer"
               >

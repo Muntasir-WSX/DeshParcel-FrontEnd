@@ -13,7 +13,7 @@ export default function PaymentsRevenuePage() {
 
   useEffect(() => {
     fetchWithdrawals();
-  }, [fetchWithdrawals]);
+  }, []);
 
   const fetchWithdrawals = async () => {
     try {

@@ -51,6 +51,7 @@ export default function Faq() {
               className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl transition-all"
             >
               <button
+                type="button"
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
                 className="w-full flex justify-between items-center text-left cursor-pointer group"
               >

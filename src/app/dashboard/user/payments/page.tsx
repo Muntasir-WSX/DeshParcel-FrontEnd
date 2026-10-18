@@ -11,7 +11,7 @@ export default function UserPaymentsPage() {
 
   useEffect(() => {
     fetchPayments();
-  }, [fetchPayments]);
+  }, []);
 
   const fetchPayments = async () => {
     try {

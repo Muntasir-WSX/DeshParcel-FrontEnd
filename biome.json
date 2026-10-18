@@ -1,22 +1,31 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "files": {
-    "ignore": ["node_modules", ".next", "dist", "build"]
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noExplicitAny": "off",
-        "noArrayIndexKey": "off"
-      },
-      "a11y": {
-        "noLabelWithoutControl": "off"
-      },
-      "performance": {
-        "noImgElement": "off"
-      }
-    }
-  }
+	"$schema": "https://biomejs.dev/schemas/2.4.2/schema.json",
+	"files": {
+		"includes": [
+			"**/*.{js,jsx,ts,tsx,json,jsonc}",
+			"!**/node_modules",
+			"!**/.next",
+			"!**/dist",
+			"!**/build"
+		]
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"correctness": {
+			  "useExhaustiveDependencies": "off"
+			},
+			"suspicious": {
+				"noExplicitAny": "off",
+				"noArrayIndexKey": "off"
+			},
+			"a11y": {
+				"noLabelWithoutControl": "off"
+			},
+			"performance": {
+				"noImgElement": "off"
+			}
+		}
+	}
 }

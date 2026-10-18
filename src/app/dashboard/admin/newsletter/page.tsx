@@ -12,7 +12,7 @@ export default function AdminNewslettersPage() {
 
   useEffect(() => {
     fetchSubscribers();
-  }, [fetchSubscribers]);
+  }, []);
 
   const fetchSubscribers = async () => {
     try {

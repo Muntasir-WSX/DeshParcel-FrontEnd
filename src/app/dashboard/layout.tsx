@@ -167,6 +167,7 @@ export default function DashboardLayout({
             <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
               <SheetTrigger asChild>
                 <button
+                  type="button"
                   className="lg:hidden p-2.5 rounded-xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-white/10 transition-colors cursor-pointer"
                   aria-label="Open Sidebar Menu"
                 >

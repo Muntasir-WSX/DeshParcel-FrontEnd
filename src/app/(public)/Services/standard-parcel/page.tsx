@@ -161,7 +161,6 @@ export default function StandardParcelPage() {
                 "Next-day merchant payout processing",
                 "Dedicated customer support assistance",
               ].map((item, idx) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                 <li
                   key={idx}
                   className="flex items-center gap-3 text-xs md:text-sm text-slate-700 dark:text-gray-200 font-medium"

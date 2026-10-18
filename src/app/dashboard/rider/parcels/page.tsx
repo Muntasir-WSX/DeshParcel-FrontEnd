@@ -36,7 +36,7 @@ export default function RiderParcelsPage() {
 
   useEffect(() => {
     fetchAssignedParcels();
-  }, [fetchAssignedParcels]);
+  }, []);
 
   const fetchAssignedParcels = async () => {
     try {

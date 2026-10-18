@@ -48,6 +48,7 @@ export default function ErrorPageComponent() {
               </Button>
             </Link>
             <button
+              type="button"
               onClick={() => window.history.back()}
               className="flex-1 py-3 px-4 rounded-xl bg-slate-100 dark:bg-[#050814] hover:bg-white/10 border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
             >
