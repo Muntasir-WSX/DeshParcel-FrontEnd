@@ -141,7 +141,7 @@ export default function UserParcelsPage() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <LoadingSkeleton />
+        <LoadingSkeleton type="table" count={5} />
       </div>
     );
   }
@@ -150,21 +150,21 @@ export default function UserParcelsPage() {
     <div className="space-y-6">
       
       {/* Header Banner */}
-      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             My Booked <span className="text-red-700">Parcels</span>
           </h2>
-          <p className="text-xs text-slate-600 dark:text-gray-300">
+          <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
             View all your shipments, monitor current transit milestones, and manage bookings.
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-600 dark:text-gray-300">
+          <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-700 dark:text-gray-300">
             Total Parcels: <span className="text-red-700">{parcels.length}</span>
           </div>
           <Link href="/create-parcel">
-            <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-600 hover:bg-red-700 text-white rounded-2xl cursor-pointer shadow-red-700/30">
+            <Button className="h-10 px-4 text-xs font-bold uppercase bg-red-600 hover:bg-red-700 text-white rounded-2xl cursor-pointer shadow-sm">
               <PlusCircle className="h-4 w-4 mr-1.5" /> Book New
             </Button>
           </Link>
@@ -172,12 +172,12 @@ export default function UserParcelsPage() {
       </div>
 
       {/* Parcels Table / List */}
-      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {parcels.length === 0 ? (
           <div className="py-20 text-center space-y-4">
-            <p className="text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">No parcels booked by you yet.</p>
+            <p className="text-slate-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">No parcels booked by you yet.</p>
             <Link href="/dashboard/user/create-parcel">
-              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer">
+              <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer shadow-sm">
                 Book Your First Parcel
               </Button>
             </Link>
@@ -186,7 +186,7 @@ export default function UserParcelsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
                   <th className="py-4 px-4">Tracking ID & Category</th>
                   <th className="py-4 px-4">Receiver Info</th>
                   <th className="py-4 px-4">Delivery Address</th>
@@ -194,42 +194,44 @@ export default function UserParcelsPage() {
                   <th className="py-4 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-xs">
+              <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-xs">
                 {parcels.map((p) => {
                   const isPending = p.status === "PENDING";
                   const isDelivered = p.status === "DELIVERED";
                   const hasReviewed = !!p.review;
 
                   return (
-                    <tr key={p.id} className="hover:bg-white/5 transition-colors">
+                    <tr key={p.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4">
                         <p className="font-mono font-bold text-slate-900 dark:text-white">{p.trackingId}</p>
-                        <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} - {p.weight} kg</p>
+                        <p className="text-[10px] text-red-700 uppercase font-semibold mt-0.5">
+                          {p.category} • {p.weight} kg
+                        </p>
                       </td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
+                      <td className="py-4 px-4 text-slate-700 dark:text-gray-300">
                         <p className="font-semibold text-slate-900 dark:text-white">{p.receiverName}</p>
-                        <p className="text-[10px] text-slate-600 dark:text-gray-300">{p.receiverPhone}</p>
+                        <p className="text-[10px] text-slate-500 dark:text-gray-400">{p.receiverPhone}</p>
                       </td>
-                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300 max-w-xs truncate">
+                      <td className="py-4 px-4 text-slate-700 dark:text-gray-300 max-w-xs truncate">
                         <p className="flex items-center gap-1 text-[11px]">
                           <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                         </p>
                       </td>
                       <td className="py-4 px-4 space-y-1">
                         <span className={`inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase border ${
-                          isDelivered ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" :
-                          isPending ? "bg-amber-500/20 text-amber-400 border-amber-500/30" :
-                          "bg-blue-500/20 text-blue-400 border-blue-500/30"
+                          isDelivered ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30" :
+                          isPending ? "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30" :
+                          "bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-500/30"
                         }`}>
                           {p.status}
                         </span>
-                        <p className="text-[10px] text-slate-600 dark:text-gray-300">
+                        <p className="text-[10px] text-slate-500 dark:text-gray-400">
                           Fee: ৳{p.payment?.amount || 0} ({p.payment?.status || "PENDING"})
                         </p>
                       </td>
                       <td className="py-4 px-4 text-right space-x-2">
                         <Link href={`/Track`} target="_blank">
-                          <Button size="sm" variant="outline" className="h-7 px-3 text-[10px] font-bold uppercase bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black cursor-pointer">
+                          <Button size="sm" variant="outline" className="h-7 px-3 text-[10px] font-bold uppercase bg-slate-100 dark:bg-[#050814] border-slate-300 dark:border-white/20 text-slate-800 dark:text-white hover:bg-slate-200 dark:hover:bg-white/10 cursor-pointer">
                             Track
                           </Button>
                         </Link>
@@ -239,14 +241,14 @@ export default function UserParcelsPage() {
                           <Button
                             size="sm"
                             onClick={() => setReviewModal({ isOpen: true, parcelId: p.id, trackingId: p.trackingId })}
-                            className="h-7 px-3 text-[10px] font-bold uppercase bg-amber-500/20 text-amber-400 hover:bg-amber-500 hover:text-black border border-amber-500/30 cursor-pointer"
+                            className="h-7 px-3 text-[10px] font-bold uppercase bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 hover:bg-amber-500 hover:text-white border border-amber-300 dark:border-amber-500/30 cursor-pointer transition-all"
                           >
                             <Star className="h-3 w-3 mr-1" /> Give Review
                           </Button>
                         )}
 
                         {hasReviewed && (
-                          <span className="text-[10px] text-emerald-400 font-semibold inline-block px-2">
+                          <span className="text-[10px] text-emerald-700 dark:text-emerald-400 font-semibold inline-block px-2">
                             Reviewed ✓
                           </span>
                         )}
@@ -256,7 +258,7 @@ export default function UserParcelsPage() {
                             size="sm"
                             disabled={actionLoading === p.id}
                             onClick={() => setDeleteModal({ isOpen: true, parcelId: p.id, trackingId: p.trackingId })}
-                            className="h-7 px-3 text-[10px] font-bold uppercase bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-700/30 cursor-pointer"
+                            className="h-7 px-3 text-[10px] font-bold uppercase bg-red-100 dark:bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-300 dark:border-red-700/30 cursor-pointer transition-all"
                           >
                             Cancel
                           </Button>
@@ -273,12 +275,12 @@ export default function UserParcelsPage() {
 
       {/* Shadcn AlertDialog for Cancellation */}
       <AlertDialog open={deleteModal.isOpen} onOpenChange={(open) => !open && setDeleteModal({ ...deleteModal, isOpen: false })}>
-        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
+            <div className="w-10 h-10 rounded-2xl bg-red-100 dark:bg-red-700/20 border border-red-200 dark:border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
             </div>
-            <AlertDialogTitle className="font-heading font-extrabold text-lg">
+            <AlertDialogTitle className="font-heading font-extrabold text-lg text-slate-900 dark:text-white">
               Cancel & Delete Parcel
             </AlertDialogTitle>
             <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
@@ -286,12 +288,12 @@ export default function UserParcelsPage() {
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
-            <AlertDialogCancel className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+            <AlertDialogCancel className="bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white rounded-xl text-xs cursor-pointer">
               Keep Booking
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={executeDeleteParcel}
-              className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
+              className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
             >
               Yes, Cancel Parcel
             </AlertDialogAction>
@@ -301,12 +303,12 @@ export default function UserParcelsPage() {
 
       {/* Shadcn AlertDialog for Review Submission */}
       <AlertDialog open={reviewModal.isOpen} onOpenChange={(open) => !open && setReviewModal({ ...reviewModal, isOpen: false })}>
-        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
-              <Star className="h-5 w-5 fill-amber-400" />
+            <div className="w-10 h-10 rounded-2xl bg-amber-100 dark:bg-amber-500/20 border border-amber-200 dark:border-amber-500/30 flex items-center justify-center text-amber-700 dark:text-amber-400">
+              <Star className="h-5 w-5 fill-amber-500 dark:fill-amber-400" />
             </div>
-            <AlertDialogTitle className="font-heading font-extrabold text-lg">
+            <AlertDialogTitle className="font-heading font-extrabold text-lg text-slate-900 dark:text-white">
               Rate Your Experience
             </AlertDialogTitle>
             <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
@@ -328,12 +330,12 @@ export default function UserParcelsPage() {
                   >
                     <Star
                       className={`h-6 w-6 ${
-                        star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-600"
+                        star <= rating ? "fill-amber-400 text-amber-400" : "text-gray-300 dark:text-gray-600"
                       }`}
                     />
                   </button>
                 ))}
-                <span className="ml-2 text-xs font-bold text-amber-400">{rating} / 5 Stars</span>
+                <span className="ml-2 text-xs font-bold text-amber-700 dark:text-amber-400">{rating} / 5 Stars</span>
               </div>
             </div>
 
@@ -346,21 +348,21 @@ export default function UserParcelsPage() {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Write your review here (min 2 characters)..."
-                className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-xl p-3 text-xs text-slate-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition-colors resize-none"
+                className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-300 dark:border-white/10 rounded-xl p-3 text-xs text-slate-900 dark:text-white placeholder-gray-400 focus:outline-none focus:border-red-700 transition-colors resize-none"
               />
             </div>
 
             <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
               <AlertDialogCancel 
                 type="button"
-                className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer"
+                className="bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white rounded-xl text-xs cursor-pointer"
               >
                 Cancel
               </AlertDialogCancel>
               <Button
                 type="submit"
                 disabled={submittingReview}
-                className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-red-700/30"
+                className="bg-red-600 hover:bg-red-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer shadow-sm"
               >
                 {submittingReview ? "Submitting..." : "Submit Review"}
               </Button>

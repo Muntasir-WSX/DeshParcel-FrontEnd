@@ -38,7 +38,7 @@ export default function UserPaymentsPage() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <LoadingSkeleton />
+        <LoadingSkeleton type="table" count={5} />
       </div>
     );
   }
@@ -52,37 +52,37 @@ export default function UserPaymentsPage() {
     <div className="space-y-6">
       
       {/* Header Banner */}
-      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             Payment & Transaction <span className="text-red-700">History</span>
           </h2>
-          <p className="text-xs text-slate-600 dark:text-gray-300">
+          <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
             Review delivery fee payments, transaction gateways, and billing status logs.
           </p>
         </div>
-        <div className="px-5 py-3 bg-slate-100 dark:bg-[#050814] border border-emerald-500/30 rounded-2xl flex items-center gap-3 shadow-inner">
-          <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400">
+        <div className="px-5 py-3 bg-slate-100 dark:bg-[#050814] border border-emerald-300 dark:border-emerald-500/30 rounded-2xl flex items-center gap-3 shadow-inner">
+          <div className="p-2 rounded-xl bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400">
             <DollarSign className="h-5 w-5" />
           </div>
           <div>
             <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Total Paid Amount</p>
-            <p className="text-lg font-extrabold text-emerald-400">৳ {totalSpent.toLocaleString()}</p>
+            <p className="text-lg font-extrabold text-emerald-700 dark:text-emerald-400">৳ {totalSpent.toLocaleString()}</p>
           </div>
         </div>
       </div>
 
-      {/* Payments Table */}
-      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      {/* Payments Table Container */}
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {payments.length === 0 ? (
-          <div className="py-20 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
+          <div className="py-20 text-center text-slate-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">
             No payment records found in your account.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
                   <th className="py-4 px-4">Transaction ID</th>
                   <th className="py-4 px-4">Parcel Info</th>
                   <th className="py-4 px-4">Gateway</th>
@@ -91,22 +91,22 @@ export default function UserPaymentsPage() {
                   <th className="py-4 px-4 text-right">Date & Time</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-xs">
+              <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-xs">
                 {payments.map((p) => {
                   const isSuccess = p.status === "SUCCESS";
                   const isPending = p.status === "PENDING";
 
                   return (
-                    <tr key={p.id} className="hover:bg-white/5 transition-colors">
+                    <tr key={p.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">
                         {p.transactionId || "N/A"}
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 text-slate-700 dark:text-gray-300">
                         <p className="font-bold text-slate-900 dark:text-white">{p.parcel?.category || "Shipment"}</p>
-                        <p className="text-[10px] text-slate-600 dark:text-gray-300 truncate max-w-xs">{p.parcel?.deliveryAddress}</p>
+                        <p className="text-[10px] text-slate-500 dark:text-gray-400 truncate max-w-xs">{p.parcel?.deliveryAddress}</p>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="px-2 py-0.5 rounded-md bg-white/10 text-slate-600 dark:text-gray-300 font-mono text-[10px] uppercase font-bold">
+                        <span className="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-gray-300 font-mono text-[10px] uppercase font-bold">
                           {p.gateway}
                         </span>
                       </td>
@@ -115,9 +115,9 @@ export default function UserPaymentsPage() {
                       </td>
                       <td className="py-4 px-4">
                         <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
-                          isSuccess ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30" :
-                          isPending ? "bg-amber-500/20 text-amber-400 border-amber-500/30" :
-                          "bg-red-700/20 text-red-700 border-red-700/30"
+                          isSuccess ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30" :
+                          isPending ? "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30" :
+                          "bg-red-100 dark:bg-red-700/20 text-red-700 border-red-300 dark:border-red-700/30"
                         }`}>
                           {isSuccess && <CheckCircle2 className="h-3 w-3" />}
                           {isPending && <Clock className="h-3 w-3" />}
@@ -125,7 +125,7 @@ export default function UserPaymentsPage() {
                           {p.status}
                         </span>
                       </td>
-                      <td className="py-4 px-4 text-right text-slate-600 dark:text-gray-300 text-[11px]">
+                      <td className="py-4 px-4 text-right text-slate-600 dark:text-gray-400 text-[11px]">
                         {new Date(p.createdAt).toLocaleString()}
                       </td>
                     </tr>

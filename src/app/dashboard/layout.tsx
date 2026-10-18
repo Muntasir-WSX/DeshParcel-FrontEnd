@@ -15,7 +15,8 @@ import {
   Wallet,
   ClipboardList,
   PlusCircle,
-  CreditCard
+  CreditCard,
+  Mail
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -59,6 +60,7 @@ export default function DashboardLayout({
     { name: "Approve Riders", href: "/dashboard/admin/riders", icon: Bike },
     { name: "Payments & Revenue", href: "/dashboard/admin/payments", icon: DollarSign },
     { name: "Manage Blogs", href: "/dashboard/admin/blogs", icon: PlusCircle },
+    { name: "Newsletter Subscribers", href: "/dashboard/admin/newsletter", icon: Mail },
   ];
   const riderLinks = [
     { name: "Rider Dashboard", href: "/dashboard/rider", icon: LayoutDashboard },

@@ -9,7 +9,7 @@ interface LoadingSkeletonProps {
 
 export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSkeletonProps) {
   
- 
+  
   if (type === "fullpage") {
     return (
       <div className="w-full h-[70vh] flex flex-col items-center justify-center space-y-4 bg-slate-50 dark:bg-[#070b19]">
@@ -24,7 +24,7 @@ export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSke
     );
   }
 
-  
+  // Card Grid Skeleton
   if (type === "card") {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
@@ -36,18 +36,18 @@ export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSke
             transition={{ duration: 0.3, delay: i * 0.1 }}
             className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-6 space-y-4 shadow-xl relative overflow-hidden"
           >
-            {/* Shimmer Effect Animation */}
-            <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+            {/* Shimmer Effect */}
+            <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-slate-300/20 dark:via-white/5 to-transparent" />
             
-            <div className="w-12 h-12 rounded-2xl bg-white/10 animate-pulse" />
+            <div className="w-12 h-12 rounded-2xl bg-slate-200 dark:bg-white/10 animate-pulse" />
             <div className="space-y-2">
-              <div className="h-5 w-3/4 bg-white/10 rounded-lg animate-pulse" />
-              <div className="h-3 w-full bg-white/5 rounded-md animate-pulse" />
-              <div className="h-3 w-5/6 bg-white/5 rounded-md animate-pulse" />
+              <div className="h-5 w-3/4 bg-slate-200 dark:bg-white/10 rounded-lg animate-pulse" />
+              <div className="h-3 w-full bg-slate-100 dark:bg-white/5 rounded-md animate-pulse" />
+              <div className="h-3 w-5/6 bg-slate-100 dark:bg-white/5 rounded-md animate-pulse" />
             </div>
             <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
-              <div className="h-4 w-20 bg-white/10 rounded-md animate-pulse" />
-              <div className="w-8 h-8 rounded-full bg-white/10 animate-pulse" />
+              <div className="h-4 w-20 bg-slate-200 dark:bg-white/10 rounded-md animate-pulse" />
+              <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-white/10 animate-pulse" />
             </div>
           </motion.div>
         ))}
@@ -59,18 +59,18 @@ export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSke
   if (type === "table") {
     return (
       <div className="w-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-6 space-y-4 shadow-xl">
-        <div className="h-6 w-48 bg-white/10 rounded-lg animate-pulse mb-6" />
+        <div className="h-6 w-48 bg-slate-200 dark:bg-white/10 rounded-lg animate-pulse mb-6" />
         <div className="space-y-3">
           {Array.from({ length: count }).map((_, i) => (
-            <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-white/5">
+            <div key={i} className="flex items-center justify-between p-4 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/5">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white/10 animate-pulse" />
+                <div className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-white/10 animate-pulse" />
                 <div className="space-y-1.5">
-                  <div className="h-4 w-32 bg-white/10 rounded-md animate-pulse" />
-                  <div className="h-3 w-20 bg-white/5 rounded-md animate-pulse" />
+                  <div className="h-4 w-32 bg-slate-200 dark:bg-white/10 rounded-md animate-pulse" />
+                  <div className="h-3 w-20 bg-slate-200/60 dark:bg-white/5 rounded-md animate-pulse" />
                 </div>
               </div>
-              <div className="h-6 w-20 bg-white/10 rounded-full animate-pulse" />
+              <div className="h-6 w-20 bg-slate-200 dark:bg-white/10 rounded-full animate-pulse" />
             </div>
           ))}
         </div>
@@ -83,8 +83,8 @@ export default function LoadingSkeleton({ type = "card", count = 3 }: LoadingSke
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
       {Array.from({ length: count }).map((_, i) => (
         <div key={i} className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-6 space-y-3 shadow-xl">
-          <div className="h-3 w-24 bg-white/10 rounded-md animate-pulse" />
-          <div className="h-8 w-16 bg-white/15 rounded-lg animate-pulse" />
+          <div className="h-3 w-24 bg-slate-200 dark:bg-white/10 rounded-md animate-pulse" />
+          <div className="h-8 w-16 bg-slate-300 dark:bg-white/15 rounded-lg animate-pulse" />
         </div>
       ))}
     </div>

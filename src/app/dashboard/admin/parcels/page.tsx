@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import Loader from "@/components/shared/mainloading";
 import LoadingSkeleton from "@/components/shared/loading";
 
 export default function ManageParcelsPage() {
@@ -46,11 +45,12 @@ export default function ManageParcelsPage() {
       const parcelResult = await parcelRes.json();
       if (!parcelRes.ok)
         throw new Error(parcelResult.message || "Failed to fetch parcels");
+      
       const userRes = await fetch(
         `${BACKEND_URL}/api/v1/admin/users?limit=100`,
         {
           headers: { Authorization: `Bearer ${token}` },
-        },
+        }
       );
       const userResult = await userRes.json();
 
@@ -58,7 +58,7 @@ export default function ManageParcelsPage() {
 
       if (userRes.ok) {
         const approvedRiders = userResult.data.result.filter(
-          (u: any) => u.role === "RIDER" && u.riderProfile?.isApproved,
+          (u: any) => u.role === "RIDER" && u.riderProfile?.isApproved
         );
         setRiders(approvedRiders);
       }
@@ -84,7 +84,7 @@ export default function ManageParcelsPage() {
         {
           method: "PATCH",
           headers: { Authorization: `Bearer ${token}` },
-        },
+        }
       );
 
       const result = await res.json();
@@ -162,7 +162,7 @@ export default function ManageParcelsPage() {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ reason: rejectReason }),
-        },
+        }
       );
 
       const result = await res.json();
@@ -185,38 +185,40 @@ export default function ManageParcelsPage() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
-        <LoadingSkeleton></LoadingSkeleton>
+        <LoadingSkeleton type="table" count={5} />
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      {/* Header Banner */}
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             Parcel <span className="text-red-700">Management Hub</span>
           </h2>
-          <p className="text-xs text-slate-600 dark:text-gray-300">
+          <p className="text-xs text-slate-600 dark:text-gray-300 mt-1">
             Monitor system-wide shipments, approve orders, assign delivery
             riders, and manage fulfillment workflows.
           </p>
         </div>
-        <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-600 dark:text-gray-300">
+        <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-700 dark:text-gray-300">
           Total Parcels: <span className="text-red-700">{parcels.length}</span>
         </div>
       </div>
 
-      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      {/* Main Table Container */}
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {parcels.length === 0 ? (
-          <div className="py-20 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
+          <div className="py-20 text-center text-slate-500 dark:text-gray-400 text-xs uppercase tracking-wider font-semibold">
             No parcels found in the system.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-gray-400">
                   <th className="py-4 px-4">Tracking ID & Category</th>
                   <th className="py-4 px-4">Sender & Receiver</th>
                   <th className="py-4 px-4">Delivery Address</th>
@@ -224,46 +226,36 @@ export default function ManageParcelsPage() {
                   <th className="py-4 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-xs">
+              <tbody className="divide-y divide-slate-100 dark:divide-white/5 text-xs">
                 {parcels.map((p) => (
-                  <tr key={p.id} className="hover:bg-white/5 transition-colors">
+                  <tr key={p.id} className="hover:bg-slate-50 dark:hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
                       <p className="font-mono font-bold text-slate-900 dark:text-white">
                         {p.trackingId}
                       </p>
-                      <p className="text-[10px] text-red-700 uppercase font-semibold">
-                        {p.category} • Tk{" "}
-                        {p.payment?.amount || p.codAmount || 0}
+                      <div className="text-[10px] text-red-700 uppercase font-semibold flex items-center gap-1 mt-0.5">
+                        <span>{p.category}</span>
+                        <span>• {p.payment?.amount || p.codAmount || 0} Tk</span>
                         <span
-                          className={`ml-1.5 px-1.5 py-0.5 rounded text-[8px] font-bold ${
+                          className={`px-1.5 py-0.5 rounded text-[8px] font-bold border ${
                             p.payment?.status === "SUCCESS"
-                              ? "bg-emerald-500/20 text-emerald-400"
-                              : "bg-amber-500/20 text-amber-400"
+                              ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30"
+                              : "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30"
                           }`}
                         >
                           {p.payment?.status || "UNPAID"}
                         </span>
-                        {p.status === "PENDING" && (
-  <Button
-    size="sm"
-    disabled={actionLoading === p.id || p.payment?.status !== 'SUCCESS'}
-    onClick={() => handleApproveParcel(p.id)}
-    className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-slate-900 dark:text-white cursor-pointer disabled:opacity-50"
-  >
-    {p.payment?.status === 'SUCCESS' ? 'Approve' : 'Payment Pending'}
-  </Button>
-)}
-                      </p>
+                      </div>
                     </td>
-                    <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
+                    <td className="py-4 px-4 text-slate-700 dark:text-gray-300">
                       <p className="font-semibold text-slate-900 dark:text-white">
                         From: {p.sender?.name || "Customer"}
                       </p>
-                      <p className="text-[10px] text-slate-600 dark:text-gray-300">
+                      <p className="text-[10px] text-slate-500 dark:text-gray-400">
                         To: {p.receiverName} ({p.receiverPhone})
                       </p>
                     </td>
-                    <td className="py-4 px-4 text-slate-600 dark:text-gray-300 max-w-xs truncate">
+                    <td className="py-4 px-4 text-slate-700 dark:text-gray-300 max-w-xs truncate">
                       <p className="flex items-center gap-1">
                         <MapPin className="h-3 w-3 text-red-700 shrink-0" />{" "}
                         {p.deliveryAddress}
@@ -273,20 +265,20 @@ export default function ManageParcelsPage() {
                       <span
                         className={`px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${
                           p.status === "DELIVERED"
-                            ? "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                            ? "bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border-emerald-300 dark:border-emerald-500/30"
                             : p.status === "APPROVED"
-                              ? "bg-blue-500/20 text-blue-400 border-blue-500/30"
+                              ? "bg-blue-100 dark:bg-blue-500/20 text-blue-800 dark:text-blue-400 border-blue-300 dark:border-blue-500/30"
                               : p.status === "ASSIGNED"
-                                ? "bg-purple-500/20 text-purple-400 border-purple-500/30"
+                                ? "bg-purple-100 dark:bg-purple-500/20 text-purple-800 dark:text-purple-400 border-purple-300 dark:border-purple-500/30"
                                 : p.status === "CANCELLED"
-                                  ? "bg-red-700/20 text-red-700 border-red-700/30"
-                                  : "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                                  ? "bg-red-100 dark:bg-red-700/20 text-red-700 border-red-300 dark:border-red-700/30"
+                                  : "bg-amber-100 dark:bg-amber-500/20 text-amber-800 dark:text-amber-400 border-amber-300 dark:border-amber-500/30"
                         }`}
                       >
                         {p.status}
                       </span>
                       {p.rider && (
-                        <p className="text-[10px] text-slate-600 dark:text-gray-300 mt-1">
+                        <p className="text-[10px] text-slate-500 dark:text-gray-400 mt-1">
                           Rider:{" "}
                           <span className="text-slate-900 dark:text-white font-bold">
                             {p.rider.name}
@@ -298,11 +290,11 @@ export default function ManageParcelsPage() {
                       {p.status === "PENDING" && (
                         <Button
                           size="sm"
-                          disabled={actionLoading === p.id}
+                          disabled={actionLoading === p.id || p.payment?.status !== 'SUCCESS'}
                           onClick={() => handleApproveParcel(p.id)}
-                          className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-slate-900 dark:text-white cursor-pointer"
+                          className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-white cursor-pointer disabled:opacity-50 transition-all shadow-sm"
                         >
-                          Approve
+                          {p.payment?.status === 'SUCCESS' ? 'Approve' : 'Payment Pending'}
                         </Button>
                       )}
 
@@ -313,7 +305,7 @@ export default function ManageParcelsPage() {
                             setSelectedParcel(p);
                             setIsAssignModalOpen(true);
                           }}
-                          className="h-7 px-3 text-[10px] font-bold uppercase bg-purple-600 hover:bg-purple-700 text-slate-900 dark:text-white cursor-pointer"
+                          className="h-7 px-3 text-[10px] font-bold uppercase bg-purple-600 hover:bg-purple-700 text-white cursor-pointer transition-all shadow-sm"
                         >
                           Assign Rider
                         </Button>
@@ -326,7 +318,7 @@ export default function ManageParcelsPage() {
                             setSelectedParcel(p);
                             setIsRejectModalOpen(true);
                           }}
-                          className="h-7 px-3 text-[10px] font-bold uppercase bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-700/30 cursor-pointer"
+                          className="h-7 px-3 text-[10px] font-bold uppercase bg-red-100 dark:bg-red-700/20 text-red-700 hover:bg-red-700 hover:text-white border border-red-300 dark:border-red-700/30 cursor-pointer transition-all"
                         >
                           Reject
                         </Button>
@@ -342,9 +334,9 @@ export default function ManageParcelsPage() {
 
       {/* Assign Rider Modal */}
       {isAssignModalOpen && selectedParcel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-white dark:bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
-            <h3 className="text-base font-extrabold font-heading text-slate-900 dark:text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6 text-slate-900 dark:text-white">
+            <h3 className="text-base font-extrabold font-heading">
               Assign Rider for{" "}
               <span className="text-red-700">{selectedParcel.trackingId}</span>
             </h3>
@@ -357,12 +349,12 @@ export default function ManageParcelsPage() {
                 <select
                   value={selectedRiderId}
                   onChange={(e) => setSelectedRiderId(e.target.value)}
-                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 >
-                  <option value="">-- Choose Rider Partner --</option>
+                  <option value="" className="bg-white dark:bg-[#0b132b]">-- Choose Rider Partner --</option>
                   {riders.map((r) => (
-                    <option key={r.id} value={r.id}>
+                    <option key={r.id} value={r.id} className="bg-white dark:bg-[#0b132b]">
                       {r.name} ({r.phone || r.email})
                     </option>
                   ))}
@@ -374,13 +366,13 @@ export default function ManageParcelsPage() {
                   type="button"
                   variant="outline"
                   onClick={() => setIsAssignModalOpen(false)}
-                  className="rounded-xl text-xs bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black cursor-pointer"
+                  className="rounded-xl text-xs bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white cursor-pointer"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="rounded-xl text-xs bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                  className="rounded-xl text-xs bg-red-600 hover:bg-red-700 text-white cursor-pointer shadow-sm"
                 >
                   Confirm Assignment
                 </Button>
@@ -392,9 +384,9 @@ export default function ManageParcelsPage() {
 
       {/* Reject / Delete Modal */}
       {isRejectModalOpen && selectedParcel && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-white dark:bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
-            <h3 className="text-base font-extrabold font-heading text-slate-900 dark:text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6 text-slate-900 dark:text-white">
+            <h3 className="text-base font-extrabold font-heading">
               Reject Parcel{" "}
               <span className="text-red-700">{selectedParcel.trackingId}</span>
             </h3>
@@ -408,7 +400,7 @@ export default function ManageParcelsPage() {
                   value={rejectReason}
                   onChange={(e) => setRejectReason(e.target.value)}
                   placeholder="Enter rejection reason (e.g. invalid address, prohibited item)..."
-                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-300 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
                   required
                 />
               </div>
@@ -418,13 +410,13 @@ export default function ManageParcelsPage() {
                   type="button"
                   variant="outline"
                   onClick={() => setIsRejectModalOpen(false)}
-                  className="rounded-xl text-xs bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black cursor-pointer"
+                  className="rounded-xl text-xs bg-slate-100 hover:bg-slate-200 dark:bg-[#050814] dark:hover:bg-white/10 border-slate-300 dark:border-white/20 text-slate-800 dark:text-white cursor-pointer"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  className="rounded-xl text-xs bg-red-600 hover:bg-red-700 text-white cursor-pointer"
+                  className="rounded-xl text-xs bg-red-600 hover:bg-red-700 text-white cursor-pointer shadow-sm"
                 >
                   Confirm Rejection
                 </Button>
