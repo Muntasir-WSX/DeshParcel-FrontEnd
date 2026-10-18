@@ -111,7 +111,7 @@ export default function AdminOverviewPage() {
     <div className="space-y-8">
       
       {/* Welcome Banner */}
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="space-y-2 relative z-10">
@@ -119,20 +119,20 @@ export default function AdminOverviewPage() {
             <ShieldCheck className="h-3.5 w-3.5" />
             System Control Center
           </div>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
             Welcome back, <span className="text-red-700">Admin</span>
           </h2>
-          <p className="text-xs text-gray-400 max-w-xl">
+          <p className="text-xs text-slate-600 dark:text-gray-300 max-w-xl">
             Monitor real-time system metrics, track parcel statuses, evaluate platform revenue, and oversee logistics performance across the network.
           </p>
         </div>
 
-        <div className="relative z-10 bg-[#050814] border border-white/10 px-5 py-4 rounded-2xl flex items-center gap-4 shadow-inner">
+        <div className="relative z-10 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 px-5 py-4 rounded-2xl flex items-center gap-4 shadow-inner">
           <div className="p-3 rounded-xl bg-red-700/20 text-red-700">
             <TrendingUp className="h-6 w-6" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-gray-400">Platform Status</p>
+            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Platform Status</p>
             <p className="text-sm font-bold text-emerald-400 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               Fully Operational
@@ -148,10 +148,10 @@ export default function AdminOverviewPage() {
           return (
             <div 
               key={index}
-              className={`bg-[#0b132b] border ${card.border} rounded-3xl p-6 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-4 hover:border-red-700/40 transition-all`}
+              className={`bg-white dark:bg-[#0b132b] border ${card.border} rounded-3xl p-6 shadow-xl relative overflow-hidden flex flex-col justify-between space-y-4 hover:border-red-700/40 transition-all`}
             >
               <div className="flex items-center justify-between">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   {card.title}
                 </p>
                 <div className={`p-3 rounded-2xl ${card.bg} ${card.color}`}>
@@ -160,7 +160,7 @@ export default function AdminOverviewPage() {
               </div>
 
               <div>
-                <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white tracking-tight">
+                <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
                   {card.value}
                 </h3>
               </div>
@@ -173,14 +173,14 @@ export default function AdminOverviewPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         
         {/* Bar Chart: Parcel Status Distribution */}
-        <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
             <div>
-              <h3 className="text-base md:text-lg font-bold font-heading text-white flex items-center gap-2">
+              <h3 className="text-base md:text-lg font-bold font-heading text-slate-900 dark:text-white flex items-center gap-2">
                 <BarChart3 className="h-5 w-5 text-red-700" />
                 Parcel Workflow Analytics
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-slate-600 dark:text-gray-300">
                 Visual representation of parcels across different active states.
               </p>
             </div>
@@ -217,13 +217,13 @@ export default function AdminOverviewPage() {
         </div>
 
         {/* Status Count Summary Grid */}
-        <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6 flex flex-col justify-between">
-          <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6 flex flex-col justify-between">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
             <div>
-              <h3 className="text-base md:text-lg font-bold font-heading text-white">
+              <h3 className="text-base md:text-lg font-bold font-heading text-slate-900 dark:text-white">
                 Detailed Status Counts
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-slate-600 dark:text-gray-300">
                 Exact numbers for each parcel operational status.
               </p>
             </div>
@@ -231,12 +231,12 @@ export default function AdminOverviewPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-auto">
             {stats?.parcelStatusCounts?.map((item: any, idx: number) => (
-              <div key={idx} className="bg-[#050814] border border-white/10 rounded-2xl p-4 flex items-center justify-between">
+              <div key={idx} className="bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl p-4 flex items-center justify-between">
                 <div className="space-y-1">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                     {item.status}
                   </p>
-                  <p className="text-xl font-extrabold text-white">
+                  <p className="text-xl font-extrabold text-slate-900 dark:text-white">
                     {item._count.status}
                   </p>
                 </div>

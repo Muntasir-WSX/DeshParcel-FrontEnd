@@ -27,7 +27,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="max-w-5xl mx-auto px-6 md:px-12 my-28 text-white">
+    <section className="max-w-5xl mx-auto px-6 md:px-12 my-28 text-slate-900 dark:text-white">
       <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
         <span className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/15 backdrop-blur-md border border-red-700/30 text-xs font-semibold uppercase tracking-wider text-red-700 shadow-sm">
           <HelpCircle className="h-3.5 w-3.5 text-red-700" />
@@ -36,7 +36,7 @@ export default function Faq() {
         <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight">
           Frequently Asked <span className="text-red-700">Questions</span>
         </h2>
-        <p className="text-gray-300 text-sm">
+        <p className="text-slate-600 dark:text-gray-300 text-sm">
           Find quick answers about our shipping rates, delivery zones, and merchant policies.
         </p>
       </div>
@@ -47,17 +47,17 @@ export default function Faq() {
           return (
             <div 
               key={idx}
-              className="bg-[#0b132b] border border-white/10 rounded-2xl p-6 shadow-xl transition-all"
+              className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-2xl p-6 shadow-xl transition-all"
             >
               <button
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
                 className="w-full flex justify-between items-center text-left cursor-pointer group"
               >
-                <h3 className={`text-base md:text-lg font-bold font-heading transition-colors ${isOpen ? "text-red-700" : "text-white group-hover:text-red-700"}`}>
+                <h3 className={`text-base md:text-lg font-bold font-heading transition-colors ${isOpen ? "text-red-700" : "text-slate-900 dark:text-white group-hover:text-red-700"}`}>
                   {faq.q}
                 </h3>
-                <div className="p-2 rounded-xl bg-[#070b19] border border-white/10 shrink-0 ml-4">
-                  {isOpen ? <Minus className="h-4 w-4 text-red-700" /> : <Plus className="h-4 w-4 text-gray-400" />}
+                <div className="p-2 rounded-xl bg-slate-50 dark:bg-[#070b19] border border-slate-200 dark:border-white/10 shrink-0 ml-4">
+                  {isOpen ? <Minus className="h-4 w-4 text-red-700" /> : <Plus className="h-4 w-4 text-slate-600 dark:text-gray-300" />}
                 </div>
               </button>
 
@@ -70,7 +70,7 @@ export default function Faq() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="pt-4 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-white/10 mt-4">
+                    <p className="pt-4 text-xs md:text-sm text-slate-600 dark:text-gray-300 leading-relaxed border-t border-slate-200 dark:border-white/10 mt-4">
                       {faq.a}
                     </p>
                   </motion.div>

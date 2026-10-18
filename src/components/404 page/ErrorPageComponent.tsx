@@ -8,16 +8,16 @@ import { Button } from "@/components/ui/button";
 
 export default function ErrorPageComponent() {
   return (
-    <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-[#070b19] text-white overflow-hidden items-center">
+    <div className="w-full min-h-screen grid grid-cols-1 lg:grid-cols-12 bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white overflow-hidden items-center">
       
       {/* Left Side: Error Content */}
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="col-span-1 lg:col-span-5 flex flex-col justify-center items-center px-6 lg:px-12 py-12 bg-[#070b19] z-10"
+        className="col-span-1 lg:col-span-5 flex flex-col justify-center items-center px-6 lg:px-12 py-12 bg-slate-50 dark:bg-[#070b19] z-10"
       >
-        <div className="w-full max-w-md bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 shadow-2xl relative space-y-6 text-center">
+        <div className="w-full max-w-md bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 shadow-2xl relative space-y-6 text-center">
           
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
@@ -29,13 +29,13 @@ export default function ErrorPageComponent() {
           </div>
 
           <div className="space-y-2 relative z-10">
-            <h1 className="text-5xl lg:text-6xl font-black font-heading text-white tracking-wider">
+            <h1 className="text-5xl lg:text-6xl font-black font-heading text-slate-900 dark:text-white tracking-wider">
               4<span className="text-red-700">0</span>4
             </h1>
             <h2 className="text-lg font-bold text-gray-200">
               Oops! Page Not Found
             </h2>
-            <p className="text-xs text-gray-400 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
               The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
             </p>
           </div>
@@ -52,7 +52,7 @@ export default function ErrorPageComponent() {
             </Link>
             <button 
               onClick={() => window.history.back()}
-              className="flex-1 py-3 px-4 rounded-xl bg-[#050814] hover:bg-white/10 border border-white/15 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
+              className="flex-1 py-3 px-4 rounded-xl bg-slate-100 dark:bg-[#050814] hover:bg-white/10 border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer transition-all"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Go Back</span>
@@ -83,10 +83,10 @@ export default function ErrorPageComponent() {
             <ShieldAlert className="h-3.5 w-3.5 text-red-700" />
             DeshParcel Logistics
           </div>
-          <h2 className="text-2xl lg:text-3xl font-extrabold font-heading text-white">
+          <h2 className="text-2xl lg:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
             Lost in Transit? Let&apos;s Get You Back on Track
           </h2>
-          <p className="text-xs text-gray-300 max-w-md leading-relaxed">
+          <p className="text-xs text-slate-600 dark:text-gray-300 max-w-md leading-relaxed">
             Navigate safely through our nationwide delivery network and track your shipments without hassle.
           </p>
         </div>

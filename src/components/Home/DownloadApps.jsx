@@ -24,7 +24,6 @@ const GooglePlayIconIcon = ({
 
   const viewBoxSize = 240 + (padding * 2); 
   const viewBoxOffset = -padding;
-  const viewBox = `${viewBoxOffset} ${viewBoxOffset} ${viewBoxSize} ${viewBoxSize}`;
 
   return (
     // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
@@ -53,7 +52,7 @@ export default function DownloadApps() {
     <section className="relative w-full max-w-7xl mx-auto px-6 md:px-12 my-28">
       
       {/* Main Container Box with Dark Navy & Red Theme */}
-      <div className="relative rounded-[2.5rem] bg-[#0b132b] border border-red-700/25 p-8 md:p-14 overflow-hidden shadow-2xl">
+      <div className="relative rounded-[2.5rem] bg-white dark:bg-[#0b132b] border border-red-700/25 p-8 md:p-14 overflow-hidden shadow-2xl">
         
         {/* Deep & Dark Red Glow Effects */}
         <div className="absolute -top-16 -right-16 w-96 h-96 bg-red-800/20 rounded-full blur-[120px] pointer-events-none" />
@@ -66,12 +65,12 @@ export default function DownloadApps() {
             DeshParcel Mobile App
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-white tracking-tight leading-[1.15]">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight leading-[1.15]">
             Download the{" "}
             <span className="text-red-700">DeshParcel Merchant App</span>
           </h2>
 
-          <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+          <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
             Download the DeshParcel Merchant App and manage deliveries, live
             tracking, orders, and COD operations easily from one convenient
             platform anytime.
@@ -95,13 +94,13 @@ export default function DownloadApps() {
                   height={22} 
                 />
                 <div className="text-left">
-                  <p className="text-[9px] uppercase tracking-wider text-gray-400 leading-none">Download on the</p>
+                  <p className="text-[9px] uppercase tracking-wider text-gray-300 leading-none">Download on the</p>
                   <p className="text-xs font-bold text-white tracking-wide mt-0.5">App Store</p>
                 </div>
               </div>
             </Link>
 
-            {/* Google Play Button using Custom SVG */}
+            {/* Google Play Button */}
             <Link 
               href="https://play.google.com" 
               target="_blank" 
@@ -111,7 +110,7 @@ export default function DownloadApps() {
               <div className="bg-black/90 border border-white/20 rounded-xl px-5 py-2.5 flex items-center gap-3 shadow-xl cursor-pointer">
                 <GooglePlayIconIcon size={26} />
                 <div className="text-left">
-                  <p className="text-[9px] uppercase tracking-wider text-gray-400 leading-none">GET IT ON</p>
+                  <p className="text-[9px] uppercase tracking-wider text-gray-300 leading-none">GET IT ON</p>
                   <p className="text-xs font-bold text-white tracking-wide mt-0.5">Google Play</p>
                 </div>
               </div>

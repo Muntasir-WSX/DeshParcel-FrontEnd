@@ -28,7 +28,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-[#070b19] text-white overflow-hidden border-t border-red-700/20 pt-16 pb-12">
+    <footer className="relative bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white overflow-hidden border-t border-red-700/20 pt-16 pb-12">
       
       {/* Background Image Banner with Dark Overlay */}
       <div className="absolute inset-0 z-0 opacity-10">
@@ -47,7 +47,7 @@ export default function Footer() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
         
        {/* Quick Parcel Estimate & Booking CTA */}
-        <div className="bg-[#0b132b] backdrop-blur-md border border-red-700/25 rounded-3xl p-6 md:p-10 mb-14 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b132b] backdrop-blur-md border border-red-700/25 rounded-3xl p-6 md:p-10 mb-14 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
           <div className="absolute -top-16 -right-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-16 -left-16 w-48 h-48 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -55,10 +55,10 @@ export default function Footer() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-red-700 bg-red-700/10 px-3 py-1 rounded-full border border-red-700/20">
               Instant Shipping Support
             </span>
-            <h3 className="text-xl md:text-3xl font-extrabold font-heading text-white">
+            <h3 className="text-xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
               Ready to Send Your First <span className="text-red-700">DeshParcel</span> Package?
             </h3>
-            <p className="text-xs md:text-sm text-gray-300 max-w-xl">
+            <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 max-w-xl">
               Calculate shipping costs instantly or book a pickup in less than 2 minutes. Fast, reliable, and transparent nationwide service.
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function Footer() {
             <Link href="/Pricing" className="w-full sm:w-auto">
               <Button 
                 variant="outline"
-                className="w-full sm:w-auto px-6 h-11 rounded-2xl text-xs font-bold uppercase tracking-wider text-white border-white/20 hover:bg-white hover:text-black transition-all cursor-pointer bg-[#050814]"
+                className="w-full sm:w-auto px-6 h-11 rounded-2xl text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white border-slate-200 dark:border-white/20 hover:bg-white hover:text-black transition-all cursor-pointer bg-slate-100 dark:bg-[#050814]"
               >
                 Check Pricing
               </Button>
@@ -84,12 +84,12 @@ export default function Footer() {
         </div>
 
         {/* Main Footer Links Grid - Balanced Columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-200 dark:border-white/10">
           
           {/* Column 1: Brand Info */}
           <div className="space-y-4">
             <Logo />
-            <p className="text-xs text-gray-300 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
               DeshParcel is Bangladesh’s fastest and most reliable logistics platform, connecting 64 districts with secure and express delivery.
             </p>
             {/* Social Icons */}
@@ -101,7 +101,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-xl bg-[#0b132b] border border-white/10 flex items-center justify-center text-gray-300 hover:bg-red-700 hover:text-white hover:border-red-600 transition-all shadow-sm"
+                  className="w-9 h-9 rounded-xl bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-gray-300 hover:bg-red-700 hover:text-white hover:border-red-600 transition-all shadow-sm"
                 >
                   {social.icon}
                 </Link>
@@ -115,11 +115,11 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/About" className="text-gray-300 hover:text-white transition-colors">About Us</Link></li>
-              <li><Link href="/Services" className="text-gray-300 hover:text-white transition-colors">Our Services</Link></li>
-              <li><Link href="/Pricing" className="text-gray-300 hover:text-white transition-colors">Pricing & Rates</Link></li>
-              <li><Link href="/Coverage" className="text-gray-300 hover:text-white transition-colors">Coverage Area</Link></li>
-              <li><Link href="/ContactUs" className="text-gray-300 hover:text-white transition-colors">Contact Us</Link></li>
+              <li><Link href="/About" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">About Us</Link></li>
+              <li><Link href="/Services" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Our Services</Link></li>
+              <li><Link href="/Pricing" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Pricing & Rates</Link></li>
+              <li><Link href="/Coverage" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Coverage Area</Link></li>
+              <li><Link href="/ContactUs" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -129,11 +129,11 @@ export default function Footer() {
               Services
             </h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/services/standard-parcel" className="text-gray-300 hover:text-white transition-colors">Standard Parcel</Link></li>
-              <li><Link href="/services/express-delivery" className="text-gray-300 hover:text-white transition-colors">Express Delivery</Link></li>
-              <li><Link href="/services/corporate-logistics" className="text-gray-300 hover:text-white transition-colors">Corporate Logistics</Link></li>
-              <li><Link href="/services/cross-border" className="text-gray-300 hover:text-white transition-colors">Cross-Border Shipping</Link></li>
-              <li><Link href="/becomeRider" className="text-gray-300 hover:text-white transition-colors">Be a Rider</Link></li>
+              <li><Link href="/services/standard-parcel" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Standard Parcel</Link></li>
+              <li><Link href="/services/express-delivery" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Express Delivery</Link></li>
+              <li><Link href="/services/corporate-logistics" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Corporate Logistics</Link></li>
+              <li><Link href="/services/cross-border" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Cross-Border Shipping</Link></li>
+              <li><Link href="/becomeRider" className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors">Be a Rider</Link></li>
             </ul>
           </div>
 
@@ -142,22 +142,22 @@ export default function Footer() {
             <h4 className="text-xs font-extrabold uppercase tracking-widest text-red-700 font-heading">
               Regional Offices
             </h4>
-            <ul className="space-y-2 text-[11px] text-gray-300">
+            <ul className="space-y-2 text-[11px] text-slate-600 dark:text-gray-300">
               <li className="flex items-start gap-2">
                 <MapPin className="h-3.5 w-3.5 text-red-700 shrink-0 mt-0.5" />
-                <span><strong className="text-white">Dhaka:</strong> Motijheel Commercial Area</span>
+                <span><strong className="text-slate-900 dark:text-white">Dhaka:</strong> Motijheel Commercial Area</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-3.5 w-3.5 text-red-700 shrink-0 mt-0.5" />
-                <span><strong className="text-white">Chattogram (HQ):</strong> Agrabad, Ispahani Bldg</span>
+                <span><strong className="text-slate-900 dark:text-white">Chattogram (HQ):</strong> Agrabad, Ispahani Bldg</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-3.5 w-3.5 text-red-700 shrink-0 mt-0.5" />
-                <span><strong className="text-white">Sylhet:</strong> Zindabazar Hub</span>
+                <span><strong className="text-slate-900 dark:text-white">Sylhet:</strong> Zindabazar Hub</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-3.5 w-3.5 text-red-700 shrink-0 mt-0.5" />
-                <span><strong className="text-white">Rajshahi:</strong> Shaheb Bazar Hub</span>
+                <span><strong className="text-slate-900 dark:text-white">Rajshahi:</strong> Shaheb Bazar Hub</span>
               </li>
               <li className="flex items-center gap-2 pt-1 text-gray-200">
                 <Phone className="h-3.5 w-3.5 text-red-700 shrink-0" />
@@ -173,12 +173,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright Row */}
-        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600 dark:text-gray-300">
           <p>© {new Date().getFullYear()} DeshParcel Logistics & Co. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/cookies" className="hover:text-white transition-colors">Cookie Policy</Link>
+            <Link href="/privacy" className="hover:text-slate-900 dark:hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-900 dark:hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/cookies" className="hover:text-slate-900 dark:hover:text-white transition-colors">Cookie Policy</Link>
           </div>
         </div>
 

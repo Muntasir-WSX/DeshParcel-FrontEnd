@@ -49,7 +49,7 @@ export default function BlogHome() {
   };
 
   return (
-    <section className="relative max-w-6xl mx-auto px-6 md:px-12 my-28 text-white">
+    <section className="relative max-w-6xl mx-auto px-6 md:px-12 my-28 text-slate-900 dark:text-white">
       
       {/* Section Header */}
       <div className="text-center max-w-2xl mx-auto mb-16 space-y-4 flex flex-col items-center">
@@ -62,7 +62,7 @@ export default function BlogHome() {
           News & <span className="text-red-700">Insights</span>
         </h2>
         
-        <p className="text-gray-300 text-sm md:text-base">
+        <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base">
           Stay updated with logistics trends, company announcements, and expert merchant tips.
         </p>
       </div>
@@ -74,8 +74,8 @@ export default function BlogHome() {
         </div>
       ) : blogs.length === 0 ? (
         /* Empty State */
-        <div className="text-center py-16 bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl max-w-xl mx-auto">
-          <p className="text-gray-400 text-sm">No blog articles published yet. Check back soon!</p>
+        <div className="text-center py-16 bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl max-w-xl mx-auto">
+          <p className="text-slate-600 dark:text-gray-300 text-sm">No blog articles published yet. Check back soon!</p>
         </div>
       ) : (
         /* Auto Sliding Carousel Container */
@@ -88,7 +88,7 @@ export default function BlogHome() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -40 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="group rounded-3xl bg-[#0b132b] backdrop-blur-md border border-white/10 hover:border-red-700/60 overflow-hidden shadow-2xl flex flex-col md:flex-row transition-all duration-300"
+                className="group rounded-3xl bg-white dark:bg-[#0b132b] backdrop-blur-md border border-slate-200 dark:border-white/10 hover:border-red-700/60 overflow-hidden shadow-2xl flex flex-col md:flex-row transition-all duration-300"
               >
                 {/* Blog Image */}
                 <div className="relative h-64 md:h-auto md:w-1/2 overflow-hidden bg-gray-900 shrink-0">
@@ -105,7 +105,7 @@ export default function BlogHome() {
                 {/* Blog Content & Details Link */}
                 <div className="p-6 md:p-8 flex flex-col justify-between md:w-1/2 space-y-4">
                   <div className="space-y-3">
-                    <div className="flex items-center gap-4 text-[11px] text-gray-400">
+                    <div className="flex items-center gap-4 text-[11px] text-slate-600 dark:text-gray-300">
                       <span className="flex items-center gap-1">
                         <Calendar className="h-3.5 w-3.5 text-red-700" /> 
                         {new Date(blogs[currentIndex].createdAt).toLocaleDateString()}
@@ -115,17 +115,17 @@ export default function BlogHome() {
                       </span>
                     </div>
 
-                    <h3 className="text-lg md:text-xl font-bold font-heading text-white group-hover:text-red-700 transition-colors line-clamp-2">
+                    <h3 className="text-lg md:text-xl font-bold font-heading text-slate-900 dark:text-white group-hover:text-red-700 transition-colors line-clamp-2">
                       {blogs[currentIndex].title}
                     </h3>
 
-                    <p className="text-xs md:text-sm text-gray-300 line-clamp-3 leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 line-clamp-3 leading-relaxed">
                       {blogs[currentIndex].content}
                     </p>
                   </div>
 
                   {/* Read More / Details Link */}
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between">
                     <Link 
                       href={`/blog/${blogs[currentIndex].id}`} 
                       className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-red-700 hover:text-red-700 transition-colors"
@@ -143,7 +143,7 @@ export default function BlogHome() {
           <div className="flex justify-center items-center gap-4 mt-6">
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full bg-[#0b132b] border border-white/10 text-white hover:bg-red-700 transition-colors cursor-pointer shadow-md"
+              className="p-2.5 rounded-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-red-700 hover:text-white transition-colors cursor-pointer shadow-md"
               aria-label="Previous Blog"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -165,7 +165,7 @@ export default function BlogHome() {
             {/** biome-ignore lint/a11y/useButtonType: <explanation> */}
 <button
               onClick={handleNext}
-              className="p-2.5 rounded-full bg-[#0b132b] border border-white/10 text-white hover:bg-red-700 transition-colors cursor-pointer shadow-md"
+              className="p-2.5 rounded-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-red-700 hover:text-white transition-colors cursor-pointer shadow-md"
               aria-label="Next Blog"
             >
               <ChevronRight className="h-4 w-4" />

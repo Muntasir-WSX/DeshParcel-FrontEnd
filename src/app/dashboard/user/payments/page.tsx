@@ -52,37 +52,37 @@ export default function UserPaymentsPage() {
     <div className="space-y-6">
       
       {/* Header Banner */}
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-white">
+          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             Payment & Transaction <span className="text-red-700">History</span>
           </h2>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-slate-600 dark:text-gray-300">
             Review delivery fee payments, transaction gateways, and billing status logs.
           </p>
         </div>
-        <div className="px-5 py-3 bg-[#050814] border border-emerald-500/30 rounded-2xl flex items-center gap-3 shadow-inner">
+        <div className="px-5 py-3 bg-slate-100 dark:bg-[#050814] border border-emerald-500/30 rounded-2xl flex items-center gap-3 shadow-inner">
           <div className="p-2 rounded-xl bg-emerald-500/20 text-emerald-400">
             <DollarSign className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold text-gray-400">Total Paid Amount</p>
+            <p className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Total Paid Amount</p>
             <p className="text-lg font-extrabold text-emerald-400">৳ {totalSpent.toLocaleString()}</p>
           </div>
         </div>
       </div>
 
       {/* Payments Table */}
-      <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {payments.length === 0 ? (
-          <div className="py-20 text-center text-gray-400 text-xs uppercase tracking-wider">
+          <div className="py-20 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
             No payment records found in your account.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   <th className="py-4 px-4">Transaction ID</th>
                   <th className="py-4 px-4">Parcel Info</th>
                   <th className="py-4 px-4">Gateway</th>
@@ -98,19 +98,19 @@ export default function UserPaymentsPage() {
 
                   return (
                     <tr key={p.id} className="hover:bg-white/5 transition-colors">
-                      <td className="py-4 px-4 font-mono font-bold text-white">
+                      <td className="py-4 px-4 font-mono font-bold text-slate-900 dark:text-white">
                         {p.transactionId || "N/A"}
                       </td>
                       <td className="py-4 px-4">
-                        <p className="font-bold text-white">{p.parcel?.category || "Shipment"}</p>
-                        <p className="text-[10px] text-gray-400 truncate max-w-xs">{p.parcel?.deliveryAddress}</p>
+                        <p className="font-bold text-slate-900 dark:text-white">{p.parcel?.category || "Shipment"}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300 truncate max-w-xs">{p.parcel?.deliveryAddress}</p>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="px-2 py-0.5 rounded-md bg-white/10 text-gray-300 font-mono text-[10px] uppercase font-bold">
+                        <span className="px-2 py-0.5 rounded-md bg-white/10 text-slate-600 dark:text-gray-300 font-mono text-[10px] uppercase font-bold">
                           {p.gateway}
                         </span>
                       </td>
-                      <td className="py-4 px-4 font-extrabold text-white">
+                      <td className="py-4 px-4 font-extrabold text-slate-900 dark:text-white">
                         ৳ {p.amount}
                       </td>
                       <td className="py-4 px-4">
@@ -125,7 +125,7 @@ export default function UserPaymentsPage() {
                           {p.status}
                         </span>
                       </td>
-                      <td className="py-4 px-4 text-right text-gray-400 text-[11px]">
+                      <td className="py-4 px-4 text-right text-slate-600 dark:text-gray-300 text-[11px]">
                         {new Date(p.createdAt).toLocaleString()}
                       </td>
                     </tr>

@@ -137,10 +137,10 @@ const coverageDestinations = [
 
 export default function CoveragePage() {
   return (
-    <div className="w-full pb-20 bg-[#070b19] text-white overflow-x-hidden">
+    <div className="w-full pb-20 bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white overflow-x-hidden">
       
       {/* 1. Cover Hero Section */}
-      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 bg-[#070b19]">
+      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 bg-slate-50 dark:bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
@@ -150,7 +150,7 @@ export default function CoveragePage() {
             className="object-cover object-center filter brightness-90"
           />
           {/* Deep Dark Blue & Redish Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/70 dark:from-[#070b19]/95 dark:via-[#070b19]/85 dark:to-[#070b19]/70 backdrop-blur-[2px]" />
         </div>
 
         {/* Glowing Background Accents */}
@@ -171,7 +171,7 @@ export default function CoveragePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
+            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
           >
             Delivering to All <span className="text-red-700">64 Districts</span> in Bangladesh
           </motion.h1>
@@ -180,7 +180,7 @@ export default function CoveragePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-slate-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Explore our complete nationwide coverage network, delivery hubs, and express timelines across every corner of Bangladesh.
           </motion.p>
@@ -193,10 +193,10 @@ export default function CoveragePage() {
           <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-700/15 border border-red-700/30 text-[11px] font-bold uppercase tracking-widest text-red-700">
             We are available in 64 districts
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight text-white">
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading tracking-tight text-slate-900 dark:text-white">
             Regional Hubs & Coverage Destinations
           </h2>
-          <p className="text-gray-300 text-sm">
+          <p className="text-slate-600 dark:text-gray-300 text-sm">
             We deliver almost all over Bangladesh with secure tracking and reliable express transit times.
           </p>
         </div>
@@ -212,7 +212,7 @@ export default function CoveragePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 hover:border-red-700/50 p-8 flex flex-col justify-between group min-h-[420px] bg-[#0b132b]"
+              className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-white/10 hover:border-red-700/50 p-8 flex flex-col justify-between group min-h-[420px] bg-white dark:bg-[#0b132b]"
             >
               {/* Card Background Image */}
               <div className="absolute inset-0 z-0">
@@ -223,7 +223,7 @@ export default function CoveragePage() {
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-90"
                 />
                 {/* Theme Overlay (Dark Blue & Redish Gradient) */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#070b19]/90 via-[#070b19]/80 to-[#070b19]/95 backdrop-blur-[2px]" />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/80 to-white/95 dark:from-[#070b19]/90 dark:via-[#070b19]/80 dark:to-[#070b19]/95 backdrop-blur-[2px]" />
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-red-700/20 rounded-full blur-3xl pointer-events-none" />
               </div>
 
@@ -233,28 +233,28 @@ export default function CoveragePage() {
                   <span className="px-3.5 py-1 rounded-full bg-red-700/15 border border-red-700/30 text-red-700 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
                     Fully Active
                   </span>
-                  <span className="text-xs font-bold text-gray-300 flex items-center gap-1.5 bg-[#0b132b]/80 px-3 py-1 rounded-full backdrop-blur-md border border-white/10">
+                  <span className="text-xs font-bold text-slate-600 dark:text-gray-300 flex items-center gap-1.5 bg-white dark:bg-[#0b132b]/80 px-3 py-1 rounded-full backdrop-blur-md border border-slate-200 dark:border-white/10">
                     <Building className="h-3.5 w-3.5 text-red-700" />
                     {item.hubs} Hubs
                   </span>
                 </div>
 
-                <h3 className="text-2xl font-bold font-heading text-white group-hover:text-red-700 transition-colors">
+                <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white group-hover:text-red-700 transition-colors">
                   {item.division}
                 </h3>
 
-                <p className="text-xs font-semibold text-gray-300 flex items-center gap-1.5 bg-[#0b132b]/60 px-3 py-2 rounded-xl backdrop-blur-md border border-white/10 w-fit">
+                <p className="text-xs font-semibold text-slate-600 dark:text-gray-300 flex items-center gap-1.5 bg-white dark:bg-[#0b132b]/60 px-3 py-2 rounded-xl backdrop-blur-md border border-slate-200 dark:border-white/10 w-fit">
                   <Zap className="h-3.5 w-3.5 text-red-700" />
-                  Delivery Timeline: <span className="text-white font-bold">{item.deliveryTime}</span>
+                  Delivery Timeline: <span className="text-slate-900 dark:text-white font-bold">{item.deliveryTime}</span>
                 </p>
 
                 <div className="space-y-2 pt-2">
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-gray-400">Covered Districts:</p>
+                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Covered Districts:</p>
                   <div className="flex flex-wrap gap-1.5 max-h-36 overflow-y-auto pr-1">
                     {item.districts.map((dist, dIdx) => (
                       <span 
                         key={dIdx} 
-                        className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-[#050814]/80 text-gray-200 border border-white/15 backdrop-blur-sm shadow-sm"
+                        className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-100 dark:bg-[#050814]/80 text-slate-700 dark:text-gray-200 border border-slate-200 dark:border-white/15 backdrop-blur-sm shadow-sm"
                       >
                         {dist}
                       </span>
@@ -264,8 +264,8 @@ export default function CoveragePage() {
               </div>
 
               {/* Card Footer */}
-              <div className="relative z-10 pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
-                <span className="flex items-center gap-1.5 font-medium text-gray-300">
+              <div className="relative z-10 pt-6 mt-6 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-slate-600 dark:text-gray-300">
+                <span className="flex items-center gap-1.5 font-medium text-slate-600 dark:text-gray-300">
                   <ShieldCheck className="h-4 w-4 text-red-700" />
                   Secure Express Network
                 </span>

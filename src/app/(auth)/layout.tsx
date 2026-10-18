@@ -8,7 +8,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen w-full bg-[#070b19] text-white overflow-hidden flex flex-col">
+    <div className="min-h-screen w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white overflow-hidden flex flex-col">
      <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "আপনার_গুগল_ক্লাইয়েন্ট_আইডি_এখানে_দিন"}>
   {children}
 </GoogleOAuthProvider>

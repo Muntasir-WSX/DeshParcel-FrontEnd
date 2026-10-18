@@ -86,17 +86,17 @@ export default function PaymentsRevenuePage() {
     <div className="space-y-8">
       
       {/* Header Banner */}
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-white">
+          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             Payments & <span className="text-red-700">Revenue Hub</span>
           </h2>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-slate-600 dark:text-gray-300">
             Monitor platform cash flow, review rider earnings withdrawal requests, and process payouts.
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="px-4 py-2.5 bg-[#050814] border border-emerald-500/30 rounded-2xl text-xs font-bold text-emerald-400 flex items-center gap-2">
+          <div className="px-4 py-2.5 bg-slate-100 dark:bg-[#050814] border border-emerald-500/30 rounded-2xl text-xs font-bold text-emerald-400 flex items-center gap-2">
             <DollarSign className="h-4 w-4" />
             Total Payouts Done: Tk {totalApprovedAmount.toLocaleString()}
           </div>
@@ -105,9 +105,9 @@ export default function PaymentsRevenuePage() {
 
       {/* Quick Summary Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="bg-[#0b132b] border border-amber-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0b132b] border border-amber-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Pending Cashout Requests</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Pending Cashout Requests</p>
             <h3 className="text-2xl font-extrabold text-amber-400">Tk {totalPendingAmount.toLocaleString()}</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
@@ -115,10 +115,10 @@ export default function PaymentsRevenuePage() {
           </div>
         </div>
 
-        <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Total Withdrawal Tickets</p>
-            <h3 className="text-2xl font-extrabold text-white">{withdrawals.length} Requests</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Total Withdrawal Tickets</p>
+            <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">{withdrawals.length} Requests</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-red-700/10 text-red-700 border border-red-700/20">
             <ArrowUpRight className="h-6 w-6" />
@@ -127,23 +127,23 @@ export default function PaymentsRevenuePage() {
       </div>
 
       {/* Withdrawal Requests Table */}
-      <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl space-y-6">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl space-y-6">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
           <div>
-            <h3 className="text-base font-bold font-heading text-white">Rider Withdrawal Requests</h3>
-            <p className="text-xs text-gray-400">Approve or reject pending earnings cashout submissions from delivery partners.</p>
+            <h3 className="text-base font-bold font-heading text-slate-900 dark:text-white">Rider Withdrawal Requests</h3>
+            <p className="text-xs text-slate-600 dark:text-gray-300">Approve or reject pending earnings cashout submissions from delivery partners.</p>
           </div>
         </div>
 
         {withdrawals.length === 0 ? (
-          <div className="py-16 text-center text-gray-400 text-xs uppercase tracking-wider">
+          <div className="py-16 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
             No withdrawal requests submitted yet.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   <th className="py-4 px-4">Rider Info</th>
                   <th className="py-4 px-4">Amount Requested</th>
                   <th className="py-4 px-4">Payment Method</th>
@@ -155,13 +155,13 @@ export default function PaymentsRevenuePage() {
                 {withdrawals.map((w) => (
                   <tr key={w.id} className="hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
-                      <p className="font-bold text-white">{w.rider?.name || "Unknown Rider"}</p>
-                      <p className="text-[10px] text-gray-400">{w.rider?.email} • {w.rider?.phone || "No phone"}</p>
+                      <p className="font-bold text-slate-900 dark:text-white">{w.rider?.name || "Unknown Rider"}</p>
+                      <p className="text-[10px] text-slate-600 dark:text-gray-300">{w.rider?.email} • {w.rider?.phone || "No phone"}</p>
                     </td>
                     <td className="py-4 px-4 font-extrabold text-emerald-400 text-sm">
                       Tk {w.amount.toLocaleString()}
                     </td>
-                    <td className="py-4 px-4 text-gray-300 uppercase font-semibold">
+                    <td className="py-4 px-4 text-slate-600 dark:text-gray-300 uppercase font-semibold">
                       {w.method || "Bank / Mobile Banking"}
                     </td>
                     <td className="py-4 px-4">
@@ -180,7 +180,7 @@ export default function PaymentsRevenuePage() {
                             size="sm"
                             disabled={actionLoading === w.id}
                             onClick={() => handleWithdrawalAction(w.id, "APPROVED")}
-                            className="h-7 px-3 text-[10px] font-bold uppercase bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                            className="h-7 px-3 text-[10px] font-bold uppercase bg-emerald-600 hover:bg-emerald-700 text-slate-900 dark:text-white cursor-pointer"
                           >
                             Approve
                           </Button>

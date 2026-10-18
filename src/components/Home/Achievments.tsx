@@ -33,7 +33,7 @@ const stats = [
 
 export default function Achievments() {
   return (
-    <section className="relative max-w-7xl mx-auto px-6 md:px-12 my-28 rounded-[2.5rem] overflow-hidden py-24 text-white shadow-2xl border border-red-700/25 bg-[#0b132b]">
+    <section className="relative max-w-7xl mx-auto px-6 md:px-12 my-28 rounded-[2.5rem] overflow-hidden py-24 text-slate-900 dark:text-white shadow-2xl border border-red-700/25 bg-white dark:bg-[#0b132b]">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full opacity-15">
@@ -58,10 +58,10 @@ export default function Achievments() {
             <Trophy className="h-3.5 w-3.5 text-red-700" />
             Our Milestones
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-white tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-extrabold font-heading text-slate-900 dark:text-white tracking-tight">
             Our Proven <span className="text-red-700">Track Record</span>
           </h2>
-          <p className="text-gray-300 text-sm md:text-base">
+          <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base">
             Numbers that define our dedication, reliability, and nationwide growth.
           </p>
         </div>
@@ -77,20 +77,20 @@ export default function Achievments() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="p-8 rounded-3xl bg-[#070b19]/85 backdrop-blur-md border border-white/10 hover:border-red-700/60 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group text-center flex flex-col items-center justify-between"
+                className="p-8 rounded-3xl bg-slate-50 dark:bg-[#070b19]/85 backdrop-blur-md border border-slate-200 dark:border-white/10 hover:border-red-700/60 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group text-center flex flex-col items-center justify-between"
               >
                 <div className="w-14 h-14 rounded-2xl bg-red-700/15 border border-red-700/30 text-red-700 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                   <Icon className="h-7 w-7 text-red-700" />
                 </div>
                 <div className="space-y-1">
-                  <h3 className="text-3xl md:text-4xl font-extrabold font-heading text-white">
+                  <h3 className="text-3xl md:text-4xl font-extrabold font-heading text-slate-900 dark:text-white">
                     {stat.value}
                   </h3>
                   <h4 className="text-sm font-bold text-red-700 uppercase tracking-wider">
                     {stat.label}
                   </h4>
                 </div>
-                <p className="text-xs text-gray-300 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
                   {stat.desc}
                 </p>
               </motion.div>

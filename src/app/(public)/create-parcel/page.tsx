@@ -113,7 +113,7 @@ export default function CreateParcelPage() {
   };
 
   return (
-    <div className="w-full pb-20 text-white space-y-12">
+    <div className="w-full pb-20 text-slate-900 dark:text-white space-y-12">
       
       {/* 1. Hero Banner Section (Centered Content) */}
       <motion.section 
@@ -131,18 +131,18 @@ export default function CreateParcelPage() {
             priority
             className="object-cover object-center filter brightness-90 contrast-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/60 dark:from-[#070b19]/95 dark:via-[#070b19]/90 dark:to-[#070b19]/60 backdrop-blur-[2px]" />
         </div>
 
         <div className="relative z-10 max-w-4xl space-y-6 flex flex-col items-center">
-          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm">
+          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/20 text-xs font-bold uppercase tracking-wider text-red-700 shadow-sm">
             <Package className="h-4 w-4 text-red-700" />
             Fast & Secure Shipping Network
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]">
             Book a <span className="text-red-700">Parcel Shipment</span>
           </h1>
-          <p className="text-gray-200 text-sm md:text-base max-w-2xl leading-relaxed font-normal">
+          <p className="text-slate-700 dark:text-gray-200 text-sm md:text-base max-w-2xl leading-relaxed font-normal">
             Fill in the shipment details below to dispatch your packages securely across nationwide delivery hubs with real-time tracking and trusted courier service.
           </p>
         </div>
@@ -155,15 +155,15 @@ export default function CreateParcelPage() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="max-w-4xl mx-auto px-4 md:px-0"
       >
-        <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="mb-8 border-b border-white/10 pb-4">
-            <h2 className="text-lg md:text-xl font-extrabold font-heading text-white">
+          <div className="mb-8 border-b border-slate-200 dark:border-white/10 pb-4">
+            <h2 className="text-lg md:text-xl font-extrabold font-heading text-slate-900 dark:text-white">
               Shipment Information Form
             </h2>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-slate-600 dark:text-gray-300">
               Provide accurate receiver and package specifications for smooth delivery handling.
             </p>
           </div>
@@ -173,7 +173,7 @@ export default function CreateParcelPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Receiver Name */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <User className="h-3.5 w-3.5 text-red-700" /> Receiver Name
                 </label>
                 <input
@@ -182,14 +182,14 @@ export default function CreateParcelPage() {
                   value={formData.receiverName}
                   onChange={handleChange}
                   placeholder="e.g. Your Receiver's Name"
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
 
               {/* Receiver Phone */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <Phone className="h-3.5 w-3.5 text-red-700" /> Receiver Phone
                 </label>
                 <input
@@ -198,7 +198,7 @@ export default function CreateParcelPage() {
                   value={formData.receiverPhone}
                   onChange={handleChange}
                   placeholder="017XXXXXXXX"
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
@@ -207,7 +207,7 @@ export default function CreateParcelPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Pickup Address */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 text-red-700" /> Pickup Address
                 </label>
                 <textarea
@@ -215,14 +215,14 @@ export default function CreateParcelPage() {
                   value={formData.pickupAddress}
                   onChange={handleChange}
                   placeholder="Enter complete pickup address..."
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
                   required
                 />
               </div>
 
               {/* Delivery Address */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 text-red-700" /> Delivery Address
                 </label>
                 <textarea
@@ -230,7 +230,7 @@ export default function CreateParcelPage() {
                   value={formData.deliveryAddress}
                   onChange={handleChange}
                   placeholder="Enter complete destination address..."
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
                   required
                 />
               </div>
@@ -239,7 +239,7 @@ export default function CreateParcelPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Weight (kg) */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <Weight className="h-3.5 w-3.5 text-red-700" /> Weight (Kg)
                 </label>
                 <input
@@ -249,14 +249,14 @@ export default function CreateParcelPage() {
                   value={formData.weight}
                   onChange={handleChange}
                   placeholder="e.g. 1.5"
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
 
               {/* Category */}
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <Tag className="h-3.5 w-3.5 text-red-700" /> Parcel Category
                 </label>
                 <input
@@ -265,7 +265,7 @@ export default function CreateParcelPage() {
                   value={formData.category}
                   onChange={handleChange}
                   placeholder="e.g. Electronics, Clothing, Documents"
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
@@ -273,18 +273,18 @@ export default function CreateParcelPage() {
 
             {/* Optional Parcel Image Upload */}
             <div className="space-y-1.5">
-              <label className="text-[10px] font-bold uppercase text-gray-400 flex items-center gap-1.5">
+              <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                 <ImageIcon className="h-3.5 w-3.5 text-red-700" /> Parcel Image (Optional)
               </label>
               <input
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full bg-[#050814] border border-white/15 text-gray-400 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:bg-red-700/20 file:text-red-700 hover:file:bg-red-700 hover:file:text-white rounded-xl text-xs cursor-pointer"
+                className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-600 dark:text-gray-300 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:uppercase file:bg-red-700/20 file:text-red-700 hover:file:bg-red-700 hover:file:text-white rounded-xl text-xs cursor-pointer"
               />
             </div>
 
-            <div className="pt-4 border-t border-white/10 flex items-center justify-end">
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-end">
               <Button
                 type="submit"
                 disabled={loading}

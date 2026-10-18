@@ -49,11 +49,11 @@ export default function TestimonialsPage() {
   };
 
   return (
-    <section className="relative max-w-5xl mx-auto px-6 md:px-12 my-28 text-white">
+    <section className="relative max-w-5xl mx-auto px-6 md:px-12 my-28 text-slate-900 dark:text-white">
       {/* Section Header */}
       <div className="text-center max-w-2xl mx-auto mb-16 space-y-4 flex flex-col items-center">
         {/* Top Trust Badge Style Applied */}
-        <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] md:text-xs font-semibold uppercase tracking-wide text-white/90 shadow-sm w-fit">
+        <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/5 dark:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/20 text-[10px] md:text-xs font-semibold uppercase tracking-wide text-slate-800 dark:text-white/90 shadow-sm w-fit">
           <MessageSquareQuote className="h-5 w-5 md:h-4 md:w-4 text-red-700" />
           Client Testimonials
         </div>
@@ -62,7 +62,7 @@ export default function TestimonialsPage() {
           What Our <span className="text-red-700">Merchants Say</span>
         </h2>
 
-        <p className="text-gray-300 text-sm md:text-base">
+        <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base">
           Real feedback from merchants and customers who trust DeshParcel for
           their deliveries.
         </p>
@@ -70,13 +70,13 @@ export default function TestimonialsPage() {
 
       {/* Loading State */}
       {loading ? (
-        <div className="text-center py-12 text-gray-400 flex justify-center">
+        <div className="text-center py-12 text-slate-600 dark:text-gray-300 flex justify-center">
           <p>Loading reviews...</p>
         </div>
       ) : reviews.length === 0 ? (
         /* Empty State */
-        <div className="text-center py-16 bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl max-w-xl mx-auto">
-          <p className="text-gray-400 text-sm">
+        <div className="text-center py-16 bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl max-w-xl mx-auto">
+          <p className="text-slate-600 dark:text-gray-300 text-sm">
             No reviews found yet. Be the first to leave a review after your
             delivery!
           </p>
@@ -92,7 +92,7 @@ export default function TestimonialsPage() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="w-full p-8 md:p-10 rounded-3xl bg-[#0b132b] backdrop-blur-md border border-white/10 shadow-2xl flex flex-col justify-between space-y-6"
+                className="w-full p-8 md:p-10 rounded-3xl bg-white dark:bg-[#0b132b] backdrop-blur-md border border-slate-200 dark:border-white/10 shadow-2xl flex flex-col justify-between space-y-6"
               >
                 <div className="space-y-4">
                   {/* Star Ratings */}
@@ -110,13 +110,13 @@ export default function TestimonialsPage() {
                   </div>
 
                   {/* Comment */}
-                  <p className="text-sm md:text-base text-gray-200 leading-relaxed italic">
+                  <p className="text-sm md:text-base text-slate-700 dark:text-gray-200 leading-relaxed italic">
                     "{reviews[currentIndex].comment}"
                   </p>
                 </div>
 
                 {/* User Info */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                <div className="flex items-center justify-between pt-4 border-t border-slate-200 dark:border-white/10">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-red-700/20 border border-red-700/40 flex items-center justify-center overflow-hidden shrink-0">
                       {reviews[currentIndex].user?.profileImage ? (
@@ -130,7 +130,7 @@ export default function TestimonialsPage() {
                       )}
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-white font-heading">
+                      <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">
                         {reviews[currentIndex].user?.name ||
                           "Anonymous Merchant"}
                       </h4>
@@ -141,7 +141,7 @@ export default function TestimonialsPage() {
                   </div>
 
                   {/* Indicators / Counter */}
-                  <div className="text-xs text-gray-400 font-mono">
+                  <div className="text-xs text-slate-600 dark:text-gray-300 font-mono">
                     {currentIndex + 1} / {reviews.length}
                   </div>
                 </div>
@@ -154,7 +154,7 @@ export default function TestimonialsPage() {
             {/** biome-ignore lint/a11y/useButtonType: <explanation> */}
             <button
               onClick={handlePrev}
-              className="p-2.5 rounded-full bg-[#0b132b] border border-white/10 text-white hover:bg-red-700 transition-colors cursor-pointer shadow-md"
+              className="p-2.5 rounded-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-red-700 hover:text-white transition-colors cursor-pointer shadow-md"
               aria-label="Previous Review"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -167,7 +167,7 @@ export default function TestimonialsPage() {
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
                   className={`h-2 rounded-full transition-all cursor-pointer ${
-                    currentIndex === idx ? "w-6 bg-red-700" : "w-2 bg-white/20"
+                    currentIndex === idx ? "w-6 bg-red-700" : "w-2 bg-slate-300 dark:bg-white/20"
                   }`}
                   aria-label={`Go to slide ${idx + 1}`}
                 />
@@ -177,7 +177,7 @@ export default function TestimonialsPage() {
             {/** biome-ignore lint/a11y/useButtonType: <explanation> */}
             <button
               onClick={handleNext}
-              className="p-2.5 rounded-full bg-[#0b132b] border border-white/10 text-white hover:bg-red-700 transition-colors cursor-pointer shadow-md"
+              className="p-2.5 rounded-full bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white hover:bg-red-700 hover:text-white transition-colors cursor-pointer shadow-md"
               aria-label="Next Review"
             >
               <ChevronRight className="h-4 w-4" />

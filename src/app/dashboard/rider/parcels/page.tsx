@@ -113,30 +113,30 @@ export default function RiderParcelsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-white">
+          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             Assigned <span className="text-red-700">Parcels Hub</span>
           </h2>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-slate-600 dark:text-gray-300">
             View order details, track destination addresses, and complete deliveries using customer OTP verification.
           </p>
         </div>
-        <div className="px-4 py-2 bg-[#050814] border border-white/10 rounded-2xl text-xs font-bold text-gray-300">
+        <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-600 dark:text-gray-300">
           Total Assigned: <span className="text-red-700">{parcels.length}</span>
         </div>
       </div>
 
-      <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {parcels.length === 0 ? (
-          <div className="py-20 text-center text-gray-400 text-xs uppercase tracking-wider">
+          <div className="py-20 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
             No parcels assigned to you yet.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   <th className="py-4 px-4">Tracking ID & Category</th>
                   <th className="py-4 px-4">Sender Contact</th>
                   <th className="py-4 px-4">Receiver & Delivery Address</th>
@@ -152,16 +152,16 @@ export default function RiderParcelsPage() {
                   return (
                     <tr key={p.id} className="hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4">
-                        <p className="font-mono font-bold text-white">{p.trackingId}</p>
+                        <p className="font-mono font-bold text-slate-900 dark:text-white">{p.trackingId}</p>
                         <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • COD: Tk{p.codAmount || 0}</p>
                       </td>
-                      <td className="py-4 px-4 text-gray-300">
-                        <p className="font-semibold text-white">{p.sender?.name}</p>
-                        <p className="text-[10px] text-gray-400">{p.sender?.phone || "No phone"}</p>
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
+                        <p className="font-semibold text-slate-900 dark:text-white">{p.sender?.name}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300">{p.sender?.phone || "No phone"}</p>
                       </td>
-                      <td className="py-4 px-4 text-gray-300 max-w-xs">
-                        <p className="font-semibold text-white">{p.receiverName} ({p.receiverPhone})</p>
-                        <p className="text-[10px] text-gray-400 truncate flex items-center gap-1 mt-0.5">
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300 max-w-xs">
+                        <p className="font-semibold text-slate-900 dark:text-white">{p.receiverName} ({p.receiverPhone})</p>
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300 truncate flex items-center gap-1 mt-0.5">
                           <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                         </p>
                       </td>
@@ -195,7 +195,7 @@ export default function RiderParcelsPage() {
                               trackingId: p.trackingId,
                               otpInput: "",
                             })}
-                            className="h-8 px-4 text-[10px] font-bold uppercase bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer  shadow-emerald-600/20"
+                            className="h-8 px-4 text-[10px] font-bold uppercase bg-emerald-600 hover:bg-emerald-700 text-slate-900 dark:text-white cursor-pointer  shadow-emerald-600/20"
                           >
                             Verify & Deliver
                           </Button>
@@ -216,7 +216,7 @@ export default function RiderParcelsPage() {
 
       {/* OTP Input Modal for Delivery Confirmation */}
       <AlertDialog open={otpModal.isOpen} onOpenChange={(open) => !open && setOtpModal({ ...otpModal, isOpen: false })}>
-        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <ShieldCheck className="h-5 w-5" />
@@ -224,8 +224,8 @@ export default function RiderParcelsPage() {
             <AlertDialogTitle className="font-heading font-extrabold text-lg">
               Confirm Delivery OTP
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
-              Enter the 4-digit verification code provided by the customer for tracking ID <span className="text-white font-bold">{otpModal.trackingId}</span> to complete the delivery.
+            <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
+              Enter the 4-digit verification code provided by the customer for tracking ID <span className="text-slate-900 dark:text-white font-bold">{otpModal.trackingId}</span> to complete the delivery.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
@@ -236,17 +236,17 @@ export default function RiderParcelsPage() {
               value={otpModal.otpInput}
               onChange={(e) => setOtpModal({ ...otpModal, otpInput: e.target.value.replace(/\D/g, '') })}
               placeholder="Enter 4-digit OTP"
-              className="w-full bg-[#050814] border border-white/20 text-white text-center text-xl font-mono tracking-widest rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-red-700"
+              className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/20 text-slate-900 dark:text-white text-center text-xl font-mono tracking-widest rounded-2xl px-4 py-3 outline-none focus:ring-2 focus:ring-red-700"
             />
           </div>
 
-          <AlertDialogFooter className="pt-2 border-t border-white/10 flex gap-2">
-            <AlertDialogCancel className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+          <AlertDialogFooter className="pt-2 border-t border-slate-200 dark:border-white/10 flex gap-2">
+            <AlertDialogCancel className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction 
               onClick={handleVerifyAndDeliver}
-              className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-emerald-600/30"
+              className="bg-emerald-600 hover:bg-emerald-700 text-slate-900 dark:text-white rounded-xl text-xs font-bold uppercase tracking-wider cursor-pointer  shadow-emerald-600/30"
             >
               Verify & Complete
             </AlertDialogAction>

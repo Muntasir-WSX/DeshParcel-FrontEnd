@@ -93,30 +93,30 @@ export default function RidersApprovalPage() {
 
   return (
     <div className="space-y-6">
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-white">
+          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             Rider <span className="text-red-700">Verification & Approval</span>
           </h2>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-slate-600 dark:text-gray-300">
             Review delivery partner applications, verify vehicle information, and authorize active riders.
           </p>
         </div>
-        <div className="px-4 py-2 bg-[#050814] border border-white/10 rounded-2xl text-xs font-bold text-gray-300">
+        <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-600 dark:text-gray-300">
           Total Riders: <span className="text-red-700">{riders.length}</span>
         </div>
       </div>
 
-      <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {riders.length === 0 ? (
-          <div className="py-20 text-center text-gray-400 text-xs uppercase tracking-wider">
+          <div className="py-20 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
             No rider accounts found in the system.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   <th className="py-4 px-4">Rider Name</th>
                   <th className="py-4 px-4">Contact Info</th>
                   <th className="py-4 px-4">Vehicle Details</th>
@@ -130,21 +130,21 @@ export default function RidersApprovalPage() {
                   const isApproved = r.riderProfile?.isApproved;
                   return (
                     <tr key={r.id} className="hover:bg-white/5 transition-colors">
-                      <td className="py-4 px-4 font-bold text-white flex items-center gap-2">
+                      <td className="py-4 px-4 font-bold text-slate-900 dark:text-white flex items-center gap-2">
                         <div className="w-8 h-8 rounded-full bg-red-700/20 text-red-700 flex items-center justify-center font-extrabold text-xs border border-red-700/30">
                           {r.name?.charAt(0) || "R"}
                         </div>
                         {r.name}
                       </td>
-                      <td className="py-4 px-4 text-gray-300">
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
                         <p>{r.email}</p>
-                        <p className="text-[10px] text-gray-400">{r.phone || "No phone"}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300">{r.phone || "No phone"}</p>
                       </td>
-                      <td className="py-4 px-4 text-gray-300">
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
                         <p className="font-semibold">{r.riderProfile?.vehicleType || "Bike"}</p>
-                        <p className="text-[10px] text-gray-400 uppercase">{r.riderProfile?.vehicleNumber || "N/A"}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300 uppercase">{r.riderProfile?.vehicleNumber || "N/A"}</p>
                       </td>
-                      <td className="py-4 px-4 text-gray-300 font-mono">
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300 font-mono">
                         {r.riderProfile?.nidNumber || "N/A"}
                       </td>
                       <td className="py-4 px-4">
@@ -193,7 +193,7 @@ export default function RidersApprovalPage() {
 
       {/* SweetAlert Style Confirmation Dialog */}
       <AlertDialog open={confirmModal.isOpen} onOpenChange={(open) => !open && setConfirmModal({ ...confirmModal, isOpen: false })}>
-        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
@@ -201,12 +201,12 @@ export default function RidersApprovalPage() {
             <AlertDialogTitle className="font-heading font-extrabold text-lg">
               Authorize Delivery Partner
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
-              Are you sure you want to approve <span className="text-white font-bold">{confirmModal.riderName}</span> as an active delivery rider? They will be authorized to accept and fulfill parcels.
+            <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
+              Are you sure you want to approve <span className="text-slate-900 dark:text-white font-bold">{confirmModal.riderName}</span> as an active delivery rider? They will be authorized to accept and fulfill parcels.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
-            <AlertDialogCancel className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+          <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
+            <AlertDialogCancel className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction 

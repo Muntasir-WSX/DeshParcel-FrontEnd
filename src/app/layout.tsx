@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "sonner";
+import { Toaster } from "@/components/ui/sonner";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const jetbrainsMonoHeading = JetBrains_Mono({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={cn(
         "h-full",
         "antialiased",
@@ -36,17 +38,24 @@ export default function RootLayout({
         geistMono.variable,
         "font-sans",
         inter.variable,
-        jetbrainsMonoHeading.variable,
+        jetbrainsMonoHeading.variable
       )}
     >
       <body
-        className="min-h-full flex flex-col bg-background bg-[#070b19] text-foreground"
-        suppressHydrationWarning={true}
+        className="min-h-full flex flex-col bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white transition-colors duration-300"
+        suppressHydrationWarning
       >
-        <SmoothScrollProvider>
-          <main className="flex-1">{children}</main>
-          <Toaster position="bottom-right" richColors theme="light" />
-        </SmoothScrollProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <SmoothScrollProvider>
+            <main className="flex-1">{children}</main>
+            <Toaster position="bottom-right" richColors />
+          </SmoothScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

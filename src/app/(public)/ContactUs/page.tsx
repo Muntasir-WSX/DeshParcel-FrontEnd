@@ -79,7 +79,7 @@ export default function ContactPage() {
     <div className="w-full pb-20">
       
       {/* 1. Cover Hero Section */}
-      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
+      <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
         
         {/* Background Image & Dark Overlay */}
         <div className="absolute inset-0 z-0">
@@ -90,7 +90,7 @@ export default function ContactPage() {
             priority
             className="object-cover object-center filter brightness-90"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/70 dark:from-[#070b19]/95 dark:via-[#070b19]/85 dark:to-[#070b19]/70 backdrop-blur-[1px]" />
         </div>
 
         {/* Glow Effects */}
@@ -111,7 +111,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
+            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
           >
             We Are Here to Help Your <span className="text-red-700">Business Grow</span>
           </motion.h1>
@@ -120,7 +120,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-slate-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Reach out to our executive leadership or connect directly with our nationwide hub managers across Bangladesh.
           </motion.p>
@@ -133,10 +133,10 @@ export default function ContactPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)] mb-2 block">
             Executive Board
           </span>
-          <h2 className="text-3xl text-white md:text-4xl font-extrabold font-heading tracking-tight mb-3">
+          <h2 className="text-3xl text-slate-900 dark:text-white md:text-4xl font-extrabold font-heading tracking-tight mb-3">
             Key Leadership
           </h2>
-          <p className="text-muted-foreground text-white text-sm md:text-base">
+          <p className="text-slate-600 dark:text-gray-300 text-slate-900 dark:text-white text-sm md:text-base">
             Direct contact information for our core management team.
           </p>
         </div>
@@ -149,7 +149,7 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.15 }}
-              className="bg-card border border-border/80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between"
+              className="bg-white dark:bg-[#0b132b] border border-border/80 rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 group flex flex-col justify-between"
             >
               <div className="relative w-full h-72 overflow-hidden bg-muted">
                 <Image
@@ -166,19 +166,19 @@ export default function ContactPage() {
                   <span className="text-xs font-bold uppercase tracking-widest text-[oklch(0.577_0.245_27.325)]">
                     {leader.role}
                   </span>
-                  <h3 className="text-xl text-white font-bold font-heading text-foreground mt-1">
+                  <h3 className="text-xl text-slate-900 dark:text-white font-bold font-heading text-slate-900 dark:text-white mt-1">
                     {leader.name}
                   </h3>
                 </div>
 
-                <div className="space-y-2 pt-2 border-t border-border/60 text-xs md:text-sm text-muted-foreground">
+                <div className="space-y-2 pt-2 border-t border-border/60 text-xs md:text-sm text-slate-600 dark:text-gray-300">
                   <div className="flex items-center gap-2.5">
                     <Mail className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
-                    <span className="text-white">{leader.email}</span>
+                    <span className="text-slate-900 dark:text-white">{leader.email}</span>
                   </div>
                   <div className="flex items-center gap-2.5">
                     <Phone className="h-4 w-4 text-[oklch(0.577_0.245_27.325)] shrink-0" />
-                    <span className="text-white">{leader.phone}</span>
+                    <span className="text-slate-900 dark:text-white">{leader.phone}</span>
                   </div>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export default function ContactPage() {
       </section>
 
       {/* 3. Nationwide Hub Managers Directory with Background Image */}
-  <section className="relative max-w-7xl mx-auto px-6 md:px-12 mb-28 rounded-[2.5rem] overflow-hidden py-20 text-white shadow-2xl border border-red-700/25 bg-[#0b132b]">
+  <section className="relative max-w-7xl mx-auto px-6 md:px-12 mb-28 rounded-[2.5rem] overflow-hidden py-20 text-slate-900 dark:text-white shadow-2xl border border-red-700/25 bg-white dark:bg-[#0b132b]">
         
         {/* Background Image 1 */}
         <div className="absolute inset-0 z-0 w-full h-full opacity-15">
@@ -199,7 +199,7 @@ export default function ContactPage() {
             className="object-cover object-center"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#070b19]/95 via-[#070b19]/90 to-black/95 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/90 to-white/95 dark:from-[#070b19]/95 dark:via-[#070b19]/90 dark:to-black/95 backdrop-blur-[2px]" />
 
         <div className="relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
@@ -208,23 +208,23 @@ export default function ContactPage() {
                 <MapPin className="h-3.5 w-3.5 text-red-700" />
                 Nationwide Coverage
               </div>
-              <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white">
+              <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-slate-900 dark:text-white">
                 30 Hub Managers Directory
               </h2>
-              <p className="text-sm text-gray-300 mt-2">
+              <p className="text-sm text-slate-600 dark:text-gray-300 mt-2">
                 Search and connect with our hub managers across all districts of Bangladesh.
               </p>
             </div>
 
             {/* Search Box */}
             <div className="relative w-full md:w-80">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-600 dark:text-gray-300" />
               <input 
                 type="text"
                 placeholder="Search district, hub or manager..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-[#070b19]/90 border border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-white placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-red-700 transition-all shadow-md"
+                className="w-full bg-slate-50 dark:bg-[#070b19]/90 border border-slate-200 dark:border-white/20 rounded-2xl pl-11 pr-4 py-3 text-xs md:text-sm text-slate-900 dark:text-white placeholder:text-slate-600 dark:text-gray-300 outline-none focus:ring-2 focus:ring-red-700 transition-all shadow-md"
               />
             </div>
           </div>
@@ -235,21 +235,21 @@ export default function ContactPage() {
               filteredHubs.map((hub, idx) => (
                 <div 
                   key={idx}
-                  className="p-6 rounded-2xl bg-[#070b19]/80 backdrop-blur-md border border-white/10 hover:border-red-700/60 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group"
+                  className="p-6 rounded-2xl bg-slate-50 dark:bg-[#070b19]/80 backdrop-blur-md border border-slate-200 dark:border-white/10 hover:border-red-700/60 hover:-translate-y-1 transition-all duration-300 space-y-4 shadow-xl group"
                 >
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 rounded-full bg-red-700/15 border border-red-700/30 text-red-700 text-xs font-bold uppercase tracking-wider shadow-sm">
                       {hub.district}
                     </span>
-                    <span className="text-xs text-gray-300 font-medium">{hub.hub}</span>
+                    <span className="text-xs text-slate-600 dark:text-gray-300 font-medium">{hub.hub}</span>
                   </div>
 
                   <div>
-                    <p className="text-base font-bold text-white font-heading group-hover:text-red-700 transition-colors">{hub.manager}</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Authorized Hub Manager</p>
+                    <p className="text-base font-bold text-slate-900 dark:text-white font-heading group-hover:text-red-700 transition-colors">{hub.manager}</p>
+                    <p className="text-xs text-slate-600 dark:text-gray-300 mt-0.5">Authorized Hub Manager</p>
                   </div>
 
-                  <div className="pt-3 border-t border-white/10 space-y-2 text-xs text-gray-300">
+                  <div className="pt-3 border-t border-slate-200 dark:border-white/10 space-y-2 text-xs text-slate-600 dark:text-gray-300">
                     <div className="flex items-center gap-2.5">
                       <Phone className="h-4 w-4 text-red-700 shrink-0" />
                       <span className="font-medium">{hub.phone}</span>
@@ -262,7 +262,7 @@ export default function ContactPage() {
                 </div>
               ))
             ) : (
-              <div className="col-span-full py-16 text-center text-gray-400">
+              <div className="col-span-full py-16 text-center text-slate-600 dark:text-gray-300">
                 No matching hub or manager found.
               </div>
             )}
@@ -271,7 +271,7 @@ export default function ContactPage() {
       </section>
 
       {/* 4. Extra Corporate Fleet & Logistics Support Section with Second Image */}
-      <section className="relative max-w-7xl mx-auto px-6 md:px-12 rounded-[2.5rem] overflow-hidden py-24 text-white shadow-2xl border border-white/10">
+      <section className="relative max-w-7xl mx-auto px-6 md:px-12 rounded-[2.5rem] overflow-hidden py-24 text-slate-900 dark:text-white shadow-2xl border border-slate-200 dark:border-white/10">
         
         {/* Background Image 2 */}
         <div className="absolute inset-0 z-0 w-full h-full">
@@ -281,11 +281,11 @@ export default function ContactPage() {
             fill
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/60 dark:from-black/95 dark:via-black/85 dark:to-black/60 backdrop-blur-[2px]" />
         </div>
 
         <div className="relative z-10 max-w-2xl space-y-6">
-          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold uppercase tracking-wider text-white shadow-sm">
+          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/20 text-xs font-semibold uppercase tracking-wider text-slate-900 dark:text-white shadow-sm">
             <Building2 className="h-4 w-4 text-[oklch(0.577_0.245_27.325)]" />
             Corporate Partnerships
           </div>
@@ -294,7 +294,7 @@ export default function ContactPage() {
             Need Custom Fleet or <span style={{ color: "oklch(0.577 0.245 27.325)" }}>Enterprise Logistics?</span>
           </h2>
 
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+          <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed">
             Partner with DeshParcel for enterprise-grade bulk shipping, dedicated warehousing solutions, and priority supply chain management tailored to your business scale.
           </p>
 

@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function CoverageSection() {
   return (
-    <section className="relative py-20 md:py-28 my-16 rounded-3xl text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-[#070b19]">
+    <section className="relative py-20 md:py-28 my-16 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
       
       {/* Background Image & Overlay */}
       <div className="absolute inset-0 z-0 w-full h-full">
@@ -19,7 +19,7 @@ export default function CoverageSection() {
           className="object-cover object-center filter brightness-90"
         />
         {/* Deep Dark Blue & Redish Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/70 dark:from-[#070b19]/95 dark:via-[#070b19]/85 dark:to-[#070b19]/70 backdrop-blur-[1px]" />
       </div>
 
       {/* Decorative Glow Effects */}
@@ -36,16 +36,16 @@ export default function CoverageSection() {
           transition={{ duration: 0.6 }}
           className="max-w-xl space-y-4"
         >
-          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm">
+          <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/5 dark:bg-white/10 border border-slate-200 dark:border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm">
             <MapPin className="h-4 w-4 text-red-700" />
             Nationwide Network
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-white">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-slate-900 dark:text-white">
             Delivering to All <span className="text-red-700">64 Districts</span> Across Bangladesh
           </h2>
 
-          <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
+          <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
             From metropolitan cities to remote upazilas, our extensive coverage ensures your parcel reaches its destination securely and on time.
           </p>
         </motion.div>

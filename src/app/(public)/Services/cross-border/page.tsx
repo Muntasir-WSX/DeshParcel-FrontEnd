@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
 
 export default function CrossBorderPage() {
   return (
-    <div className="w-full bg-[#070b19] text-white pt-28 pb-20 overflow-hidden">
+    <div className="w-full bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pt-28 pb-20 overflow-hidden">
       
       {/* 1. Hero Banner with Background Image */}
-      <section className="relative py-20 md:py-32 my-8 rounded-3xl text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-[#070b19]">
+      <section className="relative py-20 md:py-32 my-8 rounded-3xl text-slate-900 dark:text-white px-6 md:px-16 shadow-2xl overflow-hidden max-w-7xl mx-auto border border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
         
         {/* Background Image & Overlay */}
         <div className="absolute inset-0 z-0 w-full h-full">
@@ -23,7 +23,7 @@ export default function CrossBorderPage() {
             className="object-cover object-center filter brightness-90"
           />
           {/* Deep Dark Blue & Redish Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/85 to-[#070b19]/70 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/70 dark:from-[#070b19]/95 dark:via-[#070b19]/85 dark:to-[#070b19]/70 backdrop-blur-[1px]" />
         </div>
 
         {/* Decorative Glow Effects */}
@@ -40,16 +40,16 @@ export default function CrossBorderPage() {
             transition={{ duration: 0.6 }}
             className="max-w-xl space-y-4"
           >
-            <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm backdrop-blur-md">
+            <div className="trust-badge inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-slate-200 dark:border-white/20 text-xs font-bold tracking-wide uppercase text-red-700 shadow-sm backdrop-blur-md">
               <Globe className="h-4 w-4 text-red-700" />
               Global & Regional Logistics
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-white">
+            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight text-slate-900 dark:text-white">
               Seamless <span className="text-red-700">Cross-Border Shipping</span> & Cargo
             </h1>
 
-            <p className="text-gray-300 text-sm md:text-base leading-relaxed font-medium">
+            <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed font-medium">
               Expand your business beyond borders. We provide secure international freight forwarding, customs clearance assistance, and reliable cross-border delivery solutions.
             </p>
           </motion.div>
@@ -81,42 +81,42 @@ export default function CrossBorderPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
             Global Reach, Local Expertise
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white">
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-slate-900 dark:text-white">
             Why Choose Our <span className="text-red-700">Cross-Border Service?</span>
           </h2>
-          <p className="text-xs md:text-sm text-gray-300">
+          <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300">
             Simplifying international trade and cargo movement with full documentation support.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
-          <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Plane className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-white">Air & Land Freight</h3>
-            <p className="text-xs text-gray-300 leading-relaxed">
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Air & Land Freight</h3>
+            <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
               Flexible multi-modal transportation options tailored for heavy cargo or fast-track document delivery.
             </p>
           </div>
 
-          <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <ShieldCheck className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-white">Customs Clearance Support</h3>
-            <p className="text-xs text-gray-300 leading-relaxed">
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Customs Clearance Support</h3>
+            <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
               Expert handling of import/export documentation, duties compliance, and regulatory paperwork.
             </p>
           </div>
 
-          <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-4">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Globe className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-white">Global Tracking Network</h3>
-            <p className="text-xs text-gray-300 leading-relaxed">
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Global Tracking Network</h3>
+            <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
               End-to-end visibility from international hubs straight to final doorstep delivery.
             </p>
           </div>
@@ -126,15 +126,15 @@ export default function CrossBorderPage() {
 
       {/* 3. Detailed Information & Checklist Section */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 my-20">
-        <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           
           <div className="absolute top-0 right-0 w-80 h-80 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="space-y-6 relative z-10">
-            <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
+            <h3 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
               Cross-Border Capabilities
             </h3>
-            <p className="text-xs md:text-sm text-gray-300 leading-relaxed">
+            <p className="text-xs md:text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
               Designed for global e-commerce brands, importers, exporters, and enterprises requiring robust international supply chains.
             </p>
 
@@ -146,7 +146,7 @@ export default function CrossBorderPage() {
                 "Full transit insurance coverage options",
                 "Dedicated key account management for enterprise clients"
               ].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-xs md:text-sm text-gray-200 font-medium">
+                <li key={idx} className="flex items-center gap-3 text-xs md:text-sm text-slate-700 dark:text-gray-200 font-medium">
                   <CheckCircle2 className="h-5 w-5 text-red-700 shrink-0" />
                   <span>{item}</span>
                 </li>
@@ -154,18 +154,18 @@ export default function CrossBorderPage() {
             </ul>
           </div>
 
-          <div className="bg-[#070b19] border border-white/10 rounded-2xl p-8 space-y-6 relative z-10">
-            <h4 className="text-lg font-bold font-heading text-white border-b border-white/10 pb-3">
+          <div className="bg-slate-50 dark:bg-[#070b19] border border-slate-200 dark:border-white/10 rounded-2xl p-8 space-y-6 relative z-10">
+            <h4 className="text-lg font-bold font-heading text-slate-900 dark:text-white border-b border-slate-200 dark:border-white/10 pb-3">
               Shipping Guidelines & ETA
             </h4>
-            <div className="space-y-4 text-xs text-gray-300">
+            <div className="space-y-4 text-xs text-slate-600 dark:text-gray-300">
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Standard Transit Time:</span>
-                <span className="font-bold text-white">3 - 7 Business Days</span>
+                <span className="font-bold text-slate-900 dark:text-white">3 - 7 Business Days</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Documentation:</span>
-                <span className="font-bold text-white">Commercial Invoice Required</span>
+                <span className="font-bold text-slate-900 dark:text-white">Commercial Invoice Required</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-white/5">
                 <span>Freight Type:</span>

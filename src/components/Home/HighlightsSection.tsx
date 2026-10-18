@@ -45,14 +45,14 @@ export default function HighlightsSection() {
   };
 
   return (
-    <section className="py-20 md:py-32 w-full max-w-7xl mx-auto px-5 md:px-12 bg-[#070b19] text-white rounded-3xl my-16">
+    <section className="py-20 md:py-32 w-full max-w-7xl mx-auto px-5 md:px-12 bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white rounded-3xl my-16">
       
       {/* Section Header */}
       <div className="text-center md:text-left mb-12 md:mb-16">
-        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/10 border border-white/30 text-[11px] font-bold uppercase tracking-widest text-white/90 mb-3">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-slate-900/5 dark:bg-white/10 border border-slate-900/15 dark:border-white/30 text-[11px] font-bold uppercase tracking-widest text-slate-800 dark:text-white/90 mb-3">
           <ShieldCheck className="h-3.5 w-3.5 text-red-700" /> Why Choose Us
         </span>
-        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white">
           Premium Logistics <br className="hidden md:block" /> Experience
         </h2>
       </div>
@@ -65,7 +65,7 @@ export default function HighlightsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="lg:col-span-6 relative w-full h-100 sm:h-125  py-20 md:py-32  max-w-7xl mx-auto px-6 md:px-16 my-16 rounded-3xl text-white shadow-2xl overflow-hidden border border-red-700/20 bg-[#070b19]"
+          className="lg:col-span-6 relative w-full h-100 sm:h-125  py-20 md:py-32  max-w-7xl mx-auto px-6 md:px-16 my-16 rounded-3xl text-slate-900 dark:text-white shadow-2xl overflow-hidden border border-red-700/20 bg-slate-50 dark:bg-[#070b19]"
         >
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876289/a5c3c668a455ec9036065379018c6514_bvc4hu.jpg"
@@ -74,23 +74,23 @@ export default function HighlightsSection() {
             className="object-cover object-center group-hover:scale-105 transition-transform duration-1000 filter brightness-90 contrast-105"
           />
           {/* Theme-matching Dark Navy & Reddish Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b19]/95 via-[#070b19]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/95 via-white/35 to-transparent dark:from-[#070b19]/95 dark:via-[#070b19]/40 dark:to-transparent" />
           
           {/* Floating Badge on Image */}
-          <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-[#0b132b]/90 backdrop-blur-md border border-white/15 shadow-2xl space-y-1">
-            <h4 className="text-sm font-bold text-white font-heading">Nationwide Coverage</h4>
-            <p className="text-xs text-gray-300">Empowering 35K+ merchants across all 64 districts with rapid door-to-door delivery.</p>
+          <div className="absolute bottom-8 left-8 right-8 z-10 p-6 rounded-2xl bg-white dark:bg-[#0b132b]/90 backdrop-blur-md border border-slate-200 dark:border-white/15 shadow-2xl space-y-1">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-white font-heading">Nationwide Coverage</h4>
+            <p className="text-xs text-slate-600 dark:text-gray-300">Empowering 35K+ merchants across all 64 districts with rapid door-to-door delivery.</p>
           </div>
         </motion.div>
 
         {/* Right Side: Accordion Features */}
-        <div className="lg:col-span-6 flex flex-col justify-center bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+        <div className="lg:col-span-6 flex flex-col justify-center bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
           
           {/* Glowing background accents */}
           <div className="absolute -top-24 -right-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 divide-y divide-white/10">
+          <div className="relative z-10 divide-y divide-slate-200 dark:divide-white/10">
             {highlights.map((item) => {
               const isOpen = openId === item.id;
 
@@ -102,14 +102,14 @@ export default function HighlightsSection() {
                     onClick={() => toggleAccordion(item.id)}
                     className="w-full py-2 flex justify-between items-center text-left focus:outline-none group cursor-pointer"
                   >
-                    <h3 className={`text-lg md:text-xl font-bold font-heading transition-colors duration-300 ${isOpen ? "text-red-700" : "text-white group-hover:text-red-700"}`}>
+                    <h3 className={`text-lg md:text-xl font-bold font-heading transition-colors duration-300 ${isOpen ? "text-red-700" : "text-slate-900 dark:text-white group-hover:text-red-700"}`}>
                       {item.title}
                     </h3>
-                    <div className="ml-4 flex-shrink-0 p-2 rounded-xl bg-[#050814] border border-white/10 group-hover:border-red-700/30 transition-all">
+                    <div className="ml-4 flex-shrink-0 p-2 rounded-xl bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 group-hover:border-red-700/30 transition-all">
                       {isOpen ? (
                         <Minus className="h-4 w-4 text-red-700" />
                       ) : (
-                        <Plus className="h-4 w-4 text-gray-400 group-hover:text-white transition-colors" />
+                        <Plus className="h-4 w-4 text-slate-600 dark:text-gray-300 group-hover:text-slate-900 dark:hover:text-white transition-colors" />
                       )}
                     </div>
                   </button>
@@ -125,14 +125,14 @@ export default function HighlightsSection() {
                         className="overflow-hidden"
                       >
                         <div className="py-4 pr-2 space-y-4">
-                          <p className="text-gray-300 text-xs md:text-sm leading-relaxed">
+                          <p className="text-slate-600 dark:text-gray-300 text-xs md:text-sm leading-relaxed">
                             {item.desc}
                           </p>
                           
                           {/* Bullet Points */}
                           <ul className="space-y-2">
                             {item.bullets.map((bullet, idx) => (
-                              <li key={idx} className="flex items-center gap-2.5 text-xs font-medium text-gray-200">
+                              <li key={idx} className="flex items-center gap-2.5 text-xs font-medium text-slate-700 dark:text-gray-200">
                                 <CheckCircle2 className="h-3.5 w-3.5 text-red-700 shrink-0" />
                                 {bullet}
                               </li>

@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 export default function loader() {
   return (
-    <div className="min-h-screen bg-[#070b19] text-white flex flex-col items-center justify-center space-y-6">
-      <div className="relative w-64 h-16 flex items-center overflow-hidden border-b border-white/10 pb-2">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white flex flex-col items-center justify-center space-y-6">
+      <div className="relative w-64 h-16 flex items-center overflow-hidden border-b border-slate-200 dark:border-white/10 pb-2">
         <motion.div
           initial={{ x: -60 }}
           animate={{ x: 260 }}
@@ -25,11 +25,11 @@ export default function loader() {
       </div>
 
       <div className="text-center space-y-1.5">
-        <div className="trust-badge inline-flex items-center gap-2 text-sm font-extrabold tracking-widest uppercase text-white font-heading">
+        <div className="trust-badge inline-flex items-center gap-2 text-sm font-extrabold tracking-widest uppercase text-slate-900 dark:text-white font-heading">
           <PackageCheck className="h-4 w-4 text-red-700 animate-bounce" />
           DeshParcel Logistics
         </div>
-        <p className="text-[11px] text-gray-400 uppercase tracking-wider animate-pulse">
+        <p className="text-[11px] text-slate-600 dark:text-gray-300 uppercase tracking-wider animate-pulse">
           Transporting your data securely...
         </p>
       </div>

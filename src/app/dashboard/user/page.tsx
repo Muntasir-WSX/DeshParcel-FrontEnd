@@ -150,17 +150,17 @@ export default function UserParcelsPage() {
     <div className="space-y-6">
       
       {/* Header Banner */}
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-white">
+          <h2 className="text-xl md:text-2xl font-extrabold font-heading text-slate-900 dark:text-white">
             My Booked <span className="text-red-700">Parcels</span>
           </h2>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-slate-600 dark:text-gray-300">
             View all your shipments, monitor current transit milestones, and manage bookings.
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="px-4 py-2 bg-[#050814] border border-white/10 rounded-2xl text-xs font-bold text-gray-300">
+          <div className="px-4 py-2 bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl text-xs font-bold text-slate-600 dark:text-gray-300">
             Total Parcels: <span className="text-red-700">{parcels.length}</span>
           </div>
           <Link href="/create-parcel">
@@ -172,10 +172,10 @@ export default function UserParcelsPage() {
       </div>
 
       {/* Parcels Table / List */}
-      <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl overflow-hidden">
         {parcels.length === 0 ? (
           <div className="py-20 text-center space-y-4">
-            <p className="text-gray-400 text-xs uppercase tracking-wider">No parcels booked by you yet.</p>
+            <p className="text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">No parcels booked by you yet.</p>
             <Link href="/dashboard/user/create-parcel">
               <Button size="sm" className="bg-red-600 hover:bg-red-700 text-white text-xs uppercase font-bold cursor-pointer">
                 Book Your First Parcel
@@ -186,7 +186,7 @@ export default function UserParcelsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   <th className="py-4 px-4">Tracking ID & Category</th>
                   <th className="py-4 px-4">Receiver Info</th>
                   <th className="py-4 px-4">Delivery Address</th>
@@ -203,14 +203,14 @@ export default function UserParcelsPage() {
                   return (
                     <tr key={p.id} className="hover:bg-white/5 transition-colors">
                       <td className="py-4 px-4">
-                        <p className="font-mono font-bold text-white">{p.trackingId}</p>
+                        <p className="font-mono font-bold text-slate-900 dark:text-white">{p.trackingId}</p>
                         <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} - {p.weight} kg</p>
                       </td>
-                      <td className="py-4 px-4 text-gray-300">
-                        <p className="font-semibold text-white">{p.receiverName}</p>
-                        <p className="text-[10px] text-gray-400">{p.receiverPhone}</p>
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
+                        <p className="font-semibold text-slate-900 dark:text-white">{p.receiverName}</p>
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300">{p.receiverPhone}</p>
                       </td>
-                      <td className="py-4 px-4 text-gray-300 max-w-xs truncate">
+                      <td className="py-4 px-4 text-slate-600 dark:text-gray-300 max-w-xs truncate">
                         <p className="flex items-center gap-1 text-[11px]">
                           <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                         </p>
@@ -223,13 +223,13 @@ export default function UserParcelsPage() {
                         }`}>
                           {p.status}
                         </span>
-                        <p className="text-[10px] text-gray-400">
+                        <p className="text-[10px] text-slate-600 dark:text-gray-300">
                           Fee: ৳{p.payment?.amount || 0} ({p.payment?.status || "PENDING"})
                         </p>
                       </td>
                       <td className="py-4 px-4 text-right space-x-2">
                         <Link href={`/Track`} target="_blank">
-                          <Button size="sm" variant="outline" className="h-7 px-3 text-[10px] font-bold uppercase bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black cursor-pointer">
+                          <Button size="sm" variant="outline" className="h-7 px-3 text-[10px] font-bold uppercase bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black cursor-pointer">
                             Track
                           </Button>
                         </Link>
@@ -273,7 +273,7 @@ export default function UserParcelsPage() {
 
       {/* Shadcn AlertDialog for Cancellation */}
       <AlertDialog open={deleteModal.isOpen} onOpenChange={(open) => !open && setDeleteModal({ ...deleteModal, isOpen: false })}>
-        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
@@ -281,12 +281,12 @@ export default function UserParcelsPage() {
             <AlertDialogTitle className="font-heading font-extrabold text-lg">
               Cancel & Delete Parcel
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
-              Are you sure you want to cancel booking for tracking ID <span className="text-white font-bold">{deleteModal.trackingId}</span>? This action cannot be undone.
+            <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
+              Are you sure you want to cancel booking for tracking ID <span className="text-slate-900 dark:text-white font-bold">{deleteModal.trackingId}</span>? This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
-            <AlertDialogCancel className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+          <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
+            <AlertDialogCancel className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
               Keep Booking
             </AlertDialogCancel>
             <AlertDialogAction 
@@ -301,7 +301,7 @@ export default function UserParcelsPage() {
 
       {/* Shadcn AlertDialog for Review Submission */}
       <AlertDialog open={reviewModal.isOpen} onOpenChange={(open) => !open && setReviewModal({ ...reviewModal, isOpen: false })}>
-        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
               <Star className="h-5 w-5 fill-amber-400" />
@@ -309,15 +309,15 @@ export default function UserParcelsPage() {
             <AlertDialogTitle className="font-heading font-extrabold text-lg">
               Rate Your Experience
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
-              Leave a review and rating for tracking ID <span className="text-white font-bold">{reviewModal.trackingId}</span>. Your feedback helps us improve.
+            <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
+              Leave a review and rating for tracking ID <span className="text-slate-900 dark:text-white font-bold">{reviewModal.trackingId}</span>. Your feedback helps us improve.
             </AlertDialogDescription>
           </AlertDialogHeader>
 
           <form onSubmit={handleReviewSubmit} className="space-y-4 py-2">
             {/* Star Rating Picker */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold text-gray-400">Rating (1 to 5 Stars)</label>
+              <label className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Rating (1 to 5 Stars)</label>
               <div className="flex items-center gap-2">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <button
@@ -339,21 +339,21 @@ export default function UserParcelsPage() {
 
             {/* Comment Box */}
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase font-bold text-gray-400">Your Feedback / Comment</label>
+              <label className="text-[10px] uppercase font-bold text-slate-600 dark:text-gray-300">Your Feedback / Comment</label>
               <textarea
                 required
                 rows={3}
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Write your review here (min 2 characters)..."
-                className="w-full bg-[#050814] border border-white/10 rounded-xl p-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition-colors resize-none"
+                className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-xl p-3 text-xs text-slate-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-red-700 transition-colors resize-none"
               />
             </div>
 
-            <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
+            <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
               <AlertDialogCancel 
                 type="button"
-                className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer"
+                className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer"
               >
                 Cancel
               </AlertDialogCancel>

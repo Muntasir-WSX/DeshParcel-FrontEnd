@@ -174,16 +174,16 @@ export default function RiderOverviewPage() {
     <div className="space-y-8">
       
       {/* Rider Header & Wallet Banner */}
-      <div className="bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/25 rounded-3xl p-6 lg:p-8 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="trust-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <Bike className="h-3.5 w-3.5" />
             Verified Rider Partner
           </div>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
             Welcome back, <span className="text-red-700">{riderDetails?.name || "Rider"}</span>
           </h2>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-slate-600 dark:text-gray-300">
             {riderDetails?.email} • {riderDetails?.phone || "No phone provided"}
           </p>
         </div>
@@ -193,9 +193,9 @@ export default function RiderOverviewPage() {
 
       {/* Daily Performance Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-[#0b132b] border border-emerald-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0b132b] border border-emerald-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Today's Income</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Today's Income</p>
             <h3 className="text-2xl font-extrabold text-emerald-400">Tk {dailyStats?.dailyIncome || 0}</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
@@ -203,29 +203,29 @@ export default function RiderOverviewPage() {
           </div>
         </div>
 
-        <div className="bg-[#0b132b] border border-blue-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0b132b] border border-blue-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Delivered Today</p>
-            <h3 className="text-2xl font-extrabold text-white">{dailyStats?.dailyDelivered || 0} Parcels</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Delivered Today</p>
+            <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">{dailyStats?.dailyDelivered || 0} Parcels</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
             <CheckCircle2 className="h-6 w-6" />
           </div>
         </div>
 
-        <div className="bg-[#0b132b] border border-purple-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0b132b] border border-purple-500/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Pending Pickup</p>
-            <h3 className="text-2xl font-extrabold text-white">{dailyStats?.dailyPending || 0} Parcels</h3>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Pending Pickup</p>
+            <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">{dailyStats?.dailyPending || 0} Parcels</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
             <Clock className="h-6 w-6" />
           </div>
         </div>
 
-        <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 shadow-xl flex items-center justify-between">
           <div className="space-y-1">
-            <p className="text-xs font-bold uppercase tracking-wider text-gray-400">Cancelled Today</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">Cancelled Today</p>
             <h3 className="text-2xl font-extrabold text-red-700">{dailyStats?.dailyCancelled || 0} Parcels</h3>
           </div>
           <div className="p-3.5 rounded-2xl bg-red-700/10 text-red-700 border border-red-700/20">
@@ -235,23 +235,23 @@ export default function RiderOverviewPage() {
       </div>
 
       {/* Assigned Parcels Section */}
-      <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+      <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-6 lg:p-8 shadow-xl space-y-6">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/10 pb-4">
           <div>
-            <h3 className="text-base md:text-lg font-bold font-heading text-white">Assigned Parcels</h3>
-            <p className="text-xs text-gray-400">Manage your active delivery duties and update shipment states.</p>
+            <h3 className="text-base md:text-lg font-bold font-heading text-slate-900 dark:text-white">Assigned Parcels</h3>
+            <p className="text-xs text-slate-600 dark:text-gray-300">Manage your active delivery duties and update shipment states.</p>
           </div>
         </div>
 
         {parcels.length === 0 ? (
-          <div className="py-20 text-center text-gray-400 text-xs uppercase tracking-wider">
+          <div className="py-20 text-center text-slate-600 dark:text-gray-300 text-xs uppercase tracking-wider">
             No parcels currently assigned to you.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                <tr className="border-b border-slate-200 dark:border-white/10 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300">
                   <th className="py-4 px-4">Tracking ID & Category</th>
                   <th className="py-4 px-4">Sender Info</th>
                   <th className="py-4 px-4">Receiver & Address</th>
@@ -263,16 +263,16 @@ export default function RiderOverviewPage() {
                 {parcels.map((p) => (
                   <tr key={p.id} className="hover:bg-white/5 transition-colors">
                     <td className="py-4 px-4">
-                      <p className="font-mono font-bold text-white">{p.trackingId}</p>
+                      <p className="font-mono font-bold text-slate-900 dark:text-white">{p.trackingId}</p>
                       <p className="text-[10px] text-red-700 uppercase font-semibold">{p.category} • COD: Tk{p.codAmount || 0}</p>
                     </td>
-                    <td className="py-4 px-4 text-gray-300">
-                      <p className="font-semibold text-white">{p.sender?.name}</p>
-                      <p className="text-[10px] text-gray-400">{p.sender?.phone}</p>
+                    <td className="py-4 px-4 text-slate-600 dark:text-gray-300">
+                      <p className="font-semibold text-slate-900 dark:text-white">{p.sender?.name}</p>
+                      <p className="text-[10px] text-slate-600 dark:text-gray-300">{p.sender?.phone}</p>
                     </td>
-                    <td className="py-4 px-4 text-gray-300 max-w-xs">
-                      <p className="font-semibold text-white">{p.receiverName} ({p.receiverPhone})</p>
-                      <p className="text-[10px] text-gray-400 truncate flex items-center gap-1 mt-0.5">
+                    <td className="py-4 px-4 text-slate-600 dark:text-gray-300 max-w-xs">
+                      <p className="font-semibold text-slate-900 dark:text-white">{p.receiverName} ({p.receiverPhone})</p>
+                      <p className="text-[10px] text-slate-600 dark:text-gray-300 truncate flex items-center gap-1 mt-0.5">
                         <MapPin className="h-3 w-3 text-red-700 shrink-0" /> {p.deliveryAddress}
                       </p>
                     </td>
@@ -292,7 +292,7 @@ export default function RiderOverviewPage() {
                             trackingId: p.trackingId,
                             nextStatus: "PICKED_UP",
                           })}
-                          className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
+                          className="h-7 px-3 text-[10px] font-bold uppercase bg-blue-600 hover:bg-blue-700 text-slate-900 dark:text-white cursor-pointer"
                         >
                           Mark Picked Up
                         </Button>
@@ -307,7 +307,7 @@ export default function RiderOverviewPage() {
                             trackingId: p.trackingId,
                             nextStatus: "AT_HUB",
                           })}
-                          className="h-7 px-3 text-[10px] font-bold uppercase bg-purple-600 hover:bg-purple-700 text-white cursor-pointer"
+                          className="h-7 px-3 text-[10px] font-bold uppercase bg-purple-600 hover:bg-purple-700 text-slate-900 dark:text-white cursor-pointer"
                         >
                           Send to Hub
                         </Button>
@@ -322,7 +322,7 @@ export default function RiderOverviewPage() {
                             trackingId: p.trackingId,
                             nextStatus: "OUT_FOR_DELIVERY",
                           })}
-                          className="h-7 px-3 text-[10px] font-bold uppercase bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer"
+                          className="h-7 px-3 text-[10px] font-bold uppercase bg-emerald-600 hover:bg-emerald-700 text-slate-900 dark:text-white cursor-pointer"
                         >
                           Out for Delivery
                         </Button>
@@ -344,33 +344,33 @@ export default function RiderOverviewPage() {
       {/* Cashout Request Modal */}
       {isCashoutOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div className="bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
-            <h3 className="text-base font-extrabold font-heading text-white">
+          <div className="bg-white dark:bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 w-full max-w-md shadow-2xl space-y-6">
+            <h3 className="text-base font-extrabold font-heading text-slate-900 dark:text-white">
               Request Earnings <span className="text-red-700">Cashout</span>
             </h3>
             
             <form onSubmit={handleCashoutSubmit} className="space-y-4">
               <div className="space-y-1">
                 {/** biome-ignore lint/a11y/noLabelWithoutControl: <explanation> */}
-<label className="text-[10px] font-bold uppercase text-gray-400">Amount (Min 100 BDT)</label>
+<label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">Amount (Min 100 BDT)</label>
                 <input
                   type="number"
                   value={cashoutAmount}
                   onChange={(e) => setCashoutAmount(e.target.value)}
                   placeholder="Enter amount..."
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
 
               <div className="space-y-1">
-                <label className="text-[10px] font-bold uppercase text-gray-400">bKash Number</label>
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">bKash Number</label>
                 <input
                   type="text"
                   value={bkashNo}
                   onChange={(e) => setBkashNo(e.target.value)}
                   placeholder="017XXXXXXXX"
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-3.5 py-2.5 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
@@ -380,7 +380,7 @@ export default function RiderOverviewPage() {
                   type="button"
                   variant="outline"
                   onClick={() => setIsCashoutOpen(false)}
-                  className="rounded-xl text-xs bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black cursor-pointer"
+                  className="rounded-xl text-xs bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black cursor-pointer"
                 >
                   Cancel
                 </Button>
@@ -399,7 +399,7 @@ export default function RiderOverviewPage() {
 
       {/* Status Update Confirmation Dialog (SweetAlert Style) */}
       <AlertDialog open={statusModal.isOpen} onOpenChange={(open) => !open && setStatusModal({ ...statusModal, isOpen: false })}>
-        <AlertDialogContent className="bg-[#0b132b] border border-red-700/30 text-white rounded-3xl shadow-2xl p-6">
+        <AlertDialogContent className="bg-white dark:bg-[#0b132b] border border-red-700/30 text-slate-900 dark:text-white rounded-3xl shadow-2xl p-6">
           <AlertDialogHeader className="space-y-3">
             <div className="w-10 h-10 rounded-2xl bg-red-700/20 border border-red-700/30 flex items-center justify-center text-red-700">
               <AlertTriangle className="h-5 w-5" />
@@ -407,12 +407,12 @@ export default function RiderOverviewPage() {
             <AlertDialogTitle className="font-heading font-extrabold text-lg">
               Confirm Status Update
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-xs text-gray-400 leading-relaxed">
-              Are you sure you want to update parcel <span className="text-white font-bold">{statusModal.trackingId}</span> status to <span className="text-emerald-400 font-bold uppercase">{statusModal.nextStatus}</span>?
+            <AlertDialogDescription className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
+              Are you sure you want to update parcel <span className="text-slate-900 dark:text-white font-bold">{statusModal.trackingId}</span> status to <span className="text-emerald-400 font-bold uppercase">{statusModal.nextStatus}</span>?
             </AlertDialogDescription>
           </AlertDialogHeader>
-          <AlertDialogFooter className="pt-4 border-t border-white/10 flex gap-2">
-            <AlertDialogCancel className="bg-[#050814] border-white/20 text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
+          <AlertDialogFooter className="pt-4 border-t border-slate-200 dark:border-white/10 flex gap-2">
+            <AlertDialogCancel className="bg-slate-100 dark:bg-[#050814] border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black rounded-xl text-xs cursor-pointer">
               Cancel
             </AlertDialogCancel>
             <AlertDialogAction 

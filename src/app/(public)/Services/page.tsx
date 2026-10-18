@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 
 export default function ServicesPage() {
   return (
-    <div className="w-full pb-20  text-white">
+    <div className="w-full pb-20  text-slate-900 dark:text-white">
       
       {/* 1. Hero Section */}
-    <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
+    <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
@@ -20,7 +20,7 @@ export default function ServicesPage() {
             className="object-cover object-center filter brightness-90"
           />
           {/* Deep Dark Blue & Redish Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/80 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/80 dark:from-[#070b19]/95 dark:via-[#070b19]/90 dark:to-[#070b19]/80 backdrop-blur-[3px]" />
         </div>
 
         {/* Glow Effects */}
@@ -41,7 +41,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
+            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
           >
             Our Professional <span className="text-red-700">Logistics Services</span>
           </motion.h1>
@@ -50,7 +50,7 @@ export default function ServicesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-slate-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
             From express parcel delivery to e-commerce fulfillment and corporate logistics, we ensure safe and timely delivery across all 64 districts.
           </motion.p>
@@ -63,10 +63,10 @@ export default function ServicesPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 block">
             What We Offer
           </span>
-          <h2 className="text-3xl text-white md:text-4xl font-extrabold font-heading ">
+          <h2 className="text-3xl text-slate-900 dark:text-white md:text-4xl font-extrabold font-heading ">
             Tailored Solutions for Your <span className="text-red-700">Business</span>
           </h2>
-          <p className="text-sm text-white/70 md:text-base leading-relaxed max-w-2xl mx-auto">
+          <p className="text-sm text-slate-600 dark:text-white/70 md:text-base leading-relaxed max-w-2xl mx-auto">
             Choose from our specialized logistics services designed for speed, safety, and reliability.
           </p>
         </div>
@@ -74,51 +74,51 @@ export default function ServicesPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Service Card 1 */}
-          <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-700 group-hover:text-white transition-all">
                 <Truck className="h-7 w-7" />
               </div>
-              <h3 className="text-2xl font-bold font-heading text-white">Express Parcel Delivery</h3>
-              <p className="text-sm text-gray-300 leading-relaxed">
+              <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">Express Parcel Delivery</h3>
+              <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
                 Fast and secure door-to-door parcel delivery across cities and remote areas with real-time tracking updates.
               </p>
             </div>
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-red-700 font-bold uppercase tracking-wider">
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-red-700 font-bold uppercase tracking-wider">
               <span>24–48 Hours Transit</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
 
           {/* Service Card 2 */}
-          <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-700 group-hover:text-white transition-all">
                 <PackageCheck className="h-7 w-7" />
               </div>
-              <h3 className="text-2xl font-bold font-heading text-white">E-commerce Fulfillment</h3>
-              <p className="text-sm text-gray-300 leading-relaxed">
+              <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">E-commerce Fulfillment</h3>
+              <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
                 Complete warehouse storage, inventory management, packaging, and Cash on Delivery (COD) handling for online merchants.
               </p>
             </div>
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-red-700 font-bold uppercase tracking-wider">
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-red-700 font-bold uppercase tracking-wider">
               <span>Next-Day Payouts</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </div>
           </div>
 
           {/* Service Card 3 */}
-          <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
+          <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-8 shadow-xl hover:border-red-700/40 transition-all space-y-5 flex flex-col justify-between group">
             <div className="space-y-4">
               <div className="w-14 h-14 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20 group-hover:bg-red-700 group-hover:text-white transition-all">
                 <Building2 className="h-7 w-7" />
               </div>
-              <h3 className="text-2xl font-bold font-heading text-white">Corporate B2B Logistics</h3>
-              <p className="text-sm text-gray-300 leading-relaxed">
+              <h3 className="text-2xl font-bold font-heading text-slate-900 dark:text-white">Corporate B2B Logistics</h3>
+              <p className="text-sm text-slate-600 dark:text-gray-300 leading-relaxed">
                 Dedicated corporate supply chain solutions, bulk cargo transportation, and scheduled document distribution.
               </p>
             </div>
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-red-700 font-bold uppercase tracking-wider">
+            <div className="pt-4 border-t border-slate-200 dark:border-white/10 flex items-center justify-between text-xs text-red-700 font-bold uppercase tracking-wider">
               <span>Custom Contracts</span>
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </div>
@@ -129,7 +129,7 @@ export default function ServicesPage() {
 
       {/* 3. Section 2: Why Choose Our Services (Features) */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 mb-24">
-        <div className="bg-gradient-to-r from-[#0b132b] to-[#070b19] border border-red-700/20 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
+        <div className="bg-gradient-to-r from-white to-slate-50 dark:from-[#0b132b] dark:to-[#070b19] border border-red-700/20 rounded-3xl p-8 md:p-14 shadow-2xl relative overflow-hidden">
           
           <div className="absolute top-0 right-0 w-96 h-96 bg-red-700/10 rounded-full blur-3xl pointer-events-none" />
 
@@ -137,7 +137,7 @@ export default function ServicesPage() {
             <span className="text-xs font-bold uppercase tracking-widest text-red-700  block">
               Excellence Guaranteed
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
               Why Businesses Trust Us
             </h2>
           </div>
@@ -148,8 +148,8 @@ export default function ServicesPage() {
               <div className="w-12 h-12 mx-auto rounded-full bg-red-700/15 text-red-700 flex items-center justify-center border border-red-700/30">
                 <ShieldCheck className="h-6 w-6" />
               </div>
-              <h4 className="text-lg font-bold font-heading text-white">100% Secure Handling</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h4 className="text-lg font-bold font-heading text-slate-900 dark:text-white">100% Secure Handling</h4>
+              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
                 Every package is handled with utmost care, ensuring zero damage and absolute safety from pickup to drop-off.
               </p>
             </div>
@@ -158,8 +158,8 @@ export default function ServicesPage() {
               <div className="w-12 h-12 mx-auto rounded-full bg-red-700/15 text-red-700 flex items-center justify-center border border-red-700/30">
                 <Clock className="h-6 w-6" />
               </div>
-              <h4 className="text-lg font-bold font-heading text-white">On-Time Delivery</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h4 className="text-lg font-bold font-heading text-slate-900 dark:text-white">On-Time Delivery</h4>
+              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
                 We strictly adhere to delivery timelines so your customers and business associates never experience delays.
               </p>
             </div>
@@ -168,8 +168,8 @@ export default function ServicesPage() {
               <div className="w-12 h-12 mx-auto rounded-full bg-red-700/15 text-red-700 flex items-center justify-center border border-red-700/30">
                 <Headphones className="h-6 w-6" />
               </div>
-              <h4 className="text-lg font-bold font-heading text-white">24/7 Dedicated Support</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
+              <h4 className="text-lg font-bold font-heading text-slate-900 dark:text-white">24/7 Dedicated Support</h4>
+              <p className="text-xs text-slate-600 dark:text-gray-300 leading-relaxed">
                 Our support team is always active to resolve queries, track shipments, and assist you around the clock.
               </p>
             </div>
@@ -180,14 +180,14 @@ export default function ServicesPage() {
 
       {/* 4. Section 3: Call to Action (CTA) */}
       <section className="max-w-5xl mx-auto px-6">
-        <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-10 md:p-16 text-center space-y-6 shadow-2xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-10 md:p-16 text-center space-y-6 shadow-2xl relative overflow-hidden">
           
           <div className="absolute inset-0 bg-red-700/5 pointer-events-none" />
 
-          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-white relative z-10">
+          <h2 className="text-3xl md:text-4xl font-extrabold font-heading text-slate-900 dark:text-white relative z-10">
             Ready to Streamline Your Deliveries?
           </h2>
-          <p className="text-gray-300 text-sm md:text-base max-w-xl mx-auto relative z-10">
+          <p className="text-slate-600 dark:text-gray-300 text-sm md:text-base max-w-xl mx-auto relative z-10">
             Join thousands of satisfied merchants and businesses partnering with us for fast and reliable nationwide logistics.
           </p>
 

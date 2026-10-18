@@ -48,9 +48,9 @@ export default function BlogDetailsPage() {
 
   if (!blog) {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center text-white space-y-4">
+      <div className="min-h-[60vh] flex flex-col items-center justify-center text-slate-900 dark:text-white space-y-4">
         <h2 className="text-2xl font-bold font-heading">Blog Article Not Found</h2>
-        <p className="text-gray-400 text-xs">The article you are looking for does not exist or has been removed.</p>
+        <p className="text-slate-600 dark:text-gray-300 text-xs">The article you are looking for does not exist or has been removed.</p>
         <Link href="/">
           <Button className="bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase cursor-pointer">
             Back To Home
@@ -61,7 +61,7 @@ export default function BlogDetailsPage() {
   }
 
   return (
-    <article className="max-w-4xl mx-auto px-6 py-28 text-white space-y-8">
+    <article className="max-w-4xl mx-auto px-6 py-28 text-slate-900 dark:text-white space-y-8">
       
       {/* Back Button */}
       <div>
@@ -75,7 +75,7 @@ export default function BlogDetailsPage() {
       {/* Blog Header */}
       <div className="space-y-4">
       
-       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/30 text-[10px] font-bold uppercase tracking-wider text-white">
+       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/30 text-[10px] font-bold uppercase tracking-wider text-slate-900 dark:text-white">
   <Hash className="h-3.5 w-3.5 text-red-700" /> {blog.category || "General"}
 </div>
 
@@ -83,7 +83,7 @@ export default function BlogDetailsPage() {
           {blog.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-6 text-xs text-gray-400 pt-2 border-t border-white/10">
+        <div className="flex flex-wrap items-center gap-6 text-xs text-slate-600 dark:text-gray-300 pt-2 border-t border-slate-200 dark:border-white/10">
           <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5 text-red-700" /> {blog.author?.name || "Admin"}</span>
           <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-red-700" /> {new Date(blog.createdAt).toLocaleDateString()}</span>
           <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-red-700" /> {blog.readTime || "3 min read"}</span>
@@ -92,13 +92,13 @@ export default function BlogDetailsPage() {
 
       {/* Featured Image */}
       {blog.image && (
-        <div className="relative h-72 md:h-96 w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gray-900">
+        <div className="relative h-72 md:h-96 w-full rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 shadow-2xl bg-gray-900">
           <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
         </div>
       )}
 
       {/* Blog Content */}
-      <div className="bg-[#0b132b] border border-white/10 rounded-3xl p-6 md:p-10 shadow-xl space-y-6 text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line">
+      <div className="bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10 rounded-3xl p-6 md:p-10 shadow-xl space-y-6 text-slate-600 dark:text-gray-300 text-sm md:text-base leading-relaxed whitespace-pre-line">
         <p>{blog.content}</p>
       </div>
 

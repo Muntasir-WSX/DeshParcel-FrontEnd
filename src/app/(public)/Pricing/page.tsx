@@ -45,10 +45,10 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="w-full pb-20 text-white">
+    <div className="w-full pb-20 text-slate-900 dark:text-white">
       
       {/* 1. Hero Section */}
-  <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-[#070b19]">
+  <section className="relative w-full pt-44 pb-32 md:pt-52 md:pb-40 px-6 md:px-12 rounded-b-[3rem] overflow-hidden shadow-2xl mb-20 border-b border-red-700/20 bg-slate-50 dark:bg-[#070b19]">
         <div className="absolute inset-0 z-0">
           <Image
             src="https://res.cloudinary.com/dnk0bvpym/image/upload/v1790876291/pexels-alex-kovshovik-37538283_kxdpzq.jpg"
@@ -58,7 +58,7 @@ export default function PricingPage() {
             className="object-cover object-center filter brightness-90"
           />
           {/* Deep Dark Blue & Redish Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070b19]/95 via-[#070b19]/90 to-[#070b19]/80 backdrop-blur-[3px]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/80 dark:from-[#070b19]/95 dark:via-[#070b19]/90 dark:to-[#070b19]/80 backdrop-blur-[3px]" />
         </div>
 
         {/* Glow Effects */}
@@ -80,7 +80,7 @@ export default function PricingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-white leading-[1.15]"
+            className="text-4xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight font-heading text-slate-900 dark:text-white leading-[1.15]"
           >
             Simple Pricing, <span className="text-red-700">No Hidden Fees</span>
           </motion.h1>
@@ -89,7 +89,7 @@ export default function PricingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-slate-600 dark:text-gray-300 text-base md:text-lg max-w-2xl mx-auto leading-relaxed"
           >
             Calculate your shipping cost instantly based on destination and package weight with our smart pricing calculator.
           </motion.p>
@@ -98,7 +98,7 @@ export default function PricingPage() {
 
       {/* 2. Interactive Calculator Section */}
       <section className="max-w-4xl mx-auto px-6 mb-24">
-        <div className="bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/20 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
           
           {/* Glowing Red & Blue Accents */}
           <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
@@ -109,10 +109,10 @@ export default function PricingPage() {
               <Calculator className="h-4 w-4 text-red-700" />
               Smart Rate Calculator
             </div>
-            <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
+            <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
               Estimate Your Delivery Cost
             </h2>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-slate-600 dark:text-gray-300">
               City to City:  Tk80 | City to Outside:  Tk120 (Up to 3kg standard, + Tk10/kg for extra weight)
             </p>
           </div>
@@ -122,34 +122,34 @@ export default function PricingPage() {
               
               {/* Pickup City */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 text-red-700" />
                   Pickup City / Region
                 </label>
                 <select
                   value={pickupCity}
                   onChange={(e) => setPickupCity(e.target.value)}
-                  className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                 >
                   {citiesList.map((city, idx) => (
-                    <option key={idx} value={city} className="bg-[#0b132b] text-white">{city}</option>
+                    <option key={idx} value={city} className="bg-white dark:bg-[#0b132b] text-slate-900 dark:text-white">{city}</option>
                   ))}
                 </select>
               </div>
 
               {/* Delivery City */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                   <MapPin className="h-3.5 w-3.5 text-red-700" />
                   Delivery City / Region
                 </label>
                 <select
                   value={deliveryCity}
                   onChange={(e) => setDeliveryCity(e.target.value)}
-                  className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700 cursor-pointer"
                 >
                   {citiesList.map((city, idx) => (
-                    <option key={idx} value={city} className="bg-[#0b132b] text-white">{city}</option>
+                    <option key={idx} value={city} className="bg-white dark:bg-[#0b132b] text-slate-900 dark:text-white">{city}</option>
                   ))}
                 </select>
               </div>
@@ -158,9 +158,9 @@ export default function PricingPage() {
 
             {/* Weight Input */}
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-gray-300 flex items-center gap-1.5">
                 <Weight className="h-3.5 w-3.5 text-red-700" />
-                Package Weight (KG) — <span className="text-white font-semibold">First 3 KG standard</span>
+                Package Weight (KG) — <span className="text-slate-900 dark:text-white font-semibold">First 3 KG standard</span>
               </label>
               <input
                 type="number"
@@ -168,7 +168,7 @@ export default function PricingPage() {
                 step="0.5"
                 value={weight}
                 onChange={(e) => setWeight(parseFloat(e.target.value) || 1)}
-                className="w-full bg-[#050814] border border-white/10 text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700"
+                className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white rounded-2xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-red-700"
               />
             </div>
 
@@ -186,13 +186,13 @@ export default function PricingPage() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="mt-8 p-6 rounded-2xl bg-[#050814] border border-red-700/30 text-center space-y-2 relative z-10 shadow-inner"
+              className="mt-8 p-6 rounded-2xl bg-slate-100 dark:bg-[#050814] border border-red-700/30 text-center space-y-2 relative z-10 shadow-inner"
             >
-              <p className="text-xs uppercase tracking-widest text-gray-400 font-bold">Estimated Shipping Fee</p>
+              <p className="text-xs uppercase tracking-widest text-slate-600 dark:text-gray-300 font-bold">Estimated Shipping Fee</p>
               <h3 className="text-4xl font-extrabold font-heading text-red-700">
                  Tk{calculatedCost}
               </h3>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-slate-600 dark:text-gray-300">
                 Route: {pickupCity} to {deliveryCity} ({weight} KG)
               </p>
             </motion.div>
@@ -207,43 +207,43 @@ export default function PricingPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-red-700 mb-1 block">
             Pricing Structure
           </span>
-          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-white">
+          <h2 className="text-2xl md:text-3xl font-extrabold font-heading text-slate-900 dark:text-white">
             How Our <span className="text-red-700">Pricing</span> Works
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4 hover:border-red-700/40 transition-all">
+          <div className="p-8 rounded-3xl bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10  space-y-4 hover:border-red-700/40 transition-all">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <MapPin className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-white">City vs Outside Delivery</h3>
-            <ul className="space-y-3 text-sm text-gray-300">
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">City vs Outside Delivery</h3>
+            <ul className="space-y-3 text-sm text-slate-600 dark:text-gray-300">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">City to City (Same City):</strong> Flat  Tk80 (e.g., Chattogram to Chattogram).</span>
+                <span><strong className="text-slate-900 dark:text-white">City to City (Same City):</strong> Flat  Tk80 (e.g., Chattogram to Chattogram).</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">City to Outside:</strong> Flat  Tk120 (e.g., Chattogram to Dhaka or Chandpur).</span>
+                <span><strong className="text-slate-900 dark:text-white">City to Outside:</strong> Flat  Tk120 (e.g., Chattogram to Dhaka or Chandpur).</span>
               </li>
             </ul>
           </div>
 
-          <div className="p-8 rounded-3xl bg-[#0b132b] border border-white/10  space-y-4 hover:border-red-700/40 transition-all">
+          <div className="p-8 rounded-3xl bg-white dark:bg-[#0b132b] border border-slate-200 dark:border-white/10  space-y-4 hover:border-red-700/40 transition-all">
             <div className="w-12 h-12 rounded-2xl bg-red-700/10 text-red-700 flex items-center justify-center font-bold border border-red-700/20">
               <Weight className="h-6 w-6" />
             </div>
-            <h3 className="text-xl font-bold font-heading text-white">Weight Policy</h3>
-            <ul className="space-y-3 text-sm text-gray-300">
+            <h3 className="text-xl font-bold font-heading text-slate-900 dark:text-white">Weight Policy</h3>
+            <ul className="space-y-3 text-sm text-slate-600 dark:text-gray-300">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">Up to 3 KG:</strong> Covered under default base pricing (Documents or Parcels).</span>
+                <span><strong className="text-slate-900 dark:text-white">Up to 3 KG:</strong> Covered under default base pricing (Documents or Parcels).</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-700" />
-                <span><strong className="text-white">Above 3 KG:</strong> Additional  Tk10 charged for every extra KG.</span>
+                <span><strong className="text-slate-900 dark:text-white">Above 3 KG:</strong> Additional  Tk10 charged for every extra KG.</span>
               </li>
             </ul>
           </div>

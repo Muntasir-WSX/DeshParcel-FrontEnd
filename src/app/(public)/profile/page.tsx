@@ -85,14 +85,14 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#070b19] text-white flex items-center justify-center text-xs tracking-wider uppercase">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white flex items-center justify-center text-xs tracking-wider uppercase">
        <Loader />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#070b19] text-white pb-20 relative">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white pb-20 relative">
       
       {/* 1. Modern Top Banner Section */}
       <motion.div 
@@ -110,7 +110,7 @@ export default function ProfilePage() {
             priority
             className="object-cover object-center filter brightness-90 contrast-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070b19] via-[#070b19]/70 to-[#070b19]/30 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-white/30 dark:from-[#070b19] dark:via-[#070b19]/70 dark:to-[#070b19]/30 backdrop-blur-[1px]" />
         </div>
       </motion.div>
 
@@ -121,16 +121,16 @@ export default function ProfilePage() {
         transition={{ duration: 0.6, delay: 0.2 }}
         className="w-full max-w-xl mx-auto px-4 -mt-24 md:-mt-28 relative z-20"
       >
-        <div className="bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 md:p-10 shadow-2xl relative space-y-6 backdrop-blur-xl">
+        <div className="bg-white dark:bg-[#0b132b] border border-red-700/30 rounded-3xl p-6 md:p-10 shadow-2xl relative space-y-6 backdrop-blur-xl">
           
           {/* Top Action Bar: Edit Toggle */}
-          <div className="flex justify-between items-center pb-4 border-b border-white/10">
-            <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Account Profile</span>
+          <div className="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-white/10">
+            <span className="text-xs font-bold uppercase tracking-widest text-slate-600 dark:text-gray-300">Account Profile</span>
             <Button
               size="sm"
               variant="outline"
               onClick={() => setIsEditing(!isEditing)}
-              className="rounded-full h-8 px-4 text-[11px] font-bold uppercase border-white/20 text-white hover:bg-white hover:text-black cursor-pointer bg-[#050814] shadow-sm"
+              className="rounded-full h-8 px-4 text-[11px] font-bold uppercase border-slate-200 dark:border-white/20 text-slate-900 dark:text-white hover:bg-white hover:text-black cursor-pointer bg-slate-100 dark:bg-[#050814] shadow-sm"
             >
               {isEditing ? <X className="h-3.5 w-3.5 mr-1" /> : <Edit2 className="h-3.5 w-3.5 mr-1" />}
               {isEditing ? "Cancel" : "Edit Profile"}
@@ -153,14 +153,14 @@ export default function ProfilePage() {
               {/* Image Upload Icon if Editing */}
               {isEditing && (
                 <label className="absolute bottom-0 right-0 bg-red-600 hover:bg-red-700 p-2 rounded-full cursor-pointer shadow-lg transition-all">
-                  <Camera className="h-4 w-4 text-white" />
+                  <Camera className="h-4 w-4 text-slate-900 dark:text-white" />
                   <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                 </label>
               )}
             </div>
 
             <div>
-              <h1 className="text-2xl font-extrabold font-heading text-white">{profile?.name}</h1>
+              <h1 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white">{profile?.name}</h1>
               <span className="inline-block mt-1 px-3.5 py-1 rounded-full bg-red-700/20 text-red-700 text-[10px] font-bold uppercase tracking-wider border border-red-700/30">
                 {profile?.role}
               </span>
@@ -170,26 +170,26 @@ export default function ProfilePage() {
           {/* Conditional Rendering: View Mode vs Edit Form Mode */}
           {!isEditing ? (
             <div className="space-y-3.5 text-xs">
-              <div className="flex items-center gap-4 bg-[#050814] p-4 rounded-2xl border border-white/10">
+              <div className="flex items-center gap-4 bg-slate-100 dark:bg-[#050814] p-4 rounded-2xl border border-slate-200 dark:border-white/10">
                 <Mail className="h-4 w-4 text-red-700 shrink-0" />
                 <div>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-wider font-bold">Email Address</p>
-                  <p className="font-semibold text-white text-sm">{profile?.email}</p>
+                  <p className="text-[9px] text-slate-600 dark:text-gray-300 uppercase tracking-wider font-bold">Email Address</p>
+                  <p className="font-semibold text-slate-900 dark:text-white text-sm">{profile?.email}</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-[#050814] p-4 rounded-2xl border border-white/10">
+              <div className="flex items-center gap-4 bg-slate-100 dark:bg-[#050814] p-4 rounded-2xl border border-slate-200 dark:border-white/10">
                 <Phone className="h-4 w-4 text-red-700 shrink-0" />
                 <div>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-wider font-bold">Phone Number</p>
-                  <p className="font-semibold text-white text-sm">{profile?.phone || "Not Provided"}</p>
+                  <p className="text-[9px] text-slate-600 dark:text-gray-300 uppercase tracking-wider font-bold">Phone Number</p>
+                  <p className="font-semibold text-slate-900 dark:text-white text-sm">{profile?.phone || "Not Provided"}</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 bg-[#050814] p-4 rounded-2xl border border-white/10">
+              <div className="flex items-center gap-4 bg-slate-100 dark:bg-[#050814] p-4 rounded-2xl border border-slate-200 dark:border-white/10">
                 <Shield className="h-4 w-4 text-red-700 shrink-0" />
                 <div>
-                  <p className="text-[9px] text-gray-400 uppercase tracking-wider font-bold">Account Verification</p>
+                  <p className="text-[9px] text-slate-600 dark:text-gray-300 uppercase tracking-wider font-bold">Account Verification</p>
                   <p className="font-semibold text-emerald-400 text-sm">
                     {profile?.isVerified ? "Verified User" : "Unverified"}
                   </p>
@@ -199,36 +199,36 @@ export default function ProfilePage() {
           ) : (
             <form onSubmit={handleUpdateSubmit} className="space-y-4 text-xs">
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400">Full Name</label>
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">Full Name</label>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400">Phone Number</label>
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">Phone Number</label>
                 <input
                   type="text"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold uppercase text-gray-400">Email Address</label>
+                <label className="text-[10px] font-bold uppercase text-slate-600 dark:text-gray-300">Email Address</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full bg-[#050814] border border-white/15 text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
+                  className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700"
                   required
                 />
               </div>

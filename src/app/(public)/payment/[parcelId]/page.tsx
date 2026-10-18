@@ -110,41 +110,41 @@ export default function PaymentPage({ params }: { params: Promise<{ parcelId: st
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#070b19] flex items-center justify-center text-white">
+      <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] flex items-center justify-center text-slate-900 dark:text-white">
         <Loader2 className="h-8 w-8 animate-spin text-red-700" />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#070b19] text-white py-24 px-4 flex items-center justify-center">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#070b19] text-slate-900 dark:text-white py-24 px-4 flex items-center justify-center">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-lg bg-[#0b132b] border border-red-700/30 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl space-y-8"
+        className="w-full max-w-lg bg-white dark:bg-[#0b132b] border border-red-700/30 rounded-3xl p-8 md:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl space-y-8"
       >
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-red-700/15 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="text-center space-y-2 border-b border-white/10 pb-6">
+        <div className="text-center space-y-2 border-b border-slate-200 dark:border-white/10 pb-6">
           <div className="trust-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-700/10 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
             <ShieldCheck className="h-3.5 w-3.5" /> Secure Checkout
           </div>
-          <h1 className="text-2xl font-extrabold font-heading text-white">Complete Your Payment</h1>
-          <p className="text-xs text-gray-400">Choose your preferred gateway to finalize your parcel shipment.</p>
+          <h1 className="text-2xl font-extrabold font-heading text-slate-900 dark:text-white">Complete Your Payment</h1>
+          <p className="text-xs text-slate-600 dark:text-gray-300">Choose your preferred gateway to finalize your parcel shipment.</p>
         </div>
 
         {/* Bill Details */}
-        <div className="bg-[#050814] border border-white/10 rounded-2xl p-5 space-y-4 text-xs">
-          <div className="flex justify-between items-center text-gray-400">
+        <div className="bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/10 rounded-2xl p-5 space-y-4 text-xs">
+          <div className="flex justify-between items-center text-slate-600 dark:text-gray-300">
             <span>Parcel Reference ID:</span>
-            <span className="font-mono text-white">{parcelId.slice(0, 8)}...</span>
+            <span className="font-mono text-slate-900 dark:text-white">{parcelId.slice(0, 8)}...</span>
           </div>
-          <div className="flex justify-between items-center text-gray-400">
+          <div className="flex justify-between items-center text-slate-600 dark:text-gray-300">
             <span>Payment Status:</span>
             <span className="font-bold text-amber-400 uppercase tracking-wider">{paymentData?.status || "PENDING"}</span>
           </div>
-          <div className="border-t border-white/10 pt-3 flex justify-between items-center text-sm font-bold text-white">
+          <div className="border-t border-slate-200 dark:border-white/10 pt-3 flex justify-between items-center text-sm font-bold text-slate-900 dark:text-white">
             <span>Total Payable Amount:</span>
             <span className="text-red-700 text-lg">৳ {paymentData?.amount || 0}</span>
           </div>
@@ -155,7 +155,7 @@ export default function PaymentPage({ params }: { params: Promise<{ parcelId: st
           <Button
             onClick={handleBkashPayment}
             disabled={paying}
-            className="w-full h-14 rounded-2xl bg-pink-600 hover:bg-pink-700 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-3 cursor-pointer shadow-lg shadow-pink-600/20 transition-all"
+            className="w-full h-14 rounded-2xl bg-pink-600 hover:bg-pink-700 text-slate-900 dark:text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-3 cursor-pointer shadow-lg shadow-pink-600/20 transition-all"
           >
             {paying ? <Loader2 className="h-4 w-4 animate-spin" /> : <CreditCard className="h-4 w-4" />}
             Pay with bKash
@@ -164,7 +164,7 @@ export default function PaymentPage({ params }: { params: Promise<{ parcelId: st
           <Button
             onClick={handleSslPayment}
             disabled={paying}
-            className="w-full h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-3 cursor-pointer shadow-lg shadow-emerald-600/20 transition-all"
+            className="w-full h-14 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-slate-900 dark:text-white font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-3 cursor-pointer shadow-lg shadow-emerald-600/20 transition-all"
           >
             {paying ? <Loader2 className="h-4 w-4 animate-spin" /> : <Package className="h-4 w-4" />}
             Pay with SSLCommerz (Cards / Bank / MFS)
