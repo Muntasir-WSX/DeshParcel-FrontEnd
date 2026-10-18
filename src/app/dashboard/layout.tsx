@@ -58,6 +58,7 @@ export default function DashboardLayout({
     { name: "All Users", href: "/dashboard/admin/users", icon: Users },
     { name: "Approve Riders", href: "/dashboard/admin/riders", icon: Bike },
     { name: "Payments & Revenue", href: "/dashboard/admin/payments", icon: DollarSign },
+    { name: "Manage Blogs", href: "/dashboard/admin/blogs", icon: PlusCircle },
   ];
   const riderLinks = [
     { name: "Rider Dashboard", href: "/dashboard/rider", icon: LayoutDashboard },

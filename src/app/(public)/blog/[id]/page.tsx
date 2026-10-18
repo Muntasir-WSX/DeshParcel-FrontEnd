@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Hash, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/shared/mainloading";
 
@@ -22,7 +22,6 @@ export default function BlogDetailsPage() {
         setLoading(true);
         const BACKEND_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
         
-      
         const res = await fetch(`${BACKEND_URL}/api/v1/public/blogs/${id}`);
         const result = await res.json();
         
@@ -66,23 +65,26 @@ export default function BlogDetailsPage() {
       
       {/* Back Button */}
       <div>
-        <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold text-red-700 hover:text-red-700 transition-colors">
-          <ArrowLeft className="h-4 w-4" /> Back to Home
-        </Link>
+       <Button asChild className="bg-red-600 text-white hover:bg-red-700 border rounded-xl border-red-700/30 text-xs font-bold uppercase transition-all cursor-pointer">
+  <Link href="/" className="inline-flex items-center gap-2">
+    <ArrowLeft className="h-4 w-4" /> Back to Home
+  </Link>
+</Button>
       </div>
 
       {/* Blog Header */}
       <div className="space-y-4">
-        <div className="inline-flex px-3 py-1 rounded-full bg-red-700/20 border border-red-700/30 text-[10px] font-bold uppercase tracking-wider text-red-700">
-          {blog.category || "General"}
-        </div>
+      
+       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/30 text-[10px] font-bold uppercase tracking-wider text-white">
+  <Hash className="h-3.5 w-3.5 text-red-700" /> {blog.category || "General"}
+</div>
 
         <h1 className="text-2xl md:text-4xl font-extrabold font-heading tracking-tight leading-snug">
           {blog.title}
         </h1>
 
         <div className="flex flex-wrap items-center gap-6 text-xs text-gray-400 pt-2 border-t border-white/10">
-          <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5 text-red-700" /> {blog.author || "Admin"}</span>
+          <span className="flex items-center gap-1.5"><User className="h-3.5 w-3.5 text-red-700" /> {blog.author?.name || "Admin"}</span>
           <span className="flex items-center gap-1.5"><Calendar className="h-3.5 w-3.5 text-red-700" /> {new Date(blog.createdAt).toLocaleDateString()}</span>
           <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-red-700" /> {blog.readTime || "3 min read"}</span>
         </div>

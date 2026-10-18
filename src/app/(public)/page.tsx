@@ -8,6 +8,7 @@ import PopularServices from "@/components/Home/PopularServices";
 import DownloadApps from "@/components/Home/DownloadApps";
 import Testimonials from "@/components/Home/Testimonials/page";
 import NewsletterCTA from "@/components/Home/newsletter";
+import BlogHome from "@/components/Home/blogHome";
 
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
      <Testimonials />
       <HowItWorks />
       <CoverageSection />
+      <BlogHome></BlogHome>
       <Achievments></Achievments>
       <Faq></Faq>
       <DownloadApps></DownloadApps>
