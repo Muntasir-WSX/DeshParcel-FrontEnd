@@ -5,6 +5,7 @@ import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import SupportAssistant from "@/components/shared/SupportAssistant";
 
 const jetbrainsMonoHeading = JetBrains_Mono({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
             <Toaster position="bottom-right" richColors />
           </SmoothScrollProvider>
         </ThemeProvider>
+        <SupportAssistant></SupportAssistant>
       </body>
     </html>
   );

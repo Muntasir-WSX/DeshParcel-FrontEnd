@@ -125,9 +125,11 @@ Create a `.env.local` file in the project root:
 ```env
 NEXT_PUBLIC_API_URL=https://desh-parcel-backend.vercel.app
 NEXT_PUBLIC_GOOGLE_CLIENT_ID=your-google-client-id
+GEMINI_API_KEY=your-gemini-api-key
 ```
 
 `NEXT_PUBLIC_API_URL` must contain only the backend origin. Do not append `/api/v1`; the frontend adds the API path for each request.
+`GEMINI_API_KEY` is used by the support assistant server route and must not use the `NEXT_PUBLIC_` prefix. If you previously configured `NEXT_PUBLIC_GEMINI_API_KEY`, rename it to `GEMINI_API_KEY` and restart the development server.
 
 For local backend development, use:
 

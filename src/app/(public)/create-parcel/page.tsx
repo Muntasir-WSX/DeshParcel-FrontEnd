@@ -7,9 +7,11 @@ import {
   MapPin,
   Package,
   Phone,
+  Sparkles,
   Tag,
   User,
   Weight,
+  Zap,
 } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -46,6 +48,36 @@ export default function CreateParcelPage() {
       setParcelImage(file);
     }
   };
+
+  // AI Smart Shipping Recommendation Logic
+  const getAIRecommendation = () => {
+    const w = parseFloat(formData.weight) || 0;
+    const address = formData.deliveryAddress.toLowerCase();
+    const isDhaka = address.includes("dhaka") || address.includes("ঢাকা");
+
+    if (w > 5) {
+      return {
+        method: "Standard Delivery (Heavy Cargo)",
+        reason: " if you have parcel with weight more than 5kg, then standard cargo method is the most suitable for cost savings and safe handling.",
+        badgeColor: "bg-amber-500/10 text-amber-600 border-amber-500/20 dark:border-amber-500/30",
+      };
+    } else if (isDhaka && w <= 2 && w > 0) {
+      return {
+        method: "Express Same-Day Delivery",
+        reason: "Inside Dhaka, for light-weight parcels, our express service guarantees delivery within 4-6 hours.",
+        badgeColor: "bg-red-600/10 text-red-600 border-red-600/20 dark:border-red-600/30",
+      };
+    } else if (w > 0) {
+      return {
+        method: "Standard Nationwide Delivery",
+        reason: "All ocer the country, this is the standard and most popular choice for economical and safe delivery within 24-48 hours.",
+        badgeColor: "bg-blue-600/10 text-blue-600 border-blue-600/20 dark:border-blue-600/30",
+      };
+    }
+    return null;
+  };
+
+  const recommendation = getAIRecommendation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,7 +154,7 @@ export default function CreateParcelPage() {
         description: `Redirecting to payment gateway...`,
       });
 
-      // পার্সেল আইডি সংগ্রহ করে সরাসরি পেমেন্ট পেজে রিডাইরেক্ট
+     
       const parcelId = result.data?.id;
       if (parcelId) {
         router.push(`/payment/${parcelId}`);
@@ -256,7 +288,7 @@ export default function CreateParcelPage() {
                   name="deliveryAddress"
                   value={formData.deliveryAddress}
                   onChange={handleChange}
-                  placeholder="Enter complete destination address..."
+                  placeholder="Enter complete destination address (e.g., Dhaka, Chattogram)..."
                   className="w-full bg-slate-100 dark:bg-[#050814] border border-slate-200 dark:border-white/15 text-slate-900 dark:text-white rounded-xl px-4 py-3 text-xs outline-none focus:ring-2 focus:ring-red-700 h-24 resize-none"
                   required
                 />
@@ -297,6 +329,23 @@ export default function CreateParcelPage() {
                 />
               </div>
             </div>
+
+            {/* AI Smart Shipping Recommendation Box (Dynamic UI) */}
+            {recommendation && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-2xl border ${recommendation.badgeColor} space-y-1.5 transition-all shadow-sm`}
+              >
+                <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider">
+                  <Sparkles className="h-4 w-4 animate-spin text-red-600" />
+                  <span>AI Shipping Suggestion: {recommendation.method}</span>
+                </div>
+                <p className="text-xs leading-relaxed opacity-90">
+                  {recommendation.reason}
+                </p>
+              </motion.div>
+            )}
 
             {/* Optional Parcel Image Upload */}
             <div className="space-y-1.5">
